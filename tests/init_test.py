@@ -1,2 +1,2 @@
-def default_test():
+def test_default():
     assert True
