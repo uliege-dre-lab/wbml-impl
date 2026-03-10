@@ -19,7 +19,7 @@ The objective is to simplify and automate the process of integrating external da
 
 ## Prerequisites
 
-This project requires **Python ≥ 3.10**.
+This project requires **Python >= 3.10**.
 
 The dependencies are defined in `pyproject.toml`. They are installed automatically when installing the package.
 
