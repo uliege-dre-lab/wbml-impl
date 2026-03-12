@@ -1,4 +1,6 @@
 import subprocess
+import sys
+from pathlib import Path
 
 import pytest
 
@@ -16,14 +18,14 @@ def test_rml_execute_success_with_relative_output(monkeypatch, tmp_path):
     config_path = tmp_path / "config.ini"
     config_path.write_text("[CONFIGURATION]\noutput_file = out.nt\n", encoding="utf-8")
 
-    expected_output = tmp_path / "out.nt"
-
+    expected_output = Path.cwd() / "out.nt"
     calls = {}
 
-    def fake_run(cmd, capture_output, text):
+    def fake_run(cmd, capture_output, text, **kwargs):
         calls["cmd"] = cmd
         calls["capture_output"] = capture_output
         calls["text"] = text
+        calls["cwd"] = kwargs.get("cwd")
 
         expected_output.write_text("<s> <p> <o> .\n", encoding="utf-8")
         return DummyCompletedProcess(returncode=0, stdout="ok", stderr="")
@@ -34,20 +36,23 @@ def test_rml_execute_success_with_relative_output(monkeypatch, tmp_path):
 
     assert result == expected_output.resolve()
     assert calls["cmd"] == [
-        pytest.importorskip("sys").executable,
+        sys.executable,
         "-m",
         "morph_kgc",
         str(config_path.resolve()),
     ]
     assert calls["capture_output"] is True
     assert calls["text"] is True
+    assert calls["cwd"] == Path.cwd()
+
+    expected_output.unlink()
 
 
 def test_rml_execute_failure(monkeypatch, tmp_path):
     config_path = tmp_path / "config.ini"
     config_path.write_text("[CONFIGURATION]\noutput_file = out.nt\n", encoding="utf-8")
 
-    def fake_run(cmd, capture_output, text):
+    def fake_run(cmd, capture_output, text, **kwargs):
         return DummyCompletedProcess(
             returncode=1,
             stdout="some stdout",
@@ -69,7 +74,7 @@ def test_rml_execute_missing_output_file(monkeypatch, tmp_path):
     config_path = tmp_path / "config.ini"
     config_path.write_text("[CONFIGURATION]\noutput_file = out.nt\n", encoding="utf-8")
 
-    def fake_run(cmd, capture_output, text):
+    def fake_run(cmd, capture_output, text, **kwargs):
         return DummyCompletedProcess(returncode=0, stdout="ok", stderr="")
 
     monkeypatch.setattr(subprocess, "run", fake_run)
@@ -87,7 +92,7 @@ def test_rml_execute_success_with_absolute_output(monkeypatch, tmp_path):
     absolute_output = tmp_path / "nested" / "result.nt"
     absolute_output.parent.mkdir(parents=True, exist_ok=True)
 
-    def fake_run(cmd, capture_output, text):
+    def fake_run(cmd, capture_output, text, **kwargs):
         absolute_output.write_text("<s> <p> <o> .\n", encoding="utf-8")
         return DummyCompletedProcess(returncode=0, stdout="ok", stderr="")
 

@@ -62,7 +62,9 @@ def test_load_config_ini_no_sections(tmp_path):
         load_config_ini(cfg)
 
 
-def test_load_config_ini_missing_output_file(tmp_path):
+def test_load_config_ini_missing_output_file(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
     mapping = tmp_path / "mapping.ttl"
     mapping.write_text("dummy", encoding="utf-8")
 
@@ -87,7 +89,9 @@ def test_load_config_ini_missing_mappings(tmp_path):
         load_config_ini(cfg)
 
 
-def test_load_config_ini_mapping_file_not_found(tmp_path):
+def test_load_config_ini_mapping_file_not_found(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
     cfg = tmp_path / "config.ini"
     cfg.write_text(
         "[CONFIGURATION]\n"
@@ -101,7 +105,9 @@ def test_load_config_ini_mapping_file_not_found(tmp_path):
         load_config_ini(cfg)
 
 
-def test_load_config_ini_changes_output_suffix_to_nt(tmp_path):
+def test_load_config_ini_changes_output_suffix_to_nt(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
     mapping = tmp_path / "mapping.ttl"
     mapping.write_text("dummy", encoding="utf-8")
 
@@ -120,7 +126,9 @@ def test_load_config_ini_changes_output_suffix_to_nt(tmp_path):
     assert data["CONFIGURATION"]["output_file"] == "out.nt"
 
 
-def test_load_config_ini_resolves_relative_mapping_path(tmp_path):
+def test_load_config_ini_resolves_relative_mapping_path(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
     mapping = tmp_path / "mapping.ttl"
     mapping.write_text("dummy", encoding="utf-8")
 
@@ -135,6 +143,7 @@ def test_load_config_ini_resolves_relative_mapping_path(tmp_path):
 
     data, output_value = load_config_ini(cfg)
 
+    assert data["DataSource1"]["mappings"] == "mapping.ttl"
     assert output_value == "out.nt"
 
 
@@ -164,7 +173,9 @@ def test_load_pipeline_ini_missing_api_url(tmp_path):
         load_pipeline_ini(cfg)
 
 
-def test_load_pipeline_ini_defaults(tmp_path):
+def test_load_pipeline_ini_defaults(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
     cfg = tmp_path / "pipeline.ini"
     cfg.write_text(
         "[wikibase]\napi_url = https://example.org/w/api.php\n",
@@ -236,7 +247,9 @@ def test_load_pipeline_ini_boolean_values(tmp_path):
     assert result["cache"]["store_file"] is True
 
 
-def test_load_pipeline_ini_resolves_relative_lookup_path(tmp_path):
+def test_load_pipeline_ini_resolves_relative_lookup_path(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
     cfg = tmp_path / "pipeline.ini"
     cfg.write_text(
         "[wikibase]\n"
