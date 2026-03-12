@@ -33,6 +33,7 @@ def load_config_ini(
     config_path: Path, verbose: int = 1
 ) -> tuple[dict[str, dict[str, str]], str]:
     config_path = Path(config_path).resolve()
+    project_root = Path.cwd()
 
     if not config_path.is_file():
         raise FileNotFoundError(f"File not found: {config_path}")
@@ -101,7 +102,7 @@ def load_config_ini(
 
     mapping_path = Path(mappings_value)
     if not mapping_path.is_absolute():
-        mapping_path = (config_path.parent / mapping_path).resolve()
+        mapping_path = (project_root / mapping_path).resolve()
     else:
         mapping_path = mapping_path.resolve()
 
