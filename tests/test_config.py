@@ -120,10 +120,9 @@ def test_load_config_ini_changes_output_suffix_to_nt(tmp_path, monkeypatch):
         encoding="utf-8",
     )
 
-    data, output_value = load_config_ini(cfg, verbose=0)
+    output_value = load_config_ini(cfg, verbose=0)
 
     assert output_value == "out.nt"
-    assert data["CONFIGURATION"]["output_file"] == "out.nt"
 
 
 def test_load_config_ini_resolves_relative_mapping_path(tmp_path, monkeypatch):
@@ -141,9 +140,8 @@ def test_load_config_ini_resolves_relative_mapping_path(tmp_path, monkeypatch):
         encoding="utf-8",
     )
 
-    data, output_value = load_config_ini(cfg)
+    output_value = load_config_ini(cfg)
 
-    assert data["DataSource1"]["mappings"] == "mapping.ttl"
     assert output_value == "out.nt"
 
 
@@ -187,12 +185,14 @@ def test_load_pipeline_ini_defaults(tmp_path, monkeypatch):
     assert result["wikibase"]["api_url"] == "https://example.org/w/api.php"
     assert result["wikibase"]["language"] == "en"
     assert result["wikibase"]["tls_verify"] is True
-    assert result["wikibase"]["create_missing_properties"] is False
     assert result["wikibase"]["verbose"] == 1
     assert result["wikibase"]["sparql_endpoint"] is None
 
-    assert result["urn"]["item_prefix"] == "urn:wikibase:Q:"
-    assert result["urn"]["property_prefix"] == "urn:wikibase:P:"
+    assert result["prefix"]["item"] == "urn:wikibase:item:"
+    assert result["prefix"]["property"] == "urn:wikibase:property:"
+    assert result["prefix"]["statement"] == "urn:wikibase:statement:"
+    assert result["prefix"]["reference"] == "urn:wikibase:reference:"
+    assert result["prefix"]["qualifier"] == "urn:wikibase:qualifier:"
 
     assert result["cache"]["store_file"] is False
     assert result["cache"]["lookup_file"] == str(
@@ -216,15 +216,28 @@ def test_load_pipeline_ini_same_item_and_property_prefix(tmp_path):
     cfg.write_text(
         "[wikibase]\n"
         "api_url = https://example.org/w/api.php\n\n"
-        "[urn]\n"
-        "item_prefix = urn:test:\n"
-        "property_prefix = urn:test:\n",
+        "[prefix]\n"
+        "item = urn:test:\n"
+        "property = urn:test:\n",
         encoding="utf-8",
     )
 
-    with pytest.raises(
-        ValueError, match="item_prefix and property_prefix cannot be the same"
-    ):
+    with pytest.raises(ValueError, match="prefixes must all be distinct"):
+        load_pipeline_ini(cfg)
+
+
+def test_load_pipeline_ini_same_statement_and_reference_prefix(tmp_path):
+    cfg = tmp_path / "pipeline.ini"
+    cfg.write_text(
+        "[wikibase]\n"
+        "api_url = https://example.org/w/api.php\n\n"
+        "[prefix]\n"
+        "statement = urn:test:\n"
+        "reference = urn:test:\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="prefixes must all be distinct"):
         load_pipeline_ini(cfg)
 
 
@@ -234,7 +247,6 @@ def test_load_pipeline_ini_boolean_values(tmp_path):
         "[wikibase]\n"
         "api_url = https://example.org/w/api.php\n"
         "tls_verify = false\n"
-        "create_missing_properties = yes\n\n"
         "[cache]\n"
         "store_file = true\n",
         encoding="utf-8",
@@ -243,7 +255,6 @@ def test_load_pipeline_ini_boolean_values(tmp_path):
     result = load_pipeline_ini(cfg)
 
     assert result["wikibase"]["tls_verify"] is False
-    assert result["wikibase"]["create_missing_properties"] is True
     assert result["cache"]["store_file"] is True
 
 

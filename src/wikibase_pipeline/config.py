@@ -29,9 +29,7 @@ def as_int(val: str, *, key: str, section: str) -> int:
         raise ValueError(f"Invalid int for [{section}] {key}: {val!r}") from e
 
 
-def load_config_ini(
-    config_path: Path, verbose: int = 1
-) -> tuple[dict[str, dict[str, str]], str]:
+def load_config_ini(config_path: Path, verbose: int = 1) -> str:
     config_path = Path(config_path).resolve()
     project_root = Path.cwd()
 
@@ -115,7 +113,7 @@ def load_config_ini(
             "Fix: check the filename/path, or use an absolute path."
         )
 
-    return data, output_value
+    return output_value
 
 
 def load_pipeline_ini(pipeline_path: Path | str) -> dict[str, dict[str, object]]:
@@ -167,16 +165,6 @@ def load_pipeline_ini(pipeline_path: Path | str) -> dict[str, dict[str, object]]
     else:
         tls_verify = parse_bool(tls_raw, default=True, verbose=verbose)
 
-    cmp_raw = wb.get("create_missing_properties", "").strip()
-    if not cmp_raw:
-        create_missing_properties = False
-        warn(
-            "Missing '[wikibase] create_missing_properties'. Defaulting to False.",
-            verbose,
-        )
-    else:
-        create_missing_properties = parse_bool(cmp_raw, default=False, verbose=verbose)
-
     sparql_endpoint = wb.get("sparql_endpoint", "").strip()
     if not sparql_endpoint:
         sparql_endpoint = None
@@ -185,27 +173,62 @@ def load_pipeline_ini(pipeline_path: Path | str) -> dict[str, dict[str, object]]
             verbose,
         )
 
-    urn = data.get("urn", {})
+    urn = data.get("prefix", {})
 
-    item_prefix = urn.get("item_prefix", "").strip()
+    item_prefix = urn.get("item", "").strip()
     if not item_prefix:
-        item_prefix = "urn:wikibase:Q:"
-        warn("Missing '[urn] item_prefix'. Defaulting to 'urn:wikibase:Q:'.", verbose)
+        item_prefix = "urn:wikibase:item:"
+        warn("Missing '[prefix] item'. Defaulting to 'urn:wikibase:item:'.", verbose)
 
-    property_prefix = urn.get("property_prefix", "").strip()
+    property_prefix = urn.get("property", "").strip()
     if not property_prefix:
-        property_prefix = "urn:wikibase:P:"
+        property_prefix = "urn:wikibase:property:"
         warn(
-            "Missing '[urn] property_prefix'. Defaulting to 'urn:wikibase:P:'.", verbose
+            "Missing '[prefix] property'. Defaulting to 'urn:wikibase:property:'.",
+            verbose,
         )
 
-    if item_prefix == property_prefix:
-        raise ValueError(
-            "Invalid urn config:"
-            "item_prefix and property_prefix cannot be the same.\n\n"
-            f"item_prefix={item_prefix!r}\n"
-            f"property_prefix={property_prefix!r}"
+    statement_prefix = urn.get("statement", "").strip()
+    if not statement_prefix:
+        statement_prefix = "urn:wikibase:statement:"
+        warn(
+            "Missing '[prefix] statement'. Defaulting to 'urn:wikibase:statement:'.",
+            verbose,
         )
+
+    reference_prefix = urn.get("reference", "").strip()
+    if not reference_prefix:
+        reference_prefix = "urn:wikibase:reference:"
+        warn(
+            "Missing '[prefix] reference'. Defaulting to 'urn:wikibase:reference:'.",
+            verbose,
+        )
+
+    qualifier_prefix = urn.get("qualifier", "").strip()
+    if not qualifier_prefix:
+        qualifier_prefix = "urn:wikibase:qualifier:"
+        warn(
+            "Missing '[prefix] qualifier'. Defaulting to 'urn:wikibase:qualifier:'.",
+            verbose,
+        )
+
+    prefixes = {
+        "item": item_prefix,
+        "property": property_prefix,
+        "statement": statement_prefix,
+        "reference": reference_prefix,
+        "qualifier": qualifier_prefix,
+    }
+
+    seen = {}
+    for name, value in prefixes.items():
+        if value in seen:
+            raise ValueError(
+                "Invalid prefix config: prefixes must all be distinct.\n\n"
+                f"{seen[value]}_prefix={value!r}\n"
+                f"{name}_prefix={value!r}"
+            )
+        seen[value] = name
 
     cache = data.get("cache", {})
 
@@ -236,12 +259,14 @@ def load_pipeline_ini(pipeline_path: Path | str) -> dict[str, dict[str, object]]
             "sparql_endpoint": sparql_endpoint,
             "language": language,
             "tls_verify": tls_verify,
-            "create_missing_properties": create_missing_properties,
             "verbose": verbose,
         },
-        "urn": {
-            "item_prefix": item_prefix,
-            "property_prefix": property_prefix,
+        "prefix": {
+            "item": item_prefix,
+            "property": property_prefix,
+            "statement": statement_prefix,
+            "qualifier": qualifier_prefix,
+            "reference": reference_prefix,
         },
         "cache": {
             "lookup_file": str(lookup_path),

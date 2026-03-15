@@ -7,9 +7,9 @@
 
 @prefix wikibase: <http://wikiba.se/ontology#> .
 
-@prefix wd:    <urn:wikibase:entity:> .
+@prefix wd:    <urn:wikibase:item:> .
 @prefix wds:   <urn:wikibase:statement:> .
-@prefix wdt:   <urn:wikibase:prop:> .
+@prefix wdt:   <urn:wikibase:property:> .
 @prefix wdq:   <urn:wikibase:qualifier:> .
 @prefix wdref: <urn:wikibase:reference:> .
 
