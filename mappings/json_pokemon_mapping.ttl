@@ -626,14 +626,6 @@
       rr:constant "Pokedex" ;
       rr:datatype xsd:string
     ]
-  ] ;
-
-  rr:predicateObjectMap [
-    rr:predicate wdref:StatedIn ;
-    rr:objectMap [
-      rr:constant "Pokedex" ;
-      rr:datatype xsd:string
-    ]
   ] .
 
 <#PokemonEvolutionNextLinkMapping>
