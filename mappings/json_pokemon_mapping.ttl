@@ -631,8 +631,8 @@
   rr:predicateObjectMap [
     rr:predicate wdref:StatedIn ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Source_Pokedex" ;
-      rr:termType rr:IRI
+      rr:constant "Pokedex" ;
+      rr:datatype xsd:string
     ]
   ] .
 
