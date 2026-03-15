@@ -1,0 +1,763 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+@prefix wikibase: <http://wikiba.se/ontology#> .
+
+@prefix wd:    <urn:wikibase:entity:> .
+@prefix wds:   <urn:wikibase:statement:> .
+@prefix wdt:   <urn:wikibase:prop:> .
+@prefix wdq:   <urn:wikibase:qualifier:> .
+@prefix wdref: <urn:wikibase:reference:> .
+
+<#TypeMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/types.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Type_{english}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+        rr:constant wd:PokemonType
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "english" ;
+        rr:language "en"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "chinese" ;
+        rr:language "zh"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "japanese" ;
+        rr:language "ja"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:EffectiveAgainst ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Type_{effective}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:IneffectiveAgainst ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Type_{ineffective}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:NoEffectAgainst ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Type_{no_effect}" ;
+      rr:termType rr:IRI
+    ]
+  ] .
+
+<#ItemMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/items.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Item_{id}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+        rr:constant wd:Item
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "name.english" ;
+        rr:language "en"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "name.chinese" ;
+        rr:language "zh"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "name.japanese" ;
+        rr:language "ja"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasCategory ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:ItemCategory_{type}" ;
+      rr:termType rr:IRI
+    ]
+  ] .
+
+<#ItemCategoryMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/items.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:ItemCategory_{type}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+        rr:constant wd:ItemCategory
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "type" ;
+        rr:language "en"
+    ]
+  ] .
+
+<#MoveMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/moves.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Move_{id}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+        rr:constant wd:Move
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "ename" ;
+        rr:language "en"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "cname" ;
+        rr:language "zh"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+        rml:reference "jname" ;
+        rr:language "ja"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasType ;
+    rr:objectMap [
+        rr:template "urn:wikibase:entity:Type_{type}"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasCategory ;
+    rr:objectMap [
+        rr:template "urn:wikibase:entity:MoveCategory_{category}"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Accuracy ;
+    rr:objectMap [
+        rml:reference "accuracy";
+        rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Power ;
+    rr:objectMap [
+        rml:reference "power";
+        rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:PP ;
+    rr:objectMap [
+        rml:reference "pp";
+        rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:TM ;
+    rr:objectMap [
+        rml:reference "tm";
+        rr:datatype xsd:integer
+    ]
+  ] .
+
+<#MoveCategoryMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/moves.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:MoveCategory_{category}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wd:MoveCategory
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "category" ;
+      rr:language "zh"
+    ]
+  ] .
+
+<#PokedexMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/pokedex.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Pokemon_{id}" ;
+    rr:termType rr:IRI ;
+    rr:class wd:Pokemon
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "name.english" ;
+      rr:language "en"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "name.japanese" ;
+      rr:language "ja"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "name.chinese" ;
+      rr:language "zh"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "name.french" ;
+      rr:language "fr"
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:PokedexNumber ;
+    rr:objectMap [
+      rml:reference "id" ;
+      rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasSpecies ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Species_{species}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Description ;
+    rr:objectMap [
+      rml:reference "description" ;
+      rr:datatype xsd:string
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HP ;
+    rr:objectMap [
+      rml:reference "base.HP" ;
+      rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Attack ;
+    rr:objectMap [
+      rml:reference "base.Attack" ;
+      rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Defense ;
+    rr:objectMap [
+      rml:reference "base.Defense" ;
+      rr:datatype xsd:integer
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate wdt:SpecialAttack ;
+    rr:objectMap [
+      rml:reference "base.Sp. Attack" ;
+      rr:datatype
+      xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:SpecialDefense;
+    rr:objectMap [
+      rml:reference "base.Sp. Defense" ;
+      rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Speed ;
+    rr:objectMap [
+      rml:reference "base.Speed" ;
+      rr:datatype xsd:integer
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasType ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Type_{type}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Height ;
+    rr:objectMap [
+      rml:reference "profile.height" ;
+      rr:datatype xsd:string
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Weight ;
+    rr:objectMap [
+      rml:reference "profile.weight" ;
+      rr:datatype xsd:string
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Gender ;
+    rr:objectMap [
+      rml:reference "profile.gender" ;
+      rr:datatype xsd:string
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Sprite ;
+    rr:objectMap [
+      rml:reference "image.sprite" ;
+      rr:datatype xsd:anyURI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Thumbnail ;
+    rr:objectMap [
+      rml:reference "image.thumbnail" ;
+      rr:datatype xsd:anyURI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:Hires ;
+    rr:objectMap [
+      rml:reference "image.hires" ;
+      rr:datatype xsd:anyURI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasEggGroup ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:EggGroup_{profile.egg}" ;
+      rr:termType rr:IRI
+    ]
+  ] .
+
+
+<#EggGroupMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/pokedex.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:EggGroup_{profile.egg}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wd:EggGroup
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "profile.egg"
+    ]
+  ] .
+
+<#SpeciesMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/pokedex.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Species_{species}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wd:Species
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "species"
+    ]
+  ] .
+
+<#PokemonAbilityLinkMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        profile.ability[1] AS ability_name
+      FROM read_json('data/input/json_pokemon/pokedex.json')
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Pokemon_{id}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasAbility ;
+    rr:objectMap [
+      rr:template "urn:wikibase:statement:Pokemon_{id}_Ability_{ability_name}" ;
+      rr:termType rr:IRI
+    ]
+  ] .
+
+<#AbilityMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        profile.ability[1] AS ability_name
+      FROM read_json('data/input/json_pokemon/pokedex.json')
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Ability_{ability_name}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wd:Ability
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [
+      rml:reference "ability_name"
+    ]
+  ] .
+
+<#PokemonAbilityStatementMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        profile.ability[1] AS ability_name,
+        profile.ability[2] AS ability_flag
+      FROM read_json('data/input/json_pokemon/pokedex.json')
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:statement:Pokemon_{id}_Ability_{ability_name}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wikibase:Statement
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wikibase:rank ;
+    rr:objectMap [
+      rr:constant wikibase:PreferredRank
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:HasAbility ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Ability_{ability_name}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdq:IsHiddenAbility ;
+    rr:objectMap [
+      rml:reference "ability_flag" ;
+      rr:datatype xsd:boolean
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdref:StatedIn ;
+    rr:objectMap [
+      rr:constant "Pokedex" ;
+      rr:datatype xsd:string
+    ]
+  ] .
+
+<#PokemonEvolutionNextLinkMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        next_evo[0]::VARCHAR AS next_id
+      FROM read_json('data/input/json_pokemon/pokedex.json'),
+           unnest(evolution.next) AS t(next_evo)
+      WHERE evolution.next IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Pokemon_{id}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:EvolvesTo ;
+    rr:objectMap [
+      rr:template "urn:wikibase:statement:Pokemon_{id}_NextEvolution_{next_id}" ;
+      rr:termType rr:IRI
+    ]
+  ] .
+
+<#PokemonNextEvolutionStatementMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        next_evo[0]::VARCHAR AS next_id,
+        next_evo[1]::VARCHAR AS condition
+      FROM read_json('data/input/json_pokemon/pokedex.json'),
+           unnest(evolution.next) AS t(next_evo)
+      WHERE evolution.next IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:statement:Pokemon_{id}_NextEvolution_{next_id}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wikibase:Statement
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:EvolvesTo ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Pokemon_{next_id}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdq:EvolutionCondition ;
+    rr:objectMap [
+      rml:reference "condition" ;
+      rr:datatype xsd:string
+    ]
+  ] .
+
+<#PokemonEvolutionPrevLinkMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        evolution.prev[1] AS prev_id
+      FROM read_json('data/input/json_pokemon/pokedex.json')
+      WHERE evolution.prev IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:entity:Pokemon_{id}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:EvolvesFrom ;
+    rr:objectMap [
+      rr:template "urn:wikibase:statement:Pokemon_{id}_PrevEvolution_{prev_id}" ;
+      rr:termType rr:IRI
+    ]
+  ] .
+
+<#PokemonPrevEvolutionStatementMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        evolution.prev[1] AS prev_id,
+        evolution.prev[2] AS condition
+      FROM read_json('data/input/json_pokemon/pokedex.json')
+      WHERE evolution.prev IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:statement:Pokemon_{id}_PrevEvolution_{prev_id}"
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wikibase:Statement
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:EvolvesFrom ;
+    rr:objectMap [
+      rr:template "urn:wikibase:entity:Pokemon_{prev_id}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdq:EvolutionCondition ;
+    rr:objectMap [
+      rml:reference "condition" ;
+      rr:datatype xsd:string
+    ]
+  ] .
