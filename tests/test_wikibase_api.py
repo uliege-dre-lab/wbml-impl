@@ -3,6 +3,17 @@ import pytest
 from wikibase_pipeline.wikibase_api import WikibaseAPI
 
 
+@pytest.fixture
+def params():
+    return {
+        "api_url": "https://example.org/w/api.php",
+        "sparql_endpoint": "https://example.org/query/sparql",
+        "language": "en",
+        "tls_verify": True,
+        "verbose": 1,
+    }
+
+
 class MockResponse:
     def __init__(self, json_data, status_code=200):
         self._json_data = json_data
@@ -49,27 +60,30 @@ class MockSession:
         return MockResponse({"login": {"result": "Success"}})
 
 
-def test_wikibase_api_init_success(monkeypatch):
-    params = {
-        "api_url": "https://example.org/w/api.php",
-        "sparql_endpoint": "https://example.org/query/sparql",
-        "language": "en",
-        "tls_verify": True,
-        "verbose": 1,
-    }
+class MockSessionLoginFail(MockSession):
+    def post(self, url, data=None, timeout=None, verify=None):
+        self.post_calls.append(
+            {
+                "url": url,
+                "data": data,
+                "timeout": timeout,
+                "verify": verify,
+            }
+        )
+        return MockResponse({"login": {"result": "Failed"}})
 
+
+def test_wikibase_api_init_success(monkeypatch, params):
     mock_session = MockSession()
 
     monkeypatch.setattr("wikibase_pipeline.wikibase_api.load_dotenv", lambda: None)
     monkeypatch.setattr(
         "wikibase_pipeline.wikibase_api.os.getenv",
-        lambda key: {
-            "WB_USER": "alice",
-            "WB_PASSWORD": "secret",
-        }.get(key),
+        lambda key: {"WB_USER": "alice", "WB_PASSWORD": "secret"}.get(key),
     )
     monkeypatch.setattr(
-        "wikibase_pipeline.wikibase_api.requests.Session", lambda: mock_session
+        "wikibase_pipeline.wikibase_api.requests.Session",
+        lambda: mock_session,
     )
 
     api = WikibaseAPI(params)
@@ -90,17 +104,10 @@ def test_wikibase_api_init_success(monkeypatch):
     assert len(mock_session.post_calls) == 1
     assert mock_session.post_calls[0]["data"]["action"] == "login"
     assert mock_session.post_calls[0]["data"]["lgname"] == "alice"
+    assert mock_session.post_calls[0]["data"]["lgpassword"] == "secret"
 
 
-def test_wikibase_api_missing_env(monkeypatch):
-    params = {
-        "api_url": "https://example.org/w/api.php",
-        "sparql_endpoint": "https://example.org/query/sparql",
-        "language": "en",
-        "tls_verify": True,
-        "verbose": 1,
-    }
-
+def test_wikibase_api_missing_env(monkeypatch, params):
     monkeypatch.setattr("wikibase_pipeline.wikibase_api.load_dotenv", lambda: None)
     monkeypatch.setattr("wikibase_pipeline.wikibase_api.os.getenv", lambda key: None)
 
@@ -108,41 +115,17 @@ def test_wikibase_api_missing_env(monkeypatch):
         WikibaseAPI(params)
 
 
-class MockSessionLoginFail(MockSession):
-    def post(self, url, data=None, timeout=None, verify=None):
-        self.post_calls.append(
-            {
-                "url": url,
-                "data": data,
-                "timeout": timeout,
-                "verify": verify,
-            }
-        )
-
-        return MockResponse({"login": {"result": "Failed"}})
-
-
-def test_wikibase_api_login_failure(monkeypatch):
-    params = {
-        "api_url": "https://example.org/w/api.php",
-        "sparql_endpoint": "https://example.org/query/sparql",
-        "language": "en",
-        "tls_verify": True,
-        "verbose": 1,
-    }
-
+def test_wikibase_api_login_failure(monkeypatch, params):
     mock_session = MockSessionLoginFail()
 
     monkeypatch.setattr("wikibase_pipeline.wikibase_api.load_dotenv", lambda: None)
     monkeypatch.setattr(
         "wikibase_pipeline.wikibase_api.os.getenv",
-        lambda key: {
-            "WB_USER": "alice",
-            "WB_PASSWORD": "secret",
-        }.get(key),
+        lambda key: {"WB_USER": "alice", "WB_PASSWORD": "secret"}.get(key),
     )
     monkeypatch.setattr(
-        "wikibase_pipeline.wikibase_api.requests.Session", lambda: mock_session
+        "wikibase_pipeline.wikibase_api.requests.Session",
+        lambda: mock_session,
     )
 
     with pytest.raises(RuntimeError, match="Login failed"):

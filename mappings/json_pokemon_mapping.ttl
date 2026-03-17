@@ -7,11 +7,12 @@
 
 @prefix wikibase: <http://wikiba.se/ontology#> .
 
-@prefix wd:    <urn:wikibase:item:> .
-@prefix wds:   <urn:wikibase:statement:> .
-@prefix wdt:   <urn:wikibase:property:> .
-@prefix wdq:   <urn:wikibase:qualifier:> .
-@prefix wdref: <urn:wikibase:reference:> .
+@prefix wb:         <urn:wikibase:item:> .
+@prefix wbs:        <urn:wikibase:statement:> .
+@prefix wbt:        <urn:wikibase:property:> .
+@prefix wbq:        <urn:wikibase:qualifier:> .
+@prefix wbref:      <urn:wikibase:reference:> .
+@prefix wbrefnode:  <urn:wikibase:reference-node:> .
 
 <#TypeMapping>
   a rr:TriplesMap ;
@@ -23,60 +24,60 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Type_{english}"
+    rr:template "urn:wikibase:item:Type_{english}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-        rr:constant wd:PokemonType
+      rr:constant wb:PokemonType
     ]
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
     rr:objectMap [
-        rml:reference "english" ;
-        rr:language "en"
+      rml:reference "english" ;
+      rr:language "en"
     ]
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
     rr:objectMap [
-        rml:reference "chinese" ;
-        rr:language "zh"
+      rml:reference "chinese" ;
+      rr:language "zh"
     ]
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdfs:label ;
     rr:objectMap [
-        rml:reference "japanese" ;
-        rr:language "ja"
+      rml:reference "japanese" ;
+      rr:language "ja"
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:EffectiveAgainst ;
+    rr:predicate wbt:EffectiveAgainst ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Type_{effective}" ;
+      rr:template "urn:wikibase:item:Type_{effective}" ;
       rr:termType rr:IRI
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:IneffectiveAgainst ;
+    rr:predicate wbt:IneffectiveAgainst ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Type_{ineffective}" ;
+      rr:template "urn:wikibase:item:Type_{ineffective}" ;
       rr:termType rr:IRI
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:NoEffectAgainst ;
+    rr:predicate wbt:NoEffectAgainst ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Type_{no_effect}" ;
+      rr:template "urn:wikibase:item:Type_{no_effect}" ;
       rr:termType rr:IRI
     ]
   ] .
@@ -91,13 +92,13 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Item_{id}"
+    rr:template "urn:wikibase:item:Item_{id}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-        rr:constant wd:Item
+        rr:constant wb:Item
     ]
   ] ;
 
@@ -126,10 +127,17 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasCategory ;
+    rr:predicate wbt:HasCategory ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:ItemCategory_{type}" ;
+      rr:template "urn:wikibase:item:ItemCategory_{type}" ;
       rr:termType rr:IRI
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:comment ;
+    rr:objectMap [
+        rml:reference "description"
     ]
   ] .
 
@@ -143,13 +151,13 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:ItemCategory_{type}"
+    rr:template "urn:wikibase:item:ItemCategory_{type}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-        rr:constant wd:ItemCategory
+        rr:constant wb:ItemCategory
     ]
   ] ;
 
@@ -171,13 +179,13 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Move_{id}"
+    rr:template "urn:wikibase:item:Move_{id}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-        rr:constant wd:Move
+        rr:constant wb:Move
     ]
   ] ;
 
@@ -206,21 +214,21 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasType ;
+    rr:predicate wbt:HasType ;
     rr:objectMap [
-        rr:template "urn:wikibase:entity:Type_{type}"
+        rr:template "urn:wikibase:item:Type_{type}"
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasCategory ;
+    rr:predicate wbt:HasCategory ;
     rr:objectMap [
-        rr:template "urn:wikibase:entity:MoveCategory_{category}"
+        rr:template "urn:wikibase:item:MoveCategory_{category}"
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Accuracy ;
+    rr:predicate wbt:Accuracy ;
     rr:objectMap [
         rml:reference "accuracy";
         rr:datatype xsd:integer
@@ -228,7 +236,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Power ;
+    rr:predicate wbt:Power ;
     rr:objectMap [
         rml:reference "power";
         rr:datatype xsd:integer
@@ -236,7 +244,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:PP ;
+    rr:predicate wbt:PP ;
     rr:objectMap [
         rml:reference "pp";
         rr:datatype xsd:integer
@@ -244,7 +252,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:TM ;
+    rr:predicate wbt:TM ;
     rr:objectMap [
         rml:reference "tm";
         rr:datatype xsd:integer
@@ -261,13 +269,13 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:MoveCategory_{category}"
+    rr:template "urn:wikibase:item:MoveCategory_{category}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-      rr:constant wd:MoveCategory
+      rr:constant wb:MoveCategory
     ]
   ] ;
 
@@ -289,9 +297,9 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Pokemon_{id}" ;
+    rr:template "urn:wikibase:item:Pokemon_{id}" ;
     rr:termType rr:IRI ;
-    rr:class wd:Pokemon
+    rr:class wb:Pokemon
   ] ;
 
   rr:predicateObjectMap [
@@ -327,7 +335,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:PokedexNumber ;
+    rr:predicate wbt:PokedexNumber ;
     rr:objectMap [
       rml:reference "id" ;
       rr:datatype xsd:integer
@@ -335,15 +343,15 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasSpecies ;
+    rr:predicate wbt:HasSpecies ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Species_{species}" ;
+      rr:template "urn:wikibase:item:Species_{species}" ;
       rr:termType rr:IRI
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Description ;
+    rr:predicate rdfs:comment ;
     rr:objectMap [
       rml:reference "description" ;
       rr:datatype xsd:string
@@ -351,7 +359,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HP ;
+    rr:predicate wbt:HP ;
     rr:objectMap [
       rml:reference "base.HP" ;
       rr:datatype xsd:integer
@@ -359,7 +367,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Attack ;
+    rr:predicate wbt:Attack ;
     rr:objectMap [
       rml:reference "base.Attack" ;
       rr:datatype xsd:integer
@@ -367,14 +375,14 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Defense ;
+    rr:predicate wbt:Defense ;
     rr:objectMap [
       rml:reference "base.Defense" ;
       rr:datatype xsd:integer
     ]
   ] ;
   rr:predicateObjectMap [
-    rr:predicate wdt:SpecialAttack ;
+    rr:predicate wbt:SpecialAttack ;
     rr:objectMap [
       rml:reference "base.Sp. Attack" ;
       rr:datatype
@@ -383,7 +391,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:SpecialDefense;
+    rr:predicate wbt:SpecialDefense;
     rr:objectMap [
       rml:reference "base.Sp. Defense" ;
       rr:datatype xsd:integer
@@ -391,7 +399,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Speed ;
+    rr:predicate wbt:Speed ;
     rr:objectMap [
       rml:reference "base.Speed" ;
       rr:datatype xsd:integer
@@ -399,15 +407,15 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasType ;
+    rr:predicate wbt:HasType ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Type_{type}" ;
+      rr:template "urn:wikibase:item:Type_{type}" ;
       rr:termType rr:IRI
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Height ;
+    rr:predicate wbt:Height ;
     rr:objectMap [
       rml:reference "profile.height" ;
       rr:datatype xsd:string
@@ -415,7 +423,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Weight ;
+    rr:predicate wbt:Weight ;
     rr:objectMap [
       rml:reference "profile.weight" ;
       rr:datatype xsd:string
@@ -423,7 +431,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Gender ;
+    rr:predicate wbt:Gender ;
     rr:objectMap [
       rml:reference "profile.gender" ;
       rr:datatype xsd:string
@@ -431,7 +439,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Sprite ;
+    rr:predicate wbt:Sprite ;
     rr:objectMap [
       rml:reference "image.sprite" ;
       rr:datatype xsd:anyURI
@@ -439,7 +447,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Thumbnail ;
+    rr:predicate wbt:Thumbnail ;
     rr:objectMap [
       rml:reference "image.thumbnail" ;
       rr:datatype xsd:anyURI
@@ -447,7 +455,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:Hires ;
+    rr:predicate wbt:Hires ;
     rr:objectMap [
       rml:reference "image.hires" ;
       rr:datatype xsd:anyURI
@@ -455,9 +463,9 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasEggGroup ;
+    rr:predicate wbt:HasEggGroup ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:EggGroup_{profile.egg}" ;
+      rr:template "urn:wikibase:item:EggGroup_{profile.egg}" ;
       rr:termType rr:IRI
     ]
   ] .
@@ -473,13 +481,13 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:EggGroup_{profile.egg}"
+    rr:template "urn:wikibase:item:EggGroup_{profile.egg}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-      rr:constant wd:EggGroup
+      rr:constant wb:EggGroup
     ]
   ] ;
 
@@ -500,13 +508,13 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Species_{species}"
+    rr:template "urn:wikibase:item:Species_{species}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-      rr:constant wd:Species
+      rr:constant wb:Species
     ]
   ] ;
 
@@ -524,18 +532,19 @@
     rml:query """
       SELECT
         id,
-        profile.ability[1] AS ability_name
-      FROM read_json('data/input/json_pokemon/pokedex.json')
+        json_extract_string(ability_entry, '$[0]') AS ability_name
+      FROM read_json('data/input/json_pokemon/pokedex.json'),
+           unnest(profile.ability) AS t(ability_entry)
       WHERE profile.ability IS NOT NULL
     """
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Pokemon_{id}"
+    rr:template "urn:wikibase:item:Pokemon_{id}"
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasAbility ;
+    rr:predicate wbt:HasAbility ;
     rr:objectMap [
       rr:template "urn:wikibase:statement:Pokemon_{id}_Ability_{ability_name}" ;
       rr:termType rr:IRI
@@ -548,20 +557,21 @@
   rml:logicalSource [
     rml:query """
       SELECT
-        profile.ability[1] AS ability_name
-      FROM read_json('data/input/json_pokemon/pokedex.json')
+        json_extract_string(ability_entry, '$[0]') AS ability_name
+      FROM read_json('data/input/json_pokemon/pokedex.json'),
+           unnest(profile.ability) AS t(ability_entry)
       WHERE profile.ability IS NOT NULL
     """
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Ability_{ability_name}"
+    rr:template "urn:wikibase:item:Ability_{ability_name}"
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
     rr:objectMap [
-      rr:constant wd:Ability
+      rr:constant wb:Ability
     ]
   ] ;
 
@@ -579,9 +589,10 @@
     rml:query """
       SELECT
         id,
-        profile.ability[1] AS ability_name,
-        profile.ability[2] AS ability_flag
-      FROM read_json('data/input/json_pokemon/pokedex.json')
+        json_extract_string(ability_entry, '$[0]') AS ability_name,
+        json_extract_string(ability_entry, '$[1]') AS ability_flag
+      FROM read_json('data/input/json_pokemon/pokedex.json'),
+           unnest(profile.ability) AS t(ability_entry)
       WHERE profile.ability IS NOT NULL
     """
   ] ;
@@ -605,15 +616,15 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:HasAbility ;
+    rr:predicate wbt:HasAbility ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Ability_{ability_name}" ;
+      rr:template "urn:wikibase:item:Ability_{ability_name}" ;
       rr:termType rr:IRI
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdq:IsHiddenAbility ;
+    rr:predicate wbq:IsHiddenAbility ;
     rr:objectMap [
       rml:reference "ability_flag" ;
       rr:datatype xsd:boolean
@@ -621,7 +632,7 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdref:StatedIn ;
+    rr:predicate wbref:StatedIn ;
     rr:objectMap [
       rr:constant "Pokedex" ;
       rr:datatype xsd:string
@@ -643,11 +654,11 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Pokemon_{id}"
+    rr:template "urn:wikibase:item:Pokemon_{id}"
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:EvolvesTo ;
+    rr:predicate wbt:EvolvesTo ;
     rr:objectMap [
       rr:template "urn:wikibase:statement:Pokemon_{id}_NextEvolution_{next_id}" ;
       rr:termType rr:IRI
@@ -661,11 +672,12 @@
     rml:query """
       SELECT
         id,
-        next_evo[0]::VARCHAR AS next_id,
-        next_evo[1]::VARCHAR AS condition
+        next_evo,
+        json_extract_string(next_evo, '$[0]') AS next_id,
+        json_extract_string(next_evo, '$[1]') AS condition
       FROM read_json('data/input/json_pokemon/pokedex.json'),
-           unnest(evolution.next) AS t(next_evo)
-      WHERE evolution.next IS NOT NULL
+          unnest(evolution.next) AS t(next_evo)
+      WHERE evolution.next IS NOT NULL;
     """
   ] ;
 
@@ -681,15 +693,15 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:EvolvesTo ;
+    rr:predicate wbt:EvolvesTo ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Pokemon_{next_id}" ;
+      rr:template "urn:wikibase:item:Pokemon_{next_id}" ;
       rr:termType rr:IRI
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdq:EvolutionCondition ;
+    rr:predicate wbq:EvolutionCondition ;
     rr:objectMap [
       rml:reference "condition" ;
       rr:datatype xsd:string
@@ -703,18 +715,19 @@
     rml:query """
       SELECT
         id,
-        evolution.prev[1] AS prev_id
-      FROM read_json('data/input/json_pokemon/pokedex.json')
+        json_extract_string(prev_evo, '$[0]') AS prev_id_name
+      FROM read_json('data/input/json_pokemon/pokedex.json'),
+           unnest(profile.prev) AS t(prev_evo)
       WHERE evolution.prev IS NOT NULL
     """
   ] ;
 
   rr:subjectMap [
-    rr:template "urn:wikibase:entity:Pokemon_{id}"
+    rr:template "urn:wikibase:item:Pokemon_{id}"
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:EvolvesFrom ;
+    rr:predicate wbt:EvolvesFrom ;
     rr:objectMap [
       rr:template "urn:wikibase:statement:Pokemon_{id}_PrevEvolution_{prev_id}" ;
       rr:termType rr:IRI
@@ -728,9 +741,10 @@
     rml:query """
       SELECT
         id,
-        evolution.prev[1] AS prev_id,
-        evolution.prev[2] AS condition
-      FROM read_json('data/input/json_pokemon/pokedex.json')
+        json_extract_string(prev_evo, '$[0]') AS prev_id_name,
+        json_extract_string(prev_evo, '$[1]') AS condition
+      FROM read_json('data/input/json_pokemon/pokedex.json'),
+           unnest(profile.prev) AS t(prev_evo)
       WHERE evolution.prev IS NOT NULL
     """
   ] ;
@@ -747,15 +761,15 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdt:EvolvesFrom ;
+    rr:predicate wbt:EvolvesFrom ;
     rr:objectMap [
-      rr:template "urn:wikibase:entity:Pokemon_{prev_id}" ;
+      rr:template "urn:wikibase:item:Pokemon_{prev_id}" ;
       rr:termType rr:IRI
     ]
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate wdq:EvolutionCondition ;
+    rr:predicate wbq:EvolutionCondition ;
     rr:objectMap [
       rml:reference "condition" ;
       rr:datatype xsd:string
