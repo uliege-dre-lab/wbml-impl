@@ -1,0 +1,68 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+PREFIX wbml: <https://example.org/wbml#>
+
+CONSTRUCT {
+  ?refTM a rr:TriplesMap ;
+         rml:logicalSource ?ls ;
+         rr:subjectMap ?refSM ;
+         rr:predicateObjectMap ?recordPOM .
+
+  ?refSM rr:template ?stmtRefTemplate ;
+         rr:termType rr:IRI .
+
+  ?recordPOM rr:predicate ?refPredIRI ;
+             rr:objectMap ?recordOM .
+
+  ?recordOM rml:reference ?reference .
+  ?recordOM rr:datatype ?datatype .
+  ?recordOM rr:language ?language .
+}
+WHERE {
+  ?tm a rr:TriplesMap ;
+      rml:logicalSource ?ls ;
+      wbml:subjectMap ?sm ;
+      wbml:predicateObjectMap ?pom .
+
+  ?sm wbml:nodeId ?subjectNodeId .
+  OPTIONAL { ?sm wbml:classKey ?subjectClassKey . }
+
+  ?pom wbml:statID ?statID ;
+       wbml:referenceMap ?rmap .
+
+  ?rmap wbml:refId ?refId ;
+        wbml:referenceRecord ?rrec .
+
+  ?rrec wbml:predicateKey ?refPredicateKey ;
+        wbml:objectMap ?rom .
+
+  ?rom wbml:reference ?reference .
+  OPTIONAL { ?rom wbml:datatype ?datatype . }
+  OPTIONAL { ?rom wbml:language ?language . }
+
+  BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID), "/reference/", STR(?refId))) AS ?refTM)
+  BIND(IRI(CONCAT(STR(?refTM), "/subjectMap")) AS ?refSM)
+  BIND(IRI(CONCAT(STR(?refTM), "/pom/referenceRecord/", STR(?refPredicateKey))) AS ?recordPOM)
+  BIND(IRI(CONCAT(STR(?recordPOM), "/om")) AS ?recordOM)
+
+  BIND(IRI(CONCAT("urn:wikibase:reference:", STR(?refPredicateKey))) AS ?refPredIRI)
+
+  BIND(
+    IF(
+      BOUND(?subjectClassKey),
+      CONCAT(
+        "urn:wikibase:statementreference:",
+        STR(?subjectClassKey),
+        "_{", STR(?subjectNodeId), "}_",
+        STR(?statID), "_",
+        STR(?refId)
+      ),
+      CONCAT(
+        "urn:wikibase:statementreference:{",
+        STR(?subjectNodeId), "}_",
+        STR(?statID), "_",
+        STR(?refId)
+      )
+    ) AS ?stmtRefTemplate
+  )
+}

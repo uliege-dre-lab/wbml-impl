@@ -1,0 +1,18 @@
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT {
+  ?propIRI a wbml:Property ;
+           rdfs:label ?predicateLabel ;
+           rdfs:comment ?predicateDescription ;
+           wbml:propertyType ?predicateType .
+}
+WHERE {
+  ?pom wbml:predicateKey ?predicateKey .
+
+  OPTIONAL { ?pom wbml:predicateLabel ?predicateLabel . }
+  OPTIONAL { ?pom wbml:predicateDescription ?predicateDescription . }
+  OPTIONAL { ?pom wbml:predicateType ?predicateType . }
+
+  BIND(IRI(CONCAT("urn:wikibase:property:", STR(?predicateKey))) AS ?propIRI)
+}

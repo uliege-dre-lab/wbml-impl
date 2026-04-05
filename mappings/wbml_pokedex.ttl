@@ -1,0 +1,260 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+@prefix wbml: <https://example.org/wbml#> .
+
+<#PokedexMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/pokedex_small.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  wbml:subjectMap [
+    wbml:nodeId "id" ;
+    wbml:classKey "Pokemon" ;
+    wbml:classLabel "Pokemon" ;
+    wbml:classLabel "Pokémon"@fr ;
+    wbml:classDescription "A fictional creature from the Pokémon franchise."@en
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+    wbml:reference "name.english" ;
+    wbml:language "en"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+    wbml:reference "name.japanese" ;
+    wbml:language "ja"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+    wbml:reference "name.chinese" ;
+    wbml:language "zh"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+    wbml:reference "name.french" ;
+    wbml:language "fr"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "PokedexNumber" ;
+    wbml:predicateLabel "Pokedex Number"@en ;
+    wbml:predicateType xsd:integer ;
+    wbml:objectMap [
+        wbml:reference "id" ;
+        wbml:datatype xsd:integer
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "HasSpecies" ;
+    wbml:predicateType wbml:Item ;
+    wbml:predicateLabel "Has Species"@en ;
+    wbml:predicateDescription "Indicates the species of the Pokémon."@en ;
+    wbml:objectMap [
+      wbml:nodeId "species" ;
+      wbml:classKey "Species"
+    ] ;
+    wbml:rank wbml:PreferredRank ;
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:comment;
+    wbml:objectMap [
+      wbml:reference "description"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "Attack" ;
+    wbml:predicateType xsd:integer ;
+    wbml:objectMap [
+      wbml:reference "base.Attack"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "SpecialAttack" ;
+    wbml:predicateType xsd:integer ;
+    wbml:predicateLabel "Special Attack" ;
+    wbml:objectMap [
+      wbml:reference "base.Sp. Attack" ;
+      wbml:datatype xsd:integer
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "Height" ;
+    wbml:predicateType xsd:string ;
+    wbml:objectMap [
+      wbml:reference "profile.height" ;
+      wbml:language "en"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "Gender" ;
+    wbml:predicateType xsd:string ;
+    wbml:objectMap [
+      wbml:reference "profile.gender" ;
+      wbml:datatype xsd:string
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "Sprite" ;
+    wbml:predicateType xsd:anyURI ;
+    wbml:objectMap [
+      wbml:reference "image.sprite" ;
+      wbml:datatype xsd:anyURI
+    ]
+  ] .
+
+<#PokemonAbilityMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        json_extract_string(ability_entry, '$[0]') AS ability_name,
+        json_extract_string(ability_entry, '$[1]') AS ability_flag
+      FROM read_json('data/input/json_pokemon/pokedex_small.json'),
+           unnest(profile.ability) AS t(ability_entry)
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  wbml:subjectMap [
+    wbml:nodeId "id" ;
+    wbml:classKey "Pokemon"
+    ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicateKey "HasAbility" ;
+    wbml:predicateType wbml:Item ;
+    wbml:predicateLabel "Has Ability"@en ;
+    wbml:objectMap [
+      wbml:nodeId "ability_name" ;
+      wbml:classKey "Ability"
+    ] ;
+    wbml:qualifierMap [
+      wbml:predicateKey "IsHiddenAbility" ;
+      wbml:predicateType xsd:boolean ;
+      wbml:predicateLabel "Is Hidden Ability"@en ;
+      wbml:objectMap [
+        wbml:reference "ability_flag" ;
+        wbml:datatype xsd:boolean
+      ]
+    ] ;
+    wbml:referenceMap [
+      wbml:referenceRecord [
+        wbml:predicateKey "StatedIn" ;
+        wbml:predicateType xsd:string ;
+        wbml:predicateLabel "Stated In"@en ;
+        wbml:objectMap [
+          wbml:constant "Pokedex" ;
+          wbml:datatype xsd:string
+        ]
+      ] ;
+      wbml:referenceRecord [
+        wbml:predicateKey "StatedOn" ;
+        wbml:predicateType xsd:date ;
+        wbml:predicateLabel "Stated On"@en ;
+        wbml:objectMap [
+          wbml:constant "2024-06-01" ;
+          wbml:datatype xsd:date
+        ]
+      ]
+    ] ;
+    wbml:referenceMap[
+      wbml:referenceRecord [
+        wbml:predicateKey "StatedIn" ;
+        wbml:objectMap [
+          wbml:constant "Pokedex" ;
+          wbml:datatype xsd:string
+        ]
+      ] ;
+      wbml:referenceRecord [
+        wbml:predicateKey "StatedOn" ;
+        wbml:objectMap [
+          wbml:constant "2026-01-21" ;
+          wbml:datatype xsd:date
+        ]
+      ]
+    ]
+  ] .
+
+<#SpeciesMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/pokedex_small.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  wbml:subjectMap [
+    wbml:nodeId "species" ;
+    wbml:classKey "Species"
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+      wbml:reference "species"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdf:type ;
+    wbml:objectMap [
+      wbml:classKey "Species" ;
+      wbml:classLabel "Species"
+    ]
+  ] .
+
+<#AbilityMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        json_extract_string(ability_entry, '$[0]') AS ability_name
+      FROM read_json('data/input/json_pokemon/pokedex_small.json'),
+           unnest(profile.ability) AS t(ability_entry)
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  wbml:subjectMap [
+    wbml:nodeId "ability_name" ;
+    wbml:classKey "Ability"
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+      wbml:reference "ability_name"
+    ]
+  ] .

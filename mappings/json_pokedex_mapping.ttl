@@ -6,6 +6,7 @@
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 @prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 
 @prefix wb:         <urn:wikibase:item:> .
 @prefix wbs:        <urn:wikibase:statement:> .
@@ -256,6 +257,40 @@
     rr:objectMap [
       rml:reference "ability_flag" ;
       rr:datatype xsd:boolean
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate prov:wasDerivedFrom ;
+    rr:objectMap [
+      rr:template "urn:wikibase:reference-node:Pokemon_{id}_Ability_{ability_name}_ref" ;
+      rr:termType rr:IRI
+    ]
+  ] .
+
+<#PokemonAbilityReferenceMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        json_extract_string(ability_entry, '$[0]') AS ability_name
+      FROM read_json('data/input/json_pokemon/pokedex_small.json'),
+           unnest(profile.ability) AS t(ability_entry)
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:reference-node:Pokemon_{id}_Ability_{ability_name}_ref" ;
+    rr:termType rr:IRI
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [
+      rr:constant wikibase:Reference
     ]
   ] ;
 
