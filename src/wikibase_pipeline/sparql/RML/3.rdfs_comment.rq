@@ -1,0 +1,25 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT {
+  ?tm rr:predicateObjectMap ?pomMap .
+
+  ?pomMap rr:predicate rdfs:comment ;
+          rr:objectMap ?objectMap .
+
+  ?objectMap rml:reference ?reference .
+  ?objectMap rr:language ?language .
+}
+WHERE {
+  ?tm wbml:predicateObjectMap ?pom .
+  ?pom wbml:predicate rdfs:comment ;
+       wbml:objectMap ?wom .
+
+  ?wom wbml:reference ?reference .
+  OPTIONAL { ?wom wbml:language ?language . }
+
+  BIND(IRI(CONCAT(STR(?tm), "/pom/comment/", ENCODE_FOR_URI(STR(?wom)))) AS ?pomMap)
+  BIND(IRI(CONCAT(STR(?pomMap), "/om")) AS ?objectMap)
+}

@@ -18,8 +18,10 @@
 
   wbml:subjectMap [
     wbml:nodeId "id" ;
-    wbml:entityType wbml:Item ;
-    wbml:className "Pokemon"
+    wbml:classKey "Pokemon" ;
+    wbml:classLabel "Pokemon" ;
+    wbml:classLabel "Pokémon"@fr ;
+    wbml:classDescription "A fictional creature from the Pokémon franchise."@en
   ] ;
 
   wbml:predicateObjectMap [
@@ -55,7 +57,9 @@
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "PokedexNumber" ;
+    wbml:predicateKey "PokedexNumber" ;
+    wbml:predicateLabel "Pokedex Number"@en ;
+    wbml:predicateType xsd:integer ;
     wbml:objectMap [
         wbml:reference "id" ;
         wbml:datatype xsd:integer
@@ -63,11 +67,13 @@
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "HasSpecies" ;
+    wbml:predicateKey "HasSpecies" ;
+    wbml:predicateType wbml:Item ;
+    wbml:predicateLabel "Has Species"@en ;
+    wbml:predicateDescription "Indicates the species of the Pokémon."@en ;
     wbml:objectMap [
       wbml:nodeId "species" ;
-      wbml:entityType wbml:Item ;
-      wbml:className "Species"
+      wbml:classKey "Species"
     ] ;
     wbml:rank wbml:PreferredRank ;
   ] ;
@@ -75,21 +81,22 @@
   wbml:predicateObjectMap [
     wbml:predicate rdfs:comment;
     wbml:objectMap [
-      wbml:reference "description" ;
-      wbml:datatype xsd:string
+      wbml:reference "description"
     ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "Attack" ;
+    wbml:predicateKey "Attack" ;
+    wbml:predicateType xsd:integer ;
     wbml:objectMap [
-      wbml:reference "base.Attack" ;
-      wbml:datatype xsd:integer
+      wbml:reference "base.Attack"
     ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "SpecialAttack" ;
+    wbml:predicateKey "SpecialAttack" ;
+    wbml:predicateType xsd:integer ;
+    wbml:predicateLabel "Special Attack" ;
     wbml:objectMap [
       wbml:reference "base.Sp. Attack" ;
       wbml:datatype xsd:integer
@@ -97,15 +104,17 @@
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "Height" ;
+    wbml:predicateKey "Height" ;
+    wbml:predicateType xsd:string ;
     wbml:objectMap [
       wbml:reference "profile.height" ;
-      wbml:datatype xsd:string
+      wbml:language "en"
     ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "Gender" ;
+    wbml:predicateKey "Gender" ;
+    wbml:predicateType xsd:string ;
     wbml:objectMap [
       wbml:reference "profile.gender" ;
       wbml:datatype xsd:string
@@ -113,7 +122,8 @@
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "Sprite" ;
+    wbml:predicateKey "Sprite" ;
+    wbml:predicateType xsd:anyURI ;
     wbml:objectMap [
       wbml:reference "image.sprite" ;
       wbml:datatype xsd:anyURI
@@ -137,19 +147,21 @@
 
   wbml:subjectMap [
     wbml:nodeId "id" ;
-    wbml:entityType wbml:Item ;
-    wbml:className "Pokemon"
+    wbml:classKey "Pokemon"
     ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateName "HasAbility" ;
+    wbml:predicateKey "HasAbility" ;
+    wbml:predicateType wbml:Item ;
+    wbml:predicateLabel "Has Ability"@en ;
     wbml:objectMap [
       wbml:nodeId "ability_name" ;
-      wbml:entityType wbml:Item ;
-      wbml:className "Ability"
+      wbml:classKey "Ability"
     ] ;
     wbml:qualifierMap [
-      wbml:predicateName "IsHiddenAbility" ;
+      wbml:predicateKey "IsHiddenAbility" ;
+      wbml:predicateType xsd:boolean ;
+      wbml:predicateLabel "Is Hidden Ability"@en ;
       wbml:objectMap [
         wbml:reference "ability_flag" ;
         wbml:datatype xsd:boolean
@@ -157,14 +169,18 @@
     ] ;
     wbml:referenceMap [
       wbml:referenceRecord [
-        wbml:predicateName "StatedIn" ;
+        wbml:predicateKey "StatedIn" ;
+        wbml:predicateType xsd:string ;
+        wbml:predicateLabel "Stated In"@en ;
         wbml:objectMap [
           wbml:constant "Pokedex" ;
           wbml:datatype xsd:string
         ]
       ] ;
       wbml:referenceRecord [
-        wbml:predicateName "StatedOn" ;
+        wbml:predicateKey "StatedOn" ;
+        wbml:predicateType xsd:date ;
+        wbml:predicateLabel "Stated On"@en ;
         wbml:objectMap [
           wbml:constant "2024-06-01" ;
           wbml:datatype xsd:date
@@ -173,14 +189,14 @@
     ] ;
     wbml:referenceMap[
       wbml:referenceRecord [
-        wbml:predicateName "StatedIn" ;
+        wbml:predicateKey "StatedIn" ;
         wbml:objectMap [
           wbml:constant "Pokedex" ;
           wbml:datatype xsd:string
         ]
       ] ;
       wbml:referenceRecord [
-        wbml:predicateName "StatedOn" ;
+        wbml:predicateKey "StatedOn" ;
         wbml:objectMap [
           wbml:constant "2026-01-21" ;
           wbml:datatype xsd:date
@@ -200,14 +216,21 @@
 
   wbml:subjectMap [
     wbml:nodeId "species" ;
-    wbml:entityType wbml:Item ;
-    wbml:className "Species"
+    wbml:classKey "Species"
   ] ;
 
   wbml:predicateObjectMap [
     wbml:predicate rdfs:label ;
     wbml:objectMap [
       wbml:reference "species"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdf:type ;
+    wbml:objectMap [
+      wbml:classKey "Species" ;
+      wbml:classLabel "Species"
     ]
   ] .
 
@@ -226,8 +249,7 @@
 
   wbml:subjectMap [
     wbml:nodeId "ability_name" ;
-    wbml:entityType wbml:Item ;
-    wbml:className "Ability"
+    wbml:classKey "Ability"
   ] ;
 
   wbml:predicateObjectMap [

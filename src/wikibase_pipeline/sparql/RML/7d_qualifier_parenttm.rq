@@ -1,0 +1,60 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+PREFIX wbml: <https://example.org/wbml#>
+
+CONSTRUCT {
+  ?stmtTM a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          rr:subjectMap ?stmtSM ;
+          rr:predicateObjectMap ?qualifierPOM .
+
+  ?stmtSM rr:template ?stmtTemplate ;
+          rr:termType rr:IRI .
+
+  ?qualifierPOM rr:predicate ?qualifierPredIRI ;
+                rr:objectMap ?qualifierOM .
+
+  ?qualifierOM rr:parentTriplesMap ?parentTM .
+  ?qualifierOM rr:joinCondition ?joinNode .
+  ?joinNode rr:child ?childField ;
+            rr:parent ?parentField .
+}
+WHERE {
+  ?tm a rr:TriplesMap ;
+      rml:logicalSource ?ls ;
+      wbml:subjectMap ?sm ;
+      wbml:predicateObjectMap ?pom .
+
+  ?sm wbml:nodeId ?subjectNodeId .
+  OPTIONAL { ?sm wbml:classKey ?subjectClassKey . }
+
+  ?pom wbml:statID ?statID ;
+       wbml:qualifierMap ?qmap .
+
+  ?qmap wbml:predicateKey ?qualifierPredicateKey ;
+        wbml:objectMap ?qom .
+
+  ?qom wbml:parentTriplesMap ?parentTM .
+
+  BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/pom/qualifier/", ENCODE_FOR_URI(STR(?qmap)))) AS ?qualifierPOM)
+  BIND(IRI(CONCAT(STR(?qualifierPOM), "/om")) AS ?qualifierOM)
+
+  OPTIONAL {
+    ?qom wbml:joinCondition ?jc .
+    ?jc wbml:child ?childField ;
+        wbml:parent ?parentField .
+    BIND(IRI(CONCAT(STR(?qualifierOM), "/joinCondition/", ENCODE_FOR_URI(STR(?jc)))) AS ?joinNode)
+  }
+
+  BIND(IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualifierPredicateKey))) AS ?qualifierPredIRI)
+
+  BIND(
+    IF(
+      BOUND(?subjectClassKey),
+      CONCAT("urn:wikibase:statement:", STR(?subjectClassKey), "_{", STR(?subjectNodeId), "}_", STR(?statID)),
+      CONCAT("urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID))
+    ) AS ?stmtTemplate
+  )
+}
