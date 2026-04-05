@@ -9,6 +9,15 @@ WBML = Namespace("https://example.org/wbml#")
 
 
 def collect_subtree_triples(graph: Graph, root) -> set[tuple]:
+    """
+    Collect all triples in the subtree rooted at the given node.
+    Used to remove entire WBML blocks after conversion to RML.
+    Inputs:
+    - graph: the RDF graph to traverse
+    - root: the starting node
+    Output:
+    - a set of triples (s, p, o) that are part of the subtree
+    """
     to_visit = [root]
     visited = set()
     triples_to_remove = set()
@@ -30,13 +39,18 @@ def collect_subtree_triples(graph: Graph, root) -> set[tuple]:
 
 
 def delete_wbml_blocks(graph: Graph, verbose: int) -> None:
+    """
+    Remove all triples related to WBML from the graph.
+    Inputs:
+    - graph: the RDF graph to modify
+    - verbose: verbosity level for logging
+    """
     triples_to_remove = set()
 
     for s, p, o in graph:
         if str(p).startswith(str(WBML)):
             triples_to_remove.add((s, p, o))
 
-            # remove subtree if object is a blank node
             if isinstance(o, BNode):
                 triples_to_remove.update(collect_subtree_triples(graph, o))
 
@@ -47,7 +61,13 @@ def delete_wbml_blocks(graph: Graph, verbose: int) -> None:
 
 
 def assign_ids(graph: Graph, verbose: int) -> None:
-    # --- statID per tripleMap ---
+    """
+    Assignes internal identifiers to WBML structures
+    Over statements and reference Nodes
+    Inputs:
+    - graph: the RDF graph to modify
+    - verbose: verbosity level for logging
+    """
     tm_to_poms: dict = {}
     for tm, _, pom in graph.triples((None, WBML.predicateObjectMap, None)):
         tm_to_poms.setdefault(tm, []).append(pom)
@@ -60,7 +80,6 @@ def assign_ids(graph: Graph, verbose: int) -> None:
 
     inform(f"Assigned wbml:statID to {stat_total} predicateObjectMaps", verbose)
 
-    # --- refId per predicateObjectMap ---
     ref_total = 0
     all_poms = [pom for poms in tm_to_poms.values() for pom in poms]
     for pom in all_poms:
@@ -76,27 +95,35 @@ def convert_wbml_to_rml(
     mapping_file_path: str | Path,
     queries_dir: str | Path,
     output_file_path: str | Path,
-    input_format: str = "turtle",
-    output_format: str = "turtle",
     verbose: int = 1,
 ) -> None:
+    """
+    Main conversion function that takes a WBML mapping file,
+    applies SPARQL CONSTRUCT queries to transform it into RML,
+    and writes the output to a file.
+    Inputs:
+    - mapping_file_path: path to the input WBML mapping file
+    - queries_dir: path to the directory containing SPARQL CONSTRUCT queries
+    - output_file_path: path where the resulting RML mapping file will be written
+    - verbose: verbosity level for logging
+    """
     mapping_file_path = Path(mapping_file_path)
     queries_dir = Path(queries_dir)
     output_file_path = Path(output_file_path)
 
     source_graph = Graph()
-    source_graph.parse(mapping_file_path, format=input_format)
+    source_graph.parse(mapping_file_path, format="turtle")
     assign_ids(source_graph, verbose)
 
     result_graph = Graph()
 
-    # 1. copy everything
+    # Copy everything
     for triple in source_graph:
         result_graph.add(triple)
 
     inform(f"Loaded source graph: {len(source_graph)} triples", verbose)
 
-    # 2. apply CONSTRUCT queries
+    # Apply queries in order
     query_files = sorted(queries_dir.glob("*.rq"))
     inform(f"Queries: {[q.name for q in query_files]}", verbose)
 
@@ -115,7 +142,7 @@ def convert_wbml_to_rml(
         else:
             warn(f"{query_file.name}: no triples added", verbose)
 
-    # 3. remove WBML
+    # Remove WBML triples after conversion
     delete_wbml_blocks(result_graph, verbose)
     len_after = len(result_graph)
     if len_after == 0:
@@ -124,7 +151,7 @@ def convert_wbml_to_rml(
         inform(f"Final graph: {len_after} triples", verbose)
 
     output_file_path.parent.mkdir(parents=True, exist_ok=True)
-    result_graph.serialize(destination=str(output_file_path), format=output_format)
+    result_graph.serialize(destination=str(output_file_path), format="turtle")
 
     inform(f"Written to: {output_file_path}", verbose)
 
@@ -134,17 +161,24 @@ def run_schema_queries(
     queries_dir: str | Path,
     output_folder: str | Path,
     output_name: str,
-    input_format: str = "turtle",
-    output_format: str = "turtle",
     verbose: int = 1,
 ) -> None:
+    """
+    Execute SPARQL CONSTRUCT queries to generate schema-level RDF.
+    Inputs:
+    - source_file_path: path to the input mapping file
+    - queries_dir: path to the directory containing SPARQL CONSTRUCT queries
+    - output_folder: path to the directory where the output files will be written
+    - output_name: name of the output file
+    - verbose: verbosity level for logging
+    """
     source_file_path = Path(source_file_path)
     queries_dir = Path(queries_dir)
     output_folder = Path(output_folder)
     output_file_path = output_folder / output_name
 
     source_graph = Graph()
-    source_graph.parse(source_file_path, format=input_format)
+    source_graph.parse(source_file_path, format="turtle")
     inform(f"Loaded source graph: {len(source_graph)} triples", verbose)
 
     result_graph = Graph()
@@ -168,5 +202,5 @@ def run_schema_queries(
     inform(f"Final graph: {len(result_graph)} triples", verbose)
 
     output_folder.mkdir(parents=True, exist_ok=True)
-    result_graph.serialize(destination=str(output_file_path), format=output_format)
+    result_graph.serialize(destination=str(output_file_path), format="turtle")
     inform(f"Written to: {output_file_path}", verbose)

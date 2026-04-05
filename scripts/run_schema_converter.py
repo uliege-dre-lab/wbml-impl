@@ -8,4 +8,5 @@ if __name__ == "__main__":
         queries_dir=Path("src/wikibase_pipeline/sparql/Schema"),
         output_folder=Path("data/output"),
         output_name="schema_pokedex.ttl",
+        verbose=2,
     )
