@@ -5,6 +5,7 @@ CONSTRUCT {
   ?propIRI a wbml:Property ;
            rdfs:label ?predicateLabel ;
            rdfs:comment ?predicateDescription ;
+           skos:altLabel ?predicateAlias ;
            wbml:propertyType ?predicateType .
 }
 WHERE {
@@ -13,6 +14,7 @@ WHERE {
   OPTIONAL { ?pom wbml:predicateLabel ?predicateLabel . }
   OPTIONAL { ?pom wbml:predicateDescription ?predicateDescription . }
   OPTIONAL { ?pom wbml:predicateType ?predicateType . }
+  OPTIONAL { ?pom wbml:predicateAlias ?predicateAlias . }
 
   BIND(IRI(CONCAT("urn:wikibase:property:", STR(?predicateKey))) AS ?propIRI)
 }

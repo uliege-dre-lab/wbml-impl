@@ -96,7 +96,7 @@ def convert_wbml_to_rml(
     queries_dir: str | Path,
     output_file_path: str | Path,
     verbose: int = 1,
-) -> None:
+) -> Path:
     """
     Main conversion function that takes a WBML mapping file,
     applies SPARQL CONSTRUCT queries to transform it into RML,
@@ -106,6 +106,8 @@ def convert_wbml_to_rml(
     - queries_dir: path to the directory containing SPARQL CONSTRUCT queries
     - output_file_path: path where the resulting RML mapping file will be written
     - verbose: verbosity level for logging
+    Output:
+    - the path to the generated RML mapping file
     """
     mapping_file_path = Path(mapping_file_path)
     queries_dir = Path(queries_dir)
@@ -140,7 +142,7 @@ def convert_wbml_to_rml(
         if added > 0:
             inform(f"{query_file.name}: +{added} triples", verbose)
         else:
-            warn(f"{query_file.name}: no triples added", verbose)
+            inform(f"{query_file.name}: no triples added", verbose)
 
     # Remove WBML triples after conversion
     delete_wbml_blocks(result_graph, verbose)
@@ -155,27 +157,27 @@ def convert_wbml_to_rml(
 
     inform(f"Written to: {output_file_path}", verbose)
 
+    return output_file_path
+
 
 def run_schema_queries(
     source_file_path: str | Path,
     queries_dir: str | Path,
-    output_folder: str | Path,
-    output_name: str,
+    output_file_path: str | Path,
     verbose: int = 1,
-) -> None:
+) -> Path:
     """
     Execute SPARQL CONSTRUCT queries to generate schema-level RDF.
     Inputs:
     - source_file_path: path to the input mapping file
     - queries_dir: path to the directory containing SPARQL CONSTRUCT queries
-    - output_folder: path to the directory where the output files will be written
-    - output_name: name of the output file
+    - output_file_path: path to the file where the output will be written
     - verbose: verbosity level for logging
+    Output:
+    - the path to the generated schema RDF file
     """
     source_file_path = Path(source_file_path)
     queries_dir = Path(queries_dir)
-    output_folder = Path(output_folder)
-    output_file_path = output_folder / output_name
 
     source_graph = Graph()
     source_graph.parse(source_file_path, format="turtle")
@@ -201,6 +203,8 @@ def run_schema_queries(
 
     inform(f"Final graph: {len(result_graph)} triples", verbose)
 
-    output_folder.mkdir(parents=True, exist_ok=True)
+    output_file_path.parent.mkdir(parents=True, exist_ok=True)
     result_graph.serialize(destination=str(output_file_path), format="turtle")
     inform(f"Written to: {output_file_path}", verbose)
+
+    return output_file_path

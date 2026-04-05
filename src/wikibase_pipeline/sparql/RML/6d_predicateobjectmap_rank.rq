@@ -3,7 +3,13 @@ PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
 PREFIX wbml: <https://example.org/wbml#>
 
 CONSTRUCT {
-  ?stmtTM rr:predicateObjectMap ?rankPOM .
+  ?stmtTM a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          rr:subjectMap ?stmtSM ;
+          rr:predicateObjectMap ?rankPOM .
+
+  ?stmtSM rr:template ?stmtTemplate ;
+          rr:termType rr:IRI .
 
   ?rankPOM rr:predicate wbml:rank ;
            rr:objectMap ?rankOM .
