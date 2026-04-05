@@ -36,3 +36,13 @@ def rml_execute(config_path: Path | str, output_value: str, verbose: int) -> Pat
         raise FileNotFoundError(f"Expected output file not found: {output_path}")
 
     return output_path
+
+
+def validate_nt_file(nt_path: Path) -> None:
+    with nt_path.open("r", encoding="utf-8") as f:
+        for line_no, line in enumerate(f, start=1):
+            stripped = line.lstrip()
+            if not stripped:
+                continue
+            if not (stripped.startswith("<") or stripped.startswith("_:")):
+                raise ValueError(f"Malformed N-Triples line {line_no}: {line.rstrip()}")
