@@ -71,8 +71,8 @@ WHERE {
   BIND(
     IF(
       BOUND(?subjectClassKey),
-      CONCAT("urn:wikibase:statement:", STR(?subjectClassKey), "_{", STR(?subjectNodeId), "}_", STR(?statID)),
-      CONCAT("urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID))
+      CONCAT("urn:wikibase:statement:", STR(?subjectClassKey), "_{", STR(?subjectNodeId), "}_", STR(?statID), "_{", STR(?valueNodeId), "}"),
+      CONCAT("urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID), "_{", STR(?valueNodeId), "}")
     ) AS ?stmtTemplate
   )
 

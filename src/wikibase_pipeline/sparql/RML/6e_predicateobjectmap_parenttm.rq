@@ -56,12 +56,12 @@ WHERE {
   BIND(IRI(CONCAT(STR(?stmtTM), "/pom/value/", ENCODE_FOR_URI(STR(?wom)))) AS ?valuePOM)
   BIND(IRI(CONCAT(STR(?valuePOM), "/om")) AS ?valueOM)
 
-  OPTIONAL {
-    ?wom wbml:joinCondition ?jc .
-    ?jc wbml:child ?childField ;
-        wbml:parent ?parentField .
-    BIND(IRI(CONCAT(STR(?valueOM), "/joinCondition/", ENCODE_FOR_URI(STR(?jc)))) AS ?joinNode)
-  }
+
+  ?wom wbml:joinCondition ?jc .
+  ?jc wbml:child ?childField ;
+      wbml:parent ?parentField .
+  BIND(IRI(CONCAT(STR(?valueOM), "/joinCondition/", ENCODE_FOR_URI(STR(?jc)))) AS ?joinNode)
+
 
   BIND(IRI(CONCAT("urn:wikibase:property:", STR(?predicateKey))) AS ?predIRI)
 
@@ -76,8 +76,8 @@ WHERE {
   BIND(
     IF(
       BOUND(?subjectClassKey),
-      CONCAT("urn:wikibase:statement:", STR(?subjectClassKey), "_{", STR(?subjectNodeId), "}_", STR(?statID)),
-      CONCAT("urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID))
+      CONCAT("urn:wikibase:statement:", STR(?subjectClassKey), "_{", STR(?subjectNodeId), "}_", STR(?statID), "_{", STR(?childField), "}"),
+      CONCAT("urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID), "_{", STR(?childField), "}")
     ) AS ?stmtTemplate
   )
 }

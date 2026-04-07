@@ -28,7 +28,12 @@ WHERE {
   OPTIONAL { ?sm wbml:classKey ?subjectClassKey . }
 
   ?pom wbml:statID ?statID ;
+       wbml:objectMap ?wom ;
        wbml:referenceMap ?rmap .
+
+  OPTIONAL { ?wom wbml:reference ?mainReference . }
+  OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
+  OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
   ?rmap wbml:refId ?refId ;
         wbml:referenceRecord ?rrec .
@@ -47,21 +52,21 @@ WHERE {
 
   BIND(IRI(CONCAT("urn:wikibase:reference:", STR(?refPredicateKey))) AS ?refPredIRI)
 
+  BIND(COALESCE(?mainReference, ?mainValueNodeId, ?childKey) AS ?valueDiscriminator)
+
   BIND(
     IF(
       BOUND(?subjectClassKey),
       CONCAT(
-        "urn:wikibase:statementreference:",
-        STR(?subjectClassKey),
-        "_{", STR(?subjectNodeId), "}_",
-        STR(?statID), "_",
-        STR(?refId)
+        "urn:wikibase:statementreference:", STR(?subjectClassKey),
+        "_{", STR(?subjectNodeId), "}_", STR(?statID),
+        IF(BOUND(?valueDiscriminator), CONCAT("_{", STR(?valueDiscriminator), "}"), ""),
+        "_", STR(?refId)
       ),
       CONCAT(
-        "urn:wikibase:statementreference:{",
-        STR(?subjectNodeId), "}_",
-        STR(?statID), "_",
-        STR(?refId)
+        "urn:wikibase:statementreference:{", STR(?subjectNodeId), "}_", STR(?statID),
+        IF(BOUND(?valueDiscriminator), CONCAT("_{", STR(?valueDiscriminator), "}"), ""),
+        "_", STR(?refId)
       )
     ) AS ?stmtRefTemplate
   )
