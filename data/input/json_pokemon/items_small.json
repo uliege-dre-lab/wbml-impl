@@ -1,0 +1,1002 @@
+[
+    {
+    "id":1,
+    "type":"Pokeballs",
+    "description":"The best Ball with the ultimate level of performance. It will catch any wild Pokémon without fail.",
+    "name":{
+      "japanese":"マスターボール",
+      "english":"Master Ball",
+      "chinese":"大师球"
+    }
+  },
+  {
+    "id":2,
+    "type":"Pokeballs",
+    "description":"An ultra-performance Ball that provides a higher Pokémon catch rate than a Great Ball.",
+    "name":{
+      "japanese":"ハイパーボール",
+      "english":"Ultra Ball",
+      "chinese":"高级球"
+    }
+  },
+  {
+    "id":3,
+    "type":"Pokeballs",
+    "description":"A good, high-performance Ball that provides a higher Pokémon catch rate than a standard Poké Ball.",
+    "name":{
+      "english":"Great Ball",
+      "japanese":"スーパーボール",
+      "chinese":"超级球"
+    }
+  },
+  {
+    "id":4,
+    "type":"Pokeballs",
+    "description":"A device for catching wild Pokémon. It is thrown like a ball at the target. It is designed as a capsule system.",
+    "name":{
+      "japanese":"モンスターボール",
+      "english":"Poké Ball",
+      "chinese":"精灵球"
+    }
+  },
+  {
+    "id":5,
+    "type":"Pokeballs",
+    "description":"A special Poké Ball that is used only in the Great Marsh. It is decorated in a camouflage pattern.",
+    "name":{
+      "english":"Safari Ball",
+      "japanese":"サファリボール",
+      "chinese":"狩猎球"
+    }
+  },
+  {
+    "id":6,
+    "type":"Pokeballs",
+    "description":"A somewhat different Poké Ball that works especially well on Water- and Bug-type Pokémon.",
+    "name":{
+      "japanese":"ネットボール",
+      "english":"Net Ball",
+      "chinese":"捕网球"
+    }
+  },
+  {
+    "id":7,
+    "type":"Pokeballs",
+    "description":"A somewhat different Poké Ball that works especially well on Pokémon that live underwater.",
+    "name":{
+      "english":"Dive Ball",
+      "japanese":"ダイブボール",
+      "chinese":"潜水球"
+    }
+  },
+  {
+    "id":8,
+    "type":"Pokeballs",
+    "description":"A somewhat different Poké Ball that works especially well on weaker Pokémon in the wild.",
+    "name":{
+      "english":"Nest Ball",
+      "japanese":"ネストボール",
+      "chinese":"巢穴球"
+    }
+  },
+  {
+    "id":9,
+    "type":"Pokeballs",
+    "description":"A somewhat different Poké Ball that works especially well on Pokémon species that were previously caught.",
+    "name":{
+      "japanese":"リピートボール",
+      "english":"Repeat Ball",
+      "chinese":"重复球"
+    }
+  },
+  {
+    "id":10,
+    "type":"Pokeballs",
+    "description":"A somewhat different BALL that becomes progressively better the more turns there are in a battle.",
+    "name":{
+      "chinese":"计时球",
+      "japanese":"タイマーボール",
+      "english":"Timer Ball"
+    }
+  },
+  {
+    "id":11,
+    "type":"Pokeballs",
+    "description":"A comfortable Poké Ball that makes a caught wild Pokémon quickly grow friendly.",
+    "name":{
+      "chinese":"豪华球",
+      "english":"Luxury Ball",
+      "japanese":"ゴージャスボール"
+    }
+  },
+  {
+    "id":12,
+    "type":"Pokeballs",
+    "description":"A somewhat rare Poké Ball that has been specially made to commemorate an event of some sort.",
+    "name":{
+      "japanese":"プレミアボール",
+      "english":"Premier Ball",
+      "chinese":"纪念球"
+    }
+  },
+  {
+    "id":13,
+    "type":"Pokeballs",
+    "description":"A somewhat different Poké Ball that makes it easier to catch wild Pokémon at night or in dark places like caves.",
+    "name":{
+      "english":"Dusk Ball",
+      "japanese":"ダークボール",
+      "chinese":"黑暗球"
+    }
+  },
+  {
+    "id":14,
+    "type":"Pokeballs",
+    "description":"A remedial Poké Ball that restores the caught Pokémon's HP and eliminates any status problem.",
+    "name":{
+      "chinese":"治愈球",
+      "english":"Heal Ball",
+      "japanese":"ヒールボール"
+    }
+  },
+  {
+    "id":15,
+    "type":"Pokeballs",
+    "description":"A somewhat different Poké Ball that provides a better catch rate if it is used at the start of a wild encounter.",
+    "name":{
+      "chinese":"先机球",
+      "english":"Quick Ball",
+      "japanese":"クイックボール"
+    }
+  },
+  {
+    "id":16,
+    "type":"Pokeballs",
+    "description":"A quite rare Poké Ball that has been specially crafted to commemorate an occasion of some sort.",
+    "name":{
+      "english":"Cherish Ball",
+      "japanese":"プレジャスボール",
+      "chinese":"贵重球"
+    }
+  },
+  {
+    "id":17,
+    "type":"Medicine",
+    "description":"Restores 20 HP.",
+    "name":{
+      "japanese":"キズぐすり",
+      "english":"Potion",
+      "chinese":"伤药"
+    }
+  },
+  {
+    "id":18,
+    "type":"Medicine",
+    "description":"A spray-type medicine. It lifts the effect of poison from one Pokémon.",
+    "name":{
+      "chinese":"解毒药",
+      "japanese":"どくけし",
+      "english":"Antidote"
+    }
+  },
+  {
+    "id":19,
+    "type":"Medicine",
+    "description":"A spray-type medicine. It heals a single Pokémon that is suffering from a burn.",
+    "name":{
+      "japanese":"やけどなおし",
+      "english":"Burn Heal",
+      "chinese":"灼伤药"
+    }
+  },
+  {
+    "id":20,
+    "type":"Medicine",
+    "description":"A spray-type medicine. It defrosts a Pokémon that has been frozen solid.",
+    "name":{
+      "chinese":"解冻药",
+      "japanese":"こおりなおし",
+      "english":"Ice Heal"
+    }
+  },
+  {
+    "id":21,
+    "type":"Medicine",
+    "description":"A spray-type medicine. It awakens a Pokémon from the clutches of sleep.",
+    "name":{
+      "english":"Awakening",
+      "japanese":"ねむけざまし",
+      "chinese":"解眠药"
+    }
+  },
+  {
+    "id":22,
+    "type":"Medicine",
+    "description":"A spray-type medicine. It eliminates paralysis from a single Pokémon.",
+    "name":{
+      "english":"Paralyze Heal",
+      "japanese":"まひなおし",
+      "chinese":"解麻药"
+    }
+  },
+  {
+    "id":23,
+    "type":"Medicine",
+    "description":"A medicine that fully restores the HP and heals any status problems of a single Pokémon.",
+    "name":{
+      "japanese":"かいふくのくすり",
+      "english":"Full Restore",
+      "chinese":"全复药"
+    }
+  },
+  {
+    "id":24,
+    "type":"Medicine",
+    "description":"Fully restores HP.",
+    "name":{
+      "japanese":"まんたんのくすり",
+      "english":"Max Potion",
+      "chinese":"全满药"
+    }
+  },
+  {
+    "id":25,
+    "type":"Medicine",
+    "description":"Restores 120 HP.",
+    "name":{
+      "chinese":"厉害伤药",
+      "japanese":"すごいキズぐすり",
+      "english":"Hyper Potion"
+    }
+  },
+  {
+    "id":26,
+    "type":"Medicine",
+    "description":"Restores 60 HP.",
+    "name":{
+      "english":"Super Potion",
+      "japanese":"いいキズぐすり",
+      "chinese":"好伤药"
+    }
+  },
+  {
+    "id":27,
+    "type":"Medicine",
+    "description":"A spray-type medicine. It heals all the status problems of a single Pokémon.",
+    "name":{
+      "japanese":"なんでもなおし",
+      "english":"Full Heal",
+      "chinese":"万灵药"
+    }
+  },
+  {
+    "id":28,
+    "type":"Medicine",
+    "description":"A medicine that revives a fainted Pokémon. It restores half the Pokémon's maximum HP.",
+    "name":{
+      "japanese":"げんきのかけら",
+      "english":"Revive",
+      "chinese":"活力碎片"
+    }
+  },
+  {
+    "id":29,
+    "type":"Medicine",
+    "description":"A medicine that revives a fainted Pokémon. It fully restores the Pokémon's HP.",
+    "name":{
+      "japanese":"げんきのかたまり",
+      "english":"Max Revive",
+      "chinese":"活力块"
+    }
+  },
+  {
+    "id":30,
+    "type":"Medicine",
+    "description":"Restores 30 HP.",
+    "name":{
+      "english":"Fresh Water",
+      "japanese":"おいしいみず",
+      "chinese":"美味之水"
+    }
+  },
+  {
+    "id":31,
+    "type":"Medicine",
+    "description":"Restores 50 HP.",
+    "name":{
+      "chinese":"劲爽汽水",
+      "japanese":"サイコソーダ",
+      "english":"Soda Pop"
+    }
+  },
+  {
+    "id":32,
+    "type":"Medicine",
+    "description":"Restores 70 HP.",
+    "name":{
+      "japanese":"ミックスオレ",
+      "english":"Lemonade",
+      "chinese":"果汁牛奶"
+    }
+  },
+  {
+    "id":33,
+    "type":"Medicine",
+    "description":"Milk with a very high nutrition content. It restores the HP of one Pokémon by 100 points.",
+    "name":{
+      "english":"Moomoo Milk",
+      "japanese":"モーモーミルク",
+      "chinese":"哞哞鲜奶"
+    }
+  },
+  {
+    "id":34,
+    "type":"Medicine",
+    "description":"Restores 60 HP but lowers Friendship.",
+    "name":{
+      "chinese":"元气粉",
+      "english":"Energy Powder",
+      "japanese":"ちからのこな"
+    }
+  },
+  {
+    "id":35,
+    "type":"Medicine",
+    "description":"Restores 120 HP but lowers Friendship.",
+    "name":{
+      "japanese":"ちからのねっこ",
+      "english":"Energy Root",
+      "chinese":"元气根"
+    }
+  },
+  {
+    "id":36,
+    "type":"Medicine",
+    "description":"Heals all status problems, but lowers Friendship.",
+    "name":{
+      "japanese":"ばんのうごな",
+      "english":"Heal Powder",
+      "chinese":"万能粉"
+    }
+  },
+  {
+    "id":37,
+    "type":"Medicine",
+    "description":"Revives a Pokémon to max HP, but lowers Friendship.",
+    "name":{
+      "japanese":"ふっかつそう",
+      "english":"Revival Herb",
+      "chinese":"复活草"
+    }
+  },
+  {
+    "id":38,
+    "type":"Medicine",
+    "description":"It restores the PP of a Pokémon's selected move by a maximum of 10 points.",
+    "name":{
+      "chinese":"ＰＰ单项小补剂",
+      "english":"Ether",
+      "japanese":"ピーピーエイド"
+    }
+  },
+  {
+    "id":39,
+    "type":"Medicine",
+    "description":"It fully restores the PP of a single selected move that has been learned by the target Pokémon.",
+    "name":{
+      "english":"Max Ether",
+      "japanese":"ピーピーリカバー",
+      "chinese":"ＰＰ单项全补剂"
+    }
+  },
+  {
+    "id":40,
+    "type":"Medicine",
+    "description":"It restores the PP of all the moves learned by the targeted Pokémon by 10 points each.",
+    "name":{
+      "chinese":"ＰＰ多项小补剂",
+      "english":"Elixir",
+      "japanese":"ピーピーエイダー"
+    }
+  },
+  {
+    "id":41,
+    "type":"Medicine",
+    "description":"It fully restores the PP of all the moves learned by the targeted Pokémon.",
+    "name":{
+      "chinese":"ＰＰ多项全补剂",
+      "japanese":"ピーピーマックス",
+      "english":"Max Elixir"
+    }
+  },
+  {
+    "id":42,
+    "type":"Medicine",
+    "description":"Heals all major status conditions.",
+    "name":{
+      "chinese":"釜炎仙贝",
+      "japanese":"フエンせんべい",
+      "english":"Lava Cookie"
+    }
+  },
+  {
+    "id":43,
+    "type":"Medicine",
+    "description":"A 100% pure juice made of Berries. It restores the HP of one Pokémon by just 20 points.",
+    "name":{
+      "chinese":"树果汁",
+      "english":"Berry Juice",
+      "japanese":"きのみジュース"
+    }
+  },
+  {
+    "id":44,
+    "type":"Medicine",
+    "description":"It revives all fainted Pokémon. In doing so, it also fully restores their HP.",
+    "name":{
+      "chinese":"圣灰",
+      "japanese":"せいなるはい",
+      "english":"Sacred Ash"
+    }
+  },
+  {
+    "id":45,
+    "type":"Medicine",
+    "description":"Increases HP EVs by 10.",
+    "name":{
+      "japanese":"マックスアップ",
+      "english":"HP Up",
+      "chinese":"ＨＰ增强剂"
+    }
+  },
+  {
+    "id":46,
+    "type":"Medicine",
+    "description":"Increases Attack EVs by 10.",
+    "name":{
+      "english":"Protein",
+      "japanese":"タウリン",
+      "chinese":"攻击增强剂"
+    }
+  },
+  {
+    "id":47,
+    "type":"Medicine",
+    "description":"Increases Defense EVs by 10.",
+    "name":{
+      "english":"Iron",
+      "japanese":"ブロムヘキシン",
+      "chinese":"防御增强剂"
+    }
+  },
+  {
+    "id":48,
+    "type":"Medicine",
+    "description":"Increases Speed EVs by 10.",
+    "name":{
+      "japanese":"インドメタシン",
+      "english":"Carbos",
+      "chinese":"速度增强剂"
+    }
+  },
+  {
+    "id":49,
+    "type":"Medicine",
+    "description":"Increases Special Attack EVs by 10.",
+    "name":{
+      "chinese":"特攻增强剂",
+      "japanese":"リゾチウム",
+      "english":"Calcium"
+    }
+  },
+  {
+    "id":50,
+    "type":"Medicine",
+    "description":"A candy that is packed with energy. It raises the level of a single Pokémon by one.",
+    "name":{
+      "chinese":"神奇糖果",
+      "english":"Rare Candy",
+      "japanese":"ふしぎなアメ"
+    }
+  },
+  {
+    "id":51,
+    "type":"Medicine",
+    "description":"It slightly raises the maximum PP of a selected move that has been learned by the target Pokémon.",
+    "name":{
+      "chinese":"ＰＰ提升剂",
+      "english":"PP Up",
+      "japanese":"ポイントアップ"
+    }
+  },
+  {
+    "id":52,
+    "type":"Medicine",
+    "description":"Increases Special Defense EVs by 10.",
+    "name":{
+      "chinese":"特防增强剂",
+      "english":"Zinc",
+      "japanese":"キトサン"
+    }
+  },
+  {
+    "id":53,
+    "type":"Medicine",
+    "description":"It maximally raises the top PP of a selected move that has been learned by the target Pokémon.",
+    "name":{
+      "english":"PP Max",
+      "japanese":"ポイントマックス",
+      "chinese":"ＰＰ极限提升剂"
+    }
+  },
+  {
+    "id":54,
+    "type":"Medicine",
+    "description":"Heals all major status conditions.",
+    "name":{
+      "chinese":"森之羊羹",
+      "english":"Old Gateau",
+      "japanese":"もりのヨウカン"
+    }
+  },
+  {
+    "id":55,
+    "type":"Battle items",
+    "description":"Prevents stat reduction for five turns.",
+    "name":{
+      "chinese":"能力防守",
+      "japanese":"エフェクトガード",
+      "english":"Guard Spec."
+    }
+  },
+  {
+    "id":56,
+    "type":"Battle items",
+    "description":"Raises critical-hit ratio of a Pokémon in battle.",
+    "name":{
+      "chinese":"要害攻击",
+      "japanese":"クリティカット",
+      "english":"Dire Hit"
+    }
+  },
+  {
+    "id":57,
+    "type":"Battle items",
+    "description":"Raises Attack of a Pokémon in battle.",
+    "name":{
+      "chinese":"力量强化",
+      "japanese":"プラスパワー",
+      "english":"X Attack"
+    }
+  },
+  {
+    "id":58,
+    "type":"Battle items",
+    "description":"Raises Defense of a Pokémon in battle.",
+    "name":{
+      "chinese":"防御强化",
+      "japanese":"ディフェンダー",
+      "english":"X Defense"
+    }
+  },
+  {
+    "id":59,
+    "type":"Battle items",
+    "description":"Raises Speed of a Pokémon in battle.",
+    "name":{
+      "chinese":"速度强化",
+      "japanese":"スピーダー",
+      "english":"X Speed"
+    }
+  },
+  {
+    "id":60,
+    "type":"Battle items",
+    "description":"Raises Accuracy of a Pokémon in battle.",
+    "name":{
+      "japanese":"ヨクアタール",
+      "english":"X Accuracy",
+      "chinese":"命中强化"
+    }
+  },
+  {
+    "id":61,
+    "type":"Battle items",
+    "description":"Raises Special Attack of a Pokémon in battle.",
+    "name":{
+      "chinese":"特攻强化",
+      "english":"X Sp. Atk",
+      "japanese":"スペシャルアップ"
+    }
+  },
+  {
+    "id":62,
+    "type":"Battle items",
+    "description":"Raises Special Defense of a Pokémon in battle.",
+    "name":{
+      "english":"X Sp. Def",
+      "japanese":"スペシャルガード",
+      "chinese":"特防强化"
+    }
+  },
+  {
+    "id":63,
+    "type":"General items",
+    "description":"A doll that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.",
+    "name":{
+      "chinese":"皮皮玩偶",
+      "english":"Poké Doll",
+      "japanese":"ピッピにんぎょう"
+    }
+  },
+  {
+    "id":64,
+    "type":"General items",
+    "description":"An item that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.",
+    "name":{
+      "chinese":"向尾喵的尾巴",
+      "english":"Fluffy Tail",
+      "japanese":"エネコのシッポ"
+    }
+  },
+  {
+    "id":65,
+    "type":"General items",
+    "description":"A toy flute made from blue glass. A maniac will buy it for a high price.",
+    "name":{
+      "japanese":"あおいビードロ",
+      "english":"Blue Flute",
+      "chinese":"蓝色玻璃哨"
+    }
+  },
+  {
+    "id":66,
+    "type":"General items",
+    "description":"A toy flute made from yellow glass. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"黄色玻璃哨",
+      "japanese":"きいろビードロ",
+      "english":"Yellow Flute"
+    }
+  },
+  {
+    "id":67,
+    "type":"General items",
+    "description":"A toy flute made from red glass. A maniac will buy it for a high price.",
+    "name":{
+      "english":"Red Flute",
+      "japanese":"あかいビードロ",
+      "chinese":"红色玻璃哨"
+    }
+  },
+  {
+    "id":68,
+    "type":"General items",
+    "description":"A toy flute made from black glass. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"黑色玻璃哨",
+      "japanese":"くろいビードロ",
+      "english":"Black Flute"
+    }
+  },
+  {
+    "id":69,
+    "type":"General items",
+    "description":"A toy flute made from white glass. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"白色玻璃哨",
+      "english":"White Flute",
+      "japanese":"しろいビードロ"
+    }
+  },
+  {
+    "id":70,
+    "type":"General items",
+    "description":"Pure salt that can be discovered deep inside the Shoal Cave. A maniac will buy it for a high price.",
+    "name":{
+      "japanese":"あさせのしお",
+      "english":"Shoal Salt",
+      "chinese":"浅滩海盐"
+    }
+  },
+  {
+    "id":71,
+    "type":"General items",
+    "description":"A pretty seashell that can be found deep inside the Shoal Cave. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"浅滩贝壳",
+      "english":"Shoal Shell",
+      "japanese":"あさせのかいがら"
+    }
+  },
+  {
+    "id":72,
+    "type":"General items",
+    "description":"A small red shard. It appears to be from some sort of implement made long ago.",
+    "name":{
+      "chinese":"红色碎片",
+      "japanese":"あかいかけら",
+      "english":"Red Shard"
+    }
+  },
+  {
+    "id":73,
+    "type":"General items",
+    "description":"A small blue shard. It appears to be from some sort of implement made long ago.",
+    "name":{
+      "japanese":"あおいかけら",
+      "english":"Blue Shard",
+      "chinese":"蓝色碎片"
+    }
+  },
+  {
+    "id":74,
+    "type":"General items",
+    "description":"A small yellow shard. It appears to be from some sort of implement made long ago.",
+    "name":{
+      "japanese":"きいろいかけら",
+      "english":"Yellow Shard",
+      "chinese":"黄色碎片"
+    }
+  },
+  {
+    "id":75,
+    "type":"General items",
+    "description":"A small green shard. It appears to be from some sort of implement made long ago.",
+    "name":{
+      "english":"Green Shard",
+      "japanese":"みどりのかけら",
+      "chinese":"绿色碎片"
+    }
+  },
+  {
+    "id":76,
+    "type":"General items",
+    "description":"An item that prevents weak wild Pokémon from appearing for 200 steps after its use.",
+    "name":{
+      "chinese":"白银喷雾",
+      "english":"Super Repel",
+      "japanese":"シルバースプレー"
+    }
+  },
+  {
+    "id":77,
+    "type":"General items",
+    "description":"An item that prevents weak wild Pokémon from appearing for 250 steps after its use.",
+    "name":{
+      "english":"Max Repel",
+      "japanese":"ゴールドスプレー",
+      "chinese":"黄金喷雾"
+    }
+  },
+  {
+    "id":78,
+    "type":"General items",
+    "description":"A long, durable rope. Use it to escape instantly from a cave or a dungeon.",
+    "name":{
+      "chinese":"离洞绳",
+      "japanese":"あなぬけのヒモ",
+      "english":"Escape Rope"
+    }
+  },
+  {
+    "id":79,
+    "type":"General items",
+    "description":"An item that prevents weak wild Pokémon from appearing for 100 steps after its use.",
+    "name":{
+      "english":"Repel",
+      "japanese":"むしよけスプレー",
+      "chinese":"除虫喷雾"
+    }
+  },
+  {
+    "id":80,
+    "type":"General items",
+    "description":"Evolves certain species of Pokémon.",
+    "name":{
+      "chinese":"日之石",
+      "english":"Sun Stone",
+      "japanese":"たいようのいし"
+    }
+  },
+  {
+    "id":81,
+    "type":"General items",
+    "description":"Evolves certain species of Pokémon.",
+    "name":{
+      "japanese":"つきのいし",
+      "english":"Moon Stone",
+      "chinese":"月之石"
+    }
+  },
+  {
+    "id":82,
+    "type":"General items",
+    "description":"Evolves certain species of Pokémon.",
+    "name":{
+      "japanese":"ほのおのいし",
+      "english":"Fire Stone",
+      "chinese":"火之石"
+    }
+  },
+  {
+    "id":83,
+    "type":"General items",
+    "description":"Evolves certain species of Pokémon.",
+    "name":{
+      "english":"Thunder Stone",
+      "japanese":"かみなりのいし",
+      "chinese":"雷之石"
+    }
+  },
+  {
+    "id":84,
+    "type":"General items",
+    "description":"Evolves certain species of Pokémon.",
+    "name":{
+      "chinese":"水之石",
+      "japanese":"みずのいし",
+      "english":"Water Stone"
+    }
+  },
+  {
+    "id":85,
+    "type":"General items",
+    "description":"Evolves certain species of Pokémon.",
+    "name":{
+      "chinese":"叶之石",
+      "english":"Leaf Stone",
+      "japanese":"リーフのいし"
+    }
+  },
+  {
+    "id":86,
+    "type":"General items",
+    "description":"A small and rare mushroom. It is sought after by collectors.",
+    "name":{
+      "japanese":"ちいさなキノコ",
+      "english":"Tiny Mushroom",
+      "chinese":"小蘑菇"
+    }
+  },
+  {
+    "id":87,
+    "type":"General items",
+    "description":"A large and rare mushroom. It is sought after by collectors.",
+    "name":{
+      "japanese":"おおきなキノコ",
+      "english":"Big Mushroom",
+      "chinese":"大蘑菇"
+    }
+  },
+  {
+    "id":88,
+    "type":"General items",
+    "description":"A somewhat-small pearl that sparkles in a pretty silver color. It can be sold cheaply to shops.",
+    "name":{
+      "chinese":"珍珠",
+      "english":"Pearl",
+      "japanese":"しんじゅ"
+    }
+  },
+  {
+    "id":89,
+    "type":"General items",
+    "description":"A quite-large pearl that sparkles in a pretty silver color. It can be sold at a high price to shops.",
+    "name":{
+      "japanese":"おおきなしんじゅ",
+      "english":"Big Pearl",
+      "chinese":"大珍珠"
+    }
+  },
+  {
+    "id":90,
+    "type":"General items",
+    "description":"Lovely, red-colored sand with a loose, silky feel. It can be sold at a high price to shops.",
+    "name":{
+      "chinese":"星星沙子",
+      "english":"Stardust",
+      "japanese":"ほしのすな"
+    }
+  },
+  {
+    "id":91,
+    "type":"General items",
+    "description":"A shard of a pretty gem that sparkles in a red color. It can be sold at a high price to shops.",
+    "name":{
+      "chinese":"星星碎片",
+      "english":"Star Piece",
+      "japanese":"ほしのかけら"
+    }
+  },
+  {
+    "id":92,
+    "type":"General items",
+    "description":"A nugget of pure gold that gives off a lustrous gleam. It can be sold at a high price to shops.",
+    "name":{
+      "chinese":"金珠",
+      "japanese":"きんのたま",
+      "english":"Nugget"
+    }
+  },
+  {
+    "id":93,
+    "type":"General items",
+    "description":"A pretty, heart-shaped scale that is extremely rare. It glows faintly in the colors of the rainbow.",
+    "name":{
+      "chinese":"心之鳞片",
+      "japanese":"ハートのウロコ",
+      "english":"Heart Scale"
+    }
+  },
+  {
+    "id":94,
+    "type":"General items",
+    "description":"A sweet honey with a lush aroma that attracts wild Pokémon when it is used in grass, caves, or on special trees.",
+    "name":{
+      "chinese":"甜甜蜜",
+      "english":"Honey",
+      "japanese":"あまいミツ"
+    }
+  },
+  {
+    "id":95,
+    "type":"General items",
+    "description":"A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"速速肥",
+      "japanese":"すくすくこやし",
+      "english":"Growth Mulch"
+    }
+  },
+  {
+    "id":96,
+    "type":"General items",
+    "description":"A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"湿湿肥",
+      "japanese":"じめじめこやし",
+      "english":"Damp Mulch"
+    }
+  },
+  {
+    "id":97,
+    "type":"General items",
+    "description":"A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"久久肥",
+      "japanese":"ながながこやし",
+      "english":"Stable Mulch"
+    }
+  },
+  {
+    "id":98,
+    "type":"General items",
+    "description":"A fertilizer to be spread on soft soil in regions where Berries are grown. A maniac will buy it for a high price.",
+    "name":{
+      "chinese":"粘粘肥",
+      "japanese":"ねばねばこやし",
+      "english":"Gooey Mulch"
+    }
+  },
+  {
+    "id":99,
+    "type":"General items",
+    "description":"A fossil of an ancient Pokémon that lived in the sea. It appears to be part of a plant root.",
+    "name":{
+      "chinese":"根状化石",
+      "english":"Root Fossil",
+      "japanese":"ねっこのカセキ"
+    }
+  },
+  {
+    "id":100,
+    "type":"General items",
+    "description":"A fossil of an ancient Pokémon that lived in the sea. It appears to be part of a claw.",
+    "name":{
+      "english":"Claw Fossil",
+      "japanese":"ツメのカセキ",
+      "chinese":"爪子化石"
+    }
+  }
+]
