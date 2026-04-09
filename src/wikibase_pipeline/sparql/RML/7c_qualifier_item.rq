@@ -1,0 +1,75 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+PREFIX wbml: <https://example.org/wbml#>
+
+CONSTRUCT {
+  ?stmtTM a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          rr:subjectMap ?stmtSM ;
+          rr:predicateObjectMap ?qualifierPOM .
+
+  ?stmtSM rr:template ?stmtTemplate ;
+          rr:termType rr:IRI .
+
+  ?qualifierPOM rr:predicate ?qualifierPredIRI ;
+                rr:objectMap ?qualifierOM .
+
+  ?qualifierOM rr:template ?valueTemplate ;
+               rr:termType rr:IRI .
+}
+WHERE {
+  ?tm a rr:TriplesMap ;
+      rml:logicalSource ?ls ;
+      wbml:subjectMap ?sm ;
+      wbml:predicateObjectMap ?pom .
+
+  ?sm wbml:nodeId ?subjectNodeId .
+  OPTIONAL { ?sm wbml:classKey ?subjectClassKey . }
+
+  ?pom wbml:predicateKey ?predicateKey ;
+      wbml:statID ?statID ;
+      wbml:objectMap ?wom ;
+      wbml:qualifierMap ?qmap .
+
+  OPTIONAL { ?wom wbml:reference ?mainReference . }
+  OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
+  OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+
+  ?qmap wbml:predicateKey ?qualifierPredicateKey ;
+        wbml:objectMap ?qom .
+
+  ?qom wbml:nodeId ?valueNodeId .
+  OPTIONAL { ?qom wbml:classKey ?valueClassKey . }
+
+  BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/pom/qualifier/", ENCODE_FOR_URI(STR(?qmap)))) AS ?qualifierPOM)
+  BIND(IRI(CONCAT(STR(?qualifierPOM), "/om")) AS ?qualifierOM)
+
+  BIND(COALESCE(?mainReference, ?mainValueNodeId, ?childKey) AS ?valueDiscriminator)
+
+  BIND(
+    IF(
+      BOUND(?subjectClassKey),
+      CONCAT(
+        "urn:wikibase:statement:", STR(?subjectClassKey),
+        "_{", STR(?subjectNodeId), "}_", STR(?statID),
+        IF(BOUND(?valueDiscriminator), CONCAT("_{", STR(?valueDiscriminator), "}"), "")
+      ),
+      CONCAT(
+        "urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID),
+        IF(BOUND(?valueDiscriminator), CONCAT("_{", STR(?valueDiscriminator), "}"), "")
+      )
+    ) AS ?stmtTemplate
+  )
+
+  BIND(
+    IF(
+      BOUND(?valueClassKey),
+      CONCAT("urn:wikibase:item:", STR(?valueClassKey), "_{", STR(?valueNodeId), "}"),
+      CONCAT("urn:wikibase:item:{", STR(?valueNodeId), "}")
+    ) AS ?valueTemplate
+  )
+
+  BIND(IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualifierPredicateKey))) AS ?qualifierPredIRI)
+}

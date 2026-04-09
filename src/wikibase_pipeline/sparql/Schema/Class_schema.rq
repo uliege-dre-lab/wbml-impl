@@ -1,0 +1,26 @@
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+CONSTRUCT {
+  ?classIRI a wbml:Class ;
+            rdfs:label       ?classLabel ;
+            rdfs:comment     ?classDescription ;
+            rdfs:subClassOf  ?parentClassIRI ;
+            skos:altLabel ?classAlias .
+}
+WHERE {
+  ?sm wbml:classKey ?classKey .
+
+  OPTIONAL { ?sm wbml:classLabel      ?classLabel . }
+  OPTIONAL { ?sm wbml:classDescription ?classDescription . }
+  OPTIONAL { ?sm wbml:subclassOf      ?parentClassKey . }
+  OPTIONAL { ?sm wbml:classAlias ?classAlias . }
+
+  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?classKey))) AS ?classIRI)
+
+  OPTIONAL {
+    ?sm wbml:subclassOf ?parentClassKey .
+    BIND(IRI(CONCAT("urn:wikibase:item:", STR(?parentClassKey))) AS ?parentClassIRI)
+  }
+}
