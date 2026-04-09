@@ -128,11 +128,7 @@ def _collect_instance_metadata(
 
 
 def _resolve_one_instance(
-    item_iri: URIRef,
-    meta: dict,
-    wikibase_api,
-    default_language: str,
-    verbose: int,
+    item_iri: URIRef, meta: dict, wikibase_api, default_language: str, verbose: int
 ) -> str:
     """
     Find or create a Wikibase item for the given instance IRI.
