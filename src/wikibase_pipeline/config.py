@@ -1,257 +1,189 @@
-import configparser
+import os
 from pathlib import Path
 
-from .utils import warn
+from .utils.verbose_utils import inform, warn
+
+_BOOL_TRUE = {"1", "t", "true", "yes", "on", "y"}
+_BOOL_FALSE = {"0", "f", "false", "no", "off", "n"}
 
 
-def parse_bool(value: str | bool | None, default: bool, verbose: int) -> bool:
-    if value is None:
-        return default
+def parse_bool(value: str | None, *, key: str, default: bool | None = None) -> bool:
+    """
+    Parse an env var string into a bool.
+    """
+    if value is None or value.strip() == "":
+        if default is not None:
+            return default
+        raise ValueError(
+            f"Environment variable '{key}' is required but missing or empty."
+        )
 
-    if isinstance(value, bool):
-        return value
-
-    s = str(value).strip()
-
-    if s.lower() in {"false", "0", "no", "off", "False", "FALSE", "F"}:
-        return False
-    if s.lower() in {"true", "1", "yes", "on", "True", "TRUE", "T"}:
+    s = value.strip().lower()
+    if s in _BOOL_TRUE:
         return True
+    if s in _BOOL_FALSE:
+        return False
 
-    warn(f"Unknown boolean value: {value!r}. Defaulting to {default}.", verbose=verbose)
-    return default
+    raise ValueError(
+        f"Cannot parse '{key}={value!r}' as a boolean.\n"
+        f"Accepted values: {sorted(_BOOL_TRUE | _BOOL_FALSE)}"
+    )
 
 
-def as_int(val: str, *, key: str, section: str) -> int:
+def require(key: str) -> str:
+    """
+    Read a mandatory env var. Raises EnvironmentError if absent or empty.
+    """
+    val = os.getenv(key, "").strip()
+    if not val:
+        raise OSError(
+            f"Required environment variable '{key}' is not set or is empty.\n"
+            f"Add it to your .env file:  {key}=<value>"
+        )
+    return val
+
+
+def _get(key: str, default: str = "") -> str:
+    """
+    Read an optional env var, returning default if absent or empty.
+    """
+    val = os.getenv(key, "").strip()
+    return val if val else default
+
+
+def as_int(raw: str, *, key: str) -> int:
     try:
-        return int(val.strip())
-    except ValueError as e:
-        raise ValueError(f"Invalid int for [{section}] {key}: {val!r}") from e
-
-
-def load_config_ini(config_path: Path, verbose: int = 1) -> str:
-    config_path = Path(config_path).resolve()
-    project_root = Path.cwd()
-
-    if not config_path.is_file():
-        raise FileNotFoundError(f"File not found: {config_path}")
-
-    config = configparser.ConfigParser(interpolation=None)
-    config.read(config_path)
-
-    data: dict[str, dict[str, str]] = {
-        section: dict(config.items(section)) for section in config.sections()
-    }
-
-    if not data:
+        return int(raw.strip())
+    except ValueError as err:
         raise ValueError(
-            f"No sections found in config file: {config_path}\n\n"
-            "Example:\n"
-            "[CONFIGURATION]\n"
-            "output_file = out.nt\n\n"
-            "[DataSource1]\n"
-            "mappings = mapping.ttl\n"
-        )
+            f"Environment variable '{key}={raw!r}' must be an integer."
+        ) from err
 
-    output_section = None
-    output_value = None
-    for section, kv in data.items():
-        if "output_file" in kv and kv["output_file"].strip():
-            output_section = section
-            output_value = kv["output_file"].strip()
-            break
 
-    if output_section is None:
-        raise ValueError(
-            "No 'output_file' defined in the config file "
-            "or it is empty. Add something like:\n\n"
-            "[your-section]\n"
-            "output_file = output.nt\n"
-        )
+def resolve_path(path_str: str) -> Path:
+    """
+    Resolve a path to an absolute Path.
+    """
+    path = Path(path_str)
+    if not path.is_absolute():
+        path = Path.cwd() / path
+    return path.resolve()
 
-    p = Path(output_value)
-    if p.suffix.lower() != ".nt":
-        original_value = output_value
-        new_value = str(p.with_suffix(".nt"))
 
-        data[output_section]["output_file"] = new_value
-        output_value = new_value
+def ensure_suffix(path: Path, expected_suffix: str, *, key: str, verbose: int) -> Path:
+    """
+    Ensure the path has the expected suffix,
+    replace it if not.
+    """
+    if path.suffix.lower() != expected_suffix.lower():
+        original = str(path)
+        corrected = path.with_suffix(expected_suffix)
         warn(
-            f"Warning: 'output_file' value '{original_value}' does not end with '.nt'. "
-            f"Automatically changed to '{new_value}'.",
+            f"Warning: '{key}' value '{original}' does not end with "
+            f"'{expected_suffix}'. Automatically changed to '{corrected}'.",
+            verbose=verbose,
+        )
+        return corrected
+    return path
+
+
+def load_env_config() -> dict:
+    """
+    Load and validate all pipeline configuration from environment variables.
+    - Mandatory variables raise EnvironmentError if absent.
+    - Returns a same dict shape with env var values.
+    """
+    api_url = require("API_URL")
+
+    verbose = as_int(_get("VERBOSE", "1"), key="WB_VERBOSE")
+
+    sparql_endpoint_raw = os.getenv("SPARQL_ENDPOINT", "").strip()
+    if not sparql_endpoint_raw:
+        sparql_endpoint = None
+        inform(
+            "Missing 'SPARQL_ENDPOINT'. SPARQL queries will be disabled.",
+            verbose=verbose,
+        )
+    else:
+        sparql_endpoint = sparql_endpoint_raw
+
+    language_raw = os.getenv("LANGUAGE", "").strip()
+    if not language_raw:
+        language = "en"
+        inform("Missing 'LANGUAGE'. Defaulting to 'en'.", verbose=verbose)
+    else:
+        language = language_raw
+
+    tls_raw = os.getenv("TLS_VERIFY", "").strip()
+    if not tls_raw:
+        tls_verify = True
+        inform("Missing 'TLS_VERIFY'. Defaulting to True.", verbose=verbose)
+    else:
+        tls_verify = parse_bool(tls_raw, key="TLS_VERIFY", default=True)
+
+    lookup_raw = os.getenv("LOOKUP_FILE", "").strip()
+    if not lookup_raw:
+        lookup_raw = "data/lookup/lookup.json"
+        inform(
+            "Missing 'LOOKUP_FILE'. Defaulting to 'data/lookup/lookup.json'.",
+            verbose=verbose,
+        )
+    lookup_file = resolve_path(lookup_raw)
+
+    store_raw = os.getenv("STORE_FILE", "").strip()
+    if not store_raw:
+        store_file = False
+        inform("Missing 'STORE_FILE'. Defaulting to False.", verbose=verbose)
+    else:
+        store_file = parse_bool(store_raw, key="STORE_FILE", default=False)
+
+    rml_mapping_raw = os.getenv("RML_MAPPING_PATH", "").strip()
+    if not rml_mapping_raw:
+        rml_mapping_raw = "data/mappings/converted_mapping.ttl"
+        inform(
+            "Missing 'RML_MAPPING_PATH'. Defaulting to "
+            "'data/mappings/converted_mapping.ttl'.",
             verbose=verbose,
         )
 
-    mapping_section = None
-    mappings_value = None
-    for section, kv in data.items():
-        if "mappings" in kv and kv["mappings"].strip():
-            mapping_section = section
-            mappings_value = kv["mappings"].strip()
-            break
-
-    if mapping_section is None:
-        raise ValueError(
-            "No 'mappings' defined in the config file (in any section) "
-            "or it is empty. Add something like:\n\n"
-            "[your-section]\n"
-            "mappings = mapping.ttl\n"
+    schema_output_raw = os.getenv("SCHEMA_OUTPUT_PATH", "").strip()
+    if not schema_output_raw:
+        schema_output_raw = "data/output/schema.ttl"
+        inform(
+            "Missing 'SCHEMA_OUTPUT_PATH'. Defaulting to 'data/output/schema.ttl'.",
+            verbose=verbose,
         )
 
-    mapping_path = Path(mappings_value)
-    if not mapping_path.is_absolute():
-        mapping_path = (project_root / mapping_path).resolve()
-    else:
-        mapping_path = mapping_path.resolve()
-
-    if not mapping_path.is_file():
-        raise FileNotFoundError(
-            "Mapping file not found.\n\n"
-            f"Config: {config_path}\n"
-            f"Detected 'mappings' in section [{mapping_section}]: {mappings_value}\n"
-            f"Resolved path: {mapping_path}\n\n"
-            "Fix: check the filename/path, or use an absolute path."
+    rml_output_raw = os.getenv("RML_OUTPUT_PATH", "").strip()
+    if not rml_output_raw:
+        rml_output_raw = "data/output/output.nt"
+        inform(
+            "Missing 'RML_OUTPUT_PATH'. Defaulting to 'data/output/output.nt'.",
+            verbose=verbose,
         )
 
-    return output_value
+    rml_mapping_path = resolve_path(rml_mapping_raw)
+    schema_output_path = resolve_path(schema_output_raw)
+    rml_output_path = resolve_path(rml_output_raw)
 
-
-def load_pipeline_ini(pipeline_path: Path | str) -> dict[str, dict[str, object]]:
-    pipeline_path = Path(pipeline_path).resolve()
-
-    if not pipeline_path.is_file():
-        raise FileNotFoundError(f"File not found: {pipeline_path}")
-
-    config = configparser.ConfigParser(interpolation=None)
-    config.read(pipeline_path)
-
-    data: dict[str, dict[str, str]] = {
-        section: dict(config.items(section)) for section in config.sections()
-    }
-
-    if not data:
-        raise ValueError(
-            f"No sections found in pipeline ini: {pipeline_path}\n\n"
-            "Expected sections like:\n"
-            "[wikibase]\n[urn]\n[cache]\n"
-        )
-
-    wb = data.get("wikibase", {})
-
-    if "verbose" in wb and wb["verbose"].strip():
-        verbose = as_int(wb["verbose"], key="verbose", section="wikibase")
-    else:
-        verbose = 1
-        warn("Missing '[wikibase] verbose'. Defaulting to 1.", verbose)
-
-    api_url = wb.get("api_url", "").strip()
-    if not api_url:
-        raise ValueError(
-            "Missing required field: [wikibase] api_url\n\n"
-            "Example:\n"
-            "[wikibase]\n"
-            "api_url = https://example.org/w/api.php\n"
-        )
-
-    language = wb.get("language", "").strip()
-    if not language:
-        language = "en"
-        warn("Missing '[wikibase] language'. Defaulting to 'en'.", verbose)
-
-    tls_raw = wb.get("tls_verify", "").strip()
-    if not tls_raw:
-        tls_verify = True
-        warn("Missing '[wikibase] tls_verify'. Defaulting to True.", verbose)
-    else:
-        tls_verify = parse_bool(tls_raw, default=True, verbose=verbose)
-
-    sparql_endpoint = wb.get("sparql_endpoint", "").strip()
-    if not sparql_endpoint:
-        sparql_endpoint = None
-        warn(
-            "Missing '[wikibase] sparql_endpoint'. SPARQL queries will be disabled.",
-            verbose,
-        )
-
-    urn = data.get("prefix", {})
-
-    item_prefix = urn.get("item", "").strip()
-    if not item_prefix:
-        item_prefix = "urn:wikibase:item:"
-        warn("Missing '[prefix] item'. Defaulting to 'urn:wikibase:item:'.", verbose)
-
-    property_prefix = urn.get("property", "").strip()
-    if not property_prefix:
-        property_prefix = "urn:wikibase:property:"
-        warn(
-            "Missing '[prefix] property'. Defaulting to 'urn:wikibase:property:'.",
-            verbose,
-        )
-
-    statement_prefix = urn.get("statement", "").strip()
-    if not statement_prefix:
-        statement_prefix = "urn:wikibase:statement:"
-        warn(
-            "Missing '[prefix] statement'. Defaulting to 'urn:wikibase:statement:'.",
-            verbose,
-        )
-
-    reference_prefix = urn.get("reference", "").strip()
-    if not reference_prefix:
-        reference_prefix = "urn:wikibase:reference:"
-        warn(
-            "Missing '[prefix] reference'. Defaulting to 'urn:wikibase:reference:'.",
-            verbose,
-        )
-
-    qualifier_prefix = urn.get("qualifier", "").strip()
-    if not qualifier_prefix:
-        qualifier_prefix = "urn:wikibase:qualifier:"
-        warn(
-            "Missing '[prefix] qualifier'. Defaulting to 'urn:wikibase:qualifier:'.",
-            verbose,
-        )
-
-    prefixes = {
-        "item": item_prefix,
-        "property": property_prefix,
-        "statement": statement_prefix,
-        "reference": reference_prefix,
-        "qualifier": qualifier_prefix,
-    }
-
-    seen = {}
-    for name, value in prefixes.items():
-        if value in seen:
-            raise ValueError(
-                "Invalid prefix config: prefixes must all be distinct.\n\n"
-                f"{seen[value]}_prefix={value!r}\n"
-                f"{name}_prefix={value!r}"
-            )
-        seen[value] = name
-
-    cache = data.get("cache", {})
-
-    lookup_file_raw = cache.get("lookup_file", "").strip()
-    if not lookup_file_raw:
-        lookup_file_raw = "data/lookup/lookup.json"
-        warn(
-            "Missing '[cache] lookup_file'. Defaulting to 'data/lookup/lookup.json'.",
-            verbose,
-        )
-
-    lookup_path = Path(lookup_file_raw)
-    if not lookup_path.is_absolute():
-        lookup_path = (pipeline_path.parent / lookup_path).resolve()
-    else:
-        lookup_path = lookup_path.resolve()
-
-    store_raw = cache.get("store_file", "").strip()
-    if not store_raw:
-        store_file = False
-        warn("Missing '[cache] store_file'. Defaulting to False.", verbose)
-    else:
-        store_file = parse_bool(store_raw, default=False, verbose=verbose)
+    rml_mapping_path = ensure_suffix(
+        rml_mapping_path,
+        ".ttl",
+        key="RML_MAPPING_PATH",
+        verbose=verbose,
+    )
+    schema_output_path = ensure_suffix(
+        schema_output_path,
+        ".ttl",
+        key="SCHEMA_OUTPUT_PATH",
+        verbose=verbose,
+    )
+    rml_output_path = ensure_suffix(
+        rml_output_path,
+        ".nt",
+        key="RML_OUTPUT_PATH",
+        verbose=verbose,
+    )
 
     return {
         "wikibase": {
@@ -261,15 +193,13 @@ def load_pipeline_ini(pipeline_path: Path | str) -> dict[str, dict[str, object]]
             "tls_verify": tls_verify,
             "verbose": verbose,
         },
-        "prefix": {
-            "item": item_prefix,
-            "property": property_prefix,
-            "statement": statement_prefix,
-            "qualifier": qualifier_prefix,
-            "reference": reference_prefix,
-        },
         "cache": {
-            "lookup_file": str(lookup_path),
+            "lookup_file": str(lookup_file),
             "store_file": store_file,
+        },
+        "paths": {
+            "rml_mapping": str(rml_mapping_path),
+            "schema_output": str(schema_output_path),
+            "rml_output": str(rml_output_path),
         },
     }

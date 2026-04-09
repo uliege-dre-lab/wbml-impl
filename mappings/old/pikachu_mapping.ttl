@@ -1,0 +1,83 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix wd:   <urn:wikibase:Q:> .
+@prefix wdt:  <urn:wikibase:P:> .
+
+<#PokemonMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "data/input/json_pokemon/pikachu_data.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  rr:subjectMap [
+    rr:template "urn:wikibase:Q:{id}" ;
+    rr:termType rr:IRI ;
+    rr:class wd:Pokemon
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label ;
+    rr:objectMap [ rml:reference "name.english" ; rr:language "en" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:pokedexNumber ;
+    rr:objectMap [ rml:reference "id" ; rr:datatype xsd:integer ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:name ;
+    rr:objectMap [ rml:reference "name.english" ; rr:language "en" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:species ;
+    rr:objectMap [ rml:reference "species" ; rr:datatype xsd:string ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate wdt:description ;
+    rr:objectMap [ rml:reference "description" ; rr:datatype xsd:string ]
+  ] ;
+
+  # base stats
+  rr:predicateObjectMap [ rr:predicate wdt:hp ;            rr:objectMap [ rml:reference "base.HP" ;              rr:datatype xsd:integer ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:attack ;        rr:objectMap [ rml:reference "base.Attack" ;          rr:datatype xsd:integer ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:defense ;       rr:objectMap [ rml:reference "base.Defense" ;         rr:datatype xsd:integer ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:specialAttack ; rr:objectMap [ rml:reference "base.Sp. Attack" ;   rr:datatype xsd:integer ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:specialDefense; rr:objectMap [ rml:reference "base.Sp. Defense" ;  rr:datatype xsd:integer ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:speed ;         rr:objectMap [ rml:reference "base.Speed" ;           rr:datatype xsd:integer ] ] ;
+
+  # types (array of scalars) -> multiple triples
+  rr:predicateObjectMap [
+    rr:predicate wdt:hasType ;
+    rr:objectMap [
+      rr:template "urn:wikibase:Q:{type}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  # profile scalars
+  rr:predicateObjectMap [ rr:predicate wdt:height ; rr:objectMap [ rml:reference "profile.height" ; rr:datatype xsd:string ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:weight ; rr:objectMap [ rml:reference "profile.weight" ; rr:datatype xsd:string ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:gender ; rr:objectMap [ rml:reference "profile.gender" ; rr:datatype xsd:string ] ] ;
+
+  # egg groups (array of scalars)
+  rr:predicateObjectMap [
+    rr:predicate wdt:eggGroup ;
+    rr:objectMap [
+      rr:template "urn:wikibase:Q:{profile.egg}" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+
+  # images
+  rr:predicateObjectMap [ rr:predicate wdt:sprite ;    rr:objectMap [ rml:reference "image.sprite" ;    rr:datatype xsd:anyURI ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:thumbnail ; rr:objectMap [ rml:reference "image.thumbnail" ; rr:datatype xsd:anyURI ] ] ;
+  rr:predicateObjectMap [ rr:predicate wdt:hires ;     rr:objectMap [ rml:reference "image.hires" ;     rr:datatype xsd:anyURI ] ] .

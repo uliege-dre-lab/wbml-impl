@@ -3,7 +3,7 @@ from pathlib import Path
 from rdflib import BNode, Graph, Literal, Namespace
 from rdflib.namespace import XSD
 
-from .utils import inform, warn
+from .utils.verbose_utils import inform, warn
 
 WBML = Namespace("https://example.org/wbml#")
 
@@ -61,24 +61,17 @@ def delete_wbml_blocks(graph: Graph, verbose: int) -> None:
 
 
 def assign_ids(graph: Graph, verbose: int) -> None:
-    """
-    Assignes internal identifiers to WBML structures
-    Over statements and reference Nodes
-    Inputs:
-    - graph: the RDF graph to modify
-    - verbose: verbosity level for logging
-    """
     tm_to_poms: dict = {}
     for tm, _, pom in graph.triples((None, WBML.predicateObjectMap, None)):
         tm_to_poms.setdefault(tm, []).append(pom)
 
-    stat_total = 0
+    global_stat_id = 0
     for _, poms in tm_to_poms.items():
-        for i, pom in enumerate(poms, start=1):
-            graph.add((pom, WBML.statID, Literal(i, datatype=XSD.integer)))
-            stat_total += 1
+        for pom in poms:
+            global_stat_id += 1
+            graph.add((pom, WBML.statID, Literal(global_stat_id, datatype=XSD.integer)))
 
-    inform(f"Assigned wbml:statID to {stat_total} predicateObjectMaps", verbose)
+    inform(f"Assigned wbml:statID to {global_stat_id} predicateObjectMaps", verbose)
 
     ref_total = 0
     all_poms = [pom for poms in tm_to_poms.values() for pom in poms]

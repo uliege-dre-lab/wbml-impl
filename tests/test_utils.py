@@ -1,4 +1,4 @@
-from wikibase_pipeline.utils import inform, warn
+from wikibase_pipeline.utils.verbose_utils import inform, warn
 
 
 def test_warn_prints_when_verbose_1(capsys):
