@@ -12,138 +12,138 @@
            unnest(profile.ability) AS t(ability_entry)
       WHERE profile.ability IS NOT NULL
     """ ] ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b52> ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b52> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n05a05371788841e0baf2106d8a640ff9b16>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b10>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b4>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b6>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b8> ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n8d44d901aebf4d678dac94cbc6dcac85b16>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b10>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b4>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b6>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b8> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n05a05371788841e0baf2106d8a640ff9b22> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b22> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n05a05371788841e0baf2106d8a640ff9b24> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b24> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n05a05371788841e0baf2106d8a640ff9b26> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b26> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n05a05371788841e0baf2106d8a640ff9b12> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b12> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/rank>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n05a05371788841e0baf2106d8a640ff9b14> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b14> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n05a05371788841e0baf2106d8a640ff9b18> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b18> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b1 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b1 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n05a05371788841e0baf2106d8a640ff9b20> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b20> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b27 ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b27 ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/subjectMap> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b27 ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/property>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/qualifier/n05a05371788841e0baf2106d8a640ff9b31>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/1>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/2>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/value/n05a05371788841e0baf2106d8a640ff9b30> ;
-    ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/subjectMap> .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13> a ns1:TriplesMap ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b27 ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/property>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/qualifier/n8d44d901aebf4d678dac94cbc6dcac85b31>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/1>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/2>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/subject>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b30> ;
+    ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/subjectMap> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b27 ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b34>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b36> ;
-    ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/subjectMap> .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1> a ns1:TriplesMap ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b27 ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b34>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b36> ;
+    ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/subjectMap> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2> a ns1:TriplesMap ;
-    ns2:logicalSource _:n05a05371788841e0baf2106d8a640ff9b27 ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b39>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b41> ;
-    ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/subjectMap> .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2> a ns1:TriplesMap ;
+    ns2:logicalSource _:n8d44d901aebf4d678dac94cbc6dcac85b27 ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b39>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b41> ;
+    ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping> a ns1:TriplesMap ;
     ns2:logicalSource [ ns2:iterator "$[*]" ;
             ns2:referenceFormulation <http://semweb.mmlab.be/ns/ql#JSONPath> ;
             ns2:source "data/input/json_pokemon/pokedex_small.json" ] ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b46>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n05a05371788841e0baf2106d8a640ff9b48> ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b46>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n8d44d901aebf4d678dac94cbc6dcac85b48> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/subjectMap> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b52> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b52/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b52> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b52/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b52/om> ns2:reference "ability_name" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b52/om> ns2:reference "ability_name" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#AbilityMapping/subjectMap> ns1:class <urn:wikibase:item:Ability> ;
     ns1:template "urn:wikibase:item:Ability_{ability_name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n05a05371788841e0baf2106d8a640ff9b16> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n05a05371788841e0baf2106d8a640ff9b16/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n8d44d901aebf4d678dac94cbc6dcac85b16> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n8d44d901aebf4d678dac94cbc6dcac85b16/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n05a05371788841e0baf2106d8a640ff9b16/om> ns2:reference "description" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/comment/n8d44d901aebf4d678dac94cbc6dcac85b16/om> ns2:reference "description" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b10> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b10/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b10> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b10/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b10/om> ns2:reference "name.french" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b10/om> ns2:reference "name.french" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b4> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b4/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b4> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b4/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b4/om> ns2:reference "name.english" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b4/om> ns2:reference "name.english" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b6> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b6/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b6> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b6/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b6/om> ns2:reference "name.japanese" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b6/om> ns2:reference "name.japanese" ;
     ns1:language "ja" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b8> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b8/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b8> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b8/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b8/om> ns2:reference "name.chinese" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b8/om> ns2:reference "name.chinese" ;
     ns1:language "zh" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/property/om> ;
@@ -157,13 +157,13 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n05a05371788841e0baf2106d8a640ff9b22> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n05a05371788841e0baf2106d8a640ff9b22/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b22> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b22/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n05a05371788841e0baf2106d8a640ff9b22/om> ns2:reference "profile.height" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b22/om> ns2:reference "profile.height" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_10" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/10/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_10_{profile.height}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/property/om> ;
@@ -177,13 +177,13 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n05a05371788841e0baf2106d8a640ff9b24> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n05a05371788841e0baf2106d8a640ff9b24/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b24> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b24/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n05a05371788841e0baf2106d8a640ff9b24/om> ns2:reference "profile.gender" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b24/om> ns2:reference "profile.gender" ;
     ns1:datatype xsd:string .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_11" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/11/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_11_{profile.gender}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/property/om> ;
@@ -197,13 +197,13 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n05a05371788841e0baf2106d8a640ff9b26> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n05a05371788841e0baf2106d8a640ff9b26/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b26> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b26/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n05a05371788841e0baf2106d8a640ff9b26/om> ns2:reference "image.sprite" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b26/om> ns2:reference "image.sprite" ;
     ns1:datatype xsd:anyURI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_12" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/12/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_12_{image.sprite}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/property/om> ;
@@ -217,13 +217,13 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n05a05371788841e0baf2106d8a640ff9b12> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n05a05371788841e0baf2106d8a640ff9b12/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b12> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b12/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n05a05371788841e0baf2106d8a640ff9b12/om> ns2:reference "id" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b12/om> ns2:reference "id" ;
     ns1:datatype xsd:integer .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_5" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/5/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_5_{id}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/property/om> ;
@@ -242,13 +242,13 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n05a05371788841e0baf2106d8a640ff9b14> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n05a05371788841e0baf2106d8a640ff9b14/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b14> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b14/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n05a05371788841e0baf2106d8a640ff9b14/om> ns1:template "urn:wikibase:item:Species_{species}" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b14/om> ns1:template "urn:wikibase:item:Species_{species}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_6" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/6/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_6_Species_{species}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/property/om> ;
@@ -262,12 +262,12 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n05a05371788841e0baf2106d8a640ff9b18> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n05a05371788841e0baf2106d8a640ff9b18/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b18> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b18/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n05a05371788841e0baf2106d8a640ff9b18/om> ns2:reference "base.Attack" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b18/om> ns2:reference "base.Attack" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_8" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/8/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_8_{base.Attack}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/property/om> ;
@@ -281,106 +281,106 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n05a05371788841e0baf2106d8a640ff9b20> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n05a05371788841e0baf2106d8a640ff9b20/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b20> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b20/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n05a05371788841e0baf2106d8a640ff9b20/om> ns2:reference "base.Sp. Attack" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b20/om> ns2:reference "base.Sp. Attack" ;
     ns1:datatype xsd:integer .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_9" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/statement/9/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_9_{base.Sp. Attack}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokedexMapping/subjectMap> ns1:class <urn:wikibase:item:Pokemon> ;
     ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/property/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/property> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/property/om> ;
     ns1:predicate <https://example.org/wbml#statementProperty> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/property/om> ns1:constant <urn:wikibase:property:HasAbility> .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/property/om> ns1:constant <urn:wikibase:property:HasAbility> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/qualifier/n05a05371788841e0baf2106d8a640ff9b31> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/qualifier/n05a05371788841e0baf2106d8a640ff9b31/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/qualifier/n8d44d901aebf4d678dac94cbc6dcac85b31> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/qualifier/n8d44d901aebf4d678dac94cbc6dcac85b31/om> ;
     ns1:predicate <urn:wikibase:qualifier:IsHiddenAbility> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/qualifier/n05a05371788841e0baf2106d8a640ff9b31/om> ns2:reference "ability_flag" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/qualifier/n8d44d901aebf4d678dac94cbc6dcac85b31/om> ns2:reference "ability_flag" ;
     ns1:datatype xsd:boolean .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/1> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/1/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/1> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/1/om> ;
     ns1:predicate <https://example.org/wbml#statementReference> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/1/om> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_1_1" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/1/om> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_13_Ability_{ability_name}_1" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/2> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/2/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/2> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/2/om> ;
     ns1:predicate <https://example.org/wbml#statementReference> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/reference/2/om> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_1_2" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/reference/2/om> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_13_Ability_{ability_name}_2" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/subject> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/subject/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/subject> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/subject/om> ;
     ns1:predicate <https://example.org/wbml#statementSubject> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/subject/om> ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/value/n05a05371788841e0baf2106d8a640ff9b30> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/value/n05a05371788841e0baf2106d8a640ff9b30/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b30> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b30/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/pom/value/n05a05371788841e0baf2106d8a640ff9b30/om> ns1:template "urn:wikibase:item:Ability_{ability_name}" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/pom/value/n8d44d901aebf4d678dac94cbc6dcac85b30/om> ns1:template "urn:wikibase:item:Ability_{ability_name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b34> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b34/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b34> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b34/om> ;
     ns1:predicate <urn:wikibase:reference:StatedIn> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b34/om> ns1:constant "Pokedex" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b34/om> ns1:constant "Pokedex" ;
     ns1:datatype xsd:string .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b36> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b36/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b36> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b36/om> ;
     ns1:predicate <urn:wikibase:reference:StatedOn> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b36/om> ns1:constant "2024-06-01" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b36/om> ns1:constant "2024-06-01" ;
     ns1:datatype xsd:date .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/1/subjectMap> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_1_1" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/1/subjectMap> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_13_Ability_{ability_name}_1" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b39> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b39/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b39> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b39/om> ;
     ns1:predicate <urn:wikibase:reference:StatedIn> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b39/om> ns1:constant "Pokedex" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b39/om> ns1:constant "Pokedex" ;
     ns1:datatype xsd:string .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b41> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b41/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b41> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b41/om> ;
     ns1:predicate <urn:wikibase:reference:StatedOn> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/pom/referenceRecord/n05a05371788841e0baf2106d8a640ff9b41/om> ns1:constant "2026-01-21" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/pom/referenceRecord/n8d44d901aebf4d678dac94cbc6dcac85b41/om> ns1:constant "2026-01-21" ;
     ns1:datatype xsd:date .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/reference/2/subjectMap> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_1_2" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/reference/2/subjectMap> ns1:template "urn:wikibase:statementreference:Pokemon_{id}_13_Ability_{ability_name}_2" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/1/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_1" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/statement/13/subjectMap> ns1:template "urn:wikibase:statement:Pokemon_{id}_13_Ability_{ability_name}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#PokemonAbilityMapping/subjectMap> ns1:class <urn:wikibase:item:Pokemon> ;
     ns1:template "urn:wikibase:item:Pokemon_{id}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b46> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b46/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b46> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b46/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n05a05371788841e0baf2106d8a640ff9b46/om> ns2:reference "species" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/label/n8d44d901aebf4d678dac94cbc6dcac85b46/om> ns2:reference "species" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n05a05371788841e0baf2106d8a640ff9b48> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n05a05371788841e0baf2106d8a640ff9b48/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n8d44d901aebf4d678dac94cbc6dcac85b48> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n8d44d901aebf4d678dac94cbc6dcac85b48/om> ;
     ns1:predicate rdf:type .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n05a05371788841e0baf2106d8a640ff9b48/om> ns1:constant <urn:wikibase:item:Species> .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/pom/type/n8d44d901aebf4d678dac94cbc6dcac85b48/om> ns1:constant <urn:wikibase:item:Species> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/mappings/wbml_pokedex.ttl#SpeciesMapping/subjectMap> ns1:class <urn:wikibase:item:Species> ;
     ns1:template "urn:wikibase:item:Species_{species}" ;
     ns1:termType ns1:IRI .
 
-_:n05a05371788841e0baf2106d8a640ff9b27 ns2:query """
+_:n8d44d901aebf4d678dac94cbc6dcac85b27 ns2:query """
       SELECT
         id,
         json_extract_string(ability_entry, '$[0]') AS ability_name,
@@ -390,6 +390,6 @@ _:n05a05371788841e0baf2106d8a640ff9b27 ns2:query """
       WHERE profile.ability IS NOT NULL
     """ .
 
-_:n05a05371788841e0baf2106d8a640ff9b1 ns2:iterator "$[*]" ;
+_:n8d44d901aebf4d678dac94cbc6dcac85b1 ns2:iterator "$[*]" ;
     ns2:referenceFormulation <http://semweb.mmlab.be/ns/ql#JSONPath> ;
     ns2:source "data/input/json_pokemon/pokedex_small.json" .
