@@ -17,7 +17,7 @@
   ] ;
 
   wbml:subjectMap [
-    wbml:nodeId "id" ;
+    wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classKey "Pokemon" ;
     wbml:classLabel "Pokemon" ;
     wbml:classLabel "Pokémon"@fr ;
@@ -72,7 +72,7 @@
     wbml:predicateLabel "Has Species"@en ;
     wbml:predicateDescription "Indicates the species of the Pokémon."@en ;
     wbml:objectMap [
-      wbml:nodeId "species" ;
+      wbml:nodeTemplate "Species_{species}" ;
       wbml:classKey "Species"
     ] ;
     wbml:rank wbml:PreferredRank ;
@@ -146,7 +146,7 @@
   ] ;
 
   wbml:subjectMap [
-    wbml:nodeId "id" ;
+    wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classKey "Pokemon"
     ] ;
 
@@ -155,7 +155,7 @@
     wbml:predicateType wbml:Item ;
     wbml:predicateLabel "Has Ability"@en ;
     wbml:objectMap [
-      wbml:nodeId "ability_name" ;
+      wbml:nodeTemplate "Ability_{ability_name}" ;
       wbml:classKey "Ability"
     ] ;
     wbml:qualifierMap [
@@ -215,7 +215,7 @@
   ] ;
 
   wbml:subjectMap [
-    wbml:nodeId "species" ;
+    wbml:nodeTemplate "Species_{species}" ;
     wbml:classKey "Species"
   ] ;
 
@@ -248,7 +248,7 @@
   ] ;
 
   wbml:subjectMap [
-    wbml:nodeId "ability_name" ;
+    wbml:nodeTemplate "Ability_{ability_name}" ;
     wbml:classKey "Ability"
   ] ;
 

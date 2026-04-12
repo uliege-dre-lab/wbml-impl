@@ -10,10 +10,13 @@ CONSTRUCT {
 }
 WHERE {
   ?tm wbml:subjectMap ?sm .
-  ?sm wbml:nodeId ?nodeId ;
-      wbml:classKey ?classKey .
+  ?sm wbml:nodeTemplate ?nodeTemplate .
+
+  OPTIONAL {
+    ?sm wbml:classKey ?classKey .
+    BIND(IRI(CONCAT("urn:wikibase:item:", STR(?classKey))) AS ?classIRI)
+  }
 
   BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
-  BIND(CONCAT("urn:wikibase:item:", STR(?classKey), "_{", STR(?nodeId), "}") AS ?template)
-  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?classKey))) AS ?classIRI)
+  BIND(CONCAT("urn:wikibase:item:", STR(?nodeTemplate)) AS ?template)
 }

@@ -38,8 +38,7 @@ WHERE {
       wbml:subjectMap ?sm ;
       wbml:predicateObjectMap ?pom .
 
-  ?sm wbml:nodeId ?subjectNodeId .
-  OPTIONAL { ?sm wbml:classKey ?subjectClassKey . }
+  ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
   ?pom wbml:predicateKey ?predicateKey ;
        wbml:statID ?statID ;
@@ -66,18 +65,12 @@ WHERE {
   BIND(IRI(CONCAT("urn:wikibase:property:", STR(?predicateKey))) AS ?predIRI)
 
   BIND(
-    IF(
-      BOUND(?subjectClassKey),
-      CONCAT("urn:wikibase:item:", STR(?subjectClassKey), "_{", STR(?subjectNodeId), "}"),
-      CONCAT("urn:wikibase:item:{", STR(?subjectNodeId), "}")
-    ) AS ?subjectTemplate
+    CONCAT("urn:wikibase:item:", STR(?subjectNodeTemplate), "")
+    AS ?subjectTemplate
   )
 
   BIND(
-    IF(
-      BOUND(?subjectClassKey),
-      CONCAT("urn:wikibase:statement:", STR(?subjectClassKey), "_{", STR(?subjectNodeId), "}_", STR(?statID), "_{", STR(?childField), "}"),
-      CONCAT("urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID), "_{", STR(?childField), "}")
-    ) AS ?stmtTemplate
+    CONCAT("urn:wikibase:statement:", STR(?subjectNodeTemplate), "_", STR(?statID), "_{", STR(?childField), "}")
+    AS ?stmtTemplate
   )
 }

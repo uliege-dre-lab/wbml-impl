@@ -25,8 +25,7 @@ WHERE {
       wbml:subjectMap ?sm ;
       wbml:predicateObjectMap ?pom .
 
-  ?sm wbml:nodeId ?subjectNodeId .
-  OPTIONAL { ?sm wbml:classKey ?subjectClassKey . }
+  ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
   ?pom wbml:predicateKey ?predicateKey ;
       wbml:statID ?statID ;
@@ -34,7 +33,7 @@ WHERE {
       wbml:qualifierMap ?qmap .
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
-  OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
+  OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
   ?qmap wbml:predicateKey ?qualifierPredicateKey ;
@@ -56,20 +55,17 @@ WHERE {
 
   BIND(IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualifierPredicateKey))) AS ?qualifierPredIRI)
 
-  BIND(COALESCE(?mainReference, ?mainValueNodeId, ?childKey) AS ?valueDiscriminator)
+  BIND(
+    IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
+    IF(BOUND(?mainValueNodeTemplate), CONCAT("_", STR(?mainValueNodeTemplate)),
+    IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
+    "")))
+  AS ?valueSuffix)
 
   BIND(
-    IF(
-      BOUND(?subjectClassKey),
-      CONCAT(
-        "urn:wikibase:statement:", STR(?subjectClassKey),
-        "_{", STR(?subjectNodeId), "}_", STR(?statID),
-        IF(BOUND(?valueDiscriminator), CONCAT("_{", STR(?valueDiscriminator), "}"), "")
-      ),
-      CONCAT(
-        "urn:wikibase:statement:{", STR(?subjectNodeId), "}_", STR(?statID),
-        IF(BOUND(?valueDiscriminator), CONCAT("_{", STR(?valueDiscriminator), "}"), "")
-      )
-    ) AS ?stmtTemplate
+    CONCAT(
+      "urn:wikibase:statement:", STR(?subjectNodeTemplate), "_", STR(?statID), ?valueSuffix
+    )
+    AS ?stmtTemplate
   )
 }
