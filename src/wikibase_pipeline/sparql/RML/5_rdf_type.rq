@@ -15,9 +15,9 @@ WHERE {
   ?pom wbml:predicate rdf:type ;
        wbml:objectMap ?wom .
 
-  ?wom wbml:classKey ?classKey .
+  ?wom wbml:classNode ?classNode .
 
   BIND(IRI(CONCAT(STR(?tm), "/pom/type/", ENCODE_FOR_URI(STR(?wom)))) AS ?pomMap)
   BIND(IRI(CONCAT(STR(?pomMap), "/om")) AS ?objectMap)
-  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?classKey))) AS ?classIRI)
+  BIND(IRI(CONCAT("urn:wikibase:item:", STRAFTER(STR(?classNode), "#"))) AS ?classIRI)
 }
