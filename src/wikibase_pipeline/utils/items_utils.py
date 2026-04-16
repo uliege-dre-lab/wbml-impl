@@ -5,6 +5,8 @@ def search_item_by_labels(
     wikibase_api,
     labels: dict[str, str],
     default_language: str,
+    lookup: dict | None = None,
+    current_iri: str | None = None,
 ) -> str | None:
     """
     Search Wikibase for an item using labels in priority order:
