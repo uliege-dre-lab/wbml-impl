@@ -753,18 +753,9 @@ wbml:HasItemCategory a rdf:Property ;
         id,
         type,
         description,
-        CASE
-          WHEN typeof(name) = 'JSON' THEN json_extract_string(name, '$.english')
-          ELSE CAST(name AS VARCHAR)
-        END AS name_en,
-        CASE
-          WHEN typeof(name) = 'JSON' THEN json_extract_string(name, '$.japanese')
-          ELSE NULL
-        END AS name_ja,
-        CASE
-          WHEN typeof(name) = 'JSON' THEN json_extract_string(name, '$.chinese')
-          ELSE NULL
-        END AS name_zh
+        name.english AS name_en,
+        name.japanese AS name_ja,
+        name.chinese AS name_zh
       FROM read_json('data/input/json_pokemon/items_small.json')
     """
   ] ;
