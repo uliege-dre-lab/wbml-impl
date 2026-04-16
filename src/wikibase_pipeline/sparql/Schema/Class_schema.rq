@@ -7,20 +7,19 @@ CONSTRUCT {
             rdfs:label       ?classLabel ;
             rdfs:comment     ?classDescription ;
             rdfs:subClassOf  ?parentClassIRI ;
-            skos:altLabel ?classAlias .
+            skos:altLabel    ?classAlias .
 }
 WHERE {
-  ?sm wbml:classKey ?classKey .
+  ?classNode a rdfs:Class .
 
-  OPTIONAL { ?sm wbml:classLabel      ?classLabel . }
-  OPTIONAL { ?sm wbml:classDescription ?classDescription . }
-  OPTIONAL { ?sm wbml:subclassOf      ?parentClassKey . }
-  OPTIONAL { ?sm wbml:classAlias ?classAlias . }
+  OPTIONAL { ?classNode rdfs:label      ?classLabel . }
+  OPTIONAL { ?classNode rdfs:comment    ?classDescription . }
+  OPTIONAL { ?classNode skos:altLabel   ?classAlias . }
 
-  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?classKey))) AS ?classIRI)
+  BIND(IRI(CONCAT("urn:wikibase:item:", STRAFTER(STR(?classNode), "#"))) AS ?classIRI)
 
   OPTIONAL {
-    ?sm wbml:subclassOf ?parentClassKey .
-    BIND(IRI(CONCAT("urn:wikibase:item:", STR(?parentClassKey))) AS ?parentClassIRI)
+    ?classNode rdfs:subClassOf ?parentClassNode .
+    BIND(IRI(CONCAT("urn:wikibase:item:", STRAFTER(STR(?parentClassNode), "#"))) AS ?parentClassIRI)
   }
 }

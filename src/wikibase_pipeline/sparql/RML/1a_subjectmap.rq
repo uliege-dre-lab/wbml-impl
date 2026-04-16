@@ -13,8 +13,8 @@ WHERE {
   ?sm wbml:nodeTemplate ?nodeTemplate .
 
   OPTIONAL {
-    ?sm wbml:classKey ?classKey .
-    BIND(IRI(CONCAT("urn:wikibase:item:", STR(?classKey))) AS ?classIRI)
+    ?sm wbml:classMap ?classNode .
+    BIND(IRI(CONCAT("urn:wikibase:item:", STRAFTER(STR(?classNode), "#"))) AS ?classIRI)
   }
 
   BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)

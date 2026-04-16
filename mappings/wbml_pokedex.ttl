@@ -4,8 +4,29 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 @prefix wbml: <https://example.org/wbml#> .
+
+# Class definitions
+wbml:PokemonClass a rdfs:Class ;
+  rdfs:label "Pokemon"@en ;
+  rdfs:label "Pokémon"@fr ;
+  rdfs:comment "A fictional creature from the Pokémon franchise."@en .
+
+wbml:AbilityClass a rdfs:Class ;
+  rdfs:label "Ability"@en ;
+  rdfs:label "Capacité"@fr ;
+  rdfs:comment "A special power or skill that a Pokémon can have."@en ;
+  skos:altLabel "Pokemon Ability"@en .
+
+wbml:SpeciesClass a rdfs:Class ;
+  rdfs:label "Species"@en ;
+  rdfs:label "Espèce"@fr ;
+  rdfs:comment "The species or classification of a Pokémon."@en ;
+  skos:altLabel "Pokemon Species"@en .
+
+# Mapping definitions
 
 <#PokedexMapping>
   a rr:TriplesMap ;
@@ -18,10 +39,7 @@
 
   wbml:subjectMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
-    wbml:classKey "Pokemon" ;
-    wbml:classLabel "Pokemon" ;
-    wbml:classLabel "Pokémon"@fr ;
-    wbml:classDescription "A fictional creature from the Pokémon franchise."@en
+    wbml:classMap wbml:PokemonClass
   ] ;
 
   wbml:predicateObjectMap [
@@ -72,8 +90,7 @@
     wbml:predicateLabel "Has Species"@en ;
     wbml:predicateDescription "Indicates the species of the Pokémon."@en ;
     wbml:objectMap [
-      wbml:nodeTemplate "Species_{species}" ;
-      wbml:classKey "Species"
+      wbml:nodeTemplate "Species_{species}"
     ] ;
     wbml:rank wbml:PreferredRank ;
   ] ;
@@ -147,7 +164,7 @@
 
   wbml:subjectMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
-    wbml:classKey "Pokemon"
+    wbml:classMap wbml:PokemonClass
     ] ;
 
   wbml:predicateObjectMap [
@@ -155,8 +172,7 @@
     wbml:predicateType wbml:Item ;
     wbml:predicateLabel "Has Ability"@en ;
     wbml:objectMap [
-      wbml:nodeTemplate "Ability_{ability_name}" ;
-      wbml:classKey "Ability"
+      wbml:nodeTemplate "Ability_{ability_name}"
     ] ;
     wbml:qualifierMap [
       wbml:predicateKey "IsHiddenAbility" ;
@@ -216,7 +232,7 @@
 
   wbml:subjectMap [
     wbml:nodeTemplate "Species_{species}" ;
-    wbml:classKey "Species"
+    wbml:classMap wbml:SpeciesClass
   ] ;
 
   wbml:predicateObjectMap [
@@ -229,8 +245,7 @@
   wbml:predicateObjectMap [
     wbml:predicate rdf:type ;
     wbml:objectMap [
-      wbml:classKey "Species" ;
-      wbml:classLabel "Species"
+      wbml:classMap wbml:SpeciesClass
     ]
   ] .
 
@@ -249,7 +264,7 @@
 
   wbml:subjectMap [
     wbml:nodeTemplate "Ability_{ability_name}" ;
-    wbml:classKey "Ability"
+    wbml:classMap wbml:AbilityClass
   ] ;
 
   wbml:predicateObjectMap [
