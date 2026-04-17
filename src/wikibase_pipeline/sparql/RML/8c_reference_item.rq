@@ -39,9 +39,9 @@ WHERE {
   ?rrec wbml:predicate ?refPredicateNode ;
         wbml:objectMap ?rom .
 
-  OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refBlankKey . }
+  OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refExplicitKey . }
 
-  FILTER(isBlank(?refPredicateNode) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
+  FILTER(isBlank(?refExplicitKey) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
 
   ?rom wbml:nodeTemplate ?valueNodeTemplate .
 
@@ -51,11 +51,12 @@ WHERE {
   BIND(IRI(CONCAT(STR(?recordPOM), "/om")) AS ?recordOM)
 
   BIND(
-    IF(isBlank(?refPredicateNode),
-      IRI(CONCAT("urn:wikibase:reference:", ?refBlankKey)),
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
       IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
     ) AS ?refPredIRI
   )
+
 
   BIND(
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),

@@ -15,25 +15,12 @@ WHERE {
   OPTIONAL { ?classNode rdfs:label        ?classLabel . }
   OPTIONAL { ?classNode rdfs:comment      ?classDescription . }
   OPTIONAL { ?classNode skos:altLabel     ?classAlias . }
-  OPTIONAL { ?classNode wbml:nodeTemplate ?classBlankKey . }
+  OPTIONAL { ?classNode wbml:nodeTemplate ?classExplicitKey . }
 
-  BIND(
-    IF(isBlank(?classNode),
-       ?classBlankKey,
-       STRAFTER(STR(?classNode), "#")
-    ) AS ?classKey
-  )
+  BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
+
   BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
 
-  OPTIONAL {
-    ?classNode rdfs:subClassOf ?parentClassNode .
-    OPTIONAL { ?parentClassNode wbml:nodeTemplate ?parentBlankKey . }
-    BIND(
-      IF(isBlank(?parentClassNode),
-         ?parentBlankKey,
-         STRAFTER(STR(?parentClassNode), "#")
-      ) AS ?parentKey
-    )
-    BIND(IRI(CONCAT("urn:wikibase:item:", ?parentKey)) AS ?parentClassIRI)
-  }
+  OPTIONAL { ?parentClassNode wbml:nodeTemplate ?parentExplicitKey . }
+  BIND(COALESCE(?parentExplicitKey, STRAFTER(STR(?parentClassNode), "#")) AS ?parentKey)
 }

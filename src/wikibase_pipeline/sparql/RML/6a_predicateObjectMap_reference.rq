@@ -48,8 +48,7 @@ WHERE {
   ?wom wbml:reference ?reference .
   OPTIONAL { ?wom wbml:datatype ?datatype . }
   OPTIONAL { ?wom wbml:language ?language . }
-
-  OPTIONAL { ?predicateNode wbml:nodeTemplate ?predBlankKey . }
+  OPTIONAL { ?predicateNode wbml:nodeTemplate ?predExplicitKey . }
 
   FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
@@ -66,8 +65,8 @@ WHERE {
   BIND(IRI(CONCAT(STR(?valuePOM), "/om")) AS ?valueOM)
 
   BIND(
-    IF(isBlank(?predicateNode),
-      IRI(CONCAT("urn:wikibase:property:", ?predBlankKey)),
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:property:", ?predExplicitKey)),
       IF(STRSTARTS(STR(?predicateNode), "https://example.org/wbml#"),
         IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?predicateNode), "#"))),
         ?predicateNode

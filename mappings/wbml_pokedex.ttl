@@ -11,12 +11,14 @@
 # Class definitions
 
 wbml:AbilityClass a rdfs:Class ;
+  wbml:nodeTemplate "Ability" ;
   rdfs:label "Ability"@en ;
   rdfs:label "Capacité"@fr ;
   rdfs:comment "A special power or skill that a Pokémon can have."@en ;
   skos:altLabel "Pokemon Ability"@en .
 
 wbml:SpeciesClass a rdfs:Class ;
+  wbml:nodeTemplate "Species" ;
   rdfs:label "Species"@en ;
   rdfs:label "Espèce"@fr ;
   rdfs:comment "The species or classification of a Pokémon."@en ;
@@ -25,48 +27,58 @@ wbml:SpeciesClass a rdfs:Class ;
 # Predicate definitions
 
 wbml:IsHiddenAbility a rdf:Property ;
-    rdfs:label "is hidden ability"@en ;
-    wbml:propertyType xsd:boolean ;
-    skos:altLabel "Is Hidden Ability"@en .
+  wbml:nodeTemplate "IsHiddenAbility" ;
+  rdfs:label "is hidden ability"@en ;
+  wbml:propertyType xsd:boolean ;
+  skos:altLabel "Is Hidden Ability"@en .
 
 wbml:PokedexNumber a rdf:Property ;
-    rdfs:label "Pokédex number"@en ;
-    wbml:propertyType xsd:integer .
+  wbml:nodeTemplate "PokedexNumber" ;
+  rdfs:label "Pokédex number"@en ;
+  wbml:propertyType xsd:integer .
 
 wbml:Attack a rdf:Property ;
-    rdfs:label "Attack"@en ;
-    wbml:propertyType xsd:integer .
+  wbml:nodeTemplate "Attack" ;
+  rdfs:label "Attack"@en ;
+  wbml:propertyType xsd:integer .
 
 wbml:SpecialAttack a rdf:Property ;
-    rdfs:label "Special Attack"@en ;
-    wbml:propertyType xsd:integer .
+  wbml:nodeTemplate "SpecialAttack" ;
+  rdfs:label "Special Attack"@en ;
+  wbml:propertyType xsd:integer .
 
 wbml:Height a rdf:Property ;
-    rdfs:label "Height"@en ;
-    wbml:propertyType xsd:string .
+  wbml:nodeTemplate "Height" ;
+  rdfs:label "Height"@en ;
+  wbml:propertyType xsd:string .
 
 wbml:Gender a rdf:Property ;
-    rdfs:label "Gender"@en ;
-    wbml:propertyType xsd:string .
+  wbml:nodeTemplate "Gender" ;
+  rdfs:label "Gender"@en ;
+  wbml:propertyType xsd:string .
 
 wbml:Sprite a rdf:Property ;
-    rdfs:label "Sprite"@en ;
-    wbml:propertyType xsd:anyURI .
+  wbml:nodeTemplate "Sprite" ;
+  rdfs:label "Sprite"@en ;
+  wbml:propertyType xsd:anyURI .
 
 wbml:HasAbility a rdf:Property ;
-    rdfs:label "has ability"@en ;
-    wbml:propertyType wbml:Item .
+  wbml:nodeTemplate "HasAbility" ;
+  rdfs:label "has ability"@en ;
+  wbml:propertyType wbml:Item .
 
 wbml:StatedIn a rdf:Property ;
-    rdfs:label "stated in"@en ;
-    wbml:propertyType xsd:string .
+  wbml:nodeTemplate "StatedIn" ;
+  rdfs:label "stated in"@en ;
+  wbml:propertyType xsd:string .
 
 wbml:StatedOn a rdf:Property ;
-    rdfs:label "stated on"@en ;
-    wbml:propertyType xsd:date ;
-    skos:altLabel "Stated On"@en .
-# Mapping definitions
+  wbml:nodeTemplate "StatedOn" ;
+  rdfs:label "stated on"@en ;
+  wbml:propertyType xsd:date ;
+  skos:altLabel "Stated On"@en .
 
+# Mapping definitions
 <#PokedexMapping>
   a rr:TriplesMap ;
 
@@ -130,7 +142,7 @@ wbml:StatedOn a rdf:Property ;
   wbml:predicateObjectMap [
     wbml:predicate [
       a rdf:Property ;
-      rdfs:nodeTemplate "HasSpecies" ;
+      wbml:nodeTemplate "HasSpecies" ;
       rdfs:label "has species"@en ;
       rdfs:comment "Indicates the species of the Pokémon."@en ;
       wbml:propertyType wbml:Item
@@ -205,8 +217,14 @@ wbml:StatedOn a rdf:Property ;
 
   wbml:subjectMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
-    wbml:classMap wbml:PokemonClass
-    ] ;
+    wbml:class [
+      a rdfs:Class ;
+      wbml:nodeTemplate "Pokemon" ;
+      rdfs:label "Pokemon"@en ;
+      rdfs:comment "A fictional creature from the Pokémon franchise."@en ;
+      skos:altLabel "Pokémon"@fr
+    ]
+  ] ;
 
   wbml:predicateObjectMap [
     wbml:predicate wbml:HasAbility ;
@@ -265,7 +283,7 @@ wbml:StatedOn a rdf:Property ;
 
   wbml:subjectMap [
     wbml:nodeTemplate "Species_{species}" ;
-    wbml:classMap wbml:SpeciesClass
+    wbml:class wbml:SpeciesClass
   ] ;
 
   wbml:predicateObjectMap [
@@ -278,7 +296,7 @@ wbml:StatedOn a rdf:Property ;
   wbml:predicateObjectMap [
     wbml:predicate rdf:type ;
     wbml:objectMap [
-      wbml:classMap wbml:SpeciesClass
+      wbml:nodeTemplate "Species"
     ]
   ] .
 
@@ -297,7 +315,7 @@ wbml:StatedOn a rdf:Property ;
 
   wbml:subjectMap [
     wbml:nodeTemplate "Ability_{ability_name}" ;
-    wbml:classMap wbml:AbilityClass
+    wbml:class wbml:AbilityClass
   ] ;
 
   wbml:predicateObjectMap [

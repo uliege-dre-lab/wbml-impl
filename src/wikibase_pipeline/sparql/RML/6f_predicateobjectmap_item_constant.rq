@@ -29,7 +29,7 @@ CONSTRUCT {
   ?valuePOM rr:predicate wbml:statementValue ;
             rr:objectMap ?valueOM .
 
-  ?valueOM rr:template ?valueTemplate ;
+  ?valueOM rr:constant ?valueIRI ;
            rr:termType rr:IRI .
 }
 WHERE {
@@ -49,7 +49,7 @@ WHERE {
   OPTIONAL { ?predicateNode wbml:nodeTemplate ?predExplicitKey . }
 
   FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
-  FILTER(CONTAINS(STR(?valueNodeTemplate), "{"))
+  FILTER(!CONTAINS(STR(?valueNodeTemplate), "{"))
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
@@ -83,5 +83,5 @@ WHERE {
     ) AS ?stmtTemplate
   )
 
-  BIND(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate)) AS ?valueTemplate)
+  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate))) AS ?valueIRI)
 }
