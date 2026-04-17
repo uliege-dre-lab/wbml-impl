@@ -6,6 +6,7 @@ from rdflib.namespace import XSD
 from .utils.verbose_utils import inform, warn
 
 WBML = Namespace("https://example.org/wbml#")
+WBINT = Namespace("https://example.org/wbint#")
 
 
 def collect_subtree_triples(graph: Graph, root) -> set[tuple]:
@@ -69,7 +70,9 @@ def assign_ids(graph: Graph, verbose: int) -> None:
     for _, poms in tm_to_poms.items():
         for pom in poms:
             global_stat_id += 1
-            graph.add((pom, WBML.statID, Literal(global_stat_id, datatype=XSD.integer)))
+            graph.add(
+                (pom, WBINT.statID, Literal(global_stat_id, datatype=XSD.integer))
+            )
 
     inform(f"Assigned wbml:statID to {global_stat_id} predicateObjectMaps", verbose)
 
@@ -78,7 +81,7 @@ def assign_ids(graph: Graph, verbose: int) -> None:
     for pom in all_poms:
         ref_maps = [rm for _, _, rm in graph.triples((pom, WBML.referenceMap, None))]
         for j, rm in enumerate(ref_maps, start=1):
-            graph.add((rm, WBML.refId, Literal(j, datatype=XSD.integer)))
+            graph.add((rm, WBINT.refId, Literal(j, datatype=XSD.integer)))
             ref_total += 1
 
     inform(f"Assigned wbml:refId to {ref_total} referenceMaps", verbose)

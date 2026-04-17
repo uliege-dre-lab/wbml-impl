@@ -1,8 +1,10 @@
 PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
-PREFIX wbml: <https://example.org/wbml#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX wbint: <https://example.org/wbint#>
 
 CONSTRUCT {
   ?stmtTM a rr:TriplesMap ;
@@ -41,7 +43,7 @@ WHERE {
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
   ?pom wbml:predicate ?predicateNode ;
-       wbml:statID ?statID ;
+       wbint:statID ?statID ;
        wbml:objectMap ?wom .
 
   ?wom wbml:nodeTemplate ?valueNodeTemplate .
