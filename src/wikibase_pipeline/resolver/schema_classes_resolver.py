@@ -286,7 +286,7 @@ def _push_subclass_claims(
     verbose: int,
 ) -> None:
     """
-    Add rdfs:subClassOf claims for every wbml:Class that declares a parent.
+    Add rdfs:subClassOf claims for every rdfs:Class that declares a parent.
     Skips silently if the PID is missing from lookup.
     """
     subclassof_pid = (
@@ -300,7 +300,7 @@ def _push_subclass_claims(
         return
 
     for child_iri, _, parent_iri in g.triples((None, RDFS.subClassOf, None)):
-        if (child_iri, RDF.type, WBML.Class) not in g:
+        if (child_iri, RDF.type, RDFS.Class) not in g:
             continue
 
         child_str = str(child_iri)
@@ -336,13 +336,13 @@ def resolve_schema_classes(
 ) -> None:
     """
     Main entry point for class resolution.
-      1. For each wbml:Class not yet in lookup["items"]: find or create it.
+      1. For each rdfs:Class not yet in lookup["items"]: find or create it.
       2. Push metadata diff (labels, descriptions, aliases).
       3. Add rdfs:subClassOf claims (builtins must already be resolved).
     """
     lookup.setdefault("items", {})
 
-    for class_iri in sorted(schema_graph.subjects(RDF.type, WBML.Class)):
+    for class_iri in sorted(schema_graph.subjects(RDF.type, RDFS.Class)):
         iri_str = str(class_iri)
         meta = _collect_class_metadata(
             schema_graph, class_iri, language_resolver, verbose=verbose

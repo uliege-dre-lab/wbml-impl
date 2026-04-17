@@ -32,11 +32,11 @@ XSD_TO_WIKIBASE: dict[str, str] = {
 
 def validate_schema_properties(g: Graph) -> None:
     """
-    Validate that every wbml:Property has exactly one wbml:propertyType.
+    Validate that every rdf:Property has exactly one wbml:propertyType.
     """
     errors: list[str] = []
 
-    for prop_iri in sorted(g.subjects(RDF.type, WBML.Property)):
+    for prop_iri in sorted(g.subjects(RDF.type, RDF.Property)):
         iri_str = str(prop_iri)
         types = list(g.objects(prop_iri, WBML.propertyType))
 
@@ -320,7 +320,7 @@ def resolve_schema_properties(
     """
     Main entry point for property resolution.
 
-    For each wbml:Property in the schema:
+    For each rdf:Property in the schema:
     1. Validate it has exactly one wbml:propertyType.
     2. Check lookup — correct datatype to use it; wrong datatype to raise.
     3. Search Wikibase by label (ordered) + datatype filter.
@@ -330,7 +330,7 @@ def resolve_schema_properties(
     validate_schema_properties(schema_graph)
     lookup.setdefault("properties", {})
 
-    for prop_iri in sorted(schema_graph.subjects(RDF.type, WBML.Property)):
+    for prop_iri in sorted(schema_graph.subjects(RDF.type, RDF.Property)):
         iri_str = str(prop_iri)
         wb_datatype = _wb_datatype_from_graph(schema_graph, prop_iri)
 
