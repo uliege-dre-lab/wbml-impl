@@ -1,6 +1,8 @@
 PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+
 PREFIX wbml: <https://example.org/wbml#>
+PREFIX wbint: <https://example.org/wbint#>
 
 CONSTRUCT {
   ?refTM a rr:TriplesMap ;
@@ -27,7 +29,7 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:statID ?statID ;
+  ?pom wbint:statID ?statID ;
        wbml:objectMap ?wom ;
        wbml:referenceMap ?rmap .
 
@@ -35,7 +37,7 @@ WHERE {
   OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
-  ?rmap wbml:refId ?refId ;
+  ?rmap wbint:refId ?refId ;
         wbml:referenceRecord ?rrec .
 
   ?rrec wbml:predicate ?refPredicateNode ;
