@@ -25,7 +25,7 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:predicateKey ?predicateKey ;
+  ?pom wbml:predicate ?predicateNode ;
       wbml:statID ?statID ;
       wbml:objectMap ?wom ;
       wbml:referenceMap ?rmap .

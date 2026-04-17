@@ -3,7 +3,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 CONSTRUCT {
-  ?classIRI a wbml:Class ;
+  ?classIRI a rdfs:Class ;
             rdfs:label       ?classLabel ;
             rdfs:comment     ?classDescription ;
             rdfs:subClassOf  ?parentClassIRI ;
@@ -12,14 +12,28 @@ CONSTRUCT {
 WHERE {
   ?classNode a rdfs:Class .
 
-  OPTIONAL { ?classNode rdfs:label      ?classLabel . }
-  OPTIONAL { ?classNode rdfs:comment    ?classDescription . }
-  OPTIONAL { ?classNode skos:altLabel   ?classAlias . }
+  OPTIONAL { ?classNode rdfs:label        ?classLabel . }
+  OPTIONAL { ?classNode rdfs:comment      ?classDescription . }
+  OPTIONAL { ?classNode skos:altLabel     ?classAlias . }
+  OPTIONAL { ?classNode wbml:nodeTemplate ?classBlankKey . }
 
-  BIND(IRI(CONCAT("urn:wikibase:item:", STRAFTER(STR(?classNode), "#"))) AS ?classIRI)
+  BIND(
+    IF(isBlank(?classNode),
+       ?classBlankKey,
+       STRAFTER(STR(?classNode), "#")
+    ) AS ?classKey
+  )
+  BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
 
   OPTIONAL {
     ?classNode rdfs:subClassOf ?parentClassNode .
-    BIND(IRI(CONCAT("urn:wikibase:item:", STRAFTER(STR(?parentClassNode), "#"))) AS ?parentClassIRI)
+    OPTIONAL { ?parentClassNode wbml:nodeTemplate ?parentBlankKey . }
+    BIND(
+      IF(isBlank(?parentClassNode),
+         ?parentBlankKey,
+         STRAFTER(STR(?parentClassNode), "#")
+      ) AS ?parentKey
+    )
+    BIND(IRI(CONCAT("urn:wikibase:item:", ?parentKey)) AS ?parentClassIRI)
   }
 }

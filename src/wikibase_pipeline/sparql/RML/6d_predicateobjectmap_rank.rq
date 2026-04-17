@@ -24,13 +24,16 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:statID ?statID ;
+  ?pom wbml:predicate ?predicateNode ;
+       wbml:statID ?statID ;
        wbml:objectMap ?wom ;
        wbml:rank ?rankIRI .
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
   OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+
+  FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
 
