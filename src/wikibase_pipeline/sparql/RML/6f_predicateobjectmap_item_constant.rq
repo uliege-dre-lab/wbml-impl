@@ -84,6 +84,4 @@ WHERE {
       STR(?subjectNodeTemplate), "_", STR(?statID), "_", STR(?valueNodeTemplate)
     ) AS ?stmtTemplate
   )
-
-  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate))) AS ?valueIRI)
 }
