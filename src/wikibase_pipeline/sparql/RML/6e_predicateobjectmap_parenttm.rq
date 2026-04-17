@@ -1,6 +1,8 @@
 PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
 PREFIX wbml: <https://example.org/wbml#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 CONSTRUCT {
   ?stmtTM a rr:TriplesMap ;
@@ -46,7 +48,7 @@ WHERE {
 
   ?wom wbml:parentTriplesMap ?parentTM .
 
-  OPTIONAL { ?predicateNode wbml:nodeTemplate ?predBlankKey . }
+  OPTIONAL { ?predicateNode wbml:nodeTemplate ?predExplicitKey . }
 
   FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
@@ -67,8 +69,8 @@ WHERE {
 
 
   BIND(
-    IF(isBlank(?predicateNode),
-      IRI(CONCAT("urn:wikibase:property:", ?predBlankKey)),
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:property:", ?predExplicitKey)),
       IF(STRSTARTS(STR(?predicateNode), "https://example.org/wbml#"),
         IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?predicateNode), "#"))),
         ?predicateNode

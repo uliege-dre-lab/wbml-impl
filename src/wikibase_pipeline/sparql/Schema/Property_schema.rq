@@ -17,12 +17,12 @@ WHERE {
   OPTIONAL { ?propNode rdfs:comment      ?predicateDescription . }
   OPTIONAL { ?propNode wbml:propertyType ?predicateType . }
   OPTIONAL { ?propNode skos:altLabel     ?predicateAlias . }
-  OPTIONAL { ?propNode wbml:nodeTemplate ?propBlankKey . }
+  OPTIONAL { ?propNode wbml:nodeTemplate ?propExplicitKey . }
 
   BIND(
-    IF(isBlank(?propNode),
-       IRI(CONCAT("urn:wikibase:property:", ?propBlankKey)),
-       IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propNode), "#")))
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:property:", ?propExplicitKey)),
+      IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propNode), "#")))
     ) AS ?propIRI
   )
 }

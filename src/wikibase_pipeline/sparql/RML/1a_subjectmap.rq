@@ -15,14 +15,10 @@ WHERE {
   OPTIONAL {
     ?sm wbml:class ?classNode .
 
-    OPTIONAL { ?classNode wbml:nodeTemplate ?classBlankKey . }
+    OPTIONAL { ?classNode wbml:nodeTemplate ?classExplicitKey . }
 
-    BIND(
-      IF(isBlank(?classNode),
-         ?classBlankKey,
-         STRAFTER(STR(?classNode), "#")
-      ) AS ?classKey
-    )
+    BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
+
     BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
   }
 

@@ -136,12 +136,22 @@ def _push_statements(
                 verbose,
             )
             continue
-        prop_entry = lookup.get("properties", {}).get(str(properties[0]))
+
+        prop_iri_str = str(properties[0])
+        prop_entry = lookup.get("properties", {}).get(prop_iri_str)
         if prop_entry is None:
-            raise ValueError(
-                f"Statement <{stmt_str}>: property <{properties[0]}> "
-                f"not found in lookup['properties']."
+            if prop_iri_str.startswith(PROPERTY_PREFIX):
+                reason = "undeclared wbml property — add wbml:propertyType to schema"
+            else:
+                reason = "external predicate not registered as builtin"
+
+            warn(
+                f"<{stmt_str}>: property <{prop_iri_str}> not found in lookup "
+                f"({reason}). Skipping.",
+                verbose,
             )
+            continue
+
         pid = prop_entry["id"]
         property_datatype = prop_entry.get("datatype")
         if not property_datatype:

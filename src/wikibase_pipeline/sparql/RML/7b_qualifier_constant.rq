@@ -38,9 +38,9 @@ WHERE {
   ?qmap wbml:predicate ?qualifierPredicateNode ;
         wbml:objectMap ?qom .
 
-  OPTIONAL { ?qualifierPredicateNode wbml:nodeTemplate ?qualBlankKey . }
+  OPTIONAL { ?qualifierPredicateNode wbml:nodeTemplate ?qualExplicitKey . }
 
-  FILTER(isBlank(?qualifierPredicateNode) || STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#"))
+  FILTER(isBlank(?qualExplicitKey) || STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#"))
 
   ?qom wbml:constant ?constant .
   OPTIONAL { ?qom wbml:datatype ?datatype . }
@@ -66,8 +66,8 @@ WHERE {
   )
 
   BIND(
-    IF(isBlank(?qualifierPredicateNode),
-      IRI(CONCAT("urn:wikibase:qualifier:", ?qualBlankKey)),
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:qualifier:", ?qualExplicitKey)),
       IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPredicateNode), "#")))
     ) AS ?qualifierPredIRI
   )
