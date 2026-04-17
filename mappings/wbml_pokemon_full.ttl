@@ -51,6 +51,150 @@ wbml:ItemCategoryClass a rdfs:Class ;
   rdfs:label "Catégorie d'objet"@fr ;
   rdfs:comment "A category for classifying items in the Pokémon games."@en .
 
+
+# Predicate definitions
+wbml:HasSpecies a rdf:Property ;
+    rdfs:label "has species"@en ;
+    rdfs:comment "Indicates the species of the Pokémon."@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:IsHiddenAbility a rdf:Property ;
+    rdfs:label "is hidden ability"@en ;
+    wbml:propertyType xsd:boolean ;
+    skos:altLabel "Is Hidden Ability"@en .
+
+wbml:PokedexNumber a  rdf:Property ;
+    rdfs:label "Pokédex number"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:Attack a rdf:Property ;
+    rdfs:label "Attack"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:SpecialAttack a rdf:Property ;
+    rdfs:label "Special Attack"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:Height a rdf:Property ;
+    rdfs:label "Height"@en ;
+    wbml:propertyType xsd:string .
+
+wbml:Gender a rdf:Property ;
+    rdfs:label "Gender"@en ;
+    wbml:propertyType xsd:string .
+
+wbml:HasAbility a rdf:Property ;
+    rdfs:label "has ability"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:StatedIn a rdf:Property ;
+    rdfs:label "stated in"@en ;
+    wbml:propertyType xsd:string .
+
+wbml:StatedOn a rdf:Property ;
+    rdfs:label "stated on"@en ;
+    wbml:propertyType xsd:date ;
+    skos:altLabel "Stated On"@en .
+
+wbml:PokemonHasType a rdf:Property ;
+    rdfs:label "has type"@en ;
+    skos:altLabel "Pokemon Has Type"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:HasEggGroup a rdf:Property ;
+    rdfs:label "has egg group"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:EvolvesFrom a rdf:Property ;
+    rdfs:label "evolves from"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:EvolvesTo a rdf:Property ;
+    rdfs:label "evolves to"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:EvolutionCondition a rdf:Property ;
+    rdfs:label "evolution condition"@en ;
+    wbml:propertyType xsd:string .
+
+wbml:EffectiveAgainst a rdf:Property ;
+    rdfs:label "effective against"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:IneffectiveAgainst a rdf:Property ;
+    rdfs:label "ineffective against"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:NoEffectAgainst a rdf:Property ;
+    rdfs:label "no effect against"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:HasImage a rdf:Property ;
+    rdfs:label "has image"@en ;
+    wbml:propertyType xsd:anyURI .
+
+wbml:MoveHasType a rdf:Property ;
+    rdfs:label "has type"@en ;
+    skos:altLabel "Move Has Type"@en ;
+    wbml:propertyType wbml:Item .
+
+wbml:Accuracy a rdf:Property ;
+    rdfs:label "Accuracy"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:Power a rdf:Property ;
+    rdfs:label "Power"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:PP a rdf:Property ;
+    rdfs:label "PP"@en ;
+    wbml:propertyType xsd:integer ;
+    skos:altLabel "Power Points"@en .
+
+wbml:MoveCategory a rdf:Property ;
+    rdfs:label "Move Category"@en ;
+    wbml:propertyType xsd:string ;
+    skos:altLabel "Has Category"@en .
+
+wbml:TMNumber a rdf:Property ;
+    rdfs:label "TM Number"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:ImageType a rdf:Property ;
+    rdfs:label "Image Type"@en ;
+    wbml:propertyType xsd:string ;
+    skos:altLabel "Has Image Type"@en .
+
+wbml:HP a rdf:Property ;
+    rdfs:label "HP"@en ;
+    wbml:propertyType xsd:integer ;
+    skos:altLabel "Hit Points"@en .
+
+wbml:Defense a rdf:Property ;
+    rdfs:label "Defense"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:SpecialDefense a rdf:Property ;
+    rdfs:label "Special Defense"@en ;
+    wbml:propertyType xsd:integer ;
+    skos:altLabel "Sp. Defense"@en .
+
+wbml:Speed a rdf:Property ;
+    rdfs:label "Speed"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:Weight a rdf:Property ;
+    rdfs:label "Weight"@en ;
+    wbml:propertyType xsd:string .
+
+wbml:ItemNumber a rdf:Property ;
+    rdfs:label "Item Number"@en ;
+    wbml:propertyType xsd:integer .
+
+wbml:HasItemCategory a rdf:Property ;
+    rdfs:label "has item category"@en ;
+    wbml:propertyType wbml:Item .
+
 #################################################################
 # POKEMON
 #################################################################
@@ -95,16 +239,12 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "PokedexNumber" ;
-    wbml:predicateLabel "Pokédex number"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:PokedexNumber ;
     wbml:objectMap [ wbml:reference "id" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HasSpecies" ;
-    wbml:predicateLabel "has species"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:HasSpecies ;
     wbml:objectMap [
       wbml:nodeTemplate "Species_{species}" ;
       wbml:classMap wbml:SpeciesClass
@@ -112,87 +252,75 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HP" ;
-    wbml:predicateLabel "HP"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:HP ;
     wbml:objectMap [ wbml:reference "base.HP" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Attack" ;
-    wbml:predicateLabel "Attack"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:Attack ;
     wbml:objectMap [ wbml:reference "base.Attack" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Defense" ;
-    wbml:predicateLabel "Defense"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:Defense ;
     wbml:objectMap [ wbml:reference "base.Defense" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "SpecialAttack" ;
-    wbml:predicateLabel "Special Attack"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:SpecialAttack ;
     wbml:objectMap [ wbml:reference "base.Sp. Attack" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "SpecialDefense" ;
-    wbml:predicateLabel "Special Defense"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:SpecialDefense ;
     wbml:objectMap [ wbml:reference "base.Sp. Defense" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Speed" ;
-    wbml:predicateLabel "Speed"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:Speed ;
     wbml:objectMap [ wbml:reference "base.Speed" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Height" ;
-    wbml:predicateLabel "Height"@en ;
-    wbml:predicateType xsd:string ;
+    wbml:predicate wbml:Height ;
     wbml:objectMap [ wbml:reference "profile.height" ; wbml:datatype xsd:string ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Weight" ;
-    wbml:predicateLabel "Weight"@en ;
-    wbml:predicateType xsd:string ;
+    wbml:predicate wbml:Weight ;
     wbml:objectMap [ wbml:reference "profile.weight" ; wbml:datatype xsd:string ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Gender" ;
-    wbml:predicateLabel "Gender ratio"@en ;
-    wbml:predicateType xsd:string ;
+    wbml:predicate wbml:Gender ;
     wbml:objectMap [ wbml:reference "profile.gender" ; wbml:datatype xsd:string ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Sprite" ;
-    wbml:predicateLabel "Sprite"@en ;
-    wbml:predicateType xsd:anyURI ;
-    wbml:objectMap [ wbml:reference "image.sprite" ; wbml:datatype xsd:anyURI ]
+    wbml:predicate wbml:HasImage ;
+    wbml:objectMap [ wbml:reference "image.sprite" ; wbml:datatype xsd:anyURI ] ;
+    wbml:qualifierMap [
+      wbml:predicate wbml:ImageType ;
+      wbml:objectMap [ wbml:constant "sprite" ; wbml:datatype xsd:string ]
+    ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Thumbnail" ;
-    wbml:predicateLabel "Thumbnail"@en ;
-    wbml:predicateType xsd:anyURI ;
-    wbml:objectMap [ wbml:reference "image.thumbnail" ; wbml:datatype xsd:anyURI ]
+    wbml:predicate wbml:HasImage ;
+    wbml:objectMap [ wbml:reference "image.thumbnail" ; wbml:datatype xsd:anyURI ] ;
+    wbml:qualifierMap [
+      wbml:predicate wbml:ImageType ;
+      wbml:objectMap [ wbml:constant "thumbnail" ; wbml:datatype xsd:string ]
+    ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HiResImage" ;
-    wbml:predicateLabel "Hi-res image"@en ;
-    wbml:predicateType xsd:anyURI ;
-    wbml:objectMap [ wbml:reference "image.hires" ; wbml:datatype xsd:anyURI ]
+    wbml:predicate wbml:HasImage ;
+    wbml:objectMap [ wbml:reference "image.hires" ; wbml:datatype xsd:anyURI ] ;
+    wbml:qualifierMap [
+      wbml:predicate wbml:ImageType ;
+      wbml:objectMap [ wbml:constant "hires" ; wbml:datatype xsd:string ]
+    ]
   ] .
 
 <#PokemonTypeMapping>
@@ -214,12 +342,9 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HasType" ;
-    wbml:predicateLabel "has type"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:PokemonHasType ;
     wbml:objectMap [
-      wbml:nodeTemplate "Species_{species}" ;
-      wbml:classMap wbml:SpeciesClass
+      wbml:nodeTemplate "Type_{type_name}" ;
     ]
   ] .
 
@@ -242,9 +367,7 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HasEggGroup" ;
-    wbml:predicateLabel "has egg group"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:HasEggGroup ;
     wbml:objectMap [
       wbml:nodeTemplate "EggGroup_{egg_group}" ;
       wbml:classMap wbml:EggGroupClass
@@ -272,17 +395,13 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HasAbility" ;
-    wbml:predicateLabel "has ability"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:HasAbility ;
     wbml:objectMap [
       wbml:nodeTemplate "Ability_{ability_name}" ;
       wbml:classMap wbml:AbilityClass
     ] ;
     wbml:qualifierMap [
-      wbml:predicateKey "IsHiddenAbility" ;
-      wbml:predicateLabel "is hidden ability"@en ;
-      wbml:predicateType xsd:boolean ;
+      wbml:predicate wbml:IsHiddenAbility ;
       wbml:objectMap [
         wbml:reference "ability_flag" ;
         wbml:datatype xsd:boolean
@@ -290,18 +409,14 @@ wbml:ItemCategoryClass a rdfs:Class ;
     ] ;
     wbml:referenceMap [
       wbml:referenceRecord [
-        wbml:predicateKey "StatedIn" ;
-        wbml:predicateLabel "stated in"@en ;
-        wbml:predicateType xsd:string ;
+        wbml:predicate wbml:StatedIn ;
         wbml:objectMap [
           wbml:constant "pokedex.json" ;
           wbml:datatype xsd:string
         ]
       ] ;
       wbml:referenceRecord [
-        wbml:predicateKey "StatedOn" ;
-        wbml:predicateLabel "stated on"@en ;
-        wbml:predicateType xsd:date ;
+        wbml:predicate wbml:StatedOn ;
         wbml:objectMap [
           wbml:constant "2023-01-01" ;
           wbml:datatype xsd:date
@@ -310,18 +425,14 @@ wbml:ItemCategoryClass a rdfs:Class ;
     ] ;
     wbml:referenceMap [
       wbml:referenceRecord [
-        wbml:predicateKey "StatedIn" ;
-        wbml:predicateLabel "stated in"@en ;
-        wbml:predicateType xsd:string ;
+        wbml:predicate wbml:StatedIn ;
         wbml:objectMap [
           wbml:constant "pokedex.json" ;
           wbml:datatype xsd:string
         ]
       ] ;
       wbml:referenceRecord [
-        wbml:predicateKey "StatedOn" ;
-        wbml:predicateLabel "stated on"@en ;
-        wbml:predicateType xsd:date ;
+        wbml:predicate wbml:StatedOn ;
         wbml:objectMap [
           wbml:constant "2023-01-05" ;
           wbml:datatype xsd:date
@@ -350,17 +461,13 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "EvolvesFrom" ;
-    wbml:predicateLabel "evolves from"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:EvolvesFrom ;
     wbml:objectMap [
       wbml:nodeTemplate "Pokemon_{prev_id}" ;
       wbml:classMap wbml:PokemonClass
     ] ;
     wbml:qualifierMap [
-      wbml:predicateKey "EvolutionCondition" ;
-      wbml:predicateLabel "evolution condition"@en ;
-      wbml:predicateType xsd:string ;
+      wbml:predicate wbml:EvolutionCondition ;
       wbml:objectMap [
         wbml:reference "prev_condition" ;
         wbml:datatype xsd:string
@@ -389,17 +496,13 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "EvolvesTo" ;
-    wbml:predicateLabel "evolves to"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:EvolvesTo ;
     wbml:objectMap [
       wbml:nodeTemplate "Pokemon_{next_id}" ;
       wbml:classMap wbml:PokemonClass
     ] ;
     wbml:qualifierMap [
-      wbml:predicateKey "EvolutionCondition" ;
-      wbml:predicateLabel "evolution condition"@en ;
-      wbml:predicateType xsd:string ;
+      wbml:predicate wbml:EvolutionCondition ;
       wbml:objectMap [
         wbml:reference "next_condition" ;
         wbml:datatype xsd:string
@@ -509,51 +612,32 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "MoveNumber" ;
-    wbml:predicateLabel "move number"@en ;
-    wbml:predicateType xsd:integer ;
-    wbml:objectMap [ wbml:reference "id" ; wbml:datatype xsd:integer ]
-  ] ;
-
-  wbml:predicateObjectMap [
-    wbml:predicateKey "Accuracy" ;
-    wbml:predicateLabel "accuracy"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:Accuracy ;
     wbml:objectMap [ wbml:reference "accuracy" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "Power" ;
-    wbml:predicateLabel "power"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:Power ;
     wbml:objectMap [ wbml:reference "power" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "PP" ;
-    wbml:predicateLabel "PP"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:PP ;
     wbml:objectMap [ wbml:reference "pp" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "MoveCategory" ;
-    wbml:predicateLabel "move category"@en ;
-    wbml:predicateType xsd:string ;
+    wbml:predicate wbml:MoveCategory ;
     wbml:objectMap [ wbml:reference "category" ; wbml:datatype xsd:string ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "TMNumber" ;
-    wbml:predicateLabel "TM number"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:TMNumber ;
     wbml:objectMap [ wbml:reference "tm" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HasType" ;
-    wbml:predicateLabel "has type"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:MoveHasType ;
     wbml:objectMap [
       wbml:nodeTemplate "Type_{type}" ;
       wbml:classMap wbml:TypeClass
@@ -612,9 +696,7 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "EffectiveAgainst" ;
-    wbml:predicateLabel "effective against"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:EffectiveAgainst ;
     wbml:objectMap [
       wbml:nodeTemplate "Type_{target_type}" ;
       wbml:classMap wbml:TypeClass
@@ -640,9 +722,7 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "IneffectiveAgainst" ;
-    wbml:predicateLabel "ineffective against"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:IneffectiveAgainst ;
     wbml:objectMap [
       wbml:nodeTemplate "Type_{target_type}" ;
       wbml:classMap wbml:TypeClass
@@ -668,9 +748,7 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "NoEffectAgainst" ;
-    wbml:predicateLabel "no effect against"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:NoEffectAgainst ;
     wbml:objectMap [
       wbml:nodeTemplate "Type_{target_type}" ;
       wbml:classMap wbml:TypeClass
@@ -732,16 +810,12 @@ wbml:ItemCategoryClass a rdfs:Class ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "ItemNumber" ;
-    wbml:predicateLabel "item number"@en ;
-    wbml:predicateType xsd:integer ;
+    wbml:predicate wbml:ItemNumber ;
     wbml:objectMap [ wbml:reference "id" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicateKey "HasItemCategory" ;
-    wbml:predicateLabel "has item category"@en ;
-    wbml:predicateType wbml:Item ;
+    wbml:predicate wbml:HasItemCategory ;
     wbml:objectMap [
         wbml:parentTriplesMap <#ItemCategoryMapping> ;
         wbml:joinCondition [

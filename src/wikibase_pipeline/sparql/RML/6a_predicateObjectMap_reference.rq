@@ -1,6 +1,8 @@
 PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
 PREFIX wbml: <https://example.org/wbml#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 CONSTRUCT {
   ?stmtTM a rr:TriplesMap ;
@@ -39,13 +41,17 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:predicateKey ?predicateKey ;
+  ?pom wbml:predicate ?predicateNode ;
        wbml:statID ?statID ;
        wbml:objectMap ?wom .
 
   ?wom wbml:reference ?reference .
   OPTIONAL { ?wom wbml:datatype ?datatype . }
   OPTIONAL { ?wom wbml:language ?language . }
+
+  OPTIONAL { ?predicateNode wbml:nodeTemplate ?predBlankKey . }
+
+  FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
@@ -59,7 +65,15 @@ WHERE {
   BIND(IRI(CONCAT(STR(?stmtTM), "/pom/value/", ENCODE_FOR_URI(STR(?wom)))) AS ?valuePOM)
   BIND(IRI(CONCAT(STR(?valuePOM), "/om")) AS ?valueOM)
 
-  BIND(IRI(CONCAT("urn:wikibase:property:", STR(?predicateKey))) AS ?predIRI)
+  BIND(
+    IF(isBlank(?predicateNode),
+      IRI(CONCAT("urn:wikibase:property:", ?predBlankKey)),
+      IF(STRSTARTS(STR(?predicateNode), "https://example.org/wbml#"),
+        IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?predicateNode), "#"))),
+        ?predicateNode
+      )
+    ) AS ?predIRI
+  )
 
   BIND(
     CONCAT("urn:wikibase:item:", STR(?subjectNodeTemplate)) AS ?subjectTemplate

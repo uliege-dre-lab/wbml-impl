@@ -38,8 +38,12 @@ WHERE {
   ?rmap wbml:refId ?refId ;
         wbml:referenceRecord ?rrec .
 
-  ?rrec wbml:predicateKey ?refPredicateKey ;
+  ?rrec wbml:predicate ?refPredicateNode ;
         wbml:objectMap ?rom .
+
+  OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refBlankKey . }
+
+  FILTER(isBlank(?refPredicateNode) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
 
   ?rom wbml:parentTriplesMap ?parentTM .
 
@@ -55,7 +59,12 @@ WHERE {
     BIND(IRI(CONCAT(STR(?recordOM), "/joinCondition/", ENCODE_FOR_URI(STR(?jc)))) AS ?joinNode)
   }
 
-  BIND(IRI(CONCAT("urn:wikibase:reference:", STR(?refPredicateKey))) AS ?refPredIRI)
+  BIND(
+    IF(isBlank(?refPredicateNode),
+      IRI(CONCAT("urn:wikibase:reference:", ?refBlankKey)),
+      IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
+    ) AS ?refPredIRI
+  )
 
   BIND(
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),

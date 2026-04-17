@@ -26,7 +26,7 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:predicateKey ?predicateKey ;
+  ?pom wbml:predicate ?predicateNode ;
       wbml:statID ?statID ;
       wbml:objectMap ?wom ;
       wbml:qualifierMap ?qmap .
@@ -35,8 +35,12 @@ WHERE {
   OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
-  ?qmap wbml:predicateKey ?qualifierPredicateKey ;
+  ?qmap wbml:predicate ?qualifierPredicateNode ;
         wbml:objectMap ?qom .
+
+  OPTIONAL { ?qualifierPredicateNode wbml:nodeTemplate ?qualBlankKey . }
+
+  FILTER(isBlank(?qualifierPredicateNode) || STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#"))
 
   ?qom wbml:constant ?constant .
   OPTIONAL { ?qom wbml:datatype ?datatype . }
@@ -61,5 +65,10 @@ WHERE {
     AS ?stmtTemplate
   )
 
-  BIND(IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualifierPredicateKey))) AS ?qualifierPredIRI)
+  BIND(
+    IF(isBlank(?qualifierPredicateNode),
+      IRI(CONCAT("urn:wikibase:qualifier:", ?qualBlankKey)),
+      IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPredicateNode), "#")))
+    ) AS ?qualifierPredIRI
+  )
 }
