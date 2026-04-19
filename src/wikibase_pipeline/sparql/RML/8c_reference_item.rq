@@ -43,13 +43,14 @@ WHERE {
 
   OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refExplicitKey . }
 
-  FILTER(isBlank(?refExplicitKey) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
+  FILTER(isBlank(?refPredicateNode) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
 
   ?rom wbml:nodeTemplate ?valueNodeTemplate .
+  FILTER(CONTAINS(STR(?valueNodeTemplate), "{"))
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID), "/reference/", STR(?refId))) AS ?refTM)
   BIND(IRI(CONCAT(STR(?refTM), "/subjectMap")) AS ?refSM)
-  BIND(IRI(CONCAT(STR(?refTM), "/pom/referenceRecord/", STR(?refPredicateKey))) AS ?recordPOM)
+  BIND(IRI(CONCAT(STR(?refTM), "/pom/referenceRecord/", ENCODE_FOR_URI(STR(?rrec)))) AS ?recordPOM)
   BIND(IRI(CONCAT(STR(?recordPOM), "/om")) AS ?recordOM)
 
   BIND(
@@ -74,4 +75,6 @@ WHERE {
     )
     AS ?stmtRefTemplate
   )
+
+  BIND(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate)) AS ?valueTemplate)
 }

@@ -43,7 +43,7 @@ WHERE {
 
   OPTIONAL { ?qualifierPredicateNode wbml:nodeTemplate ?qualExplicitKey . }
 
-  FILTER(isBlank(?qualExplicitKey) || STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#"))
+  FILTER(isBlank(?qualifierPredicateNode) || STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#"))
 
   ?qom wbml:parentTriplesMap ?parentTM .
 
