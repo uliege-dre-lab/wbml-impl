@@ -29,53 +29,53 @@ wbml:SpeciesClass a rdfs:Class ;
 wbml:IsHiddenAbility a rdf:Property ;
   wbml:nodeTemplate "IsHiddenAbility" ;
   rdfs:label "is hidden ability"@en ;
-  wbml:propertyType xsd:boolean ;
+  wbml:propertyType wbml:string ;
   skos:altLabel "Is Hidden Ability"@en .
 
 wbml:PokedexNumber a rdf:Property ;
   wbml:nodeTemplate "PokedexNumber" ;
   rdfs:label "Pokédex number"@en ;
-  wbml:propertyType xsd:integer .
+  wbml:propertyType wbml:quantity .
 
 wbml:Attack a rdf:Property ;
   wbml:nodeTemplate "Attack" ;
   rdfs:label "Attack"@en ;
-  wbml:propertyType xsd:integer .
+  wbml:propertyType wbml:quantity .
 
 wbml:SpecialAttack a rdf:Property ;
   wbml:nodeTemplate "SpecialAttack" ;
   rdfs:label "Special Attack"@en ;
-  wbml:propertyType xsd:integer .
+  wbml:propertyType wbml:quantity .
 
 wbml:Height a rdf:Property ;
   wbml:nodeTemplate "Height" ;
   rdfs:label "Height"@en ;
-  wbml:propertyType xsd:string .
+  wbml:propertyType wbml:string .
 
 wbml:Gender a rdf:Property ;
   wbml:nodeTemplate "Gender" ;
   rdfs:label "Gender"@en ;
-  wbml:propertyType xsd:string .
+  wbml:propertyType wbml:string .
 
 wbml:Sprite a rdf:Property ;
   wbml:nodeTemplate "Sprite" ;
   rdfs:label "Sprite"@en ;
-  wbml:propertyType xsd:anyURI .
+  wbml:propertyType wbml:url .
 
 wbml:HasAbility a rdf:Property ;
   wbml:nodeTemplate "HasAbility" ;
   rdfs:label "has ability"@en ;
-  wbml:propertyType wbml:Item .
+  wbml:propertyType wbml:item .
 
 wbml:StatedIn a rdf:Property ;
   wbml:nodeTemplate "StatedIn" ;
   rdfs:label "stated in"@en ;
-  wbml:propertyType xsd:string .
+  wbml:propertyType wbml:string .
 
 wbml:StatedOn a rdf:Property ;
   wbml:nodeTemplate "StatedOn" ;
   rdfs:label "stated on"@en ;
-  wbml:propertyType xsd:date ;
+  wbml:propertyType wbml:time ;
   skos:altLabel "Stated On"@en .
 
 # Mapping definitions
@@ -145,7 +145,7 @@ wbml:StatedOn a rdf:Property ;
       wbml:nodeTemplate "HasSpecies" ;
       rdfs:label "has species"@en ;
       rdfs:comment "Indicates the species of the Pokémon."@en ;
-      wbml:propertyType wbml:Item
+      wbml:propertyType wbml:item
     ] ;
     wbml:objectMap [
       wbml:nodeTemplate "Species_{species}"
@@ -185,7 +185,7 @@ wbml:StatedOn a rdf:Property ;
 
   wbml:predicateObjectMap [
     wbml:predicate wbml:Gender ;
-    wbml:predicateType xsd:string ;
+    wbml:predicateType wbml:string ;
     wbml:objectMap [
       wbml:reference "profile.gender" ;
       wbml:datatype xsd:string
@@ -283,7 +283,6 @@ wbml:StatedOn a rdf:Property ;
 
   wbml:subjectMap [
     wbml:nodeTemplate "Species_{species}" ;
-    wbml:class wbml:SpeciesClass
   ] ;
 
   wbml:predicateObjectMap [
@@ -297,6 +296,19 @@ wbml:StatedOn a rdf:Property ;
     wbml:predicate rdf:type ;
     wbml:objectMap [
       wbml:nodeTemplate "Species"
+    ] ;
+    wbml:rank wbml:PreferredRank ;
+    wbml:qualifierMap [
+      wbml:predicate [
+        a rdf:Property ;
+        wbml:nodeTemplate "description" ;
+        rdfs:label "Description"@en ;
+        wbml:propertyType wbml:string
+      ] ;
+      wbml:objectMap [
+        wbml:constant "The species or classification of a Pokémon." ;
+        wbml:language "en"
+      ]
     ]
   ] .
 

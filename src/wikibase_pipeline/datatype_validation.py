@@ -76,11 +76,8 @@ def _coerce_missing_value_to_property_datatype(
         # Best-effort: assume ISO date
         return Literal(val_str, datatype=XSD.date)
 
-    if property_datatype == "monolingualtext":
-        raise ValueError(
-            f"Cannot coerce plain literal '{val_str}' to monolingualtext: "
-            "a language tag is required."
-        )
+    if property_datatype == "external-id":
+        return Literal(val_str, datatype=XSD.string)
 
     raise ValueError(
         f"Cannot coerce '{val_str}' to property datatype '{property_datatype}'."
@@ -90,23 +87,76 @@ def _coerce_missing_value_to_property_datatype(
 def normalize_value_for_property(
     property_datatype: str,
     value,
+    default_language: str,
     verbose: int,
 ):
     """
-    Strict validation + limited coercion.
-    - If the value has an explicit/inferable datatype, it must match exactly.
-    - If missing, try to coerce using the property datatype.
-    Returns the original or coerced value.
+    Validate and coerce an RDF value to match the expected property datatype.
+    Returns the corrected value on success, or None if the value should be skipped.
+    warn() is called for all coercions and incompatibilities.
+
+    Special handling:
+    - string/external-id + language-tagged literal → strip language tag (warn)
+    - monolingualtext + literal without language → add default language
+      (warn if the original type was not a plain/xsd:string)
+    - monolingualtext + URIRef → incompatible (warn + None)
+    - Any other datatype mismatch → warn + None
     """
+    # --- string / external-id: strip language tag if present
+    if property_datatype in ("string", "external-id"):
+        if isinstance(value, Literal) and value.language:
+            warn(
+                f"Value {value!r} has a language tag but property expects "
+                f"'{property_datatype}'; removing language tag.",
+                verbose,
+            )
+            return Literal(str(value), datatype=XSD.string)
+
+    # --- monolingualtext: coerce anything without a language tag
+    if property_datatype == "monolingualtext":
+        if isinstance(value, Literal):
+            if value.language:
+                return value  # already correct
+            # typed literal that is not a plain string → warn loudly
+            if value.datatype and str(value.datatype) not in (
+                str(XSD.string),
+                str(XSD.normalizedString),
+            ):
+                warn(
+                    f"Value {value!r} has incompatible datatype for 'monolingualtext'; "
+                    f"coercing to string with default language '{default_language}'.",
+                    verbose,
+                )
+            return Literal(str(value), lang=default_language)
+        # URIRef or other non-Literal
+        warn(
+            f"Value {value!r} (type '{value_to_wikibase_datatype(value)}') "
+            f"is incompatible with property 'monolingualtext'; skipping.",
+            verbose,
+        )
+        return None
+
+    # --- standard path
     value_datatype = value_to_wikibase_datatype(value)
 
     if value_datatype is not None:
         if value_datatype != property_datatype:
-            raise ValueError(
+            warn(
                 f"Datatype mismatch: property expects '{property_datatype}', "
-                f"but value {value!r} has datatype '{value_datatype}'."
+                f"but value {value!r} has datatype '{value_datatype}'; skipping.",
+                verbose,
             )
+            return None
         return value
+
+    # --- plain literal with no datatype: attempt coercion
+    if not isinstance(value, Literal):
+        warn(
+            f"Value {value!r} has no explicit datatype and is not a Literal; "
+            f"cannot coerce to '{property_datatype}'; skipping.",
+            verbose,
+        )
+        return None
 
     try:
         normalized = _coerce_missing_value_to_property_datatype(
@@ -114,14 +164,15 @@ def normalize_value_for_property(
             value=value,
         )
     except ValueError as exc:
-        raise ValueError(
-            f"Value {value!r} has no explicit datatype and cannot be coerced "
-            f"to property datatype '{property_datatype}'."
-        ) from exc
+        warn(
+            f"Value {value!r} cannot be coerced to '{property_datatype}':"
+            f" {exc}; skipping.",
+            verbose,
+        )
+        return None
 
     warn(
-        f"Value {value!r} had no explicit datatype; coerced to match "
-        f"property datatype '{property_datatype}'.",
+        f"Value {value!r} had no explicit datatype; coerced to '{property_datatype}'.",
         verbose,
     )
     return normalized
@@ -178,7 +229,7 @@ def rdf_value_to_wikibase_value(
             )
         return {"entity-type": "item", "id": qid}
 
-    if property_datatype in ("string", "url"):
+    if property_datatype in ("string", "url", "external-id"):
         return str(value)
 
     if property_datatype == "monolingualtext":
