@@ -45,7 +45,7 @@ WHERE {
 
   OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refExplicitKey . }
 
-  FILTER(isBlank(?refExplicitKey) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
+  FILTER(isBlank(?refPredicateNode) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
 
   ?rom wbml:parentTriplesMap ?parentTM .
 

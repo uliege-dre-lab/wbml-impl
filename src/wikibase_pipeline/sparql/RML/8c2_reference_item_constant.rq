@@ -1,0 +1,85 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX wbint: <https://example.org/wbint#>
+
+CONSTRUCT {
+  ?refTM a rr:TriplesMap ;
+         rml:logicalSource ?ls ;
+         rr:subjectMap ?refSM ;
+         rr:predicateObjectMap ?recordPOM .
+
+  ?refSM rr:template ?stmtRefTemplate ;
+         rr:termType rr:IRI .
+
+  ?recordPOM rr:predicate ?refPredIRI ;
+             rr:objectMap ?recordOM .
+
+  ?recordOM rr:constant ?valueConstant .
+}
+WHERE {
+  {
+    SELECT ?tm ?ls ?subjectNodeTemplate ?statID ?wom
+           ?mainReference ?mainValueNodeTemplate ?childKey
+           ?rmap ?refId ?rrec ?refPredicateNode ?rom ?valueNodeTemplate ?refExplicitKey
+    WHERE {
+      ?tm a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          wbml:subjectMap ?sm ;
+          wbml:predicateObjectMap ?pom .
+
+      ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+
+      ?pom wbint:statID ?statID ;
+           wbml:objectMap ?wom ;
+           wbml:referenceMap ?rmap .
+
+      OPTIONAL { ?wom wbml:reference ?mainReference . }
+      OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
+      OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+
+      ?rmap wbint:refId ?refId ;
+            wbml:referenceRecord ?rrec .
+
+      ?rrec wbml:predicate ?refPredicateNode ;
+            wbml:objectMap ?rom .
+
+      OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refExplicitKey . }
+
+      FILTER(isBlank(?refPredicateNode) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
+
+      ?rom wbml:nodeTemplate ?valueNodeTemplate .
+
+      FILTER(!CONTAINS(STR(?valueNodeTemplate), "{"))
+    }
+  }
+
+  BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID), "/reference/", STR(?refId))) AS ?refTM)
+  BIND(IRI(CONCAT(STR(?refTM), "/subjectMap")) AS ?refSM)
+  BIND(IRI(CONCAT(STR(?refTM), "/pom/referenceRecord/", ENCODE_FOR_URI(STR(?rrec)))) AS ?recordPOM)
+  BIND(IRI(CONCAT(STR(?recordPOM), "/om")) AS ?recordOM)
+
+  BIND(
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
+      IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
+    ) AS ?refPredIRI
+  )
+
+  BIND(
+    IF(BOUND(?mainReference),         CONCAT("_{", STR(?mainReference), "}"),
+    IF(BOUND(?mainValueNodeTemplate),  CONCAT("_", STR(?mainValueNodeTemplate)),
+    IF(BOUND(?childKey),               CONCAT("_{", STR(?childKey), "}"),
+    "")))
+  AS ?valueSuffix)
+
+  BIND(
+    CONCAT(
+      "urn:wikibase:statementreference:", STR(?subjectNodeTemplate), "_", STR(?statID),
+      ?valueSuffix, "_", STR(?refId)
+    )
+    AS ?stmtRefTemplate
+  )
+
+  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate))) AS ?valueConstant)
+}

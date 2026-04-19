@@ -1,0 +1,80 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX wbint: <https://example.org/wbint#>
+
+CONSTRUCT {
+  ?stmtTM a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          rr:subjectMap ?stmtSM ;
+          rr:predicateObjectMap ?qualifierPOM .
+
+  ?stmtSM rr:template ?stmtTemplate ;
+          rr:termType rr:IRI .
+
+  ?qualifierPOM rr:predicate ?qualifierPredIRI ;
+                rr:objectMap ?qualifierOM .
+
+  ?qualifierOM rr:constant ?valueConstant .
+}
+WHERE {
+  {
+    SELECT ?tm ?ls ?subjectNodeTemplate ?predicateNode ?statID ?wom
+           ?mainReference ?mainValueNodeTemplate ?childKey
+           ?qualifierPredicateNode ?qmap ?qom ?valueNodeTemplate ?qualExplicitKey
+    WHERE {
+      ?tm a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          wbml:subjectMap ?sm ;
+          wbml:predicateObjectMap ?pom .
+
+      ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+
+      ?pom wbml:predicate ?predicateNode ;
+           wbint:statID ?statID ;
+           wbml:objectMap ?wom ;
+           wbml:qualifierMap ?qmap .
+
+      OPTIONAL { ?wom wbml:reference ?mainReference . }
+      OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
+      OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+
+      ?qmap wbml:predicate ?qualifierPredicateNode ;
+            wbml:objectMap ?qom .
+
+      OPTIONAL { ?qualifierPredicateNode wbml:nodeTemplate ?qualExplicitKey . }
+
+      FILTER(isBlank(?qualifierPredicateNode) || STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#"))
+
+      ?qom wbml:nodeTemplate ?valueNodeTemplate .
+
+      FILTER(!CONTAINS(STR(?valueNodeTemplate), "{"))
+    }
+  }
+
+  BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/pom/qualifier/", ENCODE_FOR_URI(STR(?qmap)))) AS ?qualifierPOM)
+  BIND(IRI(CONCAT(STR(?qualifierPOM), "/om")) AS ?qualifierOM)
+
+  BIND(
+    IF(BOUND(?mainReference),         CONCAT("_{", STR(?mainReference), "}"),
+    IF(BOUND(?mainValueNodeTemplate),  CONCAT("_", STR(?mainValueNodeTemplate)),
+    IF(BOUND(?childKey),               CONCAT("_{", STR(?childKey), "}"),
+    "")))
+  AS ?valueSuffix)
+
+  BIND(
+    CONCAT("urn:wikibase:statement:", STR(?subjectNodeTemplate), "_", STR(?statID), ?valueSuffix)
+    AS ?stmtTemplate
+  )
+
+  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate))) AS ?valueConstant)
+
+  BIND(
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:qualifier:", ?qualExplicitKey)),
+      IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPredicateNode), "#")))
+    ) AS ?qualifierPredIRI
+  )
+}

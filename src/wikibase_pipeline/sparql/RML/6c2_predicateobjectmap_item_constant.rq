@@ -31,27 +31,31 @@ CONSTRUCT {
   ?valuePOM rr:predicate wbml:statementValue ;
             rr:objectMap ?valueOM .
 
-  ?valueOM rr:constant ?valueIRI ;
-           rr:termType rr:IRI .
+  ?valueOM rr:constant ?valueConstant .
 }
 WHERE {
-  ?tm a rr:TriplesMap ;
-      rml:logicalSource ?ls ;
-      wbml:subjectMap ?sm ;
-      wbml:predicateObjectMap ?pom .
+  {
+    SELECT ?tm ?ls ?subjectNodeTemplate ?predicateNode ?statID ?wom ?valueNodeTemplate ?predExplicitKey
+    WHERE {
+      ?tm a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          wbml:subjectMap ?sm ;
+          wbml:predicateObjectMap ?pom .
 
-  ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+      ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:predicate ?predicateNode ;
-       wbint:statID ?statID ;
-       wbml:objectMap ?wom .
+      ?pom wbml:predicate ?predicateNode ;
+           wbint:statID ?statID ;
+           wbml:objectMap ?wom .
 
-  ?wom wbml:nodeTemplate ?valueNodeTemplate .
+      ?wom wbml:nodeTemplate ?valueNodeTemplate .
 
-  OPTIONAL { ?predicateNode wbml:nodeTemplate ?predExplicitKey . }
+      OPTIONAL { ?predicateNode wbml:nodeTemplate ?predExplicitKey . }
 
-  FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
-  FILTER(!CONTAINS(STR(?valueNodeTemplate), "{"))
+      FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
+      FILTER(!CONTAINS(STR(?valueNodeTemplate), "{"))
+    }
+  }
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
@@ -84,4 +88,6 @@ WHERE {
       STR(?subjectNodeTemplate), "_", STR(?statID), "_", STR(?valueNodeTemplate)
     ) AS ?stmtTemplate
   )
+
+  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate))) AS ?valueConstant)
 }
