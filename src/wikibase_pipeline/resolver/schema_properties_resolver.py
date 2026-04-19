@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 from rdflib import Graph, Namespace, URIRef
-from rdflib.namespace import RDF, RDFS, SKOS, XSD
+from rdflib.namespace import RDF, RDFS, SKOS
 
 from ..utils.properties_utils import lookup_get, search_wikibase_properties
 from ..utils.verbose_utils import inform, warn
@@ -10,23 +10,15 @@ from .language_resolver import LanguageResolver
 WBML = Namespace("https://example.org/wbml#")
 PROPERTY_PREFIX = "urn:wikibase:property:"
 
-XSD_TO_WIKIBASE: dict[str, str] = {
-    str(XSD.integer): "quantity",
-    str(XSD.int): "quantity",
-    str(XSD.long): "quantity",
-    str(XSD.short): "quantity",
-    str(XSD.decimal): "quantity",
-    str(XSD.float): "quantity",
-    str(XSD.double): "quantity",
-    str(XSD.string): "string",
-    str(XSD.boolean): "string",
-    str(XSD.anyURI): "url",
-    str(XSD.date): "time",
-    str(XSD.dateTime): "time",
-    str(XSD.time): "time",
-    str(XSD.gYear): "time",
-    str(XSD.gYearMonth): "time",
-    str(WBML.Item): "wikibase-item",
+# Maps wbml: local names (used in .ttl files) → Wikibase API datatype strings
+WBML_DATATYPE_MAP: dict[str, str] = {
+    "item": "wikibase-item",
+    "string": "string",
+    "url": "url",
+    "externalId": "external-id",
+    "quantity": "quantity",
+    "time": "time",
+    "monolingualText": "monolingualtext",
 }
 
 
@@ -43,7 +35,8 @@ def validate_schema_properties(g: Graph) -> None:
         if not types:
             errors.append(
                 f"  <{iri_str}>: missing wbml:propertyType. "
-                "Add `wbml:propertyType <xsd:...>` or `wbml:propertyType wbml:Item`."
+                f"Add e.g. `wbml:propertyType wbml:string`. "
+                f"Supported types: {sorted(WBML_DATATYPE_MAP)}"
             )
         elif len(types) > 1:
             type_strs = sorted(str(t) for t in types)
@@ -56,18 +49,24 @@ def validate_schema_properties(g: Graph) -> None:
 
 
 def _wb_datatype_from_graph(g: Graph, prop_iri: URIRef) -> str:
-    """
-    Convert the single wbml:propertyType of a property into a Wikibase datatype string.
-    """
-    prop_type = str(next(g.objects(prop_iri, WBML.propertyType)))
-    wb_dt = XSD_TO_WIKIBASE.get(prop_type)
+    prop_type_uri = str(next(g.objects(prop_iri, WBML.propertyType)))
+    wbml_ns = str(WBML)
 
-    if wb_dt is None:
+    if not prop_type_uri.startswith(wbml_ns):
         raise ValueError(
-            f"Unsupported wbml:propertyType <{prop_type}> for <{prop_iri}>. "
-            f"Supported: {list(XSD_TO_WIKIBASE.keys())}"
+            f"Invalid wbml:propertyType <{prop_type_uri}> for <{prop_iri}>. "
+            f"Types must use the wbml: namespace. "
+            f"Supported: {sorted(WBML_DATATYPE_MAP)}"
         )
-    return wb_dt
+
+    local_name = prop_type_uri[len(wbml_ns) :]
+    if local_name not in WBML_DATATYPE_MAP:
+        raise ValueError(
+            f"Unsupported wbml:propertyType wbml:{local_name} for <{prop_iri}>. "
+            f"Supported: {sorted(WBML_DATATYPE_MAP)}"
+        )
+
+    return WBML_DATATYPE_MAP[local_name]  # returns the Wikibase API string
 
 
 def _collect_property_metadata(

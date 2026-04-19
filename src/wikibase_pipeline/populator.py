@@ -169,17 +169,14 @@ def _push_statements(
             )
             continue
 
+        normalized = normalize_value_for_property(
+            property_datatype, values[0], language_resolver.language, verbose
+        )
+        if normalized is None:
+            continue
         try:
-            normalized = normalize_value_for_property(
-                property_datatype=property_datatype,
-                value=values[0],
-                verbose=verbose,
-            )
-            wikibase_value = rdf_value_to_wikibase_value(
-                normalized,
-                property_datatype=property_datatype,
-                lookup=lookup,
-                default_language=language_resolver.language,
+            wb_value = rdf_value_to_wikibase_value(
+                normalized, property_datatype, lookup, language_resolver.language
             )
         except ValueError as exc:
             warn(f"  <{stmt_str}>: skipping — {exc}", verbose)
@@ -188,7 +185,7 @@ def _push_statements(
         # rank
         ranks = list(data_graph.objects(stmt_node, WBML.rank))
         if len(ranks) == 0:
-            rank = "normal"  # Wikibase default — wbsetrank not needed
+            rank = "normal"
         elif len(ranks) > 1:
             raise ValueError(
                 f"Statement <{stmt_str}>: multiple ranks found: "
@@ -207,8 +204,8 @@ def _push_statements(
             guid = wikibase_api.add_statement(
                 subject_qid=subject_qid,
                 property_pid=pid,
-                value=wikibase_value,
-                property_datatype=property_datatype,  # ← new
+                value=wb_value,
+                property_datatype=property_datatype,
                 rank=rank,
             )
             lookup["statements"][stmt_str] = guid
@@ -281,6 +278,7 @@ def _push_qualifiers(
                     property_datatype=property_datatype,
                     value=obj,
                     verbose=verbose,
+                    default_language=language_resolver.language,
                 )
                 wikibase_value = rdf_value_to_wikibase_value(
                     normalized,
@@ -429,6 +427,7 @@ def _push_reference_records(
                     property_datatype=property_datatype,
                     value=obj,
                     verbose=verbose,
+                    default_language=language_resolver.language,
                 )
                 wikibase_value = rdf_value_to_wikibase_value(
                     normalized,
