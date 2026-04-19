@@ -129,6 +129,20 @@ def _collect_property_metadata(
         else:
             labels[eff_lang] = raw_value
 
+    # Aliases
+    for alias in g.objects(prop_iri, SKOS.altLabel):
+        raw_value = str(alias).strip()
+        if not raw_value:
+            continue
+        raw_lang = getattr(alias, "language", None)
+        eff_lang = language_resolver.resolve_language(
+            raw_lang,
+            context=f"property alias {str(alias)!r} on <{iri_str}>",
+            verbose=verbose,
+        )
+        if raw_value not in aliases[eff_lang]:
+            aliases[eff_lang].append(raw_value)
+
     # Fallback if still no labels: promote an alias (default lang first),
     # else IRI suffix
     if not labels:
@@ -161,20 +175,6 @@ def _collect_property_metadata(
                 verbose,
             )
             labels[fallback_lang] = suffix
-
-    # Aliases
-    for alias in g.objects(prop_iri, SKOS.altLabel):
-        raw_value = str(alias).strip()
-        if not raw_value:
-            continue
-        raw_lang = getattr(alias, "language", None)
-        eff_lang = language_resolver.resolve_language(
-            raw_lang,
-            context=f"property alias {str(alias)!r} on <{iri_str}>",
-            verbose=verbose,
-        )
-        if raw_value not in aliases[eff_lang]:
-            aliases[eff_lang].append(raw_value)
 
     # Descriptions
     for desc in g.objects(prop_iri, RDFS.comment):

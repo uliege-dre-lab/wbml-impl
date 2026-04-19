@@ -91,6 +91,20 @@ def _collect_instance_metadata(
         else:
             labels[eff_lang] = raw_value
 
+    # Aliases
+    for alias in g.objects(item_iri, SKOS.altLabel):
+        raw_value = clean_text(alias)
+        if raw_value is None:
+            continue
+        raw_lang = getattr(alias, "language", None)
+        eff_lang = language_resolver.resolve_language(
+            raw_lang,
+            context=f"instance alias {str(alias)!r} on <{iri_str}>",
+            verbose=verbose,
+        )
+        if raw_value not in aliases[eff_lang]:
+            aliases[eff_lang].append(raw_value)
+
     # Fallback if still no labels: promote an alias (default lang first),
     # else IRI suffix
     if not labels:
@@ -119,20 +133,6 @@ def _collect_instance_metadata(
                 verbose,
             )
             labels[fallback_lang] = fallback
-
-    # Aliases
-    for alias in g.objects(item_iri, SKOS.altLabel):
-        raw_value = clean_text(alias)
-        if raw_value is None:
-            continue
-        raw_lang = getattr(alias, "language", None)
-        eff_lang = language_resolver.resolve_language(
-            raw_lang,
-            context=f"instance alias {str(alias)!r} on <{iri_str}>",
-            verbose=verbose,
-        )
-        if raw_value not in aliases[eff_lang]:
-            aliases[eff_lang].append(raw_value)
 
     # Descriptions
     for desc in g.objects(item_iri, RDFS.comment):
