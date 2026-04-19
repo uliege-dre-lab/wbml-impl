@@ -41,56 +41,96 @@ def _collect_instance_metadata(
     descriptions: dict[str, str] = {}
     iri_str = str(item_iri)
 
-    # Labels
+    # Labels — collect in one pass, then process tagged before untagged
+    tagged: list[tuple[str, str]] = []
+    untagged: list[str] = []
     for lbl in g.objects(item_iri, RDFS.label):
         raw_value = clean_text(lbl)
         if raw_value is None:
-            warn(
-                f"  Skipping invalid label on <{iri_str}>: {lbl!r}",
-                verbose,
-            )
+            warn(f"  Skipping invalid label on <{iri_str}>: {lbl!r}", verbose)
             continue
-
         raw_lang = getattr(lbl, "language", None)
+        if raw_lang is None:
+            untagged.append(raw_value)
+        else:
+            tagged.append((raw_lang, raw_value))
+
+    for raw_lang, raw_value in tagged:
         eff_lang = language_resolver.resolve_language(
             raw_lang,
-            context=f"instance label {str(lbl)!r} on <{iri_str}>",
+            context=f"instance label {raw_value!r} on <{iri_str}>",
             verbose=verbose,
         )
-
         if eff_lang in labels:
-            warn(
-                f"  Duplicate instance label @{eff_lang} on <{iri_str}>: "
-                f"keeping '{labels[eff_lang]}', ignoring '{raw_value}'.",
-                verbose,
-            )
+            if raw_value not in aliases[eff_lang]:
+                warn(
+                    f"  Duplicate instance label @{eff_lang} on <{iri_str}>: "
+                    f"keeping '{labels[eff_lang]}', adding '{raw_value}' as alias.",
+                    verbose,
+                )
+                aliases[eff_lang].append(raw_value)
         else:
             labels[eff_lang] = raw_value
 
-    if not labels:
-        fallback = iri_suffix(iri_str)
-
-        warn(
-            f"  No valid labels for <{iri_str}> — using fallback '{fallback}'",
-            verbose,
+    for raw_value in untagged:
+        eff_lang = language_resolver.resolve_language(
+            None,
+            context=f"instance label {raw_value!r} on <{iri_str}>",
+            verbose=verbose,
         )
+        if eff_lang in labels:
+            if raw_value.strip() == labels[eff_lang].strip():
+                pass  # identical string, silently skip
+            elif raw_value not in aliases[eff_lang]:
+                warn(
+                    f"  Untagged instance label on <{iri_str}> resolved to @{eff_lang} "
+                    f"which already has a label: adding '{raw_value}' as alias.",
+                    verbose,
+                )
+                aliases[eff_lang].append(raw_value)
+        else:
+            labels[eff_lang] = raw_value
 
+    # Fallback if still no labels: promote an alias (default lang first),
+    # else IRI suffix
+    if not labels:
         fallback_lang = language_resolver.language
-        labels[fallback_lang] = fallback
+        promoted = False
+        for lang in [fallback_lang] + [
+            alias for alias in aliases if alias != fallback_lang
+        ]:
+            if aliases.get(lang):
+                value = aliases[lang].pop(0)
+                if not aliases[lang]:
+                    del aliases[lang]
+                labels[lang] = value
+                warn(
+                    f"  No valid labels for <{iri_str}> — "
+                    f"promoting alias '{value}'@{lang} as label.",
+                    verbose,
+                )
+                promoted = True
+                break
+        if not promoted:
+            fallback = iri_suffix(iri_str)
+            warn(
+                f"  No valid labels for <{iri_str}> — "
+                f"using IRI suffix fallback '{fallback}'.",
+                verbose,
+            )
+            labels[fallback_lang] = fallback
 
     # Aliases
     for alias in g.objects(item_iri, SKOS.altLabel):
         raw_value = clean_text(alias)
         if raw_value is None:
             continue
-
         raw_lang = getattr(alias, "language", None)
         eff_lang = language_resolver.resolve_language(
             raw_lang,
             context=f"instance alias {str(alias)!r} on <{iri_str}>",
             verbose=verbose,
         )
-
         if raw_value not in aliases[eff_lang]:
             aliases[eff_lang].append(raw_value)
 
@@ -98,19 +138,14 @@ def _collect_instance_metadata(
     for desc in g.objects(item_iri, RDFS.comment):
         raw_value = clean_text(desc)
         if raw_value is None:
-            warn(
-                f"  Skipping invalid description on <{iri_str}>: {desc!r}",
-                verbose,
-            )
+            warn(f"  Skipping invalid description on <{iri_str}>: {desc!r}", verbose)
             continue
-
         raw_lang = getattr(desc, "language", None)
         eff_lang = language_resolver.resolve_language(
             raw_lang,
             context=f"instance description {str(desc)!r} on <{iri_str}>",
             verbose=verbose,
         )
-
         if eff_lang in descriptions:
             warn(
                 f"  Duplicate instance description @{eff_lang} on <{iri_str}>: "
@@ -138,7 +173,9 @@ def _resolve_one_instance(
     iri_str = str(item_iri)
     inform(f"Resolving instance <{iri_str}> …", verbose)
 
-    qid = search_item_by_labels(wikibase_api, meta["labels"], default_language)
+    qid = search_item_by_labels(
+        wikibase_api, meta["labels"], default_language, aliases=meta["aliases"]
+    )
     if qid is not None:
         inform(f"  Found {qid} for <{iri_str}>", verbose)
         return qid
@@ -188,14 +225,15 @@ def _push_instance_metadata(
 
     # Labels
     labels_to_set = {}
+    aliases_to_set = {}
     for lang, value in meta["labels"].items():
         if not lang:
             continue
-        value = value.strip()  # ← add this
+        value = value.strip()
         current = existing_labels.get(lang)
         if current is None:
             labels_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:  # ← strip both sides
+        elif current.strip() == value:
             pass
         else:
             if overwrite_on_conflict:
@@ -207,9 +245,14 @@ def _push_instance_metadata(
             else:
                 warn(
                     f"  [{qid}] Label conflict @{lang}: "
-                    f"data='{value}', Wikibase='{current}': keeping Wikibase.",
+                    f"data='{value}', Wikibase='{current}': adding '{value}' as alias.",
                     verbose,
                 )
+                already_there = existing_aliases.get(lang, set())
+                if value not in already_there:
+                    aliases_to_set.setdefault(lang, []).append(
+                        {"language": lang, "value": value}
+                    )
     if labels_to_set:
         entity_data["labels"] = labels_to_set
 
@@ -218,11 +261,11 @@ def _push_instance_metadata(
     for lang, value in meta["descriptions"].items():
         if not lang:
             continue
-        value = value.strip()  # ← add this
+        value = value.strip()
         current = existing_descriptions.get(lang)
         if current is None:
             descriptions_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:  # ← strip both sides
+        elif current.strip() == value:
             pass
         else:
             if overwrite_on_conflict:
@@ -242,12 +285,16 @@ def _push_instance_metadata(
         entity_data["descriptions"] = descriptions_to_set
 
     # Aliases — union only
-    aliases_to_set = {}
     for lang, values in meta["aliases"].items():
         if not lang:
             continue
-        already_there = existing_aliases.get(lang, set())
-        new_values = [v for v in values if v not in already_there]
+        already_as_alias = existing_aliases.get(lang, set())
+        existing_label = existing_labels.get(lang, "")
+        new_values = [
+            v
+            for v in values
+            if v not in already_as_alias and v.strip() != existing_label.strip()
+        ]
         if new_values:
             aliases_to_set[lang] = [{"language": lang, "value": v} for v in new_values]
     if aliases_to_set:
