@@ -236,7 +236,7 @@ class WikibaseAPI:
         return [
             result["id"]
             for result in data.get("search", [])
-            if result.get("label", "").strip() == needle
+            if result.get("match", {}).get("text", "").strip() == needle
         ]
 
     def get_property_datatype(self, pid: str) -> str:
@@ -319,7 +319,7 @@ class WikibaseAPI:
         return [
             result["id"]
             for result in data.get("search", [])
-            if result.get("label", "").strip() == needle
+            if result.get("match", {}).get("text", "").strip() == needle
         ]
 
     def get_entity(

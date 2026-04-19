@@ -75,47 +75,112 @@ def _collect_property_metadata(
     language_resolver: LanguageResolver,
     verbose: int,
 ) -> dict:
-    """
-    Collect rdfs:label, skos:altLabel, and rdfs:comment for one property.
-    Returns:
-      {
-        "labels":       { lang: value, ... },
-        "aliases":      { lang: [value, ...], ... },
-        "descriptions": { lang: value, ... },
-      }
-    Language keys use the resolved effective language (may be "" for untagged literals).
-    """
     labels: dict[str, str] = {}
     aliases: dict[str, list[str]] = defaultdict(list)
     descriptions: dict[str, str] = {}
     iri_str = str(prop_iri)
 
+    # Labels — collect in one pass, then process tagged before untagged
+    tagged: list[tuple[str, str]] = []
+    untagged: list[str] = []
     for lbl in g.objects(prop_iri, RDFS.label):
+        raw_value = str(lbl).strip()
+        if not raw_value:
+            continue
         raw_lang = getattr(lbl, "language", None)
+        if raw_lang is None:
+            untagged.append(raw_value)
+        else:
+            tagged.append((raw_lang, raw_value))
+
+    for raw_lang, raw_value in tagged:
         eff_lang = language_resolver.resolve_language(
             raw_lang,
-            context=f"property label {str(lbl)!r} on <{iri_str}>",
+            context=f"property label {raw_value!r} on <{iri_str}>",
             verbose=verbose,
         )
         if eff_lang in labels:
+            if raw_value not in aliases[eff_lang]:
+                warn(
+                    f"  Duplicate property label @{eff_lang} on <{iri_str}>: "
+                    f"keeping '{labels[eff_lang]}', adding '{raw_value}' as alias.",
+                    verbose,
+                )
+                aliases[eff_lang].append(raw_value)
+        else:
+            labels[eff_lang] = raw_value
+
+    for raw_value in untagged:
+        eff_lang = language_resolver.resolve_language(
+            None,
+            context=f"property label {raw_value!r} on <{iri_str}>",
+            verbose=verbose,
+        )
+        if eff_lang in labels:
+            if raw_value.strip() == labels[eff_lang].strip():
+                pass  # identical string, silently skip
+            elif raw_value not in aliases[eff_lang]:
+                warn(
+                    f"  Untagged property label on <{iri_str}> resolved to @{eff_lang} "
+                    f"which already has a label: adding '{raw_value}' as alias.",
+                    verbose,
+                )
+                aliases[eff_lang].append(raw_value)
+        else:
+            labels[eff_lang] = raw_value
+
+    # Fallback if still no labels: promote an alias (default lang first),
+    # else IRI suffix
+    if not labels:
+        fallback_lang = language_resolver.language
+        promoted = False
+        for lang in [fallback_lang] + [
+            alias for alias in aliases if alias != fallback_lang
+        ]:
+            if aliases.get(lang):
+                value = aliases[lang].pop(0)
+                if not aliases[lang]:
+                    del aliases[lang]
+                labels[lang] = value
+                warn(
+                    f"  No valid labels for <{iri_str}> — "
+                    f"promoting alias '{value}'@{lang} as label.",
+                    verbose,
+                )
+                promoted = True
+                break
+        if not promoted:
+            suffix = (
+                iri_str[len(PROPERTY_PREFIX) :]
+                if iri_str.startswith(PROPERTY_PREFIX)
+                else iri_str
+            )
             warn(
-                f"  Duplicate property label @{eff_lang} on <{iri_str}>: "
-                f"keeping '{labels[eff_lang]}', ignoring '{lbl}'.",
+                f"  No valid labels for <{iri_str}> — "
+                f"using IRI suffix fallback '{suffix}'.",
                 verbose,
             )
-        else:
-            labels[eff_lang] = str(lbl)
+            labels[fallback_lang] = suffix
 
+    # Aliases
     for alias in g.objects(prop_iri, SKOS.altLabel):
+        raw_value = str(alias).strip()
+        if not raw_value:
+            continue
         raw_lang = getattr(alias, "language", None)
         eff_lang = language_resolver.resolve_language(
             raw_lang,
             context=f"property alias {str(alias)!r} on <{iri_str}>",
             verbose=verbose,
         )
-        aliases[eff_lang].append(str(alias))
+        if raw_value not in aliases[eff_lang]:
+            aliases[eff_lang].append(raw_value)
 
+    # Descriptions
     for desc in g.objects(prop_iri, RDFS.comment):
+        raw_value = str(desc).strip()
+        if not raw_value:
+            continue
         raw_lang = getattr(desc, "language", None)
         eff_lang = language_resolver.resolve_language(
             raw_lang,
@@ -125,36 +190,17 @@ def _collect_property_metadata(
         if eff_lang in descriptions:
             warn(
                 f"  Duplicate property description @{eff_lang} on <{iri_str}>: "
-                f"keeping existing, ignoring '{desc}'.",
+                f"keeping existing, ignoring '{raw_value}'.",
                 verbose,
             )
         else:
-            descriptions[eff_lang] = str(desc)
+            descriptions[eff_lang] = raw_value
 
     return {
         "labels": labels,
         "aliases": dict(aliases),
         "descriptions": descriptions,
     }
-
-
-def _effective_labels(
-    labels: dict[str, str],
-    iri_str: str,
-    default_language: str,
-) -> dict[str, str]:
-    """
-    Return labels to use for search and creation.
-    If labels is empty, fall back to the IRI suffix in the default language.
-    """
-    if labels:
-        return labels
-    suffix = (
-        iri_str[len(PROPERTY_PREFIX) :]
-        if iri_str.startswith(PROPERTY_PREFIX)
-        else iri_str
-    )
-    return {default_language: suffix}
 
 
 def _resolve_one_property(
@@ -173,7 +219,7 @@ def _resolve_one_property(
     """
     iri_str = str(prop_iri)
     wb_datatype = _wb_datatype_from_graph(schema_graph, prop_iri)
-    labels = _effective_labels(meta["labels"], iri_str, default_language)
+    labels = meta["labels"]
 
     inform(
         f"Resolving property <{iri_str}> (datatype='{wb_datatype}') …",
@@ -185,6 +231,7 @@ def _resolve_one_property(
         labels=labels,
         default_language=default_language,
         expected_datatype=wb_datatype,
+        aliases=meta["aliases"],
     )
 
     if pid is not None:
@@ -237,6 +284,7 @@ def _push_property_metadata(
 
     # Labels
     labels_to_set = {}
+    aliases_to_set = {}
     for lang, value in meta["labels"].items():
         if not lang:
             continue
@@ -256,9 +304,14 @@ def _push_property_metadata(
             else:
                 warn(
                     f"  [{pid}] Label conflict @{lang}: "
-                    f"schema='{value}', Wikibase='{current}': keeping Wikibase.",
+                    f"data='{value}', Wikibase='{current}': adding '{value}' as alias.",
                     verbose,
                 )
+                already_there = existing_aliases.get(lang, set())
+                if value not in already_there:
+                    aliases_to_set.setdefault(lang, []).append(
+                        {"language": lang, "value": value}
+                    )
     if labels_to_set:
         entity_data["labels"] = labels_to_set
 
@@ -290,13 +343,17 @@ def _push_property_metadata(
     if descriptions_to_set:
         entity_data["descriptions"] = descriptions_to_set
 
-    # Aliases — union only
-    aliases_to_set = {}
+    # Aliases — union only, skip values already present as alias or as label
     for lang, values in meta["aliases"].items():
         if not lang:
             continue
-        already_there = existing_aliases.get(lang, set())
-        new_values = [v for v in values if v not in already_there]
+        already_as_alias = existing_aliases.get(lang, set())
+        existing_label = existing_labels.get(lang, "")
+        new_values = [
+            v
+            for v in values
+            if v not in already_as_alias and v.strip() != existing_label.strip()
+        ]
         if new_values:
             aliases_to_set[lang] = [{"language": lang, "value": v} for v in new_values]
     if aliases_to_set:
