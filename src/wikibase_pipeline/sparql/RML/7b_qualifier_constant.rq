@@ -28,21 +28,29 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:predicate ?predicateNode ;
-      wbint:statID ?statID ;
-      wbml:objectMap ?wom ;
-      wbml:qualifierMap ?qmap .
+  ?pom wbint:statID ?statID ;
+       wbml:objectMap ?wom ;
+       wbml:qualifierMap ?qmap .
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
   OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
+  OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
-  ?qmap wbml:predicate ?qualifierPredicateNode ;
-        wbml:objectMap ?qom .
+  BIND(COALESCE(?mainValueNodeTemplate, ?mainValueNodeId) AS ?mainValueNode)
+
+  ?qmap wbml:objectMap ?qom .
+
+  OPTIONAL { ?qmap wbml:predicate ?qualifierPredicateNode . }
+  OPTIONAL { ?qmap wbml:predicateId ?qualifierPredicateId . }
+  FILTER(BOUND(?qualifierPredicateNode) || BOUND(?qualifierPredicateId))
 
   OPTIONAL { ?qualifierPredicateNode wbml:nodeTemplate ?qualExplicitKey . }
-
-  FILTER(isBlank(?qualifierPredicateNode) || STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#"))
+  FILTER(
+    !BOUND(?qualifierPredicateNode) ||
+    isBlank(?qualifierPredicateNode) ||
+    STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#")
+  )
 
   ?qom wbml:constant ?constant .
   OPTIONAL { ?qom wbml:datatype ?datatype . }
@@ -55,7 +63,7 @@ WHERE {
 
   BIND(
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
-    IF(BOUND(?mainValueNodeTemplate), CONCAT("_", STR(?mainValueNodeTemplate)),
+    IF(BOUND(?mainValueNode), CONCAT("_", STR(?mainValueNode)),
     IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
     "")))
   AS ?valueSuffix)
@@ -68,9 +76,12 @@ WHERE {
   )
 
   BIND(
-    COALESCE(
-      IRI(CONCAT("urn:wikibase:qualifier:", ?qualExplicitKey)),
-      IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPredicateNode), "#")))
+    IF(BOUND(?qualifierPredicateId),
+      IRI(CONCAT("urn:wikibase:qualifierIRI:", STR(?qualifierPredicateId))),
+      COALESCE(
+        IRI(CONCAT("urn:wikibase:qualifier:", ?qualExplicitKey)),
+        IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPredicateNode), "#")))
+      )
     ) AS ?qualifierPredIRI
   )
 }

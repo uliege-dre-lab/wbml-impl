@@ -35,25 +35,37 @@ CONSTRUCT {
 }
 WHERE {
   {
-    SELECT ?tm ?ls ?subjectNodeTemplate ?predicateNode ?statID ?wom ?valueNodeTemplate ?predExplicitKey
+    SELECT ?tm ?ls ?subjectKey ?subjectNodeTemplate ?subjectNodeId
+           ?predicateNode ?predicateIdStr
+           ?statID ?wom ?valueNodeTemplate ?valueNodeId ?predExplicitKey
     WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
           wbml:subjectMap ?sm ;
           wbml:predicateObjectMap ?pom .
 
-      ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+      OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
+      OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
+      FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
+      BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
 
-      ?pom wbml:predicate ?predicateNode ;
-           wbint:statID ?statID ;
+      ?pom wbint:statID ?statID ;
            wbml:objectMap ?wom .
 
-      ?wom wbml:nodeTemplate ?valueNodeTemplate .
+      OPTIONAL { ?pom wbml:predicate ?predicateNode . }
+      OPTIONAL { ?pom wbml:predicateId ?predicateIdStr . }
+      FILTER(BOUND(?predicateNode) || BOUND(?predicateIdStr))
+
+      OPTIONAL { ?wom wbml:nodeTemplate ?valueNodeTemplate . }
+      OPTIONAL { ?wom wbml:nodeId ?valueNodeId . }
+      FILTER(
+        (BOUND(?valueNodeTemplate) && !CONTAINS(STR(?valueNodeTemplate), "{")) ||
+        (BOUND(?valueNodeId)       && !CONTAINS(STR(?valueNodeId), "{"))
+      )
 
       OPTIONAL { ?predicateNode wbml:nodeTemplate ?predExplicitKey . }
 
-      FILTER(?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
-      FILTER(!CONTAINS(STR(?valueNodeTemplate), "{"))
+      FILTER(!BOUND(?predicateNode) || ?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
     }
   }
 
@@ -70,24 +82,39 @@ WHERE {
   BIND(IRI(CONCAT(STR(?valuePOM), "/om")) AS ?valueOM)
 
   BIND(
-    COALESCE(
-      IRI(CONCAT("urn:wikibase:property:", ?predExplicitKey)),
-      IF(
-        STRSTARTS(STR(?predicateNode), "https://example.org/wbml#"),
-        IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?predicateNode), "#"))),
-        ?predicateNode
+    IF(BOUND(?predicateIdStr),
+      IRI(CONCAT("urn:wikibase:propertyIRI:", STR(?predicateIdStr))),
+      COALESCE(
+        IRI(CONCAT("urn:wikibase:property:", ?predExplicitKey)),
+        IF(
+          STRSTARTS(STR(?predicateNode), "https://example.org/wbml#"),
+          IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?predicateNode), "#"))),
+          ?predicateNode
+        )
       )
     ) AS ?predIRI
   )
 
-  BIND(CONCAT("urn:wikibase:item:", STR(?subjectNodeTemplate)) AS ?subjectTemplate)
+  BIND(COALESCE(?valueNodeTemplate, ?valueNodeId) AS ?valueKey)
 
   BIND(
-    CONCAT(
-      "urn:wikibase:statement:",
-      STR(?subjectNodeTemplate), "_", STR(?statID), "_", STR(?valueNodeTemplate)
+    IF(BOUND(?subjectNodeId),
+      CONCAT("urn:wikibase:itemIRI:", STR(?subjectNodeId)),
+      CONCAT("urn:wikibase:item:",    STR(?subjectNodeTemplate))
+    ) AS ?subjectTemplate
+  )
+
+  BIND(
+    CONCAT("urn:wikibase:statement:",
+      STR(?subjectKey), "_", STR(?statID), "_", STR(?valueKey)
     ) AS ?stmtTemplate
   )
 
-  BIND(IRI(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate))) AS ?valueConstant)
+  # The constant IRI (was rr:constant ?valueConstant):
+  BIND(
+    IF(BOUND(?valueNodeId),
+      IRI(CONCAT("urn:wikibase:itemIRI:", STR(?valueNodeId))),
+      IRI(CONCAT("urn:wikibase:item:",    STR(?valueNodeTemplate)))
+    ) AS ?valueConstant
+  )
 }

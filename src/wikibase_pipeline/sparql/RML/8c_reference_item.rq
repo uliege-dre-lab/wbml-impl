@@ -33,20 +33,33 @@ WHERE {
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
   OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
+  OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+
+  BIND(COALESCE(?mainValueNodeTemplate, ?mainValueNodeId) AS ?mainValueNode)
 
   ?rmap wbint:refId ?refId ;
         wbml:referenceRecord ?rrec .
 
-  ?rrec wbml:predicate ?refPredicateNode ;
-        wbml:objectMap ?rom .
+  ?rrec wbml:objectMap ?rom .
+
+  OPTIONAL { ?rrec wbml:predicate ?refPredicateNode . }
+  OPTIONAL { ?rrec wbml:predicateId ?refPredicateId . }
+  FILTER(BOUND(?refPredicateNode) || BOUND(?refPredicateId))
 
   OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refExplicitKey . }
+  FILTER(
+    !BOUND(?refPredicateNode) ||
+    isBlank(?refPredicateNode) ||
+    STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#")
+  )
 
-  FILTER(isBlank(?refPredicateNode) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
-
-  ?rom wbml:nodeTemplate ?valueNodeTemplate .
-  FILTER(CONTAINS(STR(?valueNodeTemplate), "{"))
+  OPTIONAL { ?rom wbml:nodeTemplate ?valueNodeTemplate . }
+  OPTIONAL { ?rom wbml:nodeId ?valueNodeId . }
+  FILTER(
+    (BOUND(?valueNodeTemplate) && CONTAINS(STR(?valueNodeTemplate), "{")) ||
+    (BOUND(?valueNodeId)       && CONTAINS(STR(?valueNodeId), "{"))
+  )
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID), "/reference/", STR(?refId))) AS ?refTM)
   BIND(IRI(CONCAT(STR(?refTM), "/subjectMap")) AS ?refSM)
@@ -54,16 +67,19 @@ WHERE {
   BIND(IRI(CONCAT(STR(?recordPOM), "/om")) AS ?recordOM)
 
   BIND(
-    COALESCE(
-      IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
-      IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
+    IF(BOUND(?refPredicateId),
+      IRI(CONCAT("urn:wikibase:referenceIRI:", STR(?refPredicateId))),
+      COALESCE(
+        IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
+        IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
+      )
     ) AS ?refPredIRI
   )
 
 
   BIND(
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
-    IF(BOUND(?mainValueNodeTemplate), CONCAT("_", STR(?mainValueNodeTemplate)),
+    IF(BOUND(?mainValueNode), CONCAT("_", STR(?mainValueNode)),
     IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
     "")))
   AS ?valueSuffix)
@@ -76,5 +92,10 @@ WHERE {
     AS ?stmtRefTemplate
   )
 
-  BIND(CONCAT("urn:wikibase:item:", STR(?valueNodeTemplate)) AS ?valueTemplate)
+  BIND(
+    IF(BOUND(?valueNodeId),
+      CONCAT("urn:wikibase:itemIRI:", STR(?valueNodeId)),
+      CONCAT("urn:wikibase:item:",    STR(?valueNodeTemplate))
+    ) AS ?valueTemplate
+  )
 }
