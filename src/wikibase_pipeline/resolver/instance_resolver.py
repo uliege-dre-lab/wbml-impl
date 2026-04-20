@@ -325,11 +325,16 @@ def resolve_instances(
 
     for item_iri in _collect_instance_iris(data_graph):
         iri_str = str(item_iri)
+        already_resolved = iri_str in lookup["items"]
+
         meta = _collect_instance_metadata(
-            data_graph, item_iri, language_resolver, verbose=verbose
+            data_graph,
+            item_iri,
+            language_resolver,
+            verbose=0 if already_resolved else verbose,
         )
 
-        if iri_str not in lookup["items"]:
+        if not already_resolved:
             qid = _resolve_one_instance(
                 item_iri, meta, wikibase_api, language_resolver.language, verbose
             )
