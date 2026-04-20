@@ -25,6 +25,9 @@ STATEMENT_PREFIX = "urn:wikibase:statement:"
 QUALIFIER_PREFIX = "urn:wikibase:qualifier:"
 PROPERTY_PREFIX = "urn:wikibase:property:"
 REFERENCE_PREFIX = "urn:wikibase:reference:"
+PROPERTY_IRI_PREFIX = "urn:wikibase:propertyIRI:"
+QUALIFIER_IRI_PREFIX = "urn:wikibase:qualifierIRI:"
+REFERENCE_IRI_PREFIX = "urn:wikibase:referenceIRI:"
 
 
 def _push_instance_of_claims(
@@ -245,12 +248,14 @@ def _push_qualifiers(
 
         for pred, obj in data_graph.predicate_objects(stmt_node):
             pred_str = str(pred)
-            if not pred_str.startswith(QUALIFIER_PREFIX):
+            if pred_str.startswith(QUALIFIER_PREFIX):
+                prop_key = pred_str[len(QUALIFIER_PREFIX) :]
+                prop_iri_str = PROPERTY_PREFIX + prop_key
+            elif pred_str.startswith(QUALIFIER_IRI_PREFIX):
+                prop_key = pred_str[len(QUALIFIER_IRI_PREFIX) :]
+                prop_iri_str = PROPERTY_IRI_PREFIX + prop_key
+            else:
                 continue
-
-            # property lookup
-            prop_key = pred_str[len(QUALIFIER_PREFIX) :]
-            prop_iri_str = PROPERTY_PREFIX + prop_key
 
             prop_entry = lookup.get("properties", {}).get(prop_iri_str)
             if prop_entry is None:
@@ -396,11 +401,14 @@ def _push_reference_records(
 
         for pred, obj in data_graph.predicate_objects(ref_node):
             pred_str = str(pred)
-            if not pred_str.startswith(REFERENCE_PREFIX):
+            if pred_str.startswith(REFERENCE_PREFIX):
+                prop_key = pred_str[len(REFERENCE_PREFIX) :]
+                prop_iri_str = PROPERTY_PREFIX + prop_key
+            elif pred_str.startswith(REFERENCE_IRI_PREFIX):
+                prop_key = pred_str[len(REFERENCE_IRI_PREFIX) :]
+                prop_iri_str = PROPERTY_IRI_PREFIX + prop_key
+            else:
                 continue
-
-            prop_key = pred_str[len(REFERENCE_PREFIX) :]
-            prop_iri_str = PROPERTY_PREFIX + prop_key
 
             prop_entry = lookup.get("properties", {}).get(prop_iri_str)
             if prop_entry is None:

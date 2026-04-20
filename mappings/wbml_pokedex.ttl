@@ -47,11 +47,6 @@ wbml:SpecialAttack a rdf:Property ;
   rdfs:label "Special Attack"@en ;
   wbml:propertyType wbml:quantity .
 
-wbml:Height a rdf:Property ;
-  wbml:nodeTemplate "Height" ;
-  rdfs:label "Height"@en ;
-  wbml:propertyType wbml:string .
-
 wbml:Gender a rdf:Property ;
   wbml:nodeTemplate "Gender" ;
   rdfs:label "Gender"@en ;
@@ -176,7 +171,7 @@ wbml:StatedOn a rdf:Property ;
   ] ;
 
   wbml:predicateObjectMap [
-    wbml:predicate wbml:Height ;
+    wbml:predicateId "P56" ;
     wbml:objectMap [
       wbml:reference "profile.height" ;
       wbml:language "en"
@@ -327,7 +322,7 @@ wbml:StatedOn a rdf:Property ;
 
   wbml:subjectMap [
     wbml:nodeTemplate "Ability_{ability_name}" ;
-    wbml:class wbml:AbilityClass
+    wbml:classId "Q6997"
   ] ;
 
   wbml:predicateObjectMap [

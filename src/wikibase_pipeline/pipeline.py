@@ -7,6 +7,7 @@ from .config import load_env_config
 from .lookup_io import load_lookup, save_lookup
 from .populator import populate
 from .resolver.builtins_properties import search_builtins_properties
+from .resolver.direct_iri_resolver import resolve_direct_iris
 from .resolver.instance_resolver import resolve_instances
 from .resolver.language_resolver import LanguageResolver
 from .resolver.schema_classes_resolver import resolve_schema_classes
@@ -63,6 +64,12 @@ def update(mapping_file_path: str | Path) -> None:
 
     g_objects = Graph()
     g_objects.parse(output_value, format="nt")
+
+    inform(
+        "Resolving direct Wikibase IDs (wbml:classId / wbml:predicateId)",
+        cfg["wikibase"]["verbose"],
+    )
+    resolve_direct_iris(g_objects, lookup, wb_api, cfg["wikibase"]["verbose"])
 
     inform("Initialize instance metadata", cfg["wikibase"]["verbose"])
     resolve_instances(

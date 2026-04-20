@@ -10,18 +10,29 @@ CONSTRUCT {
 }
 WHERE {
   ?tm wbml:subjectMap ?sm .
-  ?sm wbml:nodeTemplate ?nodeTemplate .
+  OPTIONAL { ?sm wbml:nodeTemplate ?nodeTemplate . }
+  OPTIONAL { ?sm wbml:nodeId ?nodeId . }
+  FILTER(BOUND(?nodeTemplate) || BOUND(?nodeId))
 
-  OPTIONAL {
-    ?sm wbml:class ?classNode .
-
-    OPTIONAL { ?classNode wbml:nodeTemplate ?classExplicitKey . }
-
-    BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
-
-    BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
+OPTIONAL {
+    {
+      ?sm wbml:class ?classNode .
+      OPTIONAL { ?classNode wbml:nodeTemplate ?classExplicitKey . }
+      BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
+      BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
+    }
+    UNION
+    {
+      ?sm wbml:classId ?classIdStr .
+      BIND(IRI(CONCAT("urn:wikibase:itemIRI:", STR(?classIdStr))) AS ?classIRI)
+    }
   }
 
   BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
-  BIND(CONCAT("urn:wikibase:item:", STR(?nodeTemplate)) AS ?template)
+  BIND(
+    IF(BOUND(?nodeId),
+      CONCAT("urn:wikibase:itemIRI:", STR(?nodeId)),
+      CONCAT("urn:wikibase:item:", STR(?nodeTemplate))
+    ) AS ?template
+  )
 }

@@ -35,17 +35,26 @@ WHERE {
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
   OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
+  OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+
+  BIND(COALESCE(?mainValueNodeTemplate, ?mainValueNodeId) AS ?mainValueNode)
 
   ?rmap wbint:refId ?refId ;
         wbml:referenceRecord ?rrec .
 
-  ?rrec wbml:predicate ?refPredicateNode ;
-        wbml:objectMap ?rom .
+  ?rrec wbml:objectMap ?rom .
+
+  OPTIONAL { ?rrec wbml:predicate ?refPredicateNode . }
+  OPTIONAL { ?rrec wbml:predicateId ?refPredicateId . }
+  FILTER(BOUND(?refPredicateNode) || BOUND(?refPredicateId))
 
   OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refExplicitKey . }
-
-  FILTER(isBlank(?refPredicateNode) || STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#"))
+  FILTER(
+    !BOUND(?refPredicateNode) ||
+    isBlank(?refPredicateNode) ||
+    STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#")
+  )
 
   ?rom wbml:parentTriplesMap ?parentTM .
 
@@ -62,16 +71,19 @@ WHERE {
   }
 
   BIND(
-    COALESCE(
-      IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
-      IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
+    IF(BOUND(?refPredicateId),
+      IRI(CONCAT("urn:wikibase:referenceIRI:", STR(?refPredicateId))),
+      COALESCE(
+        IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
+        IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
+      )
     ) AS ?refPredIRI
   )
 
 
   BIND(
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
-    IF(BOUND(?mainValueNodeTemplate), CONCAT("_", STR(?mainValueNodeTemplate)),
+    IF(BOUND(?mainValueNode), CONCAT("_", STR(?mainValueNode)),
     IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
     "")))
   AS ?valueSuffix)
