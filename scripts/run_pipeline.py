@@ -1,4 +1,4 @@
 from wikibase_pipeline.pipeline import update
 
 if __name__ == "__main__":
-    update("mappings/wbml_pokedex.ttl")
+    update("data/mappings/wbml_pokemon.ttl")
