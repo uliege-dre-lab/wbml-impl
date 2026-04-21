@@ -14,8 +14,8 @@ CONSTRUCT {
 }
 WHERE {
   ?tm wbml:predicateObjectMap ?pom .
-  ?pom wbml:predicate skos:altLabel ;
-       wbml:objectMap ?wom .
+  ?pom wbml:propertyMap skos:altLabel ;
+       wbml:valueMap ?wom .
 
   ?wom wbml:reference ?reference .
   OPTIONAL { ?wom wbml:language ?language . }

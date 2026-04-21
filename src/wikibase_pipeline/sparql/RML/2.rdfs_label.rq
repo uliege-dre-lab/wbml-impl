@@ -14,8 +14,8 @@ CONSTRUCT {
 }
 WHERE {
   ?tm wbml:predicateObjectMap ?pom .
-  ?pom wbml:predicate rdfs:label ;
-       wbml:objectMap ?wom .
+  ?pom wbml:propertyMap rdfs:label ;
+       wbml:valueMap ?wom .
 
   ?wom wbml:reference ?reference .
   OPTIONAL { ?wom wbml:language ?language . }

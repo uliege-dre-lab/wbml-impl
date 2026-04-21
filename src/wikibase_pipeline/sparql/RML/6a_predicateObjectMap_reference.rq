@@ -43,19 +43,19 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbint:statID ?statID ;
-      wbml:objectMap ?wom .
+  ?pom wbml:statID ?statID ;
+       wbml:valueMap ?wom .
 
-  OPTIONAL { ?pom wbml:predicate ?predicateNode . }
-  OPTIONAL { ?pom wbml:predicateId ?predicateIdStr . }
-  FILTER(BOUND(?predicateNode) || BOUND(?predicateIdStr))
+  OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }
+  OPTIONAL { ?pom wbml:propertyId ?propertyIdStr . }
+  FILTER(BOUND(?propertyNode) || BOUND(?propertyIdStr))
 
   ?wom wbml:reference ?reference .
   OPTIONAL { ?wom wbml:datatype ?datatype . }
   OPTIONAL { ?wom wbml:language ?language . }
-  OPTIONAL { ?predicateNode wbml:nodeTemplate ?predExplicitKey . }
+  OPTIONAL { ?propertyNode wbml:nodeTemplate ?propExplicitKey . }
 
-  FILTER(!BOUND(?predicateNode) || ?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
+  FILTER(!BOUND(?propertyNode) || ?propertyNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
@@ -70,17 +70,17 @@ WHERE {
   BIND(IRI(CONCAT(STR(?valuePOM), "/om")) AS ?valueOM)
 
   BIND(
-    IF(BOUND(?predicateIdStr),
-      IRI(CONCAT("urn:wikibase:propertyIRI:", STR(?predicateIdStr))),
+    IF(BOUND(?propertyIdStr),
+      IRI(CONCAT("urn:wikibase:propertyIRI:", STR(?propertyIdStr))),
       COALESCE(
-        IRI(CONCAT("urn:wikibase:property:", ?predExplicitKey)),
+        IRI(CONCAT("urn:wikibase:property:", ?propExplicitKey)),
         IF(
-          STRSTARTS(STR(?predicateNode), "https://example.org/wbml#"),
-          IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?predicateNode), "#"))),
-          ?predicateNode
+          STRSTARTS(STR(?propertyNode), "https://example.org/wbml#"),
+          IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propertyNode), "#"))),
+          ?propertyNode
         )
       )
-    ) AS ?predIRI
+    ) AS ?propIRI
   )
 
   BIND(

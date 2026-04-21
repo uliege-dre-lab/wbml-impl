@@ -28,20 +28,20 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbint:statID ?statID ;
-       wbml:objectMap ?wom ;
+  ?pom wbml:statID ?statID ;
+       wbml:valueMap ?wom ;
        wbml:rank ?rankIRI .
 
-  OPTIONAL { ?pom wbml:predicate ?predicateNode . }
-  OPTIONAL { ?pom wbml:predicateId ?predicateIdStr . }
-  FILTER(BOUND(?predicateNode) || BOUND(?predicateIdStr))
+  OPTIONAL { ?pom wbml:prop ?propertyNode . }
+  OPTIONAL { ?pom wbml:propertyId ?propertyIdStr . }
+  FILTER(BOUND(?propertyNode) || BOUND(?propertyIdStr))
 
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
   OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
-  FILTER(!BOUND(?predicateNode) || ?predicateNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
+  FILTER(!BOUND(?propertyNode) || ?propertyNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
 

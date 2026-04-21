@@ -39,9 +39,9 @@ wbml:PredicateSpec
     rdfs:label "Predicate Specification"@en ;
     rdfs:comment "Describes a Wikibase property to be created or referenced, including its key, labels, descriptions, and datatype."@en .
 
-wbml:ObjectMap
+wbml:ValueMap
     a owl:Class ;
-    rdfs:label "Object Map"@en ;
+    rdfs:label "Value Map"@en ;
     rdfs:comment "Describes how to generate the value for a statement, qualifier, or reference."@en .
 
 wbml:QualifierMap
@@ -108,14 +108,14 @@ wbml:nodeTemplate
     a owl:DatatypeProperty ;
     rdfs:label "node template"@en ;
     rdfs:comment "A template string (with {variable} placeholders) used to construct the Wikibase item identifier."@en ;
-    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ObjectMap) ] ;
+    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
     rdfs:range xsd:string .
 
 wbml:class
     a owl:ObjectProperty ;
     rdfs:label "class"@en ;
     rdfs:comment "Specifies the Wikibase class that the generated item should be an instance of."@en ;
-    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ObjectMap) ] ;
+    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
     rdfs:range wbml:ClassSpec .
 
 #################################################################
@@ -158,18 +158,18 @@ wbml:predicateObjectMap
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:PredicateObjectMap .
 
-wbml:predicate
+wbml:propertyMap
     a owl:ObjectProperty ;
-    rdfs:label "predicate"@en ;
+    rdfs:label "property map"@en ;
     rdfs:comment "The property of a statement, qualifier, or reference. Can be an existing RDF property or a blank-node PredicateSpec."@en ;
     rdfs:domain [ owl:unionOf (wbml:PredicateObjectMap wbml:QualifierMap wbml:ReferenceRecord) ] .
 
-wbml:objectMap
+wbml:valueMap
     a owl:ObjectProperty ;
-    rdfs:label "object map"@en ;
+    rdfs:label "value map"@en ;
     rdfs:comment "Describes how to generate the value of a statement, qualifier, or reference."@en ;
     rdfs:domain [ owl:unionOf (wbml:PredicateObjectMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
-    rdfs:range wbml:ObjectMap .
+    rdfs:range wbml:ValueMap .
 
 wbml:rank
     a owl:ObjectProperty ;
@@ -242,40 +242,40 @@ wbml:reference
     a owl:DatatypeProperty ;
     rdfs:label "reference"@en ;
     rdfs:comment "A JSONPath or SQL column reference to the source data field whose value populates the object."@en ;
-    rdfs:domain wbml:ObjectMap ;
+    rdfs:domain wbml:ValueMap ;
     rdfs:range xsd:string .
 
 wbml:constant
     a owl:DatatypeProperty ;
     rdfs:label "constant"@en ;
     rdfs:comment "A literal constant value to use as the object, independent of the source data."@en ;
-    rdfs:domain wbml:ObjectMap .
+    rdfs:domain wbml:ValueMap .
 
 wbml:language
     a owl:DatatypeProperty ;
     rdfs:label "language"@en ;
     rdfs:comment "BCP 47 language tag to attach to the generated string literal."@en ;
-    rdfs:domain wbml:ObjectMap ;
+    rdfs:domain wbml:ValueMap ;
     rdfs:range xsd:string .
 
 wbml:datatype
     a owl:ObjectProperty ;
     rdfs:label "datatype"@en ;
     rdfs:comment "The XSD datatype to use when constructing the typed literal for the object."@en ;
-    rdfs:domain wbml:ObjectMap .
+    rdfs:domain wbml:ValueMap .
 
 wbml:parentTriplesMap
     a owl:ObjectProperty ;
     rdfs:label "parent triples map"@en ;
     rdfs:comment "References another triples map to join with, creating an item-valued object via a foreign-key relationship."@en ;
-    rdfs:domain wbml:ObjectMap ;
+    rdfs:domain wbml:ValueMap ;
     rdfs:range rml:TriplesMap .
 
 wbml:joinCondition
     a owl:ObjectProperty ;
     rdfs:label "join condition"@en ;
     rdfs:comment "Specifies the child and parent fields to use when joining with a parent triples map."@en ;
-    rdfs:domain wbml:ObjectMap ;
+    rdfs:domain wbml:ValueMap ;
     rdfs:range wbml:JoinCondition .
 
 #################################################################

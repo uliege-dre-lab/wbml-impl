@@ -28,7 +28,7 @@ WHERE {
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
   ?pom wbint:statID ?statID ;
-       wbml:objectMap ?wom ;
+       wbml:valueMap ?wom ;
        wbml:referenceMap ?rmap .
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
