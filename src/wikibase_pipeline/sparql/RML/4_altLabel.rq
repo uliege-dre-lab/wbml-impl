@@ -13,7 +13,7 @@ CONSTRUCT {
   ?objectMap rr:language ?language .
 }
 WHERE {
-  ?tm wbml:predicateObjectMap ?pom .
+  ?tm wbml:statementMap ?pom .
   ?pom wbml:propertyMap skos:altLabel ;
        wbml:valueMap ?wom .
 

@@ -194,37 +194,37 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "name.english" ; wbml:language "en" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "name.japanese" ; wbml:language "ja" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "name.chinese" ; wbml:language "zh" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "name.french" ; wbml:language "fr" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:comment ;
     wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:PokedexNumber ;
     wbml:valueMap [ wbml:reference "id" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasSpecies ;
     wbml:rank wbml:PreferredRank ;
     wbml:valueMap [
@@ -232,32 +232,32 @@ wbml:HasItemCategory a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HP ;
     wbml:valueMap [ wbml:reference "base.HP" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Attack ;
     wbml:valueMap [ wbml:reference "base.Attack" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Defense ;
     wbml:valueMap [ wbml:reference "base.Defense" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:SpecialAttack ;
     wbml:valueMap [ wbml:reference "base.Sp. Attack" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:SpecialDefense ;
     wbml:valueMap [ wbml:reference "base.Sp. Defense" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap [
       a rdf:Property ;
       wbml:nodeTemplate "Speed" ;
@@ -268,22 +268,22 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:valueMap [ wbml:reference "base.Speed" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyId "P56" ;
     wbml:valueMap [ wbml:reference "profile.height" ; wbml:datatype xsd:string ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Weight ;
     wbml:valueMap [ wbml:reference "profile.weight" ; wbml:datatype xsd:string ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Gender ;
     wbml:valueMap [ wbml:reference "profile.gender" ; wbml:datatype xsd:string ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasImage ;
     wbml:valueMap [ wbml:reference "image.sprite" ; wbml:datatype xsd:anyURI ] ;
     wbml:qualifierMap [
@@ -292,7 +292,7 @@ wbml:HasItemCategory a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasImage ;
     wbml:valueMap [ wbml:reference "image.thumbnail" ; wbml:datatype xsd:anyURI ] ;
     wbml:qualifierMap [
@@ -301,7 +301,7 @@ wbml:HasItemCategory a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasImage ;
     wbml:valueMap [ wbml:reference "image.hires" ; wbml:datatype xsd:anyURI ] ;
     wbml:qualifierMap [
@@ -328,7 +328,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:PokemonHasType ;
     wbml:valueMap [
       wbml:nodeTemplate "Type_{type_name}" ;
@@ -353,7 +353,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasEggGroup ;
     wbml:valueMap [
       wbml:nodeTemplate "EggGroup_{egg_group}"
@@ -380,7 +380,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasAbility ;
     wbml:valueMap [
       wbml:nodeTemplate "Ability_{ability_name}"
@@ -445,7 +445,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:EvolvesFrom ;
     wbml:valueMap [
       wbml:nodeTemplate "Pokemon_{prev_id}"
@@ -479,7 +479,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:EvolvesTo ;
     wbml:valueMap [
       wbml:nodeTemplate "Pokemon_{next_id}"
@@ -511,7 +511,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "species" ; wbml:language "en" ]
   ] .
@@ -534,7 +534,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:AbilityClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "ability_name" ; wbml:language "en" ]
   ] .
@@ -556,7 +556,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:EggGroupClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "egg_group" ; wbml:language "en" ]
   ] .
@@ -579,47 +579,47 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:MoveClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "ename" ; wbml:language "en" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "jname" ; wbml:language "ja" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "cname" ; wbml:language "zh" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Accuracy ;
     wbml:valueMap [ wbml:reference "accuracy" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Power ;
     wbml:valueMap [ wbml:reference "power" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:PP ;
     wbml:valueMap [ wbml:reference "pp" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:MoveCategory ;
     wbml:valueMap [ wbml:reference "category" ; wbml:datatype xsd:string ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:TMNumber ;
     wbml:valueMap [ wbml:reference "tm" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:MoveHasType ;
     wbml:valueMap [
       wbml:nodeTemplate "Type_{type}"
@@ -644,17 +644,17 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:TypeClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "english" ; wbml:language "en" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "japanese" ; wbml:language "ja" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "chinese" ; wbml:language "zh" ]
   ] .
@@ -677,7 +677,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:TypeClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:EffectiveAgainst ;
     wbml:valueMap [
       wbml:nodeTemplate "Type_{target_type}"
@@ -702,7 +702,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:TypeClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:IneffectiveAgainst ;
     wbml:valueMap [
       wbml:nodeTemplate "Type_{target_type}"
@@ -727,7 +727,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:TypeClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:NoEffectAgainst ;
     wbml:valueMap [
       wbml:nodeTemplate "Type_{target_type}"
@@ -759,32 +759,32 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:ItemClass
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "name_en" ; wbml:language "en" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "name_ja" ; wbml:language "ja" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "name_zh" ; wbml:language "zh" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:comment ;
     wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:ItemNumber ;
     wbml:valueMap [ wbml:reference "id" ; wbml:datatype xsd:integer ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasItemCategory ;
     wbml:valueMap [
         wbml:parentTriplesMap <#ItemCategoryMapping> ;
@@ -818,7 +818,7 @@ wbml:HasItemCategory a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [ wbml:reference "type" ; wbml:language "en" ]
   ] .

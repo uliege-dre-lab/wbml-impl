@@ -94,7 +94,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [
     wbml:reference "name.english" ;
@@ -102,7 +102,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [
     wbml:reference "name.japanese" ;
@@ -110,7 +110,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [
     wbml:reference "name.chinese" ;
@@ -118,7 +118,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [
     wbml:reference "name.french" ;
@@ -134,7 +134,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap [
       a rdf:Property ;
       wbml:nodeTemplate "HasSpecies" ;
@@ -148,7 +148,7 @@ wbml:StatedOn a rdf:Property ;
     wbml:rank wbml:PreferredRank ;
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:comment;
     wbml:valueMap [
       wbml:reference "description"
@@ -279,14 +279,14 @@ wbml:StatedOn a rdf:Property ;
     wbml:nodeTemplate "Species_{species}" ;
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [
       wbml:reference "species"
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdf:type ;
     wbml:valueMap [
       wbml:nodeTemplate "Species"
@@ -324,7 +324,7 @@ wbml:StatedOn a rdf:Property ;
     wbml:classId "Q6997"
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap rdfs:label ;
     wbml:valueMap [
       wbml:reference "ability_name"

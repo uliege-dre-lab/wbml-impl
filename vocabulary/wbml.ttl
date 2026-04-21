@@ -29,9 +29,9 @@ wbml:ClassSpec
     rdfs:label "Class Specification"@en ;
     rdfs:comment "Describes a Wikibase class to be created or referenced, including its key, labels, and descriptions."@en .
 
-wbml:PredicateObjectMap
+wbml:StatementMap
     a owl:Class ;
-    rdfs:label "Predicate-Object Map"@en ;
+    rdfs:label "Statement Map"@en ;
     rdfs:comment "Maps a source data field to a Wikibase statement (property + value), optionally with qualifiers, references, and a rank."@en .
 
 wbml:PredicateSpec
@@ -91,7 +91,7 @@ wbml:DeprecatedRank
 wbml:Item
     a owl:NamedIndividual ;
     rdfs:label "Item"@en ;
-    rdfs:comment "Used as the value of wbml:predicateType to indicate that the property links to a Wikibase item."@en .
+    rdfs:comment "Used as the value of wbml:propertyType to indicate that the property links to a Wikibase item."@en .
 
 #################################################################
 # Item map properties
@@ -148,68 +148,68 @@ wbml:classAlias
     rdfs:domain wbml:ClassSpec .
 
 #################################################################
-# Predicate-object map properties
+# Statement map properties
 #################################################################
 
-wbml:predicateObjectMap
+wbml:statementMap
     a owl:ObjectProperty ;
-    rdfs:label "predicate-object map"@en ;
-    rdfs:comment "Attaches a predicate-object map to a triples map, defining a Wikibase statement to generate."@en ;
+    rdfs:label "statement map"@en ;
+    rdfs:comment "Attaches a statement map to a triples map, defining a Wikibase statement to generate."@en ;
     rdfs:domain rml:TriplesMap ;
-    rdfs:range wbml:PredicateObjectMap .
+    rdfs:range wbml:StatementMap .
 
 wbml:propertyMap
     a owl:ObjectProperty ;
     rdfs:label "property map"@en ;
     rdfs:comment "The property of a statement, qualifier, or reference. Can be an existing RDF property or a blank-node PredicateSpec."@en ;
-    rdfs:domain [ owl:unionOf (wbml:PredicateObjectMap wbml:QualifierMap wbml:ReferenceRecord) ] .
+    rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] .
 
 wbml:valueMap
     a owl:ObjectProperty ;
     rdfs:label "value map"@en ;
     rdfs:comment "Describes how to generate the value of a statement, qualifier, or reference."@en ;
-    rdfs:domain [ owl:unionOf (wbml:PredicateObjectMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
+    rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
     rdfs:range wbml:ValueMap .
 
 wbml:rank
     a owl:ObjectProperty ;
     rdfs:label "rank"@en ;
     rdfs:comment "The Wikibase rank to assign to a generated statement."@en ;
-    rdfs:domain wbml:PredicateObjectMap ;
+    rdfs:domain wbml:StatementMap ;
     rdfs:range wbml:Rank .
 
 wbml:qualifierMap
     a owl:ObjectProperty ;
     rdfs:label "qualifier map"@en ;
     rdfs:comment "Attaches a qualifier map to a predicate-object map."@en ;
-    rdfs:domain wbml:PredicateObjectMap ;
+    rdfs:domain wbml:StatementMap ;
     rdfs:range wbml:QualifierMap .
 
 wbml:referenceMap
     a owl:ObjectProperty ;
     rdfs:label "reference map"@en ;
     rdfs:comment "Attaches a reference map to a predicate-object map, grouping reference records into one Wikibase reference block."@en ;
-    rdfs:domain wbml:PredicateObjectMap ;
+    rdfs:domain wbml:StatementMap ;
     rdfs:range wbml:ReferenceMap .
 
 #################################################################
 # Predicate specification properties
 #################################################################
 
-wbml:predicateKey
+wbml:propertyKey
     a owl:DatatypeProperty ;
     rdfs:label "predicate key"@en ;
     rdfs:comment "A unique string identifier for a Wikibase property, used to look up or create it."@en ;
     rdfs:domain wbml:PredicateSpec ;
     rdfs:range xsd:string .
 
-wbml:predicateLabel
+wbml:propertyLabel
     a owl:DatatypeProperty ;
     rdfs:label "predicate label"@en ;
     rdfs:comment "A human-readable label for the Wikibase property, optionally language-tagged."@en ;
     rdfs:domain wbml:PredicateSpec .
 
-wbml:predicateDescription
+wbml:propertyDescription
     a owl:DatatypeProperty ;
     rdfs:label "predicate description"@en ;
     rdfs:comment "A human-readable description for the Wikibase property, optionally language-tagged."@en ;
@@ -221,18 +221,11 @@ wbml:predicateAlias
     rdfs:comment "An alternative label (alias) for the Wikibase property, optionally language-tagged."@en ;
     rdfs:domain wbml:PredicateSpec .
 
-wbml:predicateType
-    a owl:ObjectProperty ;
-    rdfs:label "predicate type"@en ;
-    rdfs:comment "The Wikibase datatype of the property. Use wbml:Item for item-valued properties, or an XSD datatype for literal-valued properties."@en ;
-    rdfs:domain wbml:PredicateSpec .
-
 wbml:propertyType
     a owl:ObjectProperty ;
     rdfs:label "property type"@en ;
-    rdfs:comment "Alias for wbml:predicateType used in schema-level queries."@en ;
-    rdfs:domain wbml:PredicateSpec ;
-    owl:equivalentProperty wbml:predicateType .
+    rdfs:comment "The Wikibase datatype of the property. Use wbml:Item for item-valued properties, or an XSD datatype for literal-valued properties."@en ;
+    rdfs:domain wbml:PredicateSpec .
 
 #################################################################
 # Object map properties
@@ -336,7 +329,7 @@ wbml:statID
     a owl:DatatypeProperty ;
     rdfs:label "statement ID"@en ;
     rdfs:comment "An internally assigned integer identifier for a predicate-object map, used during RML conversion."@en ;
-    rdfs:domain wbml:PredicateObjectMap ;
+    rdfs:domain wbml:StatementMap ;
     rdfs:range xsd:integer .
 
 wbml:refId
