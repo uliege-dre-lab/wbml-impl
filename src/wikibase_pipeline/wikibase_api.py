@@ -322,6 +322,14 @@ class WikibaseAPI:
             if result.get("match", {}).get("text", "").strip() == needle
         ]
 
+    def get_entity_claims(self, qid: str) -> dict:
+        """
+        Return all claims for an entity as a dict keyed by property ID.
+        Each value is the list of claim dicts as returned by wbgetentities.
+        """
+        entity = self.get_entity(qid, props="claims")
+        return entity.get("claims", {})
+
     def get_entity(
         self,
         qid: str,

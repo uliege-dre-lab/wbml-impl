@@ -8,21 +8,20 @@ def load_lookup(path: str | Path, verbose) -> dict:
     path = Path(path)
 
     if not path.exists():
-        return {"items": {}, "properties": {}, "statements": {}, "referenceNodes": {}}
+        return {"items": {}, "properties": {}, "statements": {}, "references": {}}
 
     inform(f"Loading lookup from {path}", verbose)
 
     data = json.loads(path.read_text(encoding="utf-8"))
 
-    # ensure structure
     for key in ("items", "properties"):
         if key not in data:
             warn(f"Missing '{key}' section in lookup, initializing it.", verbose)
             data[key] = {}
 
-    for key in ("statements", "referenceNodes"):
-        if key not in data:
-            data[key] = {}
+    # statements and references are rebuilt each run from Wikibase
+    data["statements"] = {}
+    data["references"] = {}
 
     inform("Lookup successfully loaded.", verbose)
 
@@ -37,12 +36,12 @@ def save_lookup(path: str | Path, lookup: dict, verbose) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
     persisted_lookup = {}
-    for key in {"items", "properties"}:
+    for key in ("items", "properties"):
         value = lookup.get(key, {})
         if not isinstance(value, dict):
             raise ValueError(
                 f"Invalid lookup structure: section '{key}' "
-                f"values must be a dict, got {type(value).__name__}."
+                f"must be a dict, got {type(value).__name__}."
             )
         persisted_lookup[key] = value
 
