@@ -194,28 +194,23 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "name.english" ; wbml:language "en" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "name.japanese" ; wbml:language "ja" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "name.chinese" ; wbml:language "zh" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "name.french" ; wbml:language "fr" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:comment ;
+  wbml:description [
     wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
   ] ;
 
@@ -534,8 +529,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:AbilityClass
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "ability_name" ; wbml:language "en" ]
   ] .
 
@@ -579,18 +573,15 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:MoveClass
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "ename" ; wbml:language "en" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "jname" ; wbml:language "ja" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "cname" ; wbml:language "zh" ]
   ] ;
 
@@ -644,18 +635,15 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:TypeClass
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "english" ; wbml:language "en" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "japanese" ; wbml:language "ja" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "chinese" ; wbml:language "zh" ]
   ] .
 
@@ -759,23 +747,19 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:ItemClass
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "name_en" ; wbml:language "en" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "name_ja" ; wbml:language "ja" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "name_zh" ; wbml:language "zh" ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:comment ;
+  wbml:description [
     wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
   ] ;
 
@@ -818,7 +802,6 @@ wbml:HasItemCategory a rdf:Property ;
     ]
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "type" ; wbml:language "en" ]
   ] .

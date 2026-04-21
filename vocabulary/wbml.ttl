@@ -158,6 +158,27 @@ wbml:statementMap
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:StatementMap .
 
+wbml:label
+    a owl:ObjectProperty ;
+    rdfs:label "label"@en ;
+    rdfs:comment "Relating a label to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:ValueMap .
+
+wbml:description
+    a owl:ObjectProperty ;
+    rdfs:label "description"@en ;
+    rdfs:comment "Relating a description to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:ValueMap .
+
+wbml:alias
+    a owl:ObjectProperty ;
+    rdfs:label "alias"@en ;
+    rdfs:comment "Relating an alias to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:ValueMap .
+
 wbml:propertyMap
     a owl:ObjectProperty ;
     rdfs:label "property map"@en ;

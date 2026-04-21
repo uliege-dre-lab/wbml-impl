@@ -13,9 +13,8 @@ CONSTRUCT {
   ?objectMap rr:language ?language .
 }
 WHERE {
-  ?tm wbml:statementMap ?pom .
-  ?pom wbml:propertyMap rdfs:label ;
-       wbml:valueMap ?wom .
+  ?tm wbml:label ?pom .
+  ?pom wbml:valueMap ?wom .
 
   ?wom wbml:reference ?reference .
   OPTIONAL { ?wom wbml:language ?language . }
