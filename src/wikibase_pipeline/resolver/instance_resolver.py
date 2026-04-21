@@ -35,6 +35,7 @@ def _collect_instance_metadata(
     item_iri: URIRef,
     language_resolver: LanguageResolver,
     verbose: int,
+    already_resolved: bool = False,
 ) -> dict:
     labels: dict[str, str] = {}
     aliases: dict[str, list[str]] = defaultdict(list)
@@ -107,7 +108,7 @@ def _collect_instance_metadata(
 
     # Fallback if still no labels: promote an alias (default lang first),
     # else IRI suffix
-    if not labels:
+    if not labels and not already_resolved:
         fallback_lang = language_resolver.language
         promoted = False
         for lang in [fallback_lang] + [
@@ -331,7 +332,8 @@ def resolve_instances(
             data_graph,
             item_iri,
             language_resolver,
-            verbose=0 if already_resolved else verbose,
+            verbose=verbose,
+            already_resolved=already_resolved,
         )
 
         if not already_resolved:

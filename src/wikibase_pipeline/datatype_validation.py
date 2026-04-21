@@ -31,7 +31,7 @@ def value_to_wikibase_datatype(value) -> str | None:
       Other URIRef             -> "url"
       Language-tagged Literal  -> "monolingualtext"
       Typed Literal            -> mapped via XSD_TO_WIKIBASE (None if unsupported type)
-      Plain Literal            -> None (cannot be inferred)
+      Plain Literal            -> "string" (cannot be inferred)
     """
     if isinstance(value, URIRef):
         return "wikibase-item" if str(value).startswith(ITEM_PREFIX) else "url"
@@ -41,7 +41,7 @@ def value_to_wikibase_datatype(value) -> str | None:
             return "monolingualtext"
         if value.datatype:
             return XSD_TO_WIKIBASE.get(str(value.datatype))
-        return None  # plain literal without datatype or language
+        return "string"  # plain literal without datatype or language
 
     return None
 
