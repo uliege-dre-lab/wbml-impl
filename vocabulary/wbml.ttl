@@ -19,10 +19,10 @@
 # Classes
 #################################################################
 
-wbml:SubjectMap
+wbml:ItemMap
     a owl:Class ;
-    rdfs:label "Subject Map"@en ;
-    rdfs:comment "Describes how to generate the subject (Wikibase item) for each row of input data."@en .
+    rdfs:label "Item Map"@en ;
+    rdfs:comment "Describes how to generate the Wikibase item (subject) for each row of input data."@en .
 
 wbml:ClassSpec
     a owl:Class ;
@@ -94,28 +94,28 @@ wbml:Item
     rdfs:comment "Used as the value of wbml:predicateType to indicate that the property links to a Wikibase item."@en .
 
 #################################################################
-# Subject map properties
+# Item map properties
 #################################################################
 
-wbml:subjectMap
+wbml:itemMap
     a owl:ObjectProperty ;
-    rdfs:label "subject map"@en ;
-    rdfs:comment "Attaches a subject map to a triples map, defining how the Wikibase item identifier is generated."@en ;
+    rdfs:label "item map"@en ;
+    rdfs:comment "Attaches an item map to a triples map, defining how the Wikibase item identifier is generated."@en ;
     rdfs:domain rml:TriplesMap ;
-    rdfs:range wbml:SubjectMap .
+    rdfs:range wbml:ItemMap .
 
 wbml:nodeTemplate
     a owl:DatatypeProperty ;
     rdfs:label "node template"@en ;
     rdfs:comment "A template string (with {variable} placeholders) used to construct the Wikibase item identifier."@en ;
-    rdfs:domain [ owl:unionOf (wbml:SubjectMap wbml:ObjectMap) ] ;
+    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ObjectMap) ] ;
     rdfs:range xsd:string .
 
 wbml:class
     a owl:ObjectProperty ;
     rdfs:label "class"@en ;
     rdfs:comment "Specifies the Wikibase class that the generated item should be an instance of."@en ;
-    rdfs:domain [ owl:unionOf (wbml:SubjectMap wbml:ObjectMap) ] ;
+    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ObjectMap) ] ;
     rdfs:range wbml:ClassSpec .
 
 #################################################################

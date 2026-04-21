@@ -9,7 +9,7 @@ CONSTRUCT {
               rr:class ?classIRI .
 }
 WHERE {
-  ?tm wbml:subjectMap ?sm .
+  ?tm wbml:itemMap ?sm .
   OPTIONAL { ?sm wbml:nodeTemplate ?nodeTemplate . }
   OPTIONAL { ?sm wbml:nodeId ?nodeId . }
   FILTER(BOUND(?nodeTemplate) || BOUND(?nodeId))

@@ -24,7 +24,7 @@ CONSTRUCT {
 WHERE {
   ?tm a rr:TriplesMap ;
       rml:logicalSource ?ls ;
-      wbml:subjectMap ?sm ;
+      wbml:itemMap ?sm ;
       wbml:predicateObjectMap ?pom .
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
