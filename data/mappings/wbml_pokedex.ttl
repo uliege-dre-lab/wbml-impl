@@ -83,7 +83,7 @@ wbml:StatedOn a rdf:Property ;
     rml:iterator "$[*]"
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:class [
       a rdfs:Class ;
@@ -180,7 +180,6 @@ wbml:StatedOn a rdf:Property ;
 
   wbml:predicateObjectMap [
     wbml:propertyMap wbml:Gender ;
-    wbml:predicateType wbml:string ;
     wbml:valueMap [
       wbml:reference "profile.gender" ;
       wbml:datatype xsd:string
@@ -210,7 +209,7 @@ wbml:StatedOn a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:class [
       a rdfs:Class ;
@@ -276,7 +275,7 @@ wbml:StatedOn a rdf:Property ;
     rml:iterator "$[*]"
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Species_{species}" ;
   ] ;
 
@@ -320,7 +319,7 @@ wbml:StatedOn a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Ability_{ability_name}" ;
     wbml:classId "Q6997"
   ] ;

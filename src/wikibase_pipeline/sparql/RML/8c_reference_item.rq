@@ -43,7 +43,7 @@ WHERE {
 
   ?rrec wbml:valueMap ?rom .
 
-  OPTIONAL { ?rrec wbml:property ?refPropertyNode . }
+  OPTIONAL { ?rrec wbml:propertyMap ?refPropertyNode . }
   OPTIONAL { ?rrec wbml:propertyId ?refPropertyId . }
   FILTER(BOUND(?refPropertyNode) || BOUND(?refPropertyId))
 

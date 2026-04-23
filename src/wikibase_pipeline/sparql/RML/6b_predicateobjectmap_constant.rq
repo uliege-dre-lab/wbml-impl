@@ -44,7 +44,7 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:statID ?statID ;
+  ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom .
 
   OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }

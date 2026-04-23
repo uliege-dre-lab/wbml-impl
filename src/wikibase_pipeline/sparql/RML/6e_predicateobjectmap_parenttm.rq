@@ -45,10 +45,10 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:statID ?statID ;
+  ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom .
 
-  OPTIONAL { ?pom wbml:property ?propertyNode . }
+  OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }
   OPTIONAL { ?pom wbml:propertyId ?propertyIdStr . }
   FILTER(BOUND(?propertyNode) || BOUND(?propertyIdStr))
 

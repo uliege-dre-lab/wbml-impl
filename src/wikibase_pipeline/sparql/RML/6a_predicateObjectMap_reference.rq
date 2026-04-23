@@ -26,7 +26,7 @@ CONSTRUCT {
   ?propertyPOM rr:predicate wbml:statementProperty ;
                rr:objectMap ?propertyOM .
 
-  ?propertyOM rr:constant ?predIRI .
+  ?propertyOM rr:constant ?propIRI .
 
   ?valuePOM rr:predicate wbml:statementValue ;
             rr:objectMap ?valueOM .
@@ -43,7 +43,7 @@ WHERE {
 
   ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 
-  ?pom wbml:statID ?statID ;
+  ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom .
 
   OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }

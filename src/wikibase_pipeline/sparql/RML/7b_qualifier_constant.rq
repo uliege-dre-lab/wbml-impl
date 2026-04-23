@@ -41,7 +41,7 @@ WHERE {
 
   ?qmap wbml:valueMap ?qom .
 
-  OPTIONAL { ?qmap wbml:property ?qualifierPropertyNode . }
+  OPTIONAL { ?qmap wbml:propertyMap ?qualifierPropertyNode . }
   OPTIONAL { ?qmap wbml:propertyId ?qualifierPropertyId . }
   FILTER(BOUND(?qualifierPropertyNode) || BOUND(?qualifierPropertyId))
 

@@ -14,7 +14,7 @@ WHERE {
   OPTIONAL { ?sm wbml:nodeId ?nodeId . }
   FILTER(BOUND(?nodeTemplate) || BOUND(?nodeId))
 
-OPTIONAL {
+  OPTIONAL {
     {
       ?sm wbml:class ?classNode .
       OPTIONAL { ?classNode wbml:nodeTemplate ?classExplicitKey . }

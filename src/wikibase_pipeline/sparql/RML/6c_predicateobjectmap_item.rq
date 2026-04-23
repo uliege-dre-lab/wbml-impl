@@ -45,7 +45,7 @@ WHERE {
   FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
   BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
 
-  ?pom wbml:statID ?statID ;
+  ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom .
 
   OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }
