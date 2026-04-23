@@ -189,7 +189,7 @@ wbml:HasItemCategory a rdf:Property ;
     rml:iterator "$[*]"
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
@@ -323,7 +323,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
@@ -348,7 +348,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
@@ -375,7 +375,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
@@ -440,7 +440,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
@@ -474,7 +474,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
@@ -506,7 +506,7 @@ wbml:HasItemCategory a rdf:Property ;
     rml:iterator "$[*]"
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Species_{species}" ;
     wbml:classId "Q6999"
   ] ;
@@ -529,7 +529,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Ability_{ability_name}" ;
     wbml:class wbml:AbilityClass
   ] ;
@@ -551,7 +551,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "EggGroup_{egg_group}" ;
     wbml:class wbml:EggGroupClass
   ] ;
@@ -574,7 +574,7 @@ wbml:HasItemCategory a rdf:Property ;
     rml:iterator "$[*]"
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Move_{id}" ;
     wbml:class wbml:MoveClass
   ] ;
@@ -639,7 +639,7 @@ wbml:HasItemCategory a rdf:Property ;
     rml:iterator "$[*]"
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
@@ -672,7 +672,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
@@ -697,7 +697,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
@@ -722,7 +722,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
@@ -754,7 +754,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "Item_{id}" ;
     wbml:class wbml:ItemClass
   ] ;
@@ -806,7 +806,7 @@ wbml:HasItemCategory a rdf:Property ;
     """
   ] ;
 
-  wbml:subjectMap [
+  wbml:itemMap [
     wbml:nodeTemplate "ItemCategory_{type}" ;
     wbml:class [
       a rdfs:Class ;
