@@ -126,7 +126,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:PokedexNumber ;
     wbml:valueMap [
         wbml:reference "id" ;
@@ -155,14 +155,14 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Attack ;
     wbml:valueMap [
       wbml:reference "base.Attack"
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:SpecialAttack ;
     wbml:valueMap [
       wbml:reference "base.Sp. Attack" ;
@@ -170,7 +170,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyId "P56" ;
     wbml:valueMap [
       wbml:reference "profile.height" ;
@@ -178,7 +178,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Gender ;
     wbml:valueMap [
       wbml:reference "profile.gender" ;
@@ -186,7 +186,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:Sprite ;
     wbml:valueMap [
       wbml:reference "image.sprite" ;
@@ -220,7 +220,7 @@ wbml:StatedOn a rdf:Property ;
     ]
   ] ;
 
-  wbml:predicateObjectMap [
+  wbml:statementMap [
     wbml:propertyMap wbml:HasAbility ;
     wbml:valueMap [
       wbml:nodeTemplate "Ability_{ability_name}"

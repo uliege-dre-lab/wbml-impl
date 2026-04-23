@@ -27,7 +27,7 @@ WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
           wbml:itemMap ?sm ;
-          wbml:predicateObjectMap ?pom .
+          wbml:statementMap ?pom .
 
       ?sm wbml:nodeTemplate ?subjectNodeTemplate .
 

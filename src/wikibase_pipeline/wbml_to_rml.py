@@ -63,7 +63,7 @@ def delete_wbml_blocks(graph: Graph, verbose: int) -> None:
 
 def assign_ids(graph: Graph, verbose: int) -> None:
     tm_to_poms: dict = {}
-    for tm, _, pom in graph.triples((None, WBML.predicateObjectMap, None)):
+    for tm, _, pom in graph.triples((None, WBML.statementMap, None)):
         tm_to_poms.setdefault(tm, []).append(pom)
 
     global_stat_id = 0
@@ -74,7 +74,7 @@ def assign_ids(graph: Graph, verbose: int) -> None:
                 (pom, WBINT.statID, Literal(global_stat_id, datatype=XSD.integer))
             )
 
-    inform(f"Assigned wbml:statID to {global_stat_id} predicateObjectMaps", verbose)
+    inform(f"Assigned wbml:statID to {global_stat_id} statementMaps", verbose)
 
     ref_total = 0
     all_poms = [pom for poms in tm_to_poms.values() for pom in poms]
