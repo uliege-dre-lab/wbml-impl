@@ -1,0 +1,95 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wbml: <https://example.org/wbml#> .
+
+wbml:HasLogo a rdf:Property ;
+    wbml:nodeTemplate "HasLogo" ;
+    rdfs:label "has logo"@en ;
+    rdfs:label "a comme logo"@fr ;
+    wbml:propertyType wbml:string .
+
+<#ClassesMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        "Nom de la classe"         AS name,
+        "Autres labels"            AS alias,
+        "Description"              AS description,
+        "English name"             AS name_en,
+        "Alternative labels (EN)"  AS alias_en,
+        "Description (EN)"         AS description_en,
+        "Hiérarchie (classe parent)" AS parent_class
+      FROM read_csv(
+        'data/input/csv_notion/classes_with_english_translations.csv',
+        header = true
+      )
+      WHERE "Nom de la classe" IS NOT NULL
+        AND trim("Nom de la classe") != ''
+    """
+  ] ;
+
+  wbml:subjectMap [
+    wbml:NodeTemplate "Class_{name}" ;
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+    wbml:column "name" ;
+    wbml:language "fr"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:label ;
+    wbml:objectMap [
+    wbml:column "name_en" ;
+    wbml:language "en"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate skos:altLabel ;
+    wbml:objectMap [
+    wbml:column "alias" ;
+    wbml:language "fr"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate skos:altLabel ;
+    wbml:objectMap [
+    wbml:column "alias_en" ;
+    wbml:language "en"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:comment ;
+    wbml:objectMap [
+    wbml:column "description" ;
+    wbml:language "fr"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:comment ;
+    wbml:objectMap [
+    wbml:column "description_en" ;
+    wbml:language "en"
+    ]
+  ] ;
+
+  wbml:predicateObjectMap [
+    wbml:predicate rdfs:subClassOf ;
+    wbml:objectMap [
+      wbml:template "Class_{parent_class}"
+    ]
+  ] .
