@@ -57,8 +57,6 @@ WHERE {
 
   OPTIONAL { ?propertyNode wbml:nodeTemplate ?propExplicitKey . }
 
-  FILTER(!BOUND(?propertyNode) || ?propertyNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
-
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
 

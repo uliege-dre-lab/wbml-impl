@@ -506,9 +506,11 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:classId "Q6999"
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
-    wbml:valueMap [ wbml:reference "species" ; wbml:language "en" ]
+  wbml:label [
+    wbml:valueMap [
+      wbml:reference "species" ;
+      wbml:language "en"
+    ]
   ] .
 
 <#AbilityMapping>
@@ -550,8 +552,7 @@ wbml:HasItemCategory a rdf:Property ;
     wbml:class wbml:EggGroupClass
   ] ;
 
-  wbml:statementMap [
-    wbml:propertyMap rdfs:label ;
+  wbml:label [
     wbml:valueMap [ wbml:reference "egg_group" ; wbml:language "en" ]
   ] .
 
