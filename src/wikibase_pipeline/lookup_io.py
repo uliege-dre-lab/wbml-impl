@@ -51,3 +51,52 @@ def save_lookup(path: str | Path, lookup: dict, verbose) -> None:
     )
 
     inform("Lookup successfully saved.", verbose)
+
+
+def validate_lookup_cache(lookup: dict, wb_api, verbose) -> None:
+    """
+    Batch-check every cached QID/PID against Wikibase and evict any
+    that no longer exist.  Stale entries are removed in-place so the
+    normal resolver fallback (label search → create) takes over.
+    """
+    item_iris = {iri: qid for iri, qid in lookup.get("items", {}).items() if qid}
+    prop_iris = {
+        iri: entry["id"]
+        for iri, entry in lookup.get("properties", {}).items()
+        if isinstance(entry, dict) and entry.get("id")
+    }
+
+    all_ids = list(set(item_iris.values()) | set(prop_iris.values()))
+    if not all_ids:
+        return
+
+    inform(f"Validating {len(all_ids)} cached IDs against Wikibase…", verbose)
+    existing = wb_api.filter_existing_ids(all_ids)
+
+    # Evict stale items
+    stale_item_iris = [iri for iri, qid in item_iris.items() if qid not in existing]
+    for iri in stale_item_iris:
+        stale_qid = lookup["items"].pop(iri)
+        warn(
+            f"Evicting stale item from cache: <{iri}> → {stale_qid} "
+            f"(entity no longer exists in Wikibase).",
+            verbose,
+        )
+
+    # Evict stale properties
+    stale_prop_iris = [iri for iri, pid in prop_iris.items() if pid not in existing]
+    for iri in stale_prop_iris:
+        stale_pid = lookup["properties"].pop(iri)["id"]
+        warn(
+            f"Evicting stale property from cache: <{iri}> → {stale_pid} "
+            f"(entity no longer exists in Wikibase).",
+            verbose,
+        )
+
+    evicted = len(stale_item_iris) + len(stale_prop_iris)
+    if evicted:
+        inform(
+            f"Evicted {evicted} stale cache entries. They will be re-resolved.", verbose
+        )
+    else:
+        inform("All cached IDs are valid.", verbose)

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from rdflib import Graph
 
 from .config import load_env_config
-from .lookup_io import load_lookup, save_lookup
+from .lookup_io import load_lookup, save_lookup, validate_lookup_cache
 from .populator import populate
 from .resolver.builtins_properties import search_builtins_properties
 from .resolver.direct_iri_resolver import resolve_direct_iris
@@ -45,6 +45,7 @@ def update(mapping_file_path: str | Path) -> None:
 
     lookup = load_lookup(cfg["cache"]["lookup_file"], cfg["wikibase"]["verbose"])
     wb_api = WikibaseAPI(cfg["wikibase"])
+    validate_lookup_cache(lookup, wb_api, cfg["wikibase"]["verbose"])
     valid_languages = wb_api.get_valid_languages()
     language_resolver = LanguageResolver(
         cfg["wikibase"]["language"], valid_languages, verbose=cfg["wikibase"]["verbose"]
