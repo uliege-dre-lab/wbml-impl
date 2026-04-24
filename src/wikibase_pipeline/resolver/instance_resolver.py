@@ -63,7 +63,9 @@ def _collect_instance_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if raw_value not in aliases[eff_lang]:
+            if raw_value.strip() == labels[eff_lang].strip():
+                pass
+            elif raw_value not in aliases[eff_lang]:
                 warn(
                     f"  Duplicate instance label @{eff_lang} on <{iri_str}>: "
                     f"keeping '{labels[eff_lang]}', adding '{raw_value}' as alias.",

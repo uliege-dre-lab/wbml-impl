@@ -503,7 +503,7 @@ wbml:HasItemCategory a rdf:Property ;
 
   wbml:itemMap [
     wbml:nodeTemplate "Species_{species}" ;
-    wbml:classId "Q6999"
+    wbml:class wbml:SpeciesClass
   ] ;
 
   wbml:label [
