@@ -22,10 +22,16 @@ CONSTRUCT {
 WHERE {
   ?tm a rr:TriplesMap ;
       rml:logicalSource ?ls ;
-      wbml:itemMap ?sm ;
       wbml:statementMap ?pom .
 
-  ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+  { ?tm wbml:itemMap ?sm }
+  UNION
+  { ?tm wbml:propertyEntityMap ?sm }
+
+  OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
+  OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
+  FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
+  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
 
   ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom ;
@@ -72,7 +78,7 @@ WHERE {
 
   BIND(
     CONCAT(
-      "urn:wikibase:statement:", STR(?subjectNodeTemplate), "_", STR(?statID), ?valueSuffix
+      "urn:wikibase:statement:", STR(?subjectKey), "_", STR(?statID), ?valueSuffix
     )
     AS ?stmtTemplate
   )

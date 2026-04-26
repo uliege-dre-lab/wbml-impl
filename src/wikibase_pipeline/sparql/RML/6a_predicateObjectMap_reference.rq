@@ -38,10 +38,24 @@ CONSTRUCT {
 WHERE {
   ?tm a rr:TriplesMap ;
       rml:logicalSource ?ls ;
-      wbml:itemMap ?sm ;
       wbml:statementMap ?pom .
 
-  ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+  {
+    ?tm wbml:itemMap ?sm .
+    BIND("urn:wikibase:item:"    AS ?subjectNodePrefix)
+    BIND("urn:wikibase:itemIRI:" AS ?subjectNodeIRIPrefix)
+  }
+  UNION
+  {
+    ?tm wbml:propertyEntityMap ?sm .
+    BIND("urn:wikibase:property:"    AS ?subjectNodePrefix)
+    BIND("urn:wikibase:propertyIRI:" AS ?subjectNodeIRIPrefix)
+  }
+
+  OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
+  OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
+  FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
+  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
 
   ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom .
@@ -82,10 +96,13 @@ WHERE {
   )
 
   BIND(
-    CONCAT("urn:wikibase:item:", STR(?subjectNodeTemplate)) AS ?subjectTemplate
+    IF(BOUND(?subjectNodeId),
+      CONCAT(?subjectNodeIRIPrefix, STR(?subjectNodeId)),
+      CONCAT(?subjectNodePrefix,    STR(?subjectNodeTemplate))
+    ) AS ?subjectTemplate
   )
 
   BIND(
-    CONCAT("urn:wikibase:statement:", STR(?subjectNodeTemplate), "_", STR(?statID), "_{", STR(?reference), "}") AS ?stmtTemplate
+    CONCAT("urn:wikibase:statement:", STR(?subjectKey), "_", STR(?statID), "_{", STR(?reference), "}") AS ?stmtTemplate
   )
 }

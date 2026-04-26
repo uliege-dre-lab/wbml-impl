@@ -36,16 +36,29 @@ CONSTRUCT {
 WHERE {
   {
     SELECT ?tm ?ls ?subjectKey ?subjectNodeTemplate ?subjectNodeId
+           ?subjectNodePrefix ?subjectNodeIRIPrefix
            ?propertyNode ?propertyIdStr
            ?statID ?wom ?valueNodeTemplate ?valueNodeId ?propExplicitKey
     WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
-          wbml:itemMap ?sm ;
           wbml:statementMap ?pom .
+
+      {
+        ?tm wbml:itemMap ?sm .
+        BIND("urn:wikibase:item:"    AS ?subjectNodePrefix)
+        BIND("urn:wikibase:itemIRI:" AS ?subjectNodeIRIPrefix)
+      }
+      UNION
+      {
+        ?tm wbml:propertyEntityMap ?sm .
+        BIND("urn:wikibase:property:"    AS ?subjectNodePrefix)
+        BIND("urn:wikibase:propertyIRI:" AS ?subjectNodeIRIPrefix)
+      }
 
       OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
       OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
+
       FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
       BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
 
@@ -99,8 +112,8 @@ WHERE {
 
   BIND(
     IF(BOUND(?subjectNodeId),
-      CONCAT("urn:wikibase:itemIRI:", STR(?subjectNodeId)),
-      CONCAT("urn:wikibase:item:",    STR(?subjectNodeTemplate))
+      CONCAT(?subjectNodeIRIPrefix, STR(?subjectNodeId)),
+      CONCAT(?subjectNodePrefix,    STR(?subjectNodeTemplate))
     ) AS ?subjectTemplate
   )
 

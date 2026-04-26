@@ -2,18 +2,27 @@ PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX wbml: <https://example.org/wbml#>
 
 CONSTRUCT {
-  ?tm rr:subjectMap ?subjectMap .
+  ?tm rr:subjectMap ?subjectMap ;
+      rr:predicateObjectMap ?propertyPOM .
 
   ?subjectMap rr:template ?template ;
               rr:termType rr:IRI .
+
+  ?propertyPOM rr:predicate wbml:propertyType ;
+               rr:objectMap ?propertyOM .
+  ?propertyOM  rr:constant ?propertyType
+
 }
 WHERE {
   ?tm wbml:propertyEntityMap ?sm .
   OPTIONAL { ?sm wbml:nodeTemplate ?nodeTemplate . }
   OPTIONAL { ?sm wbml:nodeId ?nodeId . }
+  OPTIONAL { ?sm wbml:propertyType ?propertyType . }
   FILTER(BOUND(?nodeTemplate) || BOUND(?nodeId))
 
   BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
+  BIND(IRI(CONCAT(STR(?tm), "/propertyPOM")) AS ?propertyPOM)
+  BIND(IRI(CONCAT(STR(?tm), "/propertyOM")) AS ?propertyOM)
   BIND(
     IF(BOUND(?nodeId),
       CONCAT("urn:wikibase:propertyIRI:", STR(?nodeId)),

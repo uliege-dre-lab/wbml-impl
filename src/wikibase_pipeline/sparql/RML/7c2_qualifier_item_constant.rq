@@ -19,17 +19,22 @@ CONSTRUCT {
 }
 WHERE {
   {
-    SELECT ?tm ?ls ?subjectNodeTemplate ?statID ?wom
+    SELECT ?tm ?ls ?subjectNodeTemplate ?subjectNodeId ?statID ?wom
            ?mainReference ?mainValueNode ?childKey
            ?qualifierPropertyNode ?qualifierPropertyId ?qmap ?qom
            ?valueNodeTemplate ?valueNodeId ?qualExplicitKey
     WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
-          wbml:itemMap ?sm ;
           wbml:statementMap ?pom .
 
-      ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+      { ?tm wbml:itemMap ?sm }
+      UNION
+      { ?tm wbml:propertyEntityMap ?sm }
+
+      OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
+      OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
+      FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
 
       ?pom wbint:statID ?statID ;
            wbml:valueMap ?wom ;
@@ -76,8 +81,10 @@ WHERE {
     "")))
   AS ?valueSuffix)
 
+  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
+
   BIND(
-    CONCAT("urn:wikibase:statement:", STR(?subjectNodeTemplate), "_", STR(?statID), ?valueSuffix)
+    CONCAT("urn:wikibase:statement:", STR(?subjectKey), "_", STR(?statID), ?valueSuffix)
     AS ?stmtTemplate
   )
 
