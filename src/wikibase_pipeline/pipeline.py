@@ -11,7 +11,10 @@ from .resolver.direct_iri_resolver import resolve_direct_iris
 from .resolver.instance_resolver import resolve_instances
 from .resolver.language_resolver import LanguageResolver
 from .resolver.schema_classes_resolver import resolve_schema_classes
-from .resolver.schema_properties_resolver import resolve_schema_properties
+from .resolver.schema_properties_resolver import (
+    resolve_property_instances,
+    resolve_schema_properties,
+)
 from .rml_executor import rml_execute, validate_nt_file
 from .utils.verbose_utils import inform
 from .wbml_to_rml import convert_wbml_to_rml, run_schema_queries
@@ -74,6 +77,9 @@ def update(mapping_file_path: str | Path) -> None:
 
     inform("Initialize instance metadata", cfg["wikibase"]["verbose"])
     resolve_instances(
+        g_objects, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
+    )
+    resolve_property_instances(
         g_objects, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
     )
 

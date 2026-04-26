@@ -104,9 +104,13 @@ def _push_instance_of_claims(
 
         subject_qid = lookup["items"].get(subject_str)
         if subject_qid is None:
+            prop_entry = lookup.get("properties", {}).get(subject_str)
+            if prop_entry is not None:
+                subject_qid = prop_entry["id"]
+        if subject_qid is None:
             raise ValueError(
                 f"rdf:type triple <{subject_str}> rdf:type <{obj_str}>: "
-                "subject not found in lookup['items']."
+                "subject not found in lookup['items'] or lookup['properties']."
             )
 
         obj_qid = lookup["items"].get(obj_str)
@@ -194,11 +198,16 @@ def _push_statements(
                 verbose,
             )
             continue
-        subject_qid = lookup.get("items", {}).get(str(subjects[0]))
+        subject_iri_str = str(subjects[0])
+        subject_qid = lookup.get("items", {}).get(subject_iri_str)
+        if subject_qid is None:
+            prop_entry = lookup.get("properties", {}).get(subject_iri_str)
+            if prop_entry is not None:
+                subject_qid = prop_entry["id"]
         if subject_qid is None:
             raise ValueError(
-                f"Statement <{stmt_str}>: subject <{subjects[0]}> "
-                f"not found in lookup['items']."
+                f"Statement <{stmt_str}>: subject <{subject_iri_str}> "
+                f"not found in lookup['items'] or lookup['properties']."
             )
 
         # property

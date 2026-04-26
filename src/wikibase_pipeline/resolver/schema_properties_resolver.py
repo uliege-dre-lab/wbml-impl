@@ -9,6 +9,7 @@ from .language_resolver import LanguageResolver
 
 WBML = Namespace("https://example.org/wbml#")
 PROPERTY_PREFIX = "urn:wikibase:property:"
+PROPERTY_IRI_PREFIX = "urn:wikibase:propertyIRI:"
 
 # Maps wbml: local names (used in .ttl files) → Wikibase API datatype strings
 WBML_DATATYPE_MAP: dict[str, str] = {
@@ -414,5 +415,67 @@ def resolve_schema_properties(
                 verbose,
             )
             lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
+
+        _push_property_metadata(pid, meta, wikibase_api, verbose)
+
+
+def _collect_property_instance_iris(data_graph: Graph) -> list[URIRef]:
+    """
+    Collect all urn:wikibase:property: and urn:wikibase:propertyIRI: IRIs
+    that appear as subjects or objects in the data graph.
+    Returns a sorted list of unique URIRefs.
+    """
+    props: set[URIRef] = set()
+    for s, _, o in data_graph:
+        for node in (s, o):
+            if not isinstance(node, URIRef):
+                continue
+            node_str = str(node)
+            if node_str.startswith(PROPERTY_PREFIX) or node_str.startswith(
+                PROPERTY_IRI_PREFIX
+            ):
+                props.add(node)
+    return sorted(props)
+
+
+def resolve_property_instances(
+    data_graph: Graph,
+    lookup: dict,
+    wikibase_api,
+    language_resolver: LanguageResolver,
+    verbose: int = 1,
+) -> None:
+    """
+    For every urn:wikibase:property: or urn:wikibase:propertyIRI: IRI that
+    appears in the data graph, push any rdfs:label / rdfs:comment / skos:altLabel
+    metadata found in the data graph to the corresponding Wikibase property.
+
+    The property MUST already be in lookup['properties'] — this function only
+    pushes metadata diffs, it never creates new properties. Properties that
+    appear as predicates (via wbml:statementProperty) but carry no metadata in
+    the data graph are silently skipped.
+    """
+    lookup.setdefault("properties", {})
+
+    for prop_iri in _collect_property_instance_iris(data_graph):
+        iri_str = str(prop_iri)
+        prop_entry = lookup["properties"].get(iri_str)
+        if prop_entry is None:
+            raise ValueError(
+                f"Property entity <{iri_str}> found in data graph but not in "
+                f"lookup['properties']. Ensure it is declared in the schema "
+                f"(rdf:Property + wbml:propertyType) or referenced via "
+                f"wbml:propertyEntityMap with wbml:nodeId."
+            )
+        pid = prop_entry["id"]
+
+        meta = _collect_property_metadata(
+            data_graph, prop_iri, language_resolver, verbose=verbose
+        )
+
+        # Properties used only as predicates will have no metadata in the data
+        # graph — skip the API call entirely to avoid pointless round-trips.
+        if not any([meta["labels"], meta["descriptions"], meta["aliases"]]):
+            continue
 
         _push_property_metadata(pid, meta, wikibase_api, verbose)

@@ -17,7 +17,8 @@ WHERE {
   OPTIONAL { ?propNode rdfs:comment      ?predicateDescription . }
   OPTIONAL { ?propNode wbml:propertyType ?predicateType . }
   OPTIONAL { ?propNode skos:altLabel     ?predicateAlias . }
-  OPTIONAL { ?propNode wbml:nodeTemplate ?propExplicitKey . }
+  OPTIONAL { ?propNode wbml:nodeTemplate ?propExplicitKey ;
+              FILTER(!CONTAINS(STR(?propExplicitKey), "{")) }
 
   BIND(
     COALESCE(

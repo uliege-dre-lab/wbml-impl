@@ -3,7 +3,8 @@ from rdflib.namespace import XSD
 
 from .utils.verbose_utils import warn
 
-ITEM_PREFIX = "urn:wikibase:item:"
+PROPERTY_VALUE_PREFIXES = ("urn:wikibase:property:", "urn:wikibase:propertyIRI:")
+ITEM_VALUE_PREFIXES = ("urn:wikibase:item:", "urn:wikibase:itemIRI:")
 
 XSD_TO_WIKIBASE: dict[str, str] = {
     str(XSD.integer): "quantity",
@@ -33,8 +34,14 @@ def value_to_wikibase_datatype(value) -> str | None:
       Typed Literal            -> mapped via XSD_TO_WIKIBASE (None if unsupported type)
       Plain Literal            -> "string" (cannot be inferred)
     """
+
     if isinstance(value, URIRef):
-        return "wikibase-item" if str(value).startswith(ITEM_PREFIX) else "url"
+        iri = str(value)
+        if any(iri.startswith(p) for p in ITEM_VALUE_PREFIXES):
+            return "wikibase-item"
+        if any(iri.startswith(p) for p in PROPERTY_VALUE_PREFIXES):
+            return "wikibase-property"
+        return "url"
 
     if isinstance(value, Literal):
         if value.language:
@@ -228,6 +235,16 @@ def rdf_value_to_wikibase_value(
                 f"wikibase-item value <{iri_str}> not found in lookup['items']."
             )
         return {"entity-type": "item", "id": qid}
+
+    if property_datatype == "wikibase-property":
+        iri_str = str(value)
+        prop_entry = lookup.get("properties", {}).get(iri_str)
+        if prop_entry is None:
+            raise ValueError(
+                f"wikibase-property value <{iri_str}> "
+                f"not found in lookup['properties']."
+            )
+        return {"entity-type": "property", "id": prop_entry["id"]}
 
     if property_datatype in ("string", "url", "external-id"):
         return str(value)

@@ -1,0 +1,23 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX wbml: <https://example.org/wbml#>
+
+CONSTRUCT {
+  ?tm rr:subjectMap ?subjectMap .
+
+  ?subjectMap rr:template ?template ;
+              rr:termType rr:IRI .
+}
+WHERE {
+  ?tm wbml:propertyEntityMap ?sm .
+  OPTIONAL { ?sm wbml:nodeTemplate ?nodeTemplate . }
+  OPTIONAL { ?sm wbml:nodeId ?nodeId . }
+  FILTER(BOUND(?nodeTemplate) || BOUND(?nodeId))
+
+  BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
+  BIND(
+    IF(BOUND(?nodeId),
+      CONCAT("urn:wikibase:propertyIRI:", STR(?nodeId)),
+      CONCAT("urn:wikibase:property:", STR(?nodeTemplate))
+    ) AS ?template
+  )
+}
