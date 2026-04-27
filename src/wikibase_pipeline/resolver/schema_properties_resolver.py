@@ -3,6 +3,7 @@ from collections import defaultdict
 from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, SKOS
 
+from ..utils.items_utils import clean_text
 from ..utils.properties_utils import lookup_get, search_wikibase_properties
 from ..utils.verbose_utils import inform, warn
 from .language_resolver import LanguageResolver
@@ -85,8 +86,8 @@ def _collect_property_metadata(
     tagged: list[tuple[str, str]] = []
     untagged: list[str] = []
     for lbl in g.objects(prop_iri, RDFS.label):
-        raw_value = str(lbl).strip()
-        if not raw_value:
+        raw_value = clean_text(lbl)
+        if raw_value is None:
             continue
         raw_lang = getattr(lbl, "language", None)
         if raw_lang is None:
@@ -101,7 +102,7 @@ def _collect_property_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if raw_value.strip() == labels[eff_lang].strip():
+            if " ".join(labels[eff_lang].split()) == " ".join(raw_value.split()):
                 pass
             elif raw_value not in aliases[eff_lang]:
                 warn(
@@ -120,7 +121,7 @@ def _collect_property_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if raw_value.strip() == labels[eff_lang].strip():
+            if " ".join(raw_value.split()) == " ".join(labels[eff_lang].split()):
                 pass  # identical string, silently skip
             elif raw_value not in aliases[eff_lang]:
                 warn(
@@ -134,8 +135,8 @@ def _collect_property_metadata(
 
     # Aliases
     for alias in g.objects(prop_iri, SKOS.altLabel):
-        raw_value = str(alias).strip()
-        if not raw_value:
+        raw_value = clean_text(alias)
+        if raw_value is None:
             continue
         raw_lang = getattr(alias, "language", None)
         eff_lang = language_resolver.resolve_language(
@@ -181,8 +182,8 @@ def _collect_property_metadata(
 
     # Descriptions
     for desc in g.objects(prop_iri, RDFS.comment):
-        raw_value = str(desc).strip()
-        if not raw_value:
+        raw_value = clean_text(desc)
+        if raw_value is None:
             continue
         raw_lang = getattr(desc, "language", None)
         eff_lang = language_resolver.resolve_language(
@@ -197,6 +198,13 @@ def _collect_property_metadata(
                 verbose,
             )
         else:
+            if len(raw_value) > 250:
+                warn(
+                    f"  Description @{eff_lang} on <{iri_str}> exceeds 250 chars "
+                    f"— truncating.",
+                    verbose,
+                )
+                raw_value = raw_value[:250]
             descriptions[eff_lang] = raw_value
 
     return {
@@ -291,11 +299,11 @@ def _push_property_metadata(
     for lang, value in meta["labels"].items():
         if not lang:
             continue
-        value = value.strip()  # ← add this
+        value = value.strip()
         current = existing_labels.get(lang)
         if current is None:
             labels_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:  # ← strip both sides
+        elif " ".join(current.split()) == " ".join(value.split()):
             pass
         else:
             if overwrite_on_conflict:
@@ -311,7 +319,7 @@ def _push_property_metadata(
                     verbose,
                 )
                 already_there = existing_aliases.get(lang, set())
-                if value not in already_there:
+                if " ".join(value.split()) not in already_there:
                     aliases_to_set.setdefault(lang, []).append(
                         {"language": lang, "value": value}
                     )
@@ -323,11 +331,11 @@ def _push_property_metadata(
     for lang, value in meta["descriptions"].items():
         if not lang:
             continue
-        value = value.strip()  # ← add this
+        value = value.strip()
         current = existing_descriptions.get(lang)
         if current is None:
             descriptions_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:  # ← strip both sides
+        elif " ".join(current.split()) == " ".join(value.split()):
             pass
         else:
             if overwrite_on_conflict:
@@ -350,12 +358,13 @@ def _push_property_metadata(
     for lang, values in meta["aliases"].items():
         if not lang:
             continue
-        already_as_alias = existing_aliases.get(lang, set())
+        already_alias = existing_aliases.get(lang, set())
         existing_label = existing_labels.get(lang, "")
         new_values = [
             v
             for v in values
-            if v not in already_as_alias and v.strip() != existing_label.strip()
+            if v not in already_alias
+            and " ".join(v.split()) != " ".join(existing_label.split())
         ]
         if new_values:
             aliases_to_set[lang] = [{"language": lang, "value": v} for v in new_values]

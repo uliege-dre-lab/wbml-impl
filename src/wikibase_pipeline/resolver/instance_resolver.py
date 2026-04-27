@@ -63,7 +63,7 @@ def _collect_instance_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if raw_value.strip() == labels[eff_lang].strip():
+            if " ".join(raw_value.split()) == " ".join(labels[eff_lang].split()):
                 pass
             elif raw_value not in aliases[eff_lang]:
                 warn(
@@ -82,7 +82,7 @@ def _collect_instance_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if raw_value.strip() == labels[eff_lang].strip():
+            if " ".join(raw_value.split()) == " ".join(labels[eff_lang].split()):
                 pass  # identical string, silently skip
             elif raw_value not in aliases[eff_lang]:
                 warn(
@@ -156,6 +156,13 @@ def _collect_instance_metadata(
                 verbose,
             )
         else:
+            if len(raw_value) > 250:
+                warn(
+                    f"  Description @{eff_lang} on <{iri_str}> exceeds 250 chars "
+                    f"— truncating.",
+                    verbose,
+                )
+                raw_value = raw_value[:250]
             descriptions[eff_lang] = raw_value
 
     return {
@@ -236,7 +243,7 @@ def _push_instance_metadata(
         current = existing_labels.get(lang)
         if current is None:
             labels_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:
+        elif " ".join(current.split()) == " ".join(value.split()):
             pass
         else:
             if overwrite_on_conflict:
@@ -268,7 +275,7 @@ def _push_instance_metadata(
         current = existing_descriptions.get(lang)
         if current is None:
             descriptions_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:
+        elif " ".join(current.split()) == " ".join(value.split()):
             pass
         else:
             if overwrite_on_conflict:
@@ -291,12 +298,13 @@ def _push_instance_metadata(
     for lang, values in meta["aliases"].items():
         if not lang:
             continue
-        already_as_alias = existing_aliases.get(lang, set())
+        already_alias = existing_aliases.get(lang, set())
         existing_label = existing_labels.get(lang, "")
         new_values = [
             v
             for v in values
-            if v not in already_as_alias and v.strip() != existing_label.strip()
+            if " ".join(v.split()) not in already_alias
+            and " ".join(v.split()) != " ".join(existing_label.split())
         ]
         if new_values:
             aliases_to_set[lang] = [{"language": lang, "value": v} for v in new_values]
