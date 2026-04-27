@@ -247,11 +247,11 @@ def rdf_value_to_wikibase_value(
         return {"entity-type": "property", "id": prop_entry["id"]}
 
     if property_datatype in ("string", "url", "external-id"):
-        return str(value)
+        return str(value).strip()
 
     if property_datatype == "monolingualtext":
         lang = getattr(value, "language", None) or default_language
-        return {"text": str(value), "language": lang}
+        return {"text": str(value).strip(), "language": lang}
 
     if property_datatype == "quantity":
         amount = str(value)
