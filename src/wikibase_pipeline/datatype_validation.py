@@ -249,18 +249,14 @@ def rdf_value_to_wikibase_value(
     if property_datatype in ("string", "url", "external-id"):
         result = str(value).strip()
         if result.lower() in {"none", "null", "nan"}:
-            raise ValueError(
-                f"Value is '{result}' (likely a NULL from the CSV source); skipping."
-            )
+            raise ValueError(f"Value is '{result}'; skipping.")
         return result
 
     if property_datatype == "monolingualtext":
         lang = getattr(value, "language", None) or default_language
         result = str(value).strip()
         if result.lower() in {"none", "null", "nan"}:
-            raise ValueError(
-                f"Value is '{result}' (likely a NULL from the CSV source); skipping."
-            )
+            raise ValueError(f"Value is '{result}'; skipping.")
         return {"text": result, "language": lang}
 
     if property_datatype == "quantity":
