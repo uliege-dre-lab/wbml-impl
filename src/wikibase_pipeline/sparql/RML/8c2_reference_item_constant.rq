@@ -12,27 +12,32 @@ CONSTRUCT {
   ?refSM rr:template ?stmtRefTemplate ;
          rr:termType rr:IRI .
 
-  ?recordPOM rr:predicate ?refPredIRI ;
+  ?recordPOM rr:predicate ?refPropIRI ;
              rr:objectMap ?recordOM .
 
   ?recordOM rr:constant ?valueConstant .
 }
 WHERE {
   {
-    SELECT ?tm ?ls ?subjectNodeTemplate ?statID ?wom
+    SELECT ?tm ?ls ?subjectNodeTemplate ?subjectNodeId ?statID ?wom
            ?mainReference ?mainValueNode ?childKey
-           ?rmap ?refId ?rrec ?refPredicateNode ?refPredicateId
+           ?rmap ?refId ?rrec ?refPropertyNode ?refPropertyId
            ?rom ?valueNodeTemplate ?valueNodeId ?refExplicitKey
     WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
-          wbml:subjectMap ?sm ;
-          wbml:predicateObjectMap ?pom .
+          wbml:statementMap ?pom .
 
-      ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+      { ?tm wbml:itemMap ?sm }
+      UNION
+      { ?tm wbml:propertyEntityMap ?sm }
+
+      OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
+      OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
+      FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
 
       ?pom wbint:statID ?statID ;
-           wbml:objectMap ?wom ;
+           wbml:valueMap ?wom ;
            wbml:referenceMap ?rmap .
 
       OPTIONAL { ?wom wbml:reference ?mainReference . }
@@ -45,17 +50,17 @@ WHERE {
       ?rmap wbint:refId ?refId ;
             wbml:referenceRecord ?rrec .
 
-      ?rrec wbml:objectMap ?rom .
+      ?rrec wbml:valueMap ?rom .
 
-      OPTIONAL { ?rrec wbml:predicate ?refPredicateNode . }
-      OPTIONAL { ?rrec wbml:predicateId ?refPredicateId . }
-      FILTER(BOUND(?refPredicateNode) || BOUND(?refPredicateId))
+      OPTIONAL { ?rrec wbml:propertyMap ?refPropertyNode . }
+      OPTIONAL { ?rrec wbml:propertyId ?refPropertyId . }
+      FILTER(BOUND(?refPropertyNode) || BOUND(?refPropertyId))
 
-      OPTIONAL { ?refPredicateNode wbml:nodeTemplate ?refExplicitKey . }
+      OPTIONAL { ?refPropertyNode wbml:nodeTemplate ?refExplicitKey . }
       FILTER(
-        !BOUND(?refPredicateNode) ||
-        isBlank(?refPredicateNode) ||
-        STRSTARTS(STR(?refPredicateNode), "https://example.org/wbml#")
+        !BOUND(?refPropertyNode) ||
+        isBlank(?refPropertyNode) ||
+        STRSTARTS(STR(?refPropertyNode), "https://example.org/wbml#")
       )
 
       OPTIONAL { ?rom wbml:nodeTemplate ?valueNodeTemplate . }
@@ -73,13 +78,13 @@ WHERE {
   BIND(IRI(CONCAT(STR(?recordPOM), "/om")) AS ?recordOM)
 
   BIND(
-    IF(BOUND(?refPredicateId),
-      IRI(CONCAT("urn:wikibase:referenceIRI:", STR(?refPredicateId))),
+    IF(BOUND(?refPropertyId),
+      IRI(CONCAT("urn:wikibase:referenceIRI:", STR(?refPropertyId))),
       COALESCE(
         IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
-        IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPredicateNode), "#")))
+        IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPropertyNode), "#")))
       )
-    ) AS ?refPredIRI
+    ) AS ?refPropIRI
   )
 
   BIND(
@@ -89,9 +94,11 @@ WHERE {
     "")))
   AS ?valueSuffix)
 
+  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
+
   BIND(
     CONCAT(
-      "urn:wikibase:statementreference:", STR(?subjectNodeTemplate), "_", STR(?statID),
+      "urn:wikibase:statementreference:", STR(?subjectKey), "_", STR(?statID),
       ?valueSuffix, "_", STR(?refId)
     )
     AS ?stmtRefTemplate

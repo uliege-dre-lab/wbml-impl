@@ -1,0 +1,381 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix wbml: <https://example.org/wbml#> .
+@prefix rml:   <http://w3id.org/rml/> .
+
+#################################################################
+# Ontology declaration
+#################################################################
+
+<https://example.org/wbml>
+    a owl:Ontology ;
+    rdfs:label "Wikibase Mapping Language (WBML) Vocabulary"@en ;
+    rdfs:comment "Vocabulary for the Wikibase Mapping Language, an RML-compatible mapping language that supports Wikibase-specific features such as statements, qualifiers, references, and ranks."@en ;
+    .
+
+#################################################################
+# Classes
+#################################################################
+
+wbml:ItemMap
+    a owl:Class ;
+    rdfs:label "Item Map"@en ;
+    rdfs:comment "Describes how to generate the Wikibase item (subject) for each row of input data."@en .
+
+wbml:ClassSpec
+    a owl:Class ;
+    rdfs:label "Class Specification"@en ;
+    rdfs:comment "Describes a Wikibase class to be created or referenced, including its key, labels, and descriptions."@en .
+
+wbml:StatementMap
+    a owl:Class ;
+    rdfs:label "Statement Map"@en ;
+    rdfs:comment "Maps a source data field to a Wikibase statement (property + value), optionally with qualifiers, references, and a rank."@en .
+
+wbml:PredicateSpec
+    a owl:Class ;
+    rdfs:label "Predicate Specification"@en ;
+    rdfs:comment "Describes a Wikibase property to be created or referenced, including its key, labels, descriptions, and datatype."@en .
+
+wbml:ValueMap
+    a owl:Class ;
+    rdfs:label "Value Map"@en ;
+    rdfs:comment "Describes how to generate the value for a statement, qualifier, or reference."@en .
+
+wbml:QualifierMap
+    a owl:Class ;
+    rdfs:label "Qualifier Map"@en ;
+    rdfs:comment "Maps a source data field to a Wikibase qualifier on a statement."@en .
+
+wbml:ReferenceMap
+    a owl:Class ;
+    rdfs:label "Reference Map"@en ;
+    rdfs:comment "Groups one or more reference records into a single Wikibase reference block on a statement."@en .
+
+wbml:ReferenceRecord
+    a owl:Class ;
+    rdfs:label "Reference Record"@en ;
+    rdfs:comment "A single property-value pair within a Wikibase reference block."@en .
+
+wbml:JoinCondition
+    a owl:Class ;
+    rdfs:label "Join Condition"@en ;
+    rdfs:comment "Specifies a join between a child field and a parent field when linking to another triples map."@en .
+
+wbml:Rank
+    a owl:Class ;
+    rdfs:label "Rank"@en ;
+    rdfs:comment "The rank of a Wikibase statement (preferred, normal, or deprecated)."@en .
+
+#################################################################
+# Named individuals — ranks and special types
+#################################################################
+
+wbml:PreferredRank
+    a wbml:Rank, owl:NamedIndividual ;
+    rdfs:label "Preferred Rank"@en ;
+    rdfs:comment "Marks a statement as having preferred rank in Wikibase."@en .
+
+wbml:NormalRank
+    a wbml:Rank, owl:NamedIndividual ;
+    rdfs:label "Normal Rank"@en ;
+    rdfs:comment "Marks a statement as having normal rank in Wikibase (default)."@en .
+
+wbml:DeprecatedRank
+    a wbml:Rank, owl:NamedIndividual ;
+    rdfs:label "Deprecated Rank"@en ;
+    rdfs:comment "Marks a statement as having deprecated rank in Wikibase."@en .
+
+wbml:Item
+    a owl:NamedIndividual ;
+    rdfs:label "Item"@en ;
+    rdfs:comment "Used as the value of wbml:propertyType to indicate that the property links to a Wikibase item."@en .
+
+#################################################################
+# Item map properties
+#################################################################
+
+wbml:itemMap
+    a owl:ObjectProperty ;
+    rdfs:label "item map"@en ;
+    rdfs:comment "Attaches an item map to a triples map, defining how the Wikibase item identifier is generated."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:ItemMap .
+
+wbml:nodeTemplate
+    a owl:DatatypeProperty ;
+    rdfs:label "node template"@en ;
+    rdfs:comment "A template string (with {variable} placeholders) used to construct the Wikibase item identifier."@en ;
+    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
+    rdfs:range xsd:string .
+
+wbml:class
+    a owl:ObjectProperty ;
+    rdfs:label "class"@en ;
+    rdfs:comment "Specifies the Wikibase class that the generated item should be an instance of."@en ;
+    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
+    rdfs:range wbml:ClassSpec .
+
+#################################################################
+# Class specification properties
+#################################################################
+
+wbml:classKey
+    a owl:DatatypeProperty ;
+    rdfs:label "class key"@en ;
+    rdfs:comment "A unique string identifier for a Wikibase class, used to look up or create the corresponding Wikibase item."@en ;
+    rdfs:domain wbml:ClassSpec ;
+    rdfs:range xsd:string .
+
+wbml:classLabel
+    a owl:DatatypeProperty ;
+    rdfs:label "class label"@en ;
+    rdfs:comment "A human-readable label for the Wikibase class, optionally language-tagged."@en ;
+    rdfs:domain wbml:ClassSpec .
+
+wbml:classDescription
+    a owl:DatatypeProperty ;
+    rdfs:label "class description"@en ;
+    rdfs:comment "A human-readable description for the Wikibase class, optionally language-tagged."@en ;
+    rdfs:domain wbml:ClassSpec .
+
+wbml:classAlias
+    a owl:DatatypeProperty ;
+    rdfs:label "class alias"@en ;
+    rdfs:comment "An alternative label (alias) for the Wikibase class, optionally language-tagged."@en ;
+    rdfs:domain wbml:ClassSpec .
+
+#################################################################
+# Statement map properties
+#################################################################
+
+wbml:statementMap
+    a owl:ObjectProperty ;
+    rdfs:label "statement map"@en ;
+    rdfs:comment "Attaches a statement map to a triples map, defining a Wikibase statement to generate."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:StatementMap .
+
+wbml:label
+    a owl:ObjectProperty ;
+    rdfs:label "label"@en ;
+    rdfs:comment "Relating a label to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:ValueMap .
+
+wbml:description
+    a owl:ObjectProperty ;
+    rdfs:label "description"@en ;
+    rdfs:comment "Relating a description to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:ValueMap .
+
+wbml:alias
+    a owl:ObjectProperty ;
+    rdfs:label "alias"@en ;
+    rdfs:comment "Relating an alias to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:domain rml:TriplesMap ;
+    rdfs:range wbml:ValueMap .
+
+wbml:propertyMap
+    a owl:ObjectProperty ;
+    rdfs:label "property map"@en ;
+    rdfs:comment "The property of a statement, qualifier, or reference. Can be an existing RDF property or a blank-node PredicateSpec."@en ;
+    rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] .
+
+wbml:valueMap
+    a owl:ObjectProperty ;
+    rdfs:label "value map"@en ;
+    rdfs:comment "Describes how to generate the value of a statement, qualifier, or reference."@en ;
+    rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
+    rdfs:range wbml:ValueMap .
+
+wbml:rank
+    a owl:ObjectProperty ;
+    rdfs:label "rank"@en ;
+    rdfs:comment "The Wikibase rank to assign to a generated statement."@en ;
+    rdfs:domain wbml:StatementMap ;
+    rdfs:range wbml:Rank .
+
+wbml:qualifierMap
+    a owl:ObjectProperty ;
+    rdfs:label "qualifier map"@en ;
+    rdfs:comment "Attaches a qualifier map to a predicate-object map."@en ;
+    rdfs:domain wbml:StatementMap ;
+    rdfs:range wbml:QualifierMap .
+
+wbml:referenceMap
+    a owl:ObjectProperty ;
+    rdfs:label "reference map"@en ;
+    rdfs:comment "Attaches a reference map to a predicate-object map, grouping reference records into one Wikibase reference block."@en ;
+    rdfs:domain wbml:StatementMap ;
+    rdfs:range wbml:ReferenceMap .
+
+#################################################################
+# Predicate specification properties
+#################################################################
+
+wbml:propertyKey
+    a owl:DatatypeProperty ;
+    rdfs:label "predicate key"@en ;
+    rdfs:comment "A unique string identifier for a Wikibase property, used to look up or create it."@en ;
+    rdfs:domain wbml:PredicateSpec ;
+    rdfs:range xsd:string .
+
+wbml:propertyLabel
+    a owl:DatatypeProperty ;
+    rdfs:label "predicate label"@en ;
+    rdfs:comment "A human-readable label for the Wikibase property, optionally language-tagged."@en ;
+    rdfs:domain wbml:PredicateSpec .
+
+wbml:propertyDescription
+    a owl:DatatypeProperty ;
+    rdfs:label "predicate description"@en ;
+    rdfs:comment "A human-readable description for the Wikibase property, optionally language-tagged."@en ;
+    rdfs:domain wbml:PredicateSpec .
+
+wbml:predicateAlias
+    a owl:DatatypeProperty ;
+    rdfs:label "predicate alias"@en ;
+    rdfs:comment "An alternative label (alias) for the Wikibase property, optionally language-tagged."@en ;
+    rdfs:domain wbml:PredicateSpec .
+
+wbml:propertyType
+    a owl:ObjectProperty ;
+    rdfs:label "property type"@en ;
+    rdfs:comment "The Wikibase datatype of the property. Use wbml:Item for item-valued properties, or an XSD datatype for literal-valued properties."@en ;
+    rdfs:domain wbml:PredicateSpec .
+
+#################################################################
+# Object map properties
+#################################################################
+
+wbml:reference
+    a owl:DatatypeProperty ;
+    rdfs:label "reference"@en ;
+    rdfs:comment "A JSONPath or SQL column reference to the source data field whose value populates the object."@en ;
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range xsd:string .
+
+wbml:constant
+    a owl:DatatypeProperty ;
+    rdfs:label "constant"@en ;
+    rdfs:comment "A literal constant value to use as the object, independent of the source data."@en ;
+    rdfs:domain wbml:ValueMap .
+
+wbml:language
+    a owl:DatatypeProperty ;
+    rdfs:label "language"@en ;
+    rdfs:comment "BCP 47 language tag to attach to the generated string literal."@en ;
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range xsd:string .
+
+wbml:datatype
+    a owl:ObjectProperty ;
+    rdfs:label "datatype"@en ;
+    rdfs:comment "The XSD datatype to use when constructing the typed literal for the object."@en ;
+    rdfs:domain wbml:ValueMap .
+
+wbml:parentTriplesMap
+    a owl:ObjectProperty ;
+    rdfs:label "parent triples map"@en ;
+    rdfs:comment "References another triples map to join with, creating an item-valued object via a foreign-key relationship."@en ;
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range rml:TriplesMap .
+
+wbml:joinCondition
+    a owl:ObjectProperty ;
+    rdfs:label "join condition"@en ;
+    rdfs:comment "Specifies the child and parent fields to use when joining with a parent triples map."@en ;
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range wbml:JoinCondition .
+
+#################################################################
+# Join condition properties
+#################################################################
+
+wbml:child
+    a owl:DatatypeProperty ;
+    rdfs:label "child"@en ;
+    rdfs:comment "The field name in the child (current) logical source to use in a join condition."@en ;
+    rdfs:domain wbml:JoinCondition ;
+    rdfs:range xsd:string .
+
+wbml:parent
+    a owl:DatatypeProperty ;
+    rdfs:label "parent"@en ;
+    rdfs:comment "The field name in the parent logical source to use in a join condition."@en ;
+    rdfs:domain wbml:JoinCondition ;
+    rdfs:range xsd:string .
+
+#################################################################
+# Reference map properties
+#################################################################
+
+wbml:referenceRecord
+    a owl:ObjectProperty ;
+    rdfs:label "reference record"@en ;
+    rdfs:comment "A single property-value pair within a reference map."@en ;
+    rdfs:domain wbml:ReferenceMap ;
+    rdfs:range wbml:ReferenceRecord .
+
+#################################################################
+# Schema-level properties (used by Schema SPARQL queries)
+#################################################################
+
+wbml:Class
+    a owl:Class ;
+    rdfs:label "Class"@en ;
+    rdfs:comment "A Wikibase class derived from the mapping, representing a type of item."@en .
+
+wbml:Property
+    a owl:Class ;
+    rdfs:label "Property"@en ;
+    rdfs:comment "A Wikibase property derived from the mapping."@en .
+
+wbml:subclassOf
+    a owl:ObjectProperty ;
+    rdfs:label "subclass of"@en ;
+    rdfs:comment "Asserts a subclass relationship between two Wikibase classes in the generated schema."@en ;
+    rdfs:domain wbml:Class ;
+    rdfs:range wbml:Class .
+
+#################################################################
+# Internal/computed properties (used by the converter pipeline)
+#################################################################
+
+wbml:statID
+    a owl:DatatypeProperty ;
+    rdfs:label "statement ID"@en ;
+    rdfs:comment "An internally assigned integer identifier for a predicate-object map, used during RML conversion."@en ;
+    rdfs:domain wbml:StatementMap ;
+    rdfs:range xsd:integer .
+
+wbml:refId
+    a owl:DatatypeProperty ;
+    rdfs:label "reference ID"@en ;
+    rdfs:comment "An internally assigned integer identifier for a reference map within a predicate-object map, used during RML conversion."@en ;
+    rdfs:domain wbml:ReferenceMap ;
+    rdfs:range xsd:integer .
+
+wbml:statementSubject
+    a owl:ObjectProperty ;
+    rdfs:label "statement subject"@en ;
+    rdfs:comment "Internal property linking a generated RML statement node back to its subject triples map."@en .
+
+wbml:statementProperty
+    a owl:ObjectProperty ;
+    rdfs:label "statement property"@en ;
+    rdfs:comment "Internal property linking a generated RML statement node to its property."@en .
+
+wbml:statementValue
+    a owl:ObjectProperty ;
+    rdfs:label "statement value"@en ;
+    rdfs:comment "Internal property linking a generated RML statement node to its value."@en .
+
+wbml:statementReference
+    a owl:ObjectProperty ;
+    rdfs:label "statement reference"@en ;
+    rdfs:comment "Internal property linking a generated RML statement node to a reference block."@en .

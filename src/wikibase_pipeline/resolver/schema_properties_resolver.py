@@ -3,12 +3,14 @@ from collections import defaultdict
 from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, SKOS
 
+from ..utils.items_utils import clean_text
 from ..utils.properties_utils import lookup_get, search_wikibase_properties
 from ..utils.verbose_utils import inform, warn
 from .language_resolver import LanguageResolver
 
 WBML = Namespace("https://example.org/wbml#")
 PROPERTY_PREFIX = "urn:wikibase:property:"
+PROPERTY_IRI_PREFIX = "urn:wikibase:propertyIRI:"
 
 # Maps wbml: local names (used in .ttl files) → Wikibase API datatype strings
 WBML_DATATYPE_MAP: dict[str, str] = {
@@ -84,8 +86,8 @@ def _collect_property_metadata(
     tagged: list[tuple[str, str]] = []
     untagged: list[str] = []
     for lbl in g.objects(prop_iri, RDFS.label):
-        raw_value = str(lbl).strip()
-        if not raw_value:
+        raw_value = clean_text(lbl)
+        if raw_value is None:
             continue
         raw_lang = getattr(lbl, "language", None)
         if raw_lang is None:
@@ -100,7 +102,9 @@ def _collect_property_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if raw_value not in aliases[eff_lang]:
+            if " ".join(labels[eff_lang].split()) == " ".join(raw_value.split()):
+                pass
+            elif raw_value not in aliases[eff_lang]:
                 warn(
                     f"  Duplicate property label @{eff_lang} on <{iri_str}>: "
                     f"keeping '{labels[eff_lang]}', adding '{raw_value}' as alias.",
@@ -117,7 +121,7 @@ def _collect_property_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if raw_value.strip() == labels[eff_lang].strip():
+            if " ".join(raw_value.split()) == " ".join(labels[eff_lang].split()):
                 pass  # identical string, silently skip
             elif raw_value not in aliases[eff_lang]:
                 warn(
@@ -131,8 +135,8 @@ def _collect_property_metadata(
 
     # Aliases
     for alias in g.objects(prop_iri, SKOS.altLabel):
-        raw_value = str(alias).strip()
-        if not raw_value:
+        raw_value = clean_text(alias)
+        if raw_value is None:
             continue
         raw_lang = getattr(alias, "language", None)
         eff_lang = language_resolver.resolve_language(
@@ -178,8 +182,8 @@ def _collect_property_metadata(
 
     # Descriptions
     for desc in g.objects(prop_iri, RDFS.comment):
-        raw_value = str(desc).strip()
-        if not raw_value:
+        raw_value = clean_text(desc)
+        if raw_value is None:
             continue
         raw_lang = getattr(desc, "language", None)
         eff_lang = language_resolver.resolve_language(
@@ -194,6 +198,13 @@ def _collect_property_metadata(
                 verbose,
             )
         else:
+            if len(raw_value) > 250:
+                warn(
+                    f"  Description @{eff_lang} on <{iri_str}> exceeds 250 chars "
+                    f"— truncating.",
+                    verbose,
+                )
+                raw_value = raw_value[:250]
             descriptions[eff_lang] = raw_value
 
     return {
@@ -288,11 +299,11 @@ def _push_property_metadata(
     for lang, value in meta["labels"].items():
         if not lang:
             continue
-        value = value.strip()  # ← add this
+        value = value.strip()
         current = existing_labels.get(lang)
         if current is None:
             labels_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:  # ← strip both sides
+        elif " ".join(current.split()) == " ".join(value.split()):
             pass
         else:
             if overwrite_on_conflict:
@@ -308,7 +319,7 @@ def _push_property_metadata(
                     verbose,
                 )
                 already_there = existing_aliases.get(lang, set())
-                if value not in already_there:
+                if " ".join(value.split()) not in already_there:
                     aliases_to_set.setdefault(lang, []).append(
                         {"language": lang, "value": value}
                     )
@@ -320,11 +331,11 @@ def _push_property_metadata(
     for lang, value in meta["descriptions"].items():
         if not lang:
             continue
-        value = value.strip()  # ← add this
+        value = value.strip()
         current = existing_descriptions.get(lang)
         if current is None:
             descriptions_to_set[lang] = {"language": lang, "value": value}
-        elif current.strip() == value:  # ← strip both sides
+        elif " ".join(current.split()) == " ".join(value.split()):
             pass
         else:
             if overwrite_on_conflict:
@@ -347,12 +358,13 @@ def _push_property_metadata(
     for lang, values in meta["aliases"].items():
         if not lang:
             continue
-        already_as_alias = existing_aliases.get(lang, set())
+        already_alias = existing_aliases.get(lang, set())
         existing_label = existing_labels.get(lang, "")
         new_values = [
             v
             for v in values
-            if v not in already_as_alias and v.strip() != existing_label.strip()
+            if v not in already_alias
+            and " ".join(v.split()) != " ".join(existing_label.split())
         ]
         if new_values:
             aliases_to_set[lang] = [{"language": lang, "value": v} for v in new_values]
@@ -412,5 +424,87 @@ def resolve_schema_properties(
                 verbose,
             )
             lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
+
+        _push_property_metadata(pid, meta, wikibase_api, verbose)
+
+
+def _collect_property_instance_iris(data_graph: Graph) -> list[URIRef]:
+    """
+    Collect all urn:wikibase:property: and urn:wikibase:propertyIRI: IRIs
+    that appear as subjects or objects in the data graph.
+    Returns a sorted list of unique URIRefs.
+    """
+    props: set[URIRef] = set()
+    for s, _, o in data_graph:
+        for node in (s, o):
+            if not isinstance(node, URIRef):
+                continue
+            node_str = str(node)
+            if node_str.startswith(PROPERTY_PREFIX) or node_str.startswith(
+                PROPERTY_IRI_PREFIX
+            ):
+                props.add(node)
+    return sorted(props)
+
+
+def resolve_property_instances(
+    data_graph: Graph,
+    lookup: dict,
+    wikibase_api,
+    language_resolver: LanguageResolver,
+    verbose: int = 1,
+) -> None:
+    """
+    For every urn:wikibase:property: or urn:wikibase:propertyIRI: IRI that
+    appears in the data graph:
+    - Already in lookup: push any label/description/alias metadata diff.
+    - Not in lookup but wbml:propertyType present in data graph (generated by
+      1b_subjectMap_property.rq from wbml:propertyEntityMap): resolve or
+      create the property in Wikibase, then push metadata.
+    - Not in lookup and no wbml:propertyType: raise ValueError — it must be
+      declared in the schema (rdf:Property) or via wbml:nodeId.
+    """
+    lookup.setdefault("properties", {})
+
+    for prop_iri in _collect_property_instance_iris(data_graph):
+        iri_str = str(prop_iri)
+        prop_entry = lookup["properties"].get(iri_str)
+
+        if prop_entry is None:
+            # Not in lookup: valid only if 1b generated wbml:propertyType
+            # on this IRI (i.e. it comes from wbml:propertyEntityMap)
+            if not list(data_graph.objects(prop_iri, WBML.propertyType)):
+                raise ValueError(
+                    f"Property entity <{iri_str}> found in data graph but not in "
+                    f"lookup['properties']. Ensure it is declared in the schema "
+                    f"(rdf:Property + wbml:propertyType) or referenced via "
+                    f"wbml:propertyEntityMap with wbml:nodeId."
+                )
+            # propertyEntityMap-generated property: resolve or create it
+            wb_datatype = _wb_datatype_from_graph(data_graph, prop_iri)
+            meta = _collect_property_metadata(
+                data_graph, prop_iri, language_resolver, verbose=verbose
+            )
+            pid = lookup_get(lookup, iri_str, wb_datatype, wikibase_api)
+            if pid is None:
+                pid, wb_datatype = _resolve_one_property(
+                    prop_iri,
+                    meta,
+                    data_graph,
+                    wikibase_api,
+                    language_resolver.language,
+                    verbose,
+                )
+                lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
+        else:
+            pid = prop_entry["id"]
+            meta = _collect_property_metadata(
+                data_graph, prop_iri, language_resolver, verbose=verbose
+            )
+
+        # Skip API call if nothing to push
+        # (property used only as a predicate with no metadata in data graph)
+        if not any([meta["labels"], meta["descriptions"], meta["aliases"]]):
+            continue
 
         _push_property_metadata(pid, meta, wikibase_api, verbose)

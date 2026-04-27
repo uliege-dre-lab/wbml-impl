@@ -4,14 +4,17 @@ from dotenv import load_dotenv
 from rdflib import Graph
 
 from .config import load_env_config
-from .lookup_io import load_lookup, save_lookup
+from .lookup_io import load_lookup, save_lookup, validate_lookup_cache
 from .populator import populate
 from .resolver.builtins_properties import search_builtins_properties
 from .resolver.direct_iri_resolver import resolve_direct_iris
 from .resolver.instance_resolver import resolve_instances
 from .resolver.language_resolver import LanguageResolver
 from .resolver.schema_classes_resolver import resolve_schema_classes
-from .resolver.schema_properties_resolver import resolve_schema_properties
+from .resolver.schema_properties_resolver import (
+    resolve_property_instances,
+    resolve_schema_properties,
+)
 from .rml_executor import rml_execute, validate_nt_file
 from .utils.verbose_utils import inform
 from .wbml_to_rml import convert_wbml_to_rml, run_schema_queries
@@ -45,6 +48,7 @@ def update(mapping_file_path: str | Path) -> None:
 
     lookup = load_lookup(cfg["cache"]["lookup_file"], cfg["wikibase"]["verbose"])
     wb_api = WikibaseAPI(cfg["wikibase"])
+    validate_lookup_cache(lookup, wb_api, cfg["wikibase"]["verbose"])
     valid_languages = wb_api.get_valid_languages()
     language_resolver = LanguageResolver(
         cfg["wikibase"]["language"], valid_languages, verbose=cfg["wikibase"]["verbose"]
@@ -73,6 +77,9 @@ def update(mapping_file_path: str | Path) -> None:
 
     inform("Initialize instance metadata", cfg["wikibase"]["verbose"])
     resolve_instances(
+        g_objects, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
+    )
+    resolve_property_instances(
         g_objects, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
     )
 

@@ -13,7 +13,7 @@ CONSTRUCT {
   ?stmtSM rr:template ?stmtTemplate ;
           rr:termType rr:IRI .
 
-  ?qualifierPOM rr:predicate ?qualifierPredIRI ;
+  ?qualifierPOM rr:predicate ?qualifierPropIRI ;
                 rr:objectMap ?qualifierOM .
 
   ?qualifierOM rr:parentTriplesMap ?parentTM .
@@ -24,13 +24,19 @@ CONSTRUCT {
 WHERE {
   ?tm a rr:TriplesMap ;
       rml:logicalSource ?ls ;
-      wbml:subjectMap ?sm ;
-      wbml:predicateObjectMap ?pom .
+      wbml:statementMap ?pom .
 
-  ?sm wbml:nodeTemplate ?subjectNodeTemplate .
+  { ?tm wbml:itemMap ?sm }
+  UNION
+  { ?tm wbml:propertyEntityMap ?sm }
+
+  OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
+  OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
+  FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
+  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
 
   ?pom wbint:statID ?statID ;
-       wbml:objectMap ?wom ;
+       wbml:valueMap ?wom ;
        wbml:qualifierMap ?qmap .
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
@@ -40,17 +46,17 @@ WHERE {
 
   BIND(COALESCE(?mainValueNodeTemplate, ?mainValueNodeId) AS ?mainValueNode)
 
-  ?qmap wbml:objectMap ?qom .
+  ?qmap wbml:valueMap ?qom .
 
-  OPTIONAL { ?qmap wbml:predicate ?qualifierPredicateNode . }
-  OPTIONAL { ?qmap wbml:predicateId ?qualifierPredicateId . }
-  FILTER(BOUND(?qualifierPredicateNode) || BOUND(?qualifierPredicateId))
+  OPTIONAL { ?qmap wbml:propertyMap ?qualifierPropertyNode . }
+  OPTIONAL { ?qmap wbml:propertyId ?qualifierPropertyId . }
+  FILTER(BOUND(?qualifierPropertyNode) || BOUND(?qualifierPropertyId))
 
-  OPTIONAL { ?qualifierPredicateNode wbml:nodeTemplate ?qualExplicitKey . }
+  OPTIONAL { ?qualifierPropertyNode wbml:nodeTemplate ?qualExplicitKey . }
   FILTER(
-    !BOUND(?qualifierPredicateNode) ||
-    isBlank(?qualifierPredicateNode) ||
-    STRSTARTS(STR(?qualifierPredicateNode), "https://example.org/wbml#")
+    !BOUND(?qualifierPropertyNode) ||
+    isBlank(?qualifierPropertyNode) ||
+    STRSTARTS(STR(?qualifierPropertyNode), "https://example.org/wbml#")
   )
 
   ?qom wbml:parentTriplesMap ?parentTM .
@@ -68,13 +74,13 @@ WHERE {
   }
 
   BIND(
-    IF(BOUND(?qualifierPredicateId),
-      IRI(CONCAT("urn:wikibase:qualifierIRI:", STR(?qualifierPredicateId))),
+    IF(BOUND(?qualifierPropertyId),
+      IRI(CONCAT("urn:wikibase:qualifierIRI:", STR(?qualifierPropertyId))),
       COALESCE(
         IRI(CONCAT("urn:wikibase:qualifier:", ?qualExplicitKey)),
-        IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPredicateNode), "#")))
+        IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPropertyNode), "#")))
       )
-    ) AS ?qualifierPredIRI
+    ) AS ?qualifierPropIRI
   )
 
   BIND(
@@ -83,4 +89,11 @@ WHERE {
     IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
     "")))
   AS ?valueSuffix)
+
+  BIND(
+    CONCAT(
+      "urn:wikibase:statement:", STR(?subjectKey), "_", STR(?statID), ?valueSuffix
+    )
+    AS ?stmtTemplate
+  )
 }

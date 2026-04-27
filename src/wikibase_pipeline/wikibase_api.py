@@ -322,6 +322,14 @@ class WikibaseAPI:
             if result.get("match", {}).get("text", "").strip() == needle
         ]
 
+    def get_entity_claims(self, qid: str) -> dict:
+        """
+        Return all claims for an entity as a dict keyed by property ID.
+        Each value is the list of claim dicts as returned by wbgetentities.
+        """
+        entity = self.get_entity(qid, props="claims")
+        return entity.get("claims", {})
+
     def get_entity(
         self,
         qid: str,
@@ -551,6 +559,29 @@ class WikibaseAPI:
         if not ref_hash:
             raise RuntimeError(f"Failed to create reference on {claim_guid}: {data}")
         return ref_hash
+
+    def filter_existing_ids(self, ids: list[str]) -> set[str]:
+        """
+        Given a list of QIDs / PIDs, return the subset that actually
+        exist in Wikibase.
+        Uses batched wbgetentities calls (50 per
+        request) with props=info to keep the payload small.
+        """
+        existing: set[str] = set()
+        batch_size = 50
+        for i in range(0, len(ids), batch_size):
+            batch = ids[i : i + batch_size]
+            data = self._api_get(
+                {
+                    "action": "wbgetentities",
+                    "ids": "|".join(batch),
+                    "props": "info",
+                }
+            )
+            for entity_id, entity_data in data.get("entities", {}).items():
+                if "missing" not in entity_data:
+                    existing.add(entity_id)
+        return existing
 
     def delete_entity(self, entity_id: str) -> None:
         """
