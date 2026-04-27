@@ -12,6 +12,7 @@ CONSTRUCT {
 }
 WHERE {
   ?propNode a rdf:Property .
+  FILTER NOT EXISTS { ?tm wbml:propertyEntityMap ?propNode }
 
   OPTIONAL { ?propNode rdfs:label        ?predicateLabel . }
   OPTIONAL { ?propNode rdfs:comment      ?predicateDescription . }
