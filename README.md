@@ -71,9 +71,14 @@ cp .env.example .env
 Then fill in the required values. Optional variables can be left empty to use their defaults.
 
 ## Usage
+If you are on Linux or macOS, first make the script executable:
+
+```bash
+chmod +x update.sh
+```
 
 Run the pipeline from the project root by passing your WBML mapping file:
 
 ```bash
-sh scripts/update.sh mappings/wbml_mapping.ttl
+sh ./update.sh data/mappings/wbml_mapping.ttl
 ```
