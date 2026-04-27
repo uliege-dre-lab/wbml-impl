@@ -131,7 +131,6 @@
   ] ;
 
   wbml:propertyEntityMap [
-    a rdf:Property ;
     wbml:nodeTemplate "Property_{name}" ;
     wbml:propertyType wbml:string
   ] ;
@@ -214,7 +213,6 @@
   ] ;
 
   wbml:propertyEntityMap [
-    a rdf:Property ;
     wbml:nodeTemplate "Property_{name}" ;
     wbml:propertyType wbml:url
   ] ;
@@ -271,7 +269,6 @@
   ] ;
 
   wbml:propertyEntityMap [
-    a rdf:Property ;
     wbml:nodeTemplate "Property_{name}" ;
     wbml:propertyType wbml:time
   ] ;
