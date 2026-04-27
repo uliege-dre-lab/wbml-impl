@@ -19,83 +19,83 @@
       WHERE "Nom de la classe" IS NOT NULL
         AND trim("Nom de la classe") != ''
     """ ] ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb10>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb8>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb12>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb14>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb4>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb6> ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb10>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb8>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb12>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb14>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb4>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb6> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb15 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb15 ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb15 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb15 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb18> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/n288b75dfbc2743f68a5a140601d439fdb18> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb55 ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb62>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb64>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb58>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb60>,
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb55 ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb62>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb64>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb58>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb60>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/propertyPOM> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb55 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb55 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb67> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/n288b75dfbc2743f68a5a140601d439fdb67> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb55 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb55 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb70> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/n288b75dfbc2743f68a5a140601d439fdb70> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb55 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb55 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb73> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/n288b75dfbc2743f68a5a140601d439fdb73> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb55 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb55 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb76> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/n288b75dfbc2743f68a5a140601d439fdb76> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb19 ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb26>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb28>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb22>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb24>,
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb19 ;
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb26>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb28>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb22>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb24>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/propertyPOM> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb19 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb19 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb31> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/n288b75dfbc2743f68a5a140601d439fdb31> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3> a ns1:TriplesMap ;
-    ns2:logicalSource _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb19 ;
+    ns2:logicalSource _:n288b75dfbc2743f68a5a140601d439fdb19 ;
     ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/property>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/subject>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb34> ;
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/n288b75dfbc2743f68a5a140601d439fdb34> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/subjectMap> .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping> a ns1:TriplesMap ;
@@ -116,10 +116,10 @@
         AND trim("Nom") != ''
         AND "Portée" = 'DateTime'
     """ ] ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb52>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb54>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb48>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb50>,
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb52>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb54>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb48>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb50>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/propertyPOM> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/subjectMap> .
 
@@ -141,47 +141,47 @@
         AND trim("Nom") != ''
         AND "Portée" IN ('URL', 'URI')
     """ ] ;
-    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb42>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb44>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb38>,
-        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb40>,
+    ns1:predicateObjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb42>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb44>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb38>,
+        <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb40>,
         <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/propertyPOM> ;
     ns1:subjectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/subjectMap> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb10> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb10/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb10> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb10/om> ;
     ns1:predicate skos:altLabel .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb10/om> ns2:reference "alias_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb10/om> ns2:reference "alias_en" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb8> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb8/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb8> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb8/om> ;
     ns1:predicate skos:altLabel .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/nc8ef49b9c2dc4fc683dfa7ed0036c02bb8/om> ns2:reference "alias" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/altLabel/n288b75dfbc2743f68a5a140601d439fdb8/om> ns2:reference "alias" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb12> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb12/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb12> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb12/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb12/om> ns2:reference "description" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb12/om> ns2:reference "description" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb14> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb14/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb14> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb14/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb14/om> ns2:reference "description_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb14/om> ns2:reference "description_en" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb4> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb4/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb4> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb4/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb4/om> ns2:reference "name" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb4/om> ns2:reference "name" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb6> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb6/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb6> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb6/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb6/om> ns2:reference "name_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb6/om> ns2:reference "name_en" ;
     ns1:language "en" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassMapping/subjectMap> ns1:template "urn:wikibase:item:Class_{name}" ;
@@ -198,10 +198,10 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/subject/om> ns1:template "urn:wikibase:item:Class_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb18> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb18/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/n288b75dfbc2743f68a5a140601d439fdb18> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/n288b75dfbc2743f68a5a140601d439fdb18/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb18/om> ns1:template "urn:wikibase:item:Class_{parent_class}" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/pom/value/n288b75dfbc2743f68a5a140601d439fdb18/om> ns1:template "urn:wikibase:item:Class_{parent_class}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/statement/1/subjectMap> ns1:template "urn:wikibase:statement:Class_{name}_1_Class_{parent_class}" ;
@@ -210,28 +210,28 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ClassesHierarchyMapping/subjectMap> ns1:template "urn:wikibase:item:Class_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb62> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb62/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb62> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb62/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb62/om> ns2:reference "description" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb62/om> ns2:reference "description" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb64> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb64/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb64> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb64/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb64/om> ns2:reference "description_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb64/om> ns2:reference "description_en" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb58> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb58/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb58> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb58/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb58/om> ns2:reference "name" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb58/om> ns2:reference "name" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb60> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb60/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb60> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb60/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb60/om> ns2:reference "name_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb60/om> ns2:reference "name_en" ;
     ns1:language "en" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/propertyOM> ns1:constant <https://example.org/wbml#item> .
@@ -250,10 +250,10 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/subject/om> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb67> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb67/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/n288b75dfbc2743f68a5a140601d439fdb67> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/n288b75dfbc2743f68a5a140601d439fdb67/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb67/om> ns2:reference "good_practices" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/pom/value/n288b75dfbc2743f68a5a140601d439fdb67/om> ns2:reference "good_practices" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/4/subjectMap> ns1:template "urn:wikibase:statement:Property_{name}_4_{good_practices}" ;
     ns1:termType ns1:IRI .
@@ -269,10 +269,10 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/subject/om> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb70> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb70/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/n288b75dfbc2743f68a5a140601d439fdb70> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/n288b75dfbc2743f68a5a140601d439fdb70/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb70/om> ns2:reference "cardinality" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/pom/value/n288b75dfbc2743f68a5a140601d439fdb70/om> ns2:reference "cardinality" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/5/subjectMap> ns1:template "urn:wikibase:statement:Property_{name}_5_{cardinality}" ;
     ns1:termType ns1:IRI .
@@ -288,10 +288,10 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/subject/om> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb73> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb73/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/n288b75dfbc2743f68a5a140601d439fdb73> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/n288b75dfbc2743f68a5a140601d439fdb73/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb73/om> ns2:reference "inverse" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/pom/value/n288b75dfbc2743f68a5a140601d439fdb73/om> ns2:reference "inverse" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/6/subjectMap> ns1:template "urn:wikibase:statement:Property_{name}_6_{inverse}" ;
     ns1:termType ns1:IRI .
@@ -307,10 +307,10 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/subject/om> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb76> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb76/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/n288b75dfbc2743f68a5a140601d439fdb76> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/n288b75dfbc2743f68a5a140601d439fdb76/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb76/om> ns1:template "urn:wikibase:item:Class_{range_class}" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/pom/value/n288b75dfbc2743f68a5a140601d439fdb76/om> ns1:template "urn:wikibase:item:Class_{range_class}" ;
     ns1:termType ns1:IRI .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/statement/7/subjectMap> ns1:template "urn:wikibase:statement:Property_{name}_7_Class_{range_class}" ;
@@ -319,28 +319,28 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#ObjectPropertyMapping/subjectMap> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb26> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb26/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb26> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb26/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb26/om> ns2:reference "description" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb26/om> ns2:reference "description" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb28> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb28/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb28> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb28/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb28/om> ns2:reference "description_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb28/om> ns2:reference "description_en" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb22> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb22/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb22> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb22/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb22/om> ns2:reference "name" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb22/om> ns2:reference "name" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb24> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb24/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb24> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb24/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb24/om> ns2:reference "name_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb24/om> ns2:reference "name_en" ;
     ns1:language "en" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/propertyOM> ns1:constant <https://example.org/wbml#string> .
@@ -359,10 +359,10 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/subject/om> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb31> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb31/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/n288b75dfbc2743f68a5a140601d439fdb31> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/n288b75dfbc2743f68a5a140601d439fdb31/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb31/om> ns2:reference "good_practices" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/pom/value/n288b75dfbc2743f68a5a140601d439fdb31/om> ns2:reference "good_practices" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/2/subjectMap> ns1:template "urn:wikibase:statement:Property_{name}_2_{good_practices}" ;
     ns1:termType ns1:IRI .
@@ -378,10 +378,10 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/subject/om> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb34> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb34/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/n288b75dfbc2743f68a5a140601d439fdb34> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/n288b75dfbc2743f68a5a140601d439fdb34/om> ;
     ns1:predicate <https://example.org/wbml#statementValue> .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/nc8ef49b9c2dc4fc683dfa7ed0036c02bb34/om> ns2:reference "cardinality" .
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/pom/value/n288b75dfbc2743f68a5a140601d439fdb34/om> ns2:reference "cardinality" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/statement/3/subjectMap> ns1:template "urn:wikibase:statement:Property_{name}_3_{cardinality}" ;
     ns1:termType ns1:IRI .
@@ -389,28 +389,28 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#StringDataPropertyMapping/subjectMap> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb52> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb52/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb52> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb52/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb52/om> ns2:reference "description" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb52/om> ns2:reference "description" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb54> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb54/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb54> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb54/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb54/om> ns2:reference "description_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb54/om> ns2:reference "description_en" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb48> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb48/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb48> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb48/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb48/om> ns2:reference "name" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb48/om> ns2:reference "name" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb50> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb50/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb50> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb50/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb50/om> ns2:reference "name_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb50/om> ns2:reference "name_en" ;
     ns1:language "en" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/propertyOM> ns1:constant <https://example.org/wbml#time> .
@@ -421,28 +421,28 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#TimeDataPropertyMapping/subjectMap> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb42> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb42/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb42> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb42/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb42/om> ns2:reference "description" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb42/om> ns2:reference "description" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb44> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb44/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb44> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb44/om> ;
     ns1:predicate rdfs:comment .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/nc8ef49b9c2dc4fc683dfa7ed0036c02bb44/om> ns2:reference "description_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/comment/n288b75dfbc2743f68a5a140601d439fdb44/om> ns2:reference "description_en" ;
     ns1:language "en" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb38> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb38/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb38> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb38/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb38/om> ns2:reference "name" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb38/om> ns2:reference "name" ;
     ns1:language "fr" .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb40> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb40/om> ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb40> ns1:objectMap <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb40/om> ;
     ns1:predicate rdfs:label .
 
-<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/nc8ef49b9c2dc4fc683dfa7ed0036c02bb40/om> ns2:reference "name_en" ;
+<file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/pom/label/n288b75dfbc2743f68a5a140601d439fdb40/om> ns2:reference "name_en" ;
     ns1:language "en" .
 
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/propertyOM> ns1:constant <https://example.org/wbml#url> .
@@ -453,7 +453,7 @@
 <file:///C:/Users/liu00/Documents/Universit%C3%A9/Master2/TFE/ATFE9009-wikibase-rdf-pipeline/data/mappings/wbml_notion.ttl#URLDataPropertyMapping/subjectMap> ns1:template "urn:wikibase:property:Property_{name}" ;
     ns1:termType ns1:IRI .
 
-_:nc8ef49b9c2dc4fc683dfa7ed0036c02bb15 ns2:query """
+_:n288b75dfbc2743f68a5a140601d439fdb15 ns2:query """
       SELECT
         "Nom de la classe" AS name,
         "Hiérarchie (classe parent)" AS parent_class
@@ -467,7 +467,7 @@ _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb15 ns2:query """
         AND trim("Hiérarchie (classe parent)") != ''
     """ .
 
-_:nc8ef49b9c2dc4fc683dfa7ed0036c02bb19 ns2:query """
+_:n288b75dfbc2743f68a5a140601d439fdb19 ns2:query """
       SELECT
         "Nom" AS name,
         "Description" AS description,
@@ -488,7 +488,7 @@ _:nc8ef49b9c2dc4fc683dfa7ed0036c02bb19 ns2:query """
         )
     """ .
 
-_:nc8ef49b9c2dc4fc683dfa7ed0036c02bb55 ns2:query """
+_:n288b75dfbc2743f68a5a140601d439fdb55 ns2:query """
       SELECT
         "Nom" AS name,
         "Description" AS description,
