@@ -406,7 +406,7 @@
       wbml:nodeTemplate "rangeClass" ;
       rdfs:label "Range class"@en ;
       rdfs:label "Classe de portée"@fr ;
-      wbml:propertyType wbml:string
+      wbml:propertyType wbml:item
     ] ;
     wbml:valueMap [
       wbml:nodeTemplate "Class_{range_class}"
