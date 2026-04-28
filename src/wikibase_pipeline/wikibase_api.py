@@ -252,11 +252,11 @@ class WikibaseAPI:
                 "limit": 50,
             }
         )
-        needle = label.strip()
+        needle = label.strip().lower()
         return [
             result["id"]
             for result in data.get("search", [])
-            if result.get("match", {}).get("text", "").strip() == needle
+            if result.get("match", {}).get("text", "").strip().lower() == needle
         ]
 
     def get_property_datatype(self, pid: str) -> str:
@@ -345,11 +345,11 @@ class WikibaseAPI:
                 "limit": 50,
             }
         )
-        needle = label.strip()
+        needle = label.strip().lower()
         return [
             result["id"]
             for result in data.get("search", [])
-            if result.get("match", {}).get("text", "").strip() == needle
+            if result.get("match", {}).get("text", "").strip().lower() == needle
         ]
 
     def get_entity_claims(self, qid: str) -> dict:
