@@ -76,6 +76,7 @@ def _collect_property_metadata(
     prop_iri: URIRef,
     language_resolver: LanguageResolver,
     verbose: int,
+    require_label: bool = True,
 ) -> dict:
     labels: dict[str, str] = {}
     aliases: dict[str, list[str]] = defaultdict(list)
@@ -155,7 +156,7 @@ def _collect_property_metadata(
 
     # Fallback if still no labels: promote an alias (default lang first),
     # else IRI suffix
-    if not labels:
+    if not labels and require_label:
         fallback_lang = language_resolver.language
         promoted = False
         for lang in [fallback_lang] + [
@@ -491,7 +492,10 @@ def resolve_property_instances(
             # propertyEntityMap-generated property: resolve or create it
             wb_datatype = _wb_datatype_from_graph(data_graph, prop_iri)
             meta = _collect_property_metadata(
-                data_graph, prop_iri, language_resolver, verbose=verbose
+                data_graph,
+                prop_iri,
+                language_resolver,
+                verbose=verbose,
             )
             pid = lookup_get(lookup, iri_str, wb_datatype, wikibase_api)
             if pid is None:
@@ -507,7 +511,11 @@ def resolve_property_instances(
         else:
             pid = prop_entry["id"]
             meta = _collect_property_metadata(
-                data_graph, prop_iri, language_resolver, verbose=verbose
+                data_graph,
+                prop_iri,
+                language_resolver,
+                verbose=verbose,
+                require_label=False,
             )
 
         # Skip API call if nothing to push

@@ -17,6 +17,7 @@ def _collect_class_metadata(
     class_iri: URIRef,
     language_resolver: LanguageResolver,
     verbose: int,
+    require_label: bool = True,
 ) -> dict:
     labels: dict[str, str] = {}
     aliases: dict[str, list[str]] = defaultdict(list)
@@ -99,7 +100,7 @@ def _collect_class_metadata(
 
     # Fallback if still no labels: promote an alias (default lang first),
     # else IRI suffix
-    if not labels:
+    if not labels and require_label:
         fallback_lang = language_resolver.language or "en"
         promoted = False
         for lang in [fallback_lang] + [
@@ -404,11 +405,17 @@ def resolve_schema_classes(
 
     for class_iri in sorted(schema_graph.subjects(RDF.type, RDFS.Class)):
         iri_str = str(class_iri)
+        already_resolved = iri_str in lookup["items"]
+
         meta = _collect_class_metadata(
-            schema_graph, class_iri, language_resolver, verbose=verbose
+            schema_graph,
+            class_iri,
+            language_resolver,
+            verbose=verbose,
+            require_label=not already_resolved,
         )
 
-        if iri_str not in lookup["items"]:
+        if not already_resolved:
             qid = _resolve_one_class(
                 class_iri,
                 meta,
