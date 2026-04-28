@@ -455,29 +455,6 @@ class WikibaseAPI:
             }
         )
 
-    def add_item_claim(
-        self,
-        subject_qid: str,
-        property_pid: str,
-        value: str,
-    ) -> None:
-        """
-        Add a wikibase-item claim on an entity.
-        Inputs:
-        - subject_qid: The QID of the entity to which to add the claim.
-        - property_pid: The PID of the property for which to add the claim.
-        - value: The QID of the item to which the claim points.
-        """
-        self._api_post(
-            {
-                "action": "wbcreateclaim",
-                "entity": subject_qid,
-                "property": property_pid,
-                "snaktype": "value",
-                "value": json.dumps({"entity-type": "item", "id": value}),
-            }
-        )
-
     def _to_datavalue(self, value, property_datatype: str) -> dict:
         """
         Wrap a simple Wikibase value into the datavalue envelope
