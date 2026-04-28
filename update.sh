@@ -1,14 +1,12 @@
 #!/bin/bash
-# Usage:
-#   ./update.sh                                      # uses the default mapping
-#   ./update.sh data/mappings/wbml_notion.ttl        # explicit mapping file
+# Usage: ./update.sh data/mappings/wbml_pokemon.ttl
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-MAPPING="${1:-data/mappings/wbml_notion.ttl}"
+MAPPING="${1:?Error: mapping file is required. Usage: ./update.sh <mapping.ttl>}"
 
 if [ ! -f "$MAPPING" ]; then
   echo "Error: mapping file not found: $MAPPING" >&2
@@ -16,4 +14,4 @@ if [ ! -f "$MAPPING" ]; then
 fi
 
 echo "Running pipeline with mapping: $MAPPING"
-python scripts/run_pipeline.py "$MAPPING"
+python -m wikibase_pipeline "$MAPPING"
