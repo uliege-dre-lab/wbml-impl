@@ -10,14 +10,18 @@ from .utils.verbose_utils import inform, warn
 
 
 class WikibaseAPI:
+    """
+    A wrapper of the Wikibase API for common operations needed in the pipeline.
+    Handles authentication, token management, and provides methods for
+    searching, creating, editing, and deleting entities and claims.
+    """
+
     def __init__(self, params: dict) -> None:
         """
         Initialize a WikibaseAPI instance.
         """
         self.api_url = params["api_url"]
         self.session = requests.Session()
-
-        self.sparql_endpoint = params["sparql_endpoint"]
 
         self.language = params["language"]
 
@@ -115,7 +119,11 @@ class WikibaseAPI:
     def _api_get(self, params: dict[str, Any]) -> dict[str, Any]:
         """
         Generic method to perform a GET request
-            to the Wikibase API with the given parameters.
+        to the Wikibase API with the given parameters.
+        Input:
+        - params: The query parameters to send in the GET request.
+        Output:
+        - The parsed JSON response from the API.
         """
         full_params = {"format": "json", **params}
         r = self.session.get(
@@ -134,8 +142,13 @@ class WikibaseAPI:
     ) -> dict[str, Any]:
         """
         Generic method to perform a POST request
-            to the Wikibase API with the given data.
+        to the Wikibase API with the given data.
         If the CSRF token is invalid, refresh it and retry once.
+        Input:
+        - data: The form data to send in the POST request.
+        - retry_on_badtoken: Whether to retry once if a badtoken error is encountered.
+        Output:
+        - The parsed JSON response from the API.
         """
         if self.csrf_token is None:
             self._refresh_csrf_token()
@@ -160,7 +173,7 @@ class WikibaseAPI:
             if not retry_on_badtoken:
                 raise RuntimeError(f"Wikibase API error: {error}")
 
-            warn(
+            inform(
                 "CSRF token expired or invalid; refreshing token and retrying once.",
                 self.verbose,
             )
@@ -182,6 +195,8 @@ class WikibaseAPI:
     def _raise_api_error(self, data: dict[str, Any]) -> None:
         """
         Raise a RuntimeError if the API response contains an error.
+        Input:
+        - data: The parsed JSON response from the API.
         """
         if "error" in data:
             raise RuntimeError(f"Wikibase API error: {data['error']}")
@@ -189,6 +204,8 @@ class WikibaseAPI:
     def get_valid_languages(self, refresh: bool = False) -> set[str]:
         """
         Return the set of content languages supported by this Wikibase instance.
+        Input:
+        - refresh: Whether to refresh the cache.
         """
         if self._valid_languages_cache is not None and not refresh:
             return self._valid_languages_cache
@@ -221,6 +238,9 @@ class WikibaseAPI:
     def search_properties_by_label(self, label: str, language: str = "en") -> list[str]:
         """
         Search Wikibase for properties matching the given label.
+        Inputs:
+        - label: The label to search for.
+        - language: The language to search in.
         Returns only PIDs whose label is an exact match.
         """
         data = self._api_get(
@@ -242,6 +262,10 @@ class WikibaseAPI:
     def get_property_datatype(self, pid: str) -> str:
         """
         Fetch the datatype of a property from Wikibase.
+        Input:
+        - pid: The property ID.
+        Output:
+        - The datatype of the property.
         """
         data = self._api_get(
             {
@@ -264,9 +288,12 @@ class WikibaseAPI:
     ) -> str:
         """
         Create a new property in Wikibase.
-        Labels/descriptions/aliases are dicts keyed by language code.
-        Empty-string language keys are skipped (invalid for Wikibase).
-        Returns the new PID.
+        Inputs:
+        - labels: A dict of language code to label string.
+        - datatype: The Wikibase datatype for this property
+        - descriptions: Optional dict of language code to description string.
+        - aliases: Optional dict of language code to list of alias strings.
+        Metadata are associated with language codes, which must be valid BCP47 codes
         """
         entity_data: dict = {"datatype": datatype}
 
@@ -304,6 +331,9 @@ class WikibaseAPI:
     def search_items_by_label(self, label: str, language: str = "en") -> list[str]:
         """
         Search Wikibase for items matching the given label.
+        Inputs:
+        - label: The label to search for.
+        - language: The language to search in.
         Returns only QIDs whose label is an exact match.
         """
         data = self._api_get(
@@ -324,8 +354,11 @@ class WikibaseAPI:
 
     def get_entity_claims(self, qid: str) -> dict:
         """
-        Return all claims for an entity as a dict keyed by property ID.
-        Each value is the list of claim dicts as returned by wbgetentities.
+        Get the claims of an entity by QID.
+        Input:
+        - qid: The QID of the entity.
+        Output:
+        - A dict of claims, keyed by property PID.
         """
         entity = self.get_entity(qid, props="claims")
         return entity.get("claims", {})
@@ -338,6 +371,12 @@ class WikibaseAPI:
         """
         Fetch entity data from Wikibase.
         Raises RuntimeError if the entity does not exist.
+        Inputs:
+        - qid: The QID of the entity to fetch.
+        - props: The properties to retrieve
+        (default: labels, descriptions, aliases, claims).
+        Output:
+        - A dict containing the entity data for the requested properties.
         """
         data = self._api_get(
             {
@@ -359,8 +398,11 @@ class WikibaseAPI:
     ) -> str:
         """
         Create a new item in Wikibase.
-        Language keys must be valid BCP47 codes:
-            empty-string keys are silently skipped.
+        Inputs:
+        - labels: A dict of language code to label string.
+        - descriptions: Optional dict of language code to description string.
+        - aliases: Optional dict of language code to list of alias strings.
+        Metadata are associated with language codes, which must be valid BCP47 codes.
         Returns the new QID.
         """
         entity_data: dict = {}
@@ -399,7 +441,11 @@ class WikibaseAPI:
     def edit_entity(self, qid: str, entity_data: dict) -> None:
         """
         Push a metadata diff (labels / descriptions / aliases) to an existing entity.
-        entity_data must already be shaped as Wikibase API expects.
+        Inputs:
+        - qid: The QID of the entity to edit.
+        - entity_data: A dict containing the metadata to update,
+        in the same format as the "data" parameter of wbeditentity
+        (e.g., {"labels": {"en": {"language": "en", "value": "New label"}}}).
         """
         self._api_post(
             {
@@ -417,7 +463,10 @@ class WikibaseAPI:
     ) -> None:
         """
         Add a wikibase-item claim on an entity.
-        `value` is the target QID (e.g. "Q42").
+        Inputs:
+        - subject_qid: The QID of the entity to which to add the claim.
+        - property_pid: The PID of the property for which to add the claim.
+        - value: The QID of the item to which the claim points.
         """
         self._api_post(
             {
@@ -433,6 +482,12 @@ class WikibaseAPI:
         """
         Wrap a simple Wikibase value into the datavalue envelope
         required by wbeditentity.
+        Inputs:
+        - value: The value to wrap.
+        - property_datatype: The datatype of the property for which
+        to create the datavalue.
+        Output:
+        A dict representing the datavalue.
         """
         if property_datatype in ("string", "url"):
             return {"type": "string", "value": value}
@@ -457,11 +512,11 @@ class WikibaseAPI:
         rank: str = "normal",
     ) -> str:
         """
-        Create a statement (main snak) on an entity.
-        `value` must be a pre-formatted Python object from rdf_value_to_wikibase_value.
-        If rank is not 'normal', a second wbeditentity call sets it
-        (wbsetrank is not used as it is absent from some Wikibase instances).
-        Returns the claim GUID.
+        Create a statement on an entity.
+        Inputs:
+        - subject_qid: The QID of the entity to which to add the statement.
+        - property_pid: The PID of the property for which to add the statement.
+        - value: The value of the claim, as a simple Python type (e.g.,
         """
         # Step 1: create the claim (always lands at normal rank)
         data = self._api_post(
@@ -516,7 +571,10 @@ class WikibaseAPI:
     ) -> None:
         """
         Add a qualifier snak to an existing claim.
-        `value` must be a pre-formatted Python object from rdf_value_to_wikibase_value.
+        Inputs:
+        - claim_guid: The GUID of the claim to which to add the qualifier.
+        - property_pid: The PID of the property for which to add the qualifier.
+        - value: The value of the qualifier, as a simple Python type.
         """
         self._api_post(
             {
@@ -535,9 +593,12 @@ class WikibaseAPI:
     ) -> str:
         """
         Create a reference on a claim.
-        snaks: list of (property_pid, simple_value, property_datatype)
-        Converts to datavalue format internally.
-        Returns the reference hash.
+        Inputs:
+        - claim_guid: The GUID of the claim to which to add the reference.
+        - snaks: A list of snaks to add to the reference,
+        where each snak is a tuple of (property_pid, value, property_datatype).
+        Output:
+        - The hash of the created reference.
         """
         snaks_dict: dict = {}
         for pid, value, datatype in snaks:
@@ -564,8 +625,10 @@ class WikibaseAPI:
         """
         Given a list of QIDs / PIDs, return the subset that actually
         exist in Wikibase.
-        Uses batched wbgetentities calls (50 per
-        request) with props=info to keep the payload small.
+        Input:
+        - ids: A list of entity IDs (QIDs or PIDs) to check for existence
+        Output:
+        - A set of IDs that exist in Wikibase among the input list
         """
         existing: set[str] = set()
         batch_size = 50
@@ -585,7 +648,9 @@ class WikibaseAPI:
 
     def delete_entity(self, entity_id: str) -> None:
         """
-        Delete an entity (item or property) by ID (e.g., 'Q123', 'P45').
+        Delete an entity (item or property) by ID
+        Input:
+        - entity_id: The ID of the entity to delete.
         """
         if entity_id.startswith("Q"):
             title = f"Item:{entity_id}"
@@ -607,6 +672,9 @@ class WikibaseAPI:
         """
         Delete items from Q{start} to Q{end} (inclusive).
         Works also for a single value if start == end.
+        Inputs:
+        - start: The starting number for the QID range (e.g., 1 for Q1).
+        - end: The ending number for the QID range (e.g., 100 for Q100).
         """
         if start > end:
             raise ValueError("start must be <= end")
@@ -621,7 +689,6 @@ class WikibaseAPI:
                 inform(f"Deleted item {qid}", self.verbose)
                 deleted += 1
             except Exception as exc:
-                # Skip missing entities instead of crashing
                 warn(f"Skipping {qid}: {exc}", self.verbose)
                 skipped += 1
 
@@ -634,6 +701,9 @@ class WikibaseAPI:
         """
         Delete properties from P{start} to P{end} (inclusive).
         Works also for a single value if start == end.
+        Inputs:
+        - start: The starting number for the PID range (e.g., 1 for P1).
+        - end: The ending number for the PID range (e.g., 100 for P100).
         """
         if start > end:
             raise ValueError("start must be <= end")
