@@ -90,10 +90,10 @@ def rml_execute(
     return output_path
 
 
-def validate_nt_file(nt_path: str | Path) -> None:
+def check_nt_line_prefixes(nt_path: str | Path) -> None:
     """
-    Validate that the given file is a well-formed N-Triples file
-    by checking its syntax line by line.
+    Check that the given file is a well-formed N-Triples file
+    through its syntax line by line.
     """
     with Path(nt_path).open("r", encoding="utf-8") as f:
         for line_no, line in enumerate(f, start=1):

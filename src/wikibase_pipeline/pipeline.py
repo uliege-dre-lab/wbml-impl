@@ -15,7 +15,7 @@ from .resolver.schema_properties_resolver import (
     resolve_property_instances,
     resolve_schema_properties,
 )
-from .rml_executor import rml_execute, validate_nt_file
+from .rml_executor import check_nt_line_prefixes, rml_execute
 from .utils.verbose_utils import inform
 from .wbml_to_rml import convert_wbml_to_rml, run_schema_queries
 from .wikibase_api import WikibaseAPI
@@ -48,7 +48,7 @@ def update(mapping_file_path: str | Path) -> None:
 
     output_value = str(Path(cfg["paths"]["rml_output"]).resolve())
     rml_execute(rml_mapping, output_value, verbose=cfg["wikibase"]["verbose"])
-    validate_nt_file(output_value)
+    check_nt_line_prefixes(output_value)
 
     lookup = load_lookup(cfg["cache"]["lookup_file"], cfg["wikibase"]["verbose"])
     wb_api = WikibaseAPI(cfg["wikibase"])
