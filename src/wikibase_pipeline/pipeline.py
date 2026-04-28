@@ -24,8 +24,8 @@ from .wikibase_api import WikibaseAPI
 def update(mapping_file_path: str | Path) -> None:
     """
     Main function to run the Wikibase RDF pipeline.
-    Args:
-        mapping_file_path: Path to the WBML mapping file.
+    Input:
+    - mapping_file_path: Path to the WBML mapping file.
     """
 
     load_dotenv()
