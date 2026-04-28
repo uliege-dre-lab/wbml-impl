@@ -1,10 +1,20 @@
 import json
 from pathlib import Path
 
-from .utils.verbose_utils import inform, warn
+from .utils.verbose_utils import inform
 
 
 def load_lookup(path: str | Path, verbose) -> dict:
+    """
+    Load the lookup cache from a JSON file.
+    If the file does not exist, return an empty lookup structure.
+    Input:
+    - path: Path to the lookup JSON file.
+    - verbose: Verbosity level for logging.
+    Output:
+    - A dictionary with the lookup data, containing 'items', 'properties',
+      'statements', and 'references' sections.
+    """
     empty_lookup = {"items": {}, "properties": {}, "statements": {}, "references": {}}
     if path is None:
         return empty_lookup
@@ -19,19 +29,22 @@ def load_lookup(path: str | Path, verbose) -> dict:
 
     for key in ("items", "properties"):
         if key not in data:
-            warn(f"Missing '{key}' section in lookup, initializing it.", verbose)
             data[key] = {}
 
-    # statements and references are rebuilt each run from Wikibase
     data["statements"] = {}
     data["references"] = {}
-
-    inform("Lookup successfully loaded.", verbose)
 
     return data
 
 
 def save_lookup(path: str | Path, lookup: dict, verbose) -> None:
+    """
+    Save the lookup cache to a JSON file.
+    Inputs:
+    - path: Path to the lookup JSON file.
+    - lookup: The lookup dictionary to save, containing 'items', 'properties'
+    - verbose: Verbosity level for logging.
+    """
     path = Path(path)
 
     inform(f"Saving lookup to {path}", verbose)
@@ -53,14 +66,15 @@ def save_lookup(path: str | Path, lookup: dict, verbose) -> None:
         encoding="utf-8",
     )
 
-    inform("Lookup successfully saved.", verbose)
-
 
 def validate_lookup_cache(lookup: dict, wb_api, verbose) -> None:
     """
     Batch-check every cached QID/PID against Wikibase and evict any
-    that no longer exist.  Stale entries are removed in-place so the
-    normal resolver fallback (label search → create) takes over.
+    that no longer exist.
+    Inputs:
+    - lookup: The lookup dictionary containing 'items' and 'properties' sections.
+    - wb_api: An instance of the WikibaseAPI class for making API calls.
+    - verbose: Verbosity level for logging.
     """
     item_iris = {iri: qid for iri, qid in lookup.get("items", {}).items() if qid}
     prop_iris = {
@@ -76,21 +90,19 @@ def validate_lookup_cache(lookup: dict, wb_api, verbose) -> None:
     inform(f"Validating {len(all_ids)} cached IDs against Wikibase…", verbose)
     existing = wb_api.filter_existing_ids(all_ids)
 
-    # Evict stale items
     stale_item_iris = [iri for iri, qid in item_iris.items() if qid not in existing]
     for iri in stale_item_iris:
         stale_qid = lookup["items"].pop(iri)
-        warn(
+        inform(
             f"Evicting stale item from cache: <{iri}> → {stale_qid} "
             f"(entity no longer exists in Wikibase).",
             verbose,
         )
 
-    # Evict stale properties
     stale_prop_iris = [iri for iri, pid in prop_iris.items() if pid not in existing]
     for iri in stale_prop_iris:
         stale_pid = lookup["properties"].pop(iri)["id"]
-        warn(
+        inform(
             f"Evicting stale property from cache: <{iri}> → {stale_pid} "
             f"(entity no longer exists in Wikibase).",
             verbose,
