@@ -1,6 +1,0 @@
-ruff==0.15.5
-pytest==9.0.2
-pre-commit==4.5.1
-ipykernel==7.2.0
-
-# install with pip install -r requirements-dev.txt
