@@ -170,6 +170,7 @@ def run_schema_queries(
     """
     source_file_path = Path(source_file_path)
     schema_queries_dir = Path(SCHEMA_QUERIES_DIR)
+    output_file_path = Path(output_file_path)
 
     source_graph = Graph()
     source_graph.parse(source_file_path, format="turtle")
