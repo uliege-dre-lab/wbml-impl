@@ -11,7 +11,6 @@ from wikibase_pipeline.config import (
 def clear_config_env(monkeypatch):
     keys = [
         "WB_API_URL",
-        "WB_SPARQL_ENDPOINT",
         "WB_LANGUAGE",
         "WB_VERBOSE",
         "WB_TLS_VERIFY",
@@ -133,27 +132,6 @@ def test_suffix_auto_correction(tmp_path, monkeypatch):
     assert result["paths"]["rml_output"].endswith(".nt")
     assert result["paths"]["schema_output"].endswith(".ttl")
     assert result["paths"]["rml_mapping"].endswith(".ttl")
-
-
-# ───────────────────────────
-# sparql endpoint behavior
-# ───────────────────────────
-
-
-def test_empty_sparql_becomes_none(tmp_path, monkeypatch):
-    monkeypatch.chdir(tmp_path)
-
-    monkeypatch.setenv("API_URL", "http://test")
-    monkeypatch.setenv("SPARQL_ENDPOINT", "")
-
-    # create mapping file
-    mapping = tmp_path / "data/mappings/converted_mapping.ttl"
-    mapping.parent.mkdir(parents=True, exist_ok=True)
-    mapping.write_text("dummy")
-
-    result = load_env_config()
-
-    assert result["wikibase"]["sparql_endpoint"] is None
 
 
 # ───────────────────────────
