@@ -22,6 +22,12 @@ from .wikibase_api import WikibaseAPI
 
 
 def update(mapping_file_path: str | Path) -> None:
+    """
+    Main function to run the Wikibase RDF pipeline.
+    Args:
+        mapping_file_path: Path to the WBML mapping file.
+    """
+
     load_dotenv()
     cfg = load_env_config()
 
@@ -31,13 +37,11 @@ def update(mapping_file_path: str | Path) -> None:
 
     rml_mapping = convert_wbml_to_rml(
         mapping_file,
-        Path("src/wikibase_pipeline/sparql/rml"),
         Path(cfg["paths"]["rml_mapping"]),
         verbose=cfg["wikibase"]["verbose"],
     )
     rdf_schema = run_schema_queries(
         mapping_file,
-        Path("src/wikibase_pipeline/sparql/schema"),
         Path(cfg["paths"]["schema_output"]),
         verbose=cfg["wikibase"]["verbose"],
     )

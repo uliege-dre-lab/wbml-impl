@@ -5,7 +5,6 @@ from wikibase_pipeline.wbml_to_rml import run_schema_queries
 if __name__ == "__main__":
     run_schema_queries(
         source_file_path=Path("data/mappings/wbml_notion.ttl"),
-        queries_dir=Path("src/wikibase_pipeline/sparql/Schema"),
         output_file_path=Path("data/output/schema_notion.ttl"),
         verbose=2,
     )
