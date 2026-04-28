@@ -43,7 +43,7 @@ def require(key: str) -> str:
     return val
 
 
-def _get(key: str, default: str = "") -> str:
+def read_optional(key: str, default: str = "") -> str:
     """
     Read an optional env var, returning default if absent or empty.
     """
@@ -52,6 +52,9 @@ def _get(key: str, default: str = "") -> str:
 
 
 def as_int(raw: str, *, key: str) -> int:
+    """
+    Parse an env var string into an int, with error handling.
+    """
     try:
         return int(raw.strip())
     except ValueError as err:
@@ -72,8 +75,7 @@ def resolve_path(path_str: str) -> Path:
 
 def ensure_suffix(path: Path, expected_suffix: str, *, key: str, verbose: int) -> Path:
     """
-    Ensure the path has the expected suffix,
-    replace it if not.
+    Ensure the path has the expected suffix, replace it if not.
     """
     if path.suffix.lower() != expected_suffix.lower():
         original = str(path)
@@ -95,17 +97,7 @@ def load_env_config() -> dict:
     """
     api_url = require("API_URL")
 
-    verbose = as_int(_get("VERBOSE", "1"), key="WB_VERBOSE")
-
-    sparql_endpoint_raw = os.getenv("SPARQL_ENDPOINT", "").strip()
-    if not sparql_endpoint_raw:
-        sparql_endpoint = None
-        inform(
-            "Missing 'SPARQL_ENDPOINT'. SPARQL queries will be disabled.",
-            verbose=verbose,
-        )
-    else:
-        sparql_endpoint = sparql_endpoint_raw
+    verbose = as_int(read_optional("VERBOSE", "1"), key="WB_VERBOSE")
 
     language_raw = os.getenv("LANGUAGE", "").strip()
     if not language_raw:
@@ -121,21 +113,23 @@ def load_env_config() -> dict:
     else:
         tls_verify = parse_bool(tls_raw, key="TLS_VERIFY", default=True)
 
-    lookup_raw = os.getenv("LOOKUP_FILE", "").strip()
-    if not lookup_raw:
-        lookup_raw = "data/lookup/lookup.json"
-        inform(
-            "Missing 'LOOKUP_FILE'. Defaulting to 'data/lookup/lookup.json'.",
-            verbose=verbose,
-        )
-    lookup_file = resolve_path(lookup_raw)
-
     store_raw = os.getenv("STORE_FILE", "").strip()
     if not store_raw:
         store_file = False
-        inform("Missing 'STORE_FILE'. Defaulting to False.", verbose=verbose)
     else:
         store_file = parse_bool(store_raw, key="STORE_FILE", default=False)
+
+    lookup_raw = os.getenv("LOOKUP_FILE", "").strip()
+    if not lookup_raw:
+        if store_file:
+            lookup_raw = "data/lookup/lookup.json"
+            inform(
+                "Missing 'LOOKUP_FILE'. Defaulting to 'data/lookup/lookup.json'.",
+                verbose=verbose,
+            )
+        lookup_file = resolve_path(lookup_raw) if lookup_raw else None
+    else:
+        lookup_file = resolve_path(lookup_raw)
 
     rml_mapping_raw = os.getenv("RML_MAPPING_PATH", "").strip()
     if not rml_mapping_raw:
@@ -188,7 +182,6 @@ def load_env_config() -> dict:
     return {
         "wikibase": {
             "api_url": api_url,
-            "sparql_endpoint": sparql_endpoint,
             "language": language,
             "tls_verify": tls_verify,
             "verbose": verbose,

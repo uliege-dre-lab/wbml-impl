@@ -5,10 +5,13 @@ from .utils.verbose_utils import inform, warn
 
 
 def load_lookup(path: str | Path, verbose) -> dict:
-    path = Path(path)
+    empty_lookup = {"items": {}, "properties": {}, "statements": {}, "references": {}}
+    if path is None:
+        return empty_lookup
 
+    path = Path(path)
     if not path.exists():
-        return {"items": {}, "properties": {}, "statements": {}, "references": {}}
+        return empty_lookup
 
     inform(f"Loading lookup from {path}", verbose)
 
