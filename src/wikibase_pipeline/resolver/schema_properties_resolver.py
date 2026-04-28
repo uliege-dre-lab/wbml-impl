@@ -102,9 +102,12 @@ def _collect_property_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if " ".join(labels[eff_lang].split()) == " ".join(raw_value.split()):
+            if (
+                " ".join(labels[eff_lang].split()).lower()
+                == " ".join(raw_value.split()).lower()
+            ):
                 pass
-            elif raw_value not in aliases[eff_lang]:
+            elif raw_value not in [a.lower() for a in aliases[eff_lang]]:
                 warn(
                     f"  Duplicate property label @{eff_lang} on <{iri_str}>: "
                     f"keeping '{labels[eff_lang]}', adding '{raw_value}' as alias.",
@@ -121,9 +124,12 @@ def _collect_property_metadata(
             verbose=verbose,
         )
         if eff_lang in labels:
-            if " ".join(raw_value.split()) == " ".join(labels[eff_lang].split()):
-                pass  # identical string, silently skip
-            elif raw_value not in aliases[eff_lang]:
+            if (
+                " ".join(raw_value.split()).lower()
+                == " ".join(labels[eff_lang].split()).lower()
+            ):
+                pass
+            elif raw_value not in [a.lower() for a in aliases[eff_lang]]:
                 warn(
                     f"  Untagged property label on <{iri_str}> resolved to @{eff_lang} "
                     f"which already has a label: adding '{raw_value}' as alias.",
@@ -144,7 +150,7 @@ def _collect_property_metadata(
             context=f"property alias {str(alias)!r} on <{iri_str}>",
             verbose=verbose,
         )
-        if raw_value not in aliases[eff_lang]:
+        if raw_value not in [a.lower() for a in aliases[eff_lang]]:
             aliases[eff_lang].append(raw_value)
 
     # Fallback if still no labels: promote an alias (default lang first),
@@ -303,7 +309,7 @@ def _push_property_metadata(
         current = existing_labels.get(lang)
         if current is None:
             labels_to_set[lang] = {"language": lang, "value": value}
-        elif " ".join(current.split()) == " ".join(value.split()):
+        elif " ".join(current.split()).lower() == " ".join(value.split()).lower():
             pass
         else:
             if overwrite_on_conflict:
@@ -319,7 +325,9 @@ def _push_property_metadata(
                     verbose,
                 )
                 already_there = existing_aliases.get(lang, set())
-                if " ".join(value.split()) not in already_there:
+                if " ".join(value.split()).lower() not in [
+                    a.lower() for a in already_there
+                ]:
                     aliases_to_set.setdefault(lang, []).append(
                         {"language": lang, "value": value}
                     )
@@ -364,7 +372,7 @@ def _push_property_metadata(
             v
             for v in values
             if v not in already_alias
-            and " ".join(v.split()) != " ".join(existing_label.split())
+            and " ".join(v.split()).lower() != " ".join(existing_label.split()).lower()
         ]
         if new_values:
             aliases_to_set[lang] = [{"language": lang, "value": v} for v in new_values]
