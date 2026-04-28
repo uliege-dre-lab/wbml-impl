@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from rdflib import Graph, Namespace, URIRef
-from rdflib.namespace import RDF
 
 from .datatype_validation import (
     normalize_value_for_property,
@@ -75,89 +74,6 @@ REFERENCE_PREFIX = "urn:wikibase:reference:"
 PROPERTY_IRI_PREFIX = "urn:wikibase:propertyIRI:"
 QUALIFIER_IRI_PREFIX = "urn:wikibase:qualifierIRI:"
 REFERENCE_IRI_PREFIX = "urn:wikibase:referenceIRI:"
-
-
-def _push_instance_of_claims(
-    data_graph: Graph,
-    lookup: dict,
-    wikibase_api,
-    verbose: int,
-) -> None:
-    """
-    For every rdf:type triple in the data graph, add an 'instance of' claim
-    in Wikibase, provided both subject and object are in lookup["items"].
-    """
-    pid = lookup.get("properties", {}).get(str(RDF.type), {}).get("id")
-    if pid is None:
-        raise ValueError(
-            "Cannot push 'instance of' claims: RDF.type PID not found in "
-            "lookup['properties']."
-        )
-
-    inform(f"Pushing 'instance of' claims (pid={pid}) …", verbose)
-    added_count = 0
-    claims_cache: dict[str, dict] = {}
-
-    for subject, _, obj in data_graph.triples((None, RDF.type, None)):
-        subject_str = str(subject)
-        obj_str = str(obj)
-
-        subject_qid = lookup["items"].get(subject_str)
-        if subject_qid is None:
-            prop_entry = lookup.get("properties", {}).get(subject_str)
-            if prop_entry is not None:
-                subject_qid = prop_entry["id"]
-        if subject_qid is None:
-            raise ValueError(
-                f"rdf:type triple <{subject_str}> rdf:type <{obj_str}>: "
-                "subject not found in lookup['items'] or lookup['properties']."
-            )
-
-        obj_qid = lookup["items"].get(obj_str)
-        if obj_qid is None:
-            raise ValueError(
-                f"rdf:type triple <{subject_str}> rdf:type <{obj_str}>: "
-                "object not found in lookup['items']."
-            )
-
-        if subject_qid not in claims_cache:
-            try:
-                claims_cache[subject_qid] = wikibase_api.get_entity_claims(subject_qid)
-            except Exception as exc:
-                warn(f"  Could not fetch claims for {subject_qid}: {exc}", verbose)
-                claims_cache[subject_qid] = {}
-
-        wikibase_value = {"entity-type": "item", "id": obj_qid}
-        if _find_existing_claim_guid(
-            claims_cache[subject_qid], pid, wikibase_value, "wikibase-item"
-        ):
-            inform(
-                f"  [{subject_qid}] instance-of {obj_qid} already exists, skipping.",
-                verbose,
-            )
-            continue
-
-        try:
-            wikibase_api.add_item_claim(
-                subject_qid=subject_qid,
-                property_pid=pid,
-                value=obj_qid,
-            )
-            claims_cache[subject_qid].setdefault(pid, []).append(
-                {
-                    "mainsnak": {
-                        "snaktype": "value",
-                        "datavalue": {"value": wikibase_value},
-                    }
-                }
-            )
-            added_count += 1
-        except Exception as exc:
-            warn(f"  [{subject_qid}] Could not add 'instance of' claim: {exc}", verbose)
-
-    inform(
-        f"Finished pushing 'instance of' claims. Total added: {added_count}", verbose
-    )
 
 
 def _push_statements(
@@ -594,13 +510,11 @@ def populate(
 ) -> None:
     """
     Main entry point for populating Wikibase with claims and statements.
-    1. 'instance of' claims     (rdf:type triples)
-    2. Main statement snaks     (wbml:Statement nodes)
-    3. Qualifiers               (urn:wikibase:qualifier: triples)
-    4. Reference node discovery (wbml:statementReference triples)
-    5. Reference records        (urn:wikibase:reference: triples)
+    1. Main statement snaks     (wbml:Statement nodes)
+    2. Qualifiers               (urn:wikibase:qualifier: triples)
+    3. Reference node discovery (wbml:statementReference triples)
+    4. Reference records        (urn:wikibase:reference: triples)
     """
-    _push_instance_of_claims(data_graph, lookup, wikibase_api, verbose)
     new_stmts = _push_statements(
         data_graph, lookup, wikibase_api, language_resolver, verbose
     )
