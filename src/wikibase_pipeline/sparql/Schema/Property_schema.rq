@@ -17,7 +17,7 @@ WHERE {
   OPTIONAL { ?propNode wbml:entityDescription ?predicateDescription . }
   OPTIONAL { ?propNode wbml:entityAlias       ?predicateAlias . }
   OPTIONAL { ?propNode wbml:propertyType      ?predicateType . }
-  OPTIONAL { ?propNode wbml:nodeTemplate      ?propExplicitKey .
+  OPTIONAL { ?propNode wbml:entityTemplate      ?propExplicitKey .
              FILTER(!CONTAINS(STR(?propExplicitKey), "{")) }
 
   BIND(

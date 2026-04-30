@@ -15,14 +15,14 @@ WHERE {
   OPTIONAL { ?classNode wbml:entityLabel       ?classLabel . }
   OPTIONAL { ?classNode wbml:entityDescription ?classDescription . }
   OPTIONAL { ?classNode wbml:entityAlias       ?classAlias . }
-  OPTIONAL { ?classNode wbml:nodeTemplate      ?classExplicitKey . }
+  OPTIONAL { ?classNode wbml:entityTemplate      ?classExplicitKey . }
 
   BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
   BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
 
   OPTIONAL {
     ?classNode wbml:subclassOf ?parentClassNode .
-    OPTIONAL { ?parentClassNode wbml:nodeTemplate ?parentExplicitKey . }
+    OPTIONAL { ?parentClassNode wbml:entityTemplate ?parentExplicitKey . }
     BIND(COALESCE(?parentExplicitKey, STRAFTER(STR(?parentClassNode), "#")) AS ?parentKey)
     BIND(IRI(CONCAT("urn:wikibase:item:", ?parentKey)) AS ?parentClassIRI)
   }

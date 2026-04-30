@@ -13,14 +13,14 @@ WHERE {
   OPTIONAL { ?sm wbml:entityType ?entityType . }
   FILTER(!BOUND(?entityType) || ?entityType = wbml:Item)
 
-  OPTIONAL { ?sm wbml:nodeTemplate ?nodeTemplate . }
-  OPTIONAL { ?sm wbml:nodeId ?nodeId . }
-  FILTER(BOUND(?nodeTemplate) || BOUND(?nodeId))
+  OPTIONAL { ?sm wbml:entityTemplate ?entityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?entityId . }
+  FILTER(BOUND(?entityTemplate) || BOUND(?entityId))
 
   OPTIONAL {
     {
       ?sm wbml:class ?classNode .
-      OPTIONAL { ?classNode wbml:nodeTemplate ?classExplicitKey . }
+      OPTIONAL { ?classNode wbml:entityTemplate ?classExplicitKey . }
       BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
       BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
     }
@@ -33,9 +33,9 @@ WHERE {
 
   BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
   BIND(
-    IF(BOUND(?nodeId),
-      CONCAT("urn:wikibase:itemIRI:", STR(?nodeId)),
-      CONCAT("urn:wikibase:item:", STR(?nodeTemplate))
+    IF(BOUND(?entityId),
+      CONCAT("urn:wikibase:itemIRI:", STR(?entityId)),
+      CONCAT("urn:wikibase:item:", STR(?entityTemplate))
     ) AS ?template
   )
 }

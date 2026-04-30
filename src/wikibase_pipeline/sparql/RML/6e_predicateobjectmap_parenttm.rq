@@ -54,10 +54,10 @@ WHERE {
     AS ?subjectNodeIRIPrefix
   )
 
-  OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
-  OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
-  FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
-  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
+  OPTIONAL { ?sm wbml:entityTemplate ?subjectEntityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?subjectEntityId . }
+  FILTER(BOUND(?subjectEntityTemplate) || BOUND(?subjectEntityId))
+  BIND(COALESCE(?subjectEntityTemplate, ?subjectEntityId) AS ?subjectKey)
 
   ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom .
@@ -68,7 +68,7 @@ WHERE {
 
   ?wom wbml:parentTriplesMap ?parentTM .
 
-  OPTIONAL { ?propertyNode wbml:nodeTemplate ?propExplicitKey . }
+  OPTIONAL { ?propertyNode wbml:entityTemplate ?propExplicitKey . }
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
@@ -101,9 +101,9 @@ WHERE {
   )
 
   BIND(
-    IF(BOUND(?subjectNodeId),
-      CONCAT(?subjectNodeIRIPrefix, STR(?subjectNodeId)),
-      CONCAT(?subjectNodePrefix,    STR(?subjectNodeTemplate))
+    IF(BOUND(?subjectEntityId),
+      CONCAT(?subjectNodeIRIPrefix, STR(?subjectEntityId)),
+      CONCAT(?subjectNodePrefix,    STR(?subjectEntityTemplate))
     ) AS ?subjectTemplate
   )
 

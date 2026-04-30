@@ -27,21 +27,21 @@ WHERE {
       wbml:statementMap ?pom ;
       wbml:entityMap ?sm .
 
-  OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
-  OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
-  FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
-  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
+  OPTIONAL { ?sm wbml:entityTemplate ?subjectEntityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?subjectEntityId . }
+  FILTER(BOUND(?subjectEntityTemplate) || BOUND(?subjectEntityId))
+  BIND(COALESCE(?subjectEntityTemplate, ?subjectEntityId) AS ?subjectKey)
 
   ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom ;
        wbml:referenceMap ?rmap .
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
-  OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
-  OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
+  OPTIONAL { ?wom wbml:entityTemplate ?mainValueEntityTemplate . }
+  OPTIONAL { ?wom wbml:entityId ?mainValueEntityId . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
-  BIND(COALESCE(?mainValueNodeTemplate, ?mainValueNodeId) AS ?mainValueNode)
+  BIND(COALESCE(?mainValueEntityTemplate, ?mainValueEntityId) AS ?mainValueNode)
 
   ?rmap wbint:refId ?refId ;
         wbml:referenceRecord ?rrec .
@@ -52,7 +52,7 @@ WHERE {
   OPTIONAL { ?rrec wbml:propertyId ?refPropertyId . }
   FILTER(BOUND(?refPropertyNode) || BOUND(?refPropertyId))
 
-  OPTIONAL { ?refPropertyNode wbml:nodeTemplate ?refExplicitKey . }
+  OPTIONAL { ?refPropertyNode wbml:entityTemplate ?refExplicitKey . }
   FILTER(
     !BOUND(?refPropertyNode) ||
     isBlank(?refPropertyNode) ||
