@@ -166,10 +166,10 @@
 
   wbml:statementMap [
     wbml:propertyMap [
-      a rdf:Property ;
+      a wbml:Property ;
       wbml:nodeTemplate "goodPractice" ;
-      rdfs:label "Good practice"@en ;
-      rdfs:label "Bonnes pratiques"@fr ;
+      wbml:entityLabel "Good practice"@en ;
+      wbml:entityLabel "Bonnes pratiques"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -179,10 +179,10 @@
 
   wbml:statementMap [
     wbml:propertyMap [
-      a rdf:Property ;
+      a wbml:Property ;
       wbml:nodeTemplate "cardinality" ;
-      rdfs:label "Cardinality"@en ;
-      rdfs:label "Cardinalité"@fr ;
+      wbml:entityLabel "Cardinality"@en ;
+      wbml:entityLabel "Cardinalité"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -364,10 +364,10 @@
 
   wbml:statementMap [
     wbml:propertyMap [
-      a rdf:Property ;
+      a wbml:Property ;
       wbml:nodeTemplate "goodPractice" ;
-      rdfs:label "Good practice"@en ;
-      rdfs:label "Bonnes pratiques"@fr ;
+      wbml:entityLabel "Good practice"@en ;
+      wbml:entityLabel "Bonnes pratiques"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -377,10 +377,10 @@
 
   wbml:statementMap [
     wbml:propertyMap [
-      a rdf:Property ;
+      a wbml:Property ;
       wbml:nodeTemplate "cardinality" ;
-      rdfs:label "Cardinality"@en ;
-      rdfs:label "Cardinalité"@fr ;
+      wbml:entityLabel "Cardinality"@en ;
+      wbml:entityLabel "Cardinalité"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -390,10 +390,10 @@
 
   wbml:statementMap [
     wbml:propertyMap [
-      a rdf:Property ;
+      a wbml:Property ;
       wbml:nodeTemplate "inverse" ;
-      rdfs:label "Inverse property"@en ;
-      rdfs:label "Propriété inverse"@fr ;
+      wbml:entityLabel "Inverse property"@en ;
+      wbml:entityLabel "Propriété inverse"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -403,10 +403,10 @@
 
   wbml:statementMap [
     wbml:propertyMap [
-      a rdf:Property ;
+      a wbml:Property ;
       wbml:nodeTemplate "rangeClass" ;
-      rdfs:label "Range class"@en ;
-      rdfs:label "Classe de portée"@fr ;
+      wbml:entityLabel "Range class"@en ;
+      wbml:entityLabel "Classe de portée"@fr ;
       wbml:propertyType wbml:item
     ] ;
     wbml:valueMap [

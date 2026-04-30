@@ -9,171 +9,171 @@
 @prefix wbml: <https://example.org/wbml#> .
 
 # Class definitions
-wbml:AbilityClass a rdfs:Class ;
-  rdfs:label "Ability"@en ;
-  rdfs:label "Capacité"@fr ;
-  rdfs:comment "A special power or skill that a Pokémon can have."@en ;
-  skos:altLabel "Pokemon Ability"@en .
+wbml:AbilityClass a wbml:Class ;
+  wbml:entityLabel "Ability"@en ;
+  wbml:entityLabel "Capacité"@fr ;
+  wbml:entityDescription "A special power or skill that a Pokémon can have."@en ;
+  wbml:entityAlias "Pokemon Ability"@en .
 
-wbml:SpeciesClass a rdfs:Class ;
-  rdfs:label "Species"@en ;
-  rdfs:label "Espèce"@fr ;
-  rdfs:comment "The species or classification of a Pokémon."@en ;
-  skos:altLabel "Pokemon Species"@en .
+wbml:SpeciesClass a wbml:Class ;
+  wbml:entityLabel "Species"@en ;
+  wbml:entityLabel "Espèce"@fr ;
+  wbml:entityDescription "The species or classification of a Pokémon."@en ;
+  wbml:entityAlias "Pokemon Species"@en .
 
-wbml:TypeClass a rdfs:Class ;
-  rdfs:label "Type"@en ;
-  rdfs:label "Type"@fr ;
-  rdfs:comment "The elemental type of a Pokémon or move."@en .
+wbml:TypeClass a wbml:Class ;
+  wbml:entityLabel "Type"@en ;
+  wbml:entityLabel "Type"@fr ;
+  wbml:entityDescription "The elemental type of a Pokémon or move."@en .
 
-wbml:EggGroupClass a rdfs:Class ;
-  rdfs:label "Egg Group"@en ;
-  rdfs:label "Groupe d'œuf"@fr ;
-  rdfs:comment "The egg group classification for Pokémon breeding."@en .
+wbml:EggGroupClass a wbml:Class ;
+  wbml:entityLabel "Egg Group"@en ;
+  wbml:entityLabel "Groupe d'œuf"@fr ;
+  wbml:entityDescription "The egg group classification for Pokémon breeding."@en .
 
-wbml:MoveClass a rdfs:Class ;
-  rdfs:label "Move"@en ;
-  rdfs:label "Attaque"@fr ;
-  rdfs:comment "A move or ability that a Pokémon can learn."@en .
+wbml:MoveClass a wbml:Class ;
+  wbml:entityLabel "Move"@en ;
+  wbml:entityLabel "Attaque"@fr ;
+  wbml:entityDescription "A move or ability that a Pokémon can learn."@en .
 
-wbml:ItemClass a rdfs:Class ;
-  rdfs:label "Item"@en ;
-  rdfs:label "Objet"@fr ;
-  rdfs:comment "An item that can be used in the Pokémon games."@en .
+wbml:ItemClass a wbml:Class ;
+  wbml:entityLabel "Item"@en ;
+  wbml:entityLabel "Objet"@fr ;
+  wbml:entityDescription "An item that can be used in the Pokémon games."@en .
 
 # Predicate definitions
-wbml:HasSpecies a rdf:Property ;
-    rdfs:label "has species"@en ;
-    rdfs:comment "Indicates the species of the Pokémon."@en ;
+wbml:HasSpecies a wbml:Property ;
+    wbml:entityLabel "has species"@en ;
+    wbml:entityDescription "Indicates the species of the Pokémon."@en ;
     wbml:propertyType wbml:item .
 
-wbml:IsHiddenAbility a rdf:Property ;
-    rdfs:label "is hidden ability"@en ;
+wbml:IsHiddenAbility a wbml:Property ;
+    wbml:entityLabel "is hidden ability"@en ;
     wbml:propertyType wbml:string ;
-    skos:altLabel "Is Hidden Ability"@en .
+    wbml:entityAlias "Is Hidden Ability"@en .
 
-wbml:PokedexNumber a  rdf:Property ;
-    rdfs:label "Pokédex number"@en ;
+wbml:PokedexNumber a  wbml:Property ;
+    wbml:entityLabel "Pokédex number"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:Attack a rdf:Property ;
-    rdfs:label "Attack"@en ;
+wbml:Attack a wbml:Property ;
+    wbml:entityLabel "Attack"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:SpecialAttack a rdf:Property ;
-    rdfs:label "Special Attack"@en ;
+wbml:SpecialAttack a wbml:Property ;
+    wbml:entityLabel "Special Attack"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:Gender a rdf:Property ;
-    rdfs:label "Gender"@en ;
+wbml:Gender a wbml:Property ;
+    wbml:entityLabel "Gender"@en ;
     wbml:propertyType wbml:string .
 
-wbml:HasAbility a rdf:Property ;
-    rdfs:label "has ability"@en ;
+wbml:HasAbility a wbml:Property ;
+    wbml:entityLabel "has ability"@en ;
     wbml:propertyType wbml:item .
 
-wbml:StatedIn a rdf:Property ;
-    rdfs:label "stated in"@en ;
+wbml:StatedIn a wbml:Property ;
+    wbml:entityLabel "stated in"@en ;
     wbml:propertyType wbml:string .
 
-wbml:StatedOn a rdf:Property ;
-    rdfs:label "stated on"@en ;
+wbml:StatedOn a wbml:Property ;
+    wbml:entityLabel "stated on"@en ;
     wbml:propertyType wbml:time ;
-    skos:altLabel "Stated On"@en .
+    wbml:entityAlias "Stated On"@en .
 
-wbml:PokemonHasType a rdf:Property ;
-    rdfs:label "has type"@en ;
-    skos:altLabel "Pokemon Has Type"@en ;
+wbml:PokemonHasType a wbml:Property ;
+    wbml:entityLabel "has type"@en ;
+    wbml:entityAlias "Pokemon Has Type"@en ;
     wbml:propertyType wbml:item .
 
-wbml:HasEggGroup a rdf:Property ;
-    rdfs:label "has egg group"@en ;
+wbml:HasEggGroup a wbml:Property ;
+    wbml:entityLabel "has egg group"@en ;
     wbml:propertyType wbml:item .
 
-wbml:EvolvesFrom a rdf:Property ;
-    rdfs:label "evolves from"@en ;
+wbml:EvolvesFrom a wbml:Property ;
+    wbml:entityLabel "evolves from"@en ;
     wbml:propertyType wbml:item .
 
-wbml:EvolvesTo a rdf:Property ;
-    rdfs:label "evolves to"@en ;
+wbml:EvolvesTo a wbml:Property ;
+    wbml:entityLabel "evolves to"@en ;
     wbml:propertyType wbml:item .
 
-wbml:EvolutionCondition a rdf:Property ;
-    rdfs:label "evolution condition"@en ;
+wbml:EvolutionCondition a wbml:Property ;
+    wbml:entityLabel "evolution condition"@en ;
     wbml:propertyType wbml:string .
 
-wbml:EffectiveAgainst a rdf:Property ;
-    rdfs:label "effective against"@en ;
+wbml:EffectiveAgainst a wbml:Property ;
+    wbml:entityLabel "effective against"@en ;
     wbml:propertyType wbml:item .
 
-wbml:IneffectiveAgainst a rdf:Property ;
-    rdfs:label "ineffective against"@en ;
+wbml:IneffectiveAgainst a wbml:Property ;
+    wbml:entityLabel "ineffective against"@en ;
     wbml:propertyType wbml:item .
 
-wbml:NoEffectAgainst a rdf:Property ;
-    rdfs:label "no effect against"@en ;
+wbml:NoEffectAgainst a wbml:Property ;
+    wbml:entityLabel "no effect against"@en ;
     wbml:propertyType wbml:item .
 
-wbml:HasImage a rdf:Property ;
-    rdfs:label "has image"@en ;
+wbml:HasImage a wbml:Property ;
+    wbml:entityLabel "has image"@en ;
     wbml:propertyType wbml:url .
 
-wbml:MoveHasType a rdf:Property ;
-    rdfs:label "has type"@en ;
-    skos:altLabel "Move Has Type"@en ;
+wbml:MoveHasType a wbml:Property ;
+    wbml:entityLabel "has type"@en ;
+    wbml:entityAlias "Move Has Type"@en ;
     wbml:propertyType wbml:item .
 
-wbml:Accuracy a rdf:Property ;
-    rdfs:label "Accuracy"@en ;
+wbml:Accuracy a wbml:Property ;
+    wbml:entityLabel "Accuracy"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:Power a rdf:Property ;
-    rdfs:label "Power"@en ;
+wbml:Power a wbml:Property ;
+    wbml:entityLabel "Power"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:PP a rdf:Property ;
-    rdfs:label "PP"@en ;
+wbml:PP a wbml:Property ;
+    wbml:entityLabel "PP"@en ;
     wbml:propertyType wbml:quantity ;
-    skos:altLabel "Power Points"@en .
+    wbml:entityAlias "Power Points"@en .
 
-wbml:MoveCategory a rdf:Property ;
-    rdfs:label "Move Category"@en ;
+wbml:MoveCategory a wbml:Property ;
+    wbml:entityLabel "Move Category"@en ;
     wbml:propertyType wbml:string ;
-    skos:altLabel "Has Category"@en .
+    wbml:entityAlias "Has Category"@en .
 
-wbml:TMNumber a rdf:Property ;
-    rdfs:label "TM Number"@en ;
+wbml:TMNumber a wbml:Property ;
+    wbml:entityLabel "TM Number"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:ImageType a rdf:Property ;
-    rdfs:label "Image Type"@en ;
+wbml:ImageType a wbml:Property ;
+    wbml:entityLabel "Image Type"@en ;
     wbml:propertyType wbml:string ;
-    skos:altLabel "Has Image Type"@en .
+    wbml:entityAlias "Has Image Type"@en .
 
-wbml:HP a rdf:Property ;
-    rdfs:label "HP"@en ;
+wbml:HP a wbml:Property ;
+    wbml:entityLabel "HP"@en ;
     wbml:propertyType wbml:quantity ;
-    skos:altLabel "Hit Points"@en .
+    wbml:entityAlias "Hit Points"@en .
 
-wbml:Defense a rdf:Property ;
-    rdfs:label "Defense"@en ;
+wbml:Defense a wbml:Property ;
+    wbml:entityLabel "Defense"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:SpecialDefense a rdf:Property ;
-    rdfs:label "Special Defense"@en ;
+wbml:SpecialDefense a wbml:Property ;
+    wbml:entityLabel "Special Defense"@en ;
     wbml:propertyType wbml:quantity ;
-    skos:altLabel "Sp. Defense"@en .
+    wbml:entityAlias "Sp. Defense"@en .
 
-wbml:Weight a rdf:Property ;
-    rdfs:label "Weight"@en ;
+wbml:Weight a wbml:Property ;
+    wbml:entityLabel "Weight"@en ;
     wbml:propertyType wbml:string .
 
-wbml:ItemNumber a rdf:Property ;
-    rdfs:label "Item Number"@en ;
+wbml:ItemNumber a wbml:Property ;
+    wbml:entityLabel "Item Number"@en ;
     wbml:propertyType wbml:quantity .
 
-wbml:HasItemCategory a rdf:Property ;
-    rdfs:label "has item category"@en ;
+wbml:HasItemCategory a wbml:Property ;
+    wbml:entityLabel "has item category"@en ;
     wbml:propertyType wbml:item .
 
 #################################################################
@@ -254,11 +254,11 @@ wbml:HasItemCategory a rdf:Property ;
 
   wbml:statementMap [
     wbml:propertyMap [
-      a rdf:Property ;
+      a wbml:Property ;
       wbml:nodeTemplate "Speed" ;
-      rdfs:label "Speed"@en ;
+      wbml:entityLabel "Speed"@en ;
       wbml:propertyType wbml:quantity ;
-      skos:altLabel "Base Speed"@en
+      wbml:entityAlias "Base Speed"@en
     ] ;
     wbml:valueMap [ wbml:reference "base.Speed" ; wbml:datatype xsd:integer ]
   ] ;
@@ -794,12 +794,12 @@ wbml:HasItemCategory a rdf:Property ;
   wbml:entityMap [
     wbml:nodeTemplate "ItemCategory_{type}" ;
     wbml:class [
-      a rdfs:Class ;
+      a wbml:Class ;
       wbml:nodeTemplate "ItemCategory" ;
-      rdfs:label "Item Category"@en ;
-      rdfs:label "Catégorie d'objet"@fr ;
-      rdfs:comment "A category or classification for items in the Pokémon games."@en ;
-      skos:altLabel "Pokemon Item Category"@en
+      wbml:entityLabel "Item Category"@en ;
+      wbml:entityLabel "Catégorie d'objet"@fr ;
+      wbml:entityDescription "A category or classification for items in the Pokémon games."@en ;
+      wbml:entityAlias "Pokemon Item Category"@en
     ]
   ] ;
 
