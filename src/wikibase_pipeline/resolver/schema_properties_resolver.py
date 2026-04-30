@@ -203,7 +203,7 @@ def _resolve_one_property(
         labels=labels,
         default_language=default_language,
         expected_datatype=wb_datatype,
-        aliases=meta["aliases"],
+        verbose=verbose,
     )
 
     if pid is not None:

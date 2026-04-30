@@ -1,3 +1,4 @@
+import re
 from collections import defaultdict
 
 from rdflib import Graph, URIRef
@@ -150,19 +151,30 @@ def _resolve_one_instance(
     iri_str = str(item_iri)
     inform(f"Resolving instance <{iri_str}> …", verbose)
 
-    qid = search_item_by_labels(
-        wikibase_api, meta["labels"], default_language, aliases=meta["aliases"]
-    )
+    qid = search_item_by_labels(wikibase_api, meta["labels"], default_language)
     if qid is not None:
         inform(f"  Found {qid} for <{iri_str}>", verbose)
         return qid
 
     inform(f"  Not found — creating new item for <{iri_str}>", verbose)
-    qid = wikibase_api.create_item(
-        labels=meta["labels"],
-        descriptions=meta["descriptions"],
-        aliases=meta["aliases"],
-    )
+    try:
+        qid = wikibase_api.create_item(
+            labels=meta["labels"],
+            descriptions=meta["descriptions"],
+            aliases=meta["aliases"],
+        )
+    except RuntimeError as exc:
+        err = str(exc)
+        if "label-with-description-conflict" in err:
+            match = re.search(r"\[\[Item:(Q\d+)\|", err)
+            if match:
+                qid = match.group(1)
+                inform(f"  Conflict — using existing {qid} for <{iri_str}>", verbose)
+                return qid
+            warn(
+                f"  label-with-description-conflict but could not parse QID: {err}",
+                verbose,
+            )
     inform(f"  Created {qid} for <{iri_str}>", verbose)
     return qid
 

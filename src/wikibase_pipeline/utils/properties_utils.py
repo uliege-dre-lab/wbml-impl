@@ -1,4 +1,4 @@
-from .items_utils import _score_candidate
+from .verbose_utils import warn
 
 PROPERTY_PREFIX = "urn:wikibase:property:"
 
@@ -42,86 +42,64 @@ def search_wikibase_properties(
     labels: dict[str, str],
     default_language: str,
     expected_datatype: str,
-    aliases: dict[str, list[str]] | None = None,
+    verbose: int = 0,
 ) -> str | None:
     """
-    Search Wikibase for a property using the same scoring approach as items,
-    additionally filtered by expected datatype.
-    Returns the PID of the unique highest-scoring match, or None.
+    Search Wikibase for a property using an exact label match,
+    filtered by expected datatype.
+
+    Label priority for the search term:
+      1. Default language label
+      2. Any other available label (arbitrary order)
+      3. No labels at all → return None immediately
+
+    Among the results that match the expected datatype:
+    - One match    → return it.
+    - Multiple     → warn and return the first (no guarantee of correctness).
+    - No match     → return None (caller will create).
     """
-    if aliases is None:
-        aliases = {}
+    label_value = labels.get(default_language)
+    search_lang = default_language
 
-    candidates: list[str] = []
-    seen: set[str] = set()
-    tried_values: set[str] = set()
+    if label_value is None:
+        for lang, value in labels.items():
+            label_value = value
+            search_lang = lang
+            break
 
-    priority_langs = [default_language, ""]
-    other_langs = [lang for lang in labels if lang not in priority_langs]
-
-    for lang in priority_langs + other_langs:
-        value = labels.get(lang)
-        if value is None or value in tried_values:
-            continue
-        tried_values.add(value)
-        search_lang = lang if lang else default_language
-        for pid in wikibase_api.search_properties_by_label(value, language=search_lang):
-            if pid not in seen:
-                seen.add(pid)
-                candidates.append(pid)
-
-    for lang, alias_list in aliases.items():
-        search_lang = lang if lang else default_language
-        for alias_value in alias_list:
-            if alias_value in tried_values:
-                continue
-            tried_values.add(alias_value)
-            for pid in wikibase_api.search_properties_by_label(
-                alias_value, language=search_lang
-            ):
-                if pid not in seen:
-                    seen.add(pid)
-                    candidates.append(pid)
-
-    if not candidates:
+    if label_value is None:
         return None
 
-    scores: dict[str, int] = {}
-    for pid in candidates:
+    results = list(
+        wikibase_api.search_properties_by_label(label_value, language=search_lang)
+    )
+
+    if not results:
+        return None
+
+    # Filter by expected datatype
+    valid: list[str] = []
+    for pid in results:
         try:
             actual_dt = wikibase_api.get_property_datatype(pid)
         except Exception:
             continue
-        if actual_dt != expected_datatype:
-            continue
+        if actual_dt == expected_datatype:
+            valid.append(pid)
 
-        try:
-            entity = wikibase_api.get_entity(pid, props="labels|aliases")
-        except Exception:
-            continue
-
-        wb_labels: dict[str, str] = {
-            lang: info["value"] for lang, info in entity.get("labels", {}).items()
-        }
-        wb_aliases: dict[str, list[str]] = {
-            lang: [entry["value"] for entry in entries]
-            for lang, entries in entity.get("aliases", {}).items()
-        }
-
-        s = _score_candidate(labels, aliases, wb_labels, wb_aliases)
-        if s > 0:
-            scores[pid] = s
-
-    if not scores:
+    if not valid:
         return None
 
-    max_score = max(scores.values())
-    best = [pid for pid, s in scores.items() if s == max_score]
+    if len(valid) == 1:
+        return valid[0]
 
-    if len(best) == 1:
-        return best[0]
-
-    return None
+    warn(
+        f"  Multiple properties found for label '{label_value}'@{search_lang} "
+        f"with datatype '{expected_datatype}': {valid} "
+        f"— taking the first one ({valid[0]}), cannot guarantee correctness.",
+        verbose,
+    )
+    return valid[0]
 
 
 def iri_suffix(iri: str) -> str:
