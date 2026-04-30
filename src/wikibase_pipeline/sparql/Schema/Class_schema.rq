@@ -1,26 +1,29 @@
-PREFIX wbml: <https://example.org/wbml#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-
 CONSTRUCT {
-  ?classIRI a rdfs:Class ;
-            rdfs:label       ?classLabel ;
-            rdfs:comment     ?classDescription ;
-            rdfs:subClassOf  ?parentClassIRI ;
-            skos:altLabel    ?classAlias .
+  ?classIRI a wbml:Class ;
+            wbml:entityLabel      ?classLabel ;
+            wbml:entityDescription ?classDescription ;
+            wbml:entityAlias      ?classAlias ;
+            wbml:subclassOf       ?parentClassIRI .
 }
 WHERE {
-  ?classNode a rdfs:Class .
+  {
+    { ?classNode a wbml:Class . }
+    UNION
+    { [] wbml:class ?classNode . }
+  }
 
-  OPTIONAL { ?classNode rdfs:label        ?classLabel . }
-  OPTIONAL { ?classNode rdfs:comment      ?classDescription . }
-  OPTIONAL { ?classNode skos:altLabel     ?classAlias . }
-  OPTIONAL { ?classNode wbml:nodeTemplate ?classExplicitKey . }
+  OPTIONAL { ?classNode wbml:entityLabel       ?classLabel . }
+  OPTIONAL { ?classNode wbml:entityDescription ?classDescription . }
+  OPTIONAL { ?classNode wbml:entityAlias       ?classAlias . }
+  OPTIONAL { ?classNode wbml:nodeTemplate      ?classExplicitKey . }
 
   BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
-
   BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
 
-  OPTIONAL { ?parentClassNode wbml:nodeTemplate ?parentExplicitKey . }
-  BIND(COALESCE(?parentExplicitKey, STRAFTER(STR(?parentClassNode), "#")) AS ?parentKey)
+  OPTIONAL {
+    ?classNode wbml:subclassOf ?parentClassNode .
+    OPTIONAL { ?parentClassNode wbml:nodeTemplate ?parentExplicitKey . }
+    BIND(COALESCE(?parentExplicitKey, STRAFTER(STR(?parentClassNode), "#")) AS ?parentKey)
+    BIND(IRI(CONCAT("urn:wikibase:item:", ?parentKey)) AS ?parentClassIRI)
+  }
 }
