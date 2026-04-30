@@ -4,7 +4,12 @@ from collections import defaultdict
 from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, SKOS
 
-from ..utils.items_utils import clean_text, iri_suffix, search_item_by_labels
+from ..utils.items_utils import (
+    clean_text,
+    iri_suffix,
+    normalize_text,
+    search_item_by_labels,
+)
 from ..utils.verbose_utils import inform, warn
 from .language_resolver import LanguageResolver
 
@@ -25,69 +30,39 @@ def _collect_class_metadata(
     subclass_of: list[str] = []
     iri_str = str(class_iri)
 
-    # Labels — collect in one pass, then process tagged before untagged
+    # Labels
     tagged: list[tuple[str, str]] = []
-    untagged: list[str] = []
     for lbl in g.objects(class_iri, RDFS.label):
         raw_value = clean_text(lbl)
-        if raw_value is None:
-            warn(f"  Skipping invalid class label on <{iri_str}>: {lbl!r}", verbose)
+        eff_value = normalize_text(raw_value)
+        if eff_value is None:
             continue
         raw_lang = getattr(lbl, "language", None)
-        if raw_lang is None:
-            untagged.append(raw_value)
-        else:
-            tagged.append((raw_lang, raw_value))
-
-    for raw_lang, raw_value in tagged:
         eff_lang = language_resolver.resolve_language(
             raw_lang,
-            context=f"label {raw_value!r} on <{iri_str}>",
+            context=f"class label {raw_value!r} on <{iri_str}>",
             verbose=verbose,
         )
-        if eff_lang in labels:
-            if (
-                " ".join(raw_value.split()).lower()
-                == " ".join(labels[eff_lang].split()).lower()
-            ):
-                pass
-            elif raw_value not in [a.lower() for a in aliases[eff_lang]]:
-                warn(
-                    f"  Duplicate class label @{eff_lang} on <{iri_str}>: "
-                    f"keeping '{labels[eff_lang]}', "
-                    f"adding '{raw_value}' as alias.",
-                    verbose,
-                )
-                aliases[eff_lang].append(raw_value)
-        else:
-            labels[eff_lang] = raw_value
+        tagged.append((eff_lang, eff_value))
 
-    for raw_value in untagged:
-        eff_lang = language_resolver.resolve_language(
-            None,
-            context=f"label {raw_value!r} on <{iri_str}>",
-            verbose=verbose,
-        )
+    for eff_lang, eff_value in tagged:
         if eff_lang in labels:
-            if (
-                " ".join(raw_value.split()).lower()
-                == " ".join(labels[eff_lang].split()).lower()
-            ):
-                pass  # identical string, silently skip
-            elif raw_value not in [a.lower() for a in aliases[eff_lang]]:
-                warn(
-                    f"  Untagged class label on <{iri_str}> resolved to @{eff_lang} "
-                    f"which already has a label: adding '{raw_value}' as alias.",
-                    verbose,
+            if eff_value == labels[eff_lang]:
+                pass
+            else:
+                raise ValueError(
+                    f"Duplicate class label @{eff_lang} on <{iri_str}>: "
+                    f"'{labels[eff_lang]}' and '{raw_value}'. "
+                    f"At most one label per language is allowed in the mapping."
                 )
-                aliases[eff_lang].append(raw_value)
         else:
-            labels[eff_lang] = raw_value
+            labels[eff_lang] = eff_value
 
     # Aliases
     for alias in g.objects(class_iri, SKOS.altLabel):
         raw_value = clean_text(alias)
-        if raw_value is None:
+        eff_value = normalize_text(raw_value)
+        if eff_value is None:
             continue
         raw_lang = getattr(alias, "language", None)
         eff_lang = language_resolver.resolve_language(
@@ -95,46 +70,25 @@ def _collect_class_metadata(
             context=f"alias {str(alias)!r} on <{iri_str}>",
             verbose=verbose,
         )
-        if raw_value not in aliases[eff_lang]:
-            aliases[eff_lang].append(raw_value)
+        if eff_value not in aliases[eff_lang]:
+            aliases[eff_lang].append(eff_value)
 
-    # Fallback if still no labels: promote an alias (default lang first),
-    # else IRI suffix
+    # Fallback if still no labels: IRI suffix
     if not labels and require_label:
-        fallback_lang = language_resolver.language or "en"
-        promoted = False
-        for lang in [fallback_lang] + [
-            alias for alias in aliases if alias != fallback_lang
-        ]:
-            if aliases.get(lang):
-                value = aliases[lang].pop(0)
-                if not aliases[lang]:
-                    del aliases[lang]
-                labels[lang] = value
-                warn(
-                    f"  No valid class labels for <{iri_str}> — "
-                    f"promoting alias '{value}'@{lang} as label.",
-                    verbose,
-                )
-                promoted = True
-                break
-        if not promoted:
-            fallback = iri_suffix(iri_str)
-            warn(
-                f"  No valid class labels for <{iri_str}> — "
-                f"using IRI suffix fallback '{fallback}'.",
-                verbose,
-            )
-            labels[fallback_lang] = fallback
+        fallback_lang = language_resolver.language
+        fallback = iri_suffix(iri_str)
+        warn(
+            f"  No valid class labels for <{iri_str}> — "
+            f"using IRI suffix fallback '{fallback}'.",
+            verbose,
+        )
+        labels[fallback_lang] = fallback
 
     # Descriptions
     for desc in g.objects(class_iri, RDFS.comment):
         raw_value = clean_text(desc)
-        if raw_value is None:
-            warn(
-                f"  Skipping invalid class description on <{iri_str}>: {desc!r}",
-                verbose,
-            )
+        eff_value = normalize_text(raw_value)
+        if eff_value is None:
             continue
         raw_lang = getattr(desc, "language", None)
         eff_lang = language_resolver.resolve_language(
@@ -143,20 +97,23 @@ def _collect_class_metadata(
             verbose=verbose,
         )
         if eff_lang in descriptions:
-            warn(
-                f"  Duplicate class description @{eff_lang} on <{iri_str}>: "
-                f"keeping existing, ignoring '{raw_value}'.",
-                verbose,
-            )
+            if eff_value == descriptions[eff_lang]:
+                pass
+            else:
+                raise ValueError(
+                    f"Duplicate instance description @{eff_lang} on <{iri_str}>: "
+                    f"'{descriptions[eff_lang]}' and '{raw_value}'. "
+                    f"At most one description per language is allowed in the mapping."
+                )
         else:
-            if len(raw_value) > 250:
+            if len(eff_value) > 250:
                 warn(
                     f"  Description @{eff_lang} on <{iri_str}> exceeds 250 chars "
                     f"— truncating.",
                     verbose,
                 )
-                raw_value = raw_value[:250]
-            descriptions[eff_lang] = raw_value
+                eff_value = eff_value[:250]
+            descriptions[eff_lang] = eff_value
 
     for parent in g.objects(class_iri, RDFS.subClassOf):
         subclass_of.append(str(parent))
@@ -175,7 +132,7 @@ def _resolve_one_class(
     wikibase_api,
     default_language: str,
     verbose: int,
-    lookup: dict | None = None,  # NEW
+    lookup: dict | None = None,
 ) -> str:
     """
     Find or create a Wikibase item for the given class.
@@ -227,7 +184,6 @@ def _push_class_metadata(
     meta: dict,
     wikibase_api,
     verbose: int,
-    overwrite_on_conflict: bool = False,
 ) -> None:
     try:
         entity = wikibase_api.get_entity(qid, props="labels|descriptions|aliases")
@@ -248,88 +204,50 @@ def _push_class_metadata(
 
     entity_data: dict = {}
 
-    # Labels (aliases_to_set initialized here so label-conflict branch can use it)
+    # Labels
     labels_to_set = {}
-    aliases_to_set = {}
     for lang, value in meta["labels"].items():
-        if not lang:
-            continue
-        value = value.strip()
         current = existing_labels.get(lang)
         if current is None:
             labels_to_set[lang] = {"language": lang, "value": value}
-        elif " ".join(current.split()).lower() == " ".join(value.split()).lower():
+        elif current == value:
             pass
         else:
-            if overwrite_on_conflict:
-                inform(
-                    f"  [{qid}] Overwriting label@{lang}: '{current}' to '{value}'",
-                    verbose,
-                )
-                labels_to_set[lang] = {"language": lang, "value": value}
-            else:
-                warn(
-                    f"  [{qid}] Label conflict @{lang}: "
-                    f"schema='{value}', Wikibase='{current}': "
-                    f"adding '{value}' as alias.",
-                    verbose,
-                )
-                already_alias = existing_aliases.get(lang, set())
-                if (
-                    value not in already_alias
-                    and " ".join(value.split()).lower()
-                    != " ".join(current.split()).lower()
-                ):
-                    aliases_to_set.setdefault(lang, []).append(
-                        {"language": lang, "value": value}
-                    )
+            warn(
+                f"  [{qid}] Label conflict @{lang}: "
+                f"schema='{value}', Wikibase='{current}': keeping Wikibase label.",
+                verbose,
+            )
     if labels_to_set:
         entity_data["labels"] = labels_to_set
 
     # Descriptions
     descriptions_to_set = {}
     for lang, value in meta["descriptions"].items():
-        if not lang:
-            continue
-        value = value.strip()
         current = existing_descriptions.get(lang)
         if current is None:
             descriptions_to_set[lang] = {"language": lang, "value": value}
-        elif " ".join(current.split()) == " ".join(value.split()):
+        elif current == value:
             pass
         else:
-            if overwrite_on_conflict:
-                inform(
-                    f"  [{qid}] Overwriting description@{lang}: "
-                    f"'{current}' to '{value}'",
-                    verbose,
-                )
-                descriptions_to_set[lang] = {"language": lang, "value": value}
-            else:
-                warn(
-                    f"  [{qid}] Description conflict @{lang}: "
-                    f"schema='{value}', Wikibase='{current}': keeping Wikibase.",
-                    verbose,
-                )
+            warn(
+                f"  [{qid}] Description conflict @{lang}: "
+                f"schema='{value}', Wikibase='{current}': keeping Wikibase.",
+                verbose,
+            )
     if descriptions_to_set:
         entity_data["descriptions"] = descriptions_to_set
 
-    # Aliases — union only, skip values already present as alias or as label
+    # Aliases
+    aliases_to_set = {}
     for lang, values in meta["aliases"].items():
-        if not lang:
-            continue
-        already_alias = existing_aliases.get(lang, set())
-        existing_label = existing_labels.get(lang, "")
+        already_aliases = existing_aliases.get(lang, set())
+        existing_label = existing_labels.get(lang)
         new_values = [
-            v
-            for v in values
-            if " ".join(v.split()).lower() not in [a.lower() for a in already_alias]
-            and " ".join(v.split()).lower() != " ".join(existing_label.split()).lower()
+            v for v in values if v not in already_aliases and v != existing_label
         ]
         if new_values:
-            aliases_to_set.setdefault(lang, []).extend(
-                {"language": lang, "value": v} for v in new_values
-            )
+            aliases_to_set[lang] = [{"language": lang, "value": v} for v in new_values]
     if aliases_to_set:
         entity_data["aliases"] = aliases_to_set
 

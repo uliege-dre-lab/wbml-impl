@@ -1,5 +1,7 @@
 from .items_utils import _score_candidate
 
+PROPERTY_PREFIX = "urn:wikibase:property:"
+
 
 def lookup_get(
     lookup: dict,
@@ -120,3 +122,7 @@ def search_wikibase_properties(
         return best[0]
 
     return None
+
+
+def iri_suffix(iri: str) -> str:
+    return iri.split(PROPERTY_PREFIX, 1)[-1]
