@@ -154,5 +154,14 @@ def clean_text(value) -> str | None:
     return text
 
 
+def normalize_text(value) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    return " ".join(text.split())
+
+
 def iri_suffix(iri: str) -> str:
     return iri.split(ITEM_PREFIX, 1)[-1]

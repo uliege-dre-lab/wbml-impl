@@ -31,14 +31,9 @@ class LanguageResolver:
             return self.language
 
         if raw_lang not in self.valid_languages:
-            if raw_lang not in self.unvalid_languages:
-                warn(
-                    f"  Language '{raw_lang}' is not in"
-                    f" valid_languages={self.valid_languages} "
-                    f"({context}). Falling back to '{self.language}'.",
-                    verbose,
-                )
-                self.unvalid_languages.add(raw_lang)
-            return self.language
+            raise ValueError(
+                f"Invalid language tag '{raw_lang}' for {context}. "
+                f"Valid languages: {self.valid_languages}."
+            )
 
         return raw_lang
