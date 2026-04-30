@@ -99,6 +99,45 @@ wbml:Property
     rdfs:comment "Used as the value of wbml:entityType to indicate that the entity map generates a Wikibase property."@en .
 
 #################################################################
+# Property datatype individuals - values for wbml:propertyType
+#################################################################
+
+wbml:item
+    a owl:NamedIndividual ;
+    rdfs:label "item"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'wikibase-item' (links to another item)."@en .
+
+wbml:string
+    a owl:NamedIndividual ;
+    rdfs:label "string"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'string'."@en .
+
+wbml:url
+    a owl:NamedIndividual ;
+    rdfs:label "url"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'url'."@en .
+
+wbml:externalId
+    a owl:NamedIndividual ;
+    rdfs:label "external ID"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'external-id'."@en .
+
+wbml:quantity
+    a owl:NamedIndividual ;
+    rdfs:label "quantity"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'quantity'."@en .
+
+wbml:time
+    a owl:NamedIndividual ;
+    rdfs:label "time"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'time'."@en .
+
+wbml:monolingualText
+    a owl:NamedIndividual ;
+    rdfs:label "monolingual text"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'monolingualtext'."@en .
+
+#################################################################
 # Entity map properties
 #################################################################
 
