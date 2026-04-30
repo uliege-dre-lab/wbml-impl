@@ -14,7 +14,9 @@ CONSTRUCT {
 
 }
 WHERE {
-  ?tm wbml:propertyEntityMap ?sm .
+  ?tm wbml:entityMap ?sm .
+  ?sm wbml:entityType wbml:Property .      # strictly required for property case
+
   OPTIONAL { ?sm wbml:nodeTemplate ?nodeTemplate . }
   OPTIONAL { ?sm wbml:nodeId ?nodeId . }
   OPTIONAL { ?sm wbml:propertyType ?propertyType . }
