@@ -19,10 +19,10 @@
 # Classes
 #################################################################
 
-wbml:ItemMap
+wbml:EntityMap
     a owl:Class ;
-    rdfs:label "Item Map"@en ;
-    rdfs:comment "Describes how to generate the Wikibase item (subject) for each row of input data."@en .
+    rdfs:label "Entity Map"@en ;
+    rdfs:comment "Describes how to generate the Wikibase entity (subject) for each row of input data."@en .
 
 wbml:ClassSpec
     a owl:Class ;
@@ -91,32 +91,43 @@ wbml:DeprecatedRank
 wbml:Item
     a owl:NamedIndividual ;
     rdfs:label "Item"@en ;
-    rdfs:comment "Used as the value of wbml:propertyType to indicate that the property links to a Wikibase item."@en .
+    rdfs:comment "Used as the value of wbml:entityType to indicate that the entity map generates a Wikibase item (default when entityType is absent)."@en .
+
+wbml:Property
+    a owl:NamedIndividual ;
+    rdfs:label "Property"@en ;
+    rdfs:comment "Used as the value of wbml:entityType to indicate that the entity map generates a Wikibase property."@en .
 
 #################################################################
-# Item map properties
+# Entity map properties
 #################################################################
 
-wbml:itemMap
+wbml:entityMap
     a owl:ObjectProperty ;
-    rdfs:label "item map"@en ;
-    rdfs:comment "Attaches an item map to a triples map, defining how the Wikibase item identifier is generated."@en ;
+    rdfs:label "entity map"@en ;
+    rdfs:comment "Attaches an entity map to a triples map, defining how the Wikibase entity identifier is generated. Defaults to generating a Wikibase item unless wbml:entityType specifies otherwise."@en ;
     rdfs:domain rml:TriplesMap ;
-    rdfs:range wbml:ItemMap .
+    rdfs:range wbml:EntityMap .
 
 wbml:nodeTemplate
     a owl:DatatypeProperty ;
     rdfs:label "node template"@en ;
-    rdfs:comment "A template string (with {variable} placeholders) used to construct the Wikibase item identifier."@en ;
-    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
+    rdfs:comment "A template string (with {variable} placeholders) used to construct the Wikibase entity identifier."@en ;
+    rdfs:domain [ owl:unionOf (wbml:EntityMap wbml:ValueMap) ] ;
     rdfs:range xsd:string .
 
 wbml:class
     a owl:ObjectProperty ;
     rdfs:label "class"@en ;
-    rdfs:comment "Specifies the Wikibase class that the generated item should be an instance of."@en ;
-    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
+    rdfs:comment "Specifies the Wikibase class that the generated entity should be an instance of."@en ;
+    rdfs:domain [ owl:unionOf (wbml:EntityMap wbml:ValueMap) ] ;
     rdfs:range wbml:ClassSpec .
+
+wbml:entityType
+    a owl:ObjectProperty ;
+    rdfs:label "entity type"@en ;
+    rdfs:comment "Specifies whether the entity map generates a Wikibase item (wbml:Item, default) or property (wbml:Property)."@en ;
+    rdfs:domain wbml:EntityMap .
 
 #################################################################
 # Class specification properties
@@ -161,21 +172,21 @@ wbml:statementMap
 wbml:label
     a owl:ObjectProperty ;
     rdfs:label "label"@en ;
-    rdfs:comment "Relating a label to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:comment "Relating a label to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:description
     a owl:ObjectProperty ;
     rdfs:label "description"@en ;
-    rdfs:comment "Relating a description to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:comment "Relating a description to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:alias
     a owl:ObjectProperty ;
     rdfs:label "alias"@en ;
-    rdfs:comment "Relating an alias to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:comment "Relating an alias to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
@@ -246,7 +257,7 @@ wbml:propertyType
     a owl:ObjectProperty ;
     rdfs:label "property type"@en ;
     rdfs:comment "The Wikibase datatype of the property. Use wbml:Item for item-valued properties, or an XSD datatype for literal-valued properties."@en ;
-    rdfs:domain wbml:PredicateSpec .
+    rdfs:domain [ owl:unionOf (wbml:PredicateSpec wbml:EntityMap) ] .
 
 #################################################################
 # Object map properties

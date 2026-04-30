@@ -28,7 +28,7 @@
     """
   ] ;
 
-  wbml:itemMap [
+  wbml:entityMap [
     wbml:nodeTemplate "Class_{name}" ;
   ] ;
 
@@ -93,7 +93,7 @@
     """
   ] ;
 
-  wbml:itemMap [
+  wbml:entityMap [
     wbml:nodeTemplate "Class_{name}" ;
   ] ;
 
@@ -130,8 +130,9 @@
     """
   ] ;
 
-  wbml:propertyEntityMap [
+  wbml:entityMap [
     wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityType wbml:Property ;
     wbml:propertyType wbml:string
   ] ;
 
@@ -212,8 +213,9 @@
     """
   ] ;
 
-  wbml:propertyEntityMap [
+  wbml:entityMap [
     wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityType wbml:Property ;
     wbml:propertyType wbml:url
   ] ;
 
@@ -268,8 +270,9 @@
     """
   ] ;
 
-  wbml:propertyEntityMap [
+  wbml:entityMap [
     wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityType wbml:Property ;
     wbml:propertyType wbml:time
   ] ;
 
@@ -325,8 +328,9 @@
     """
   ] ;
 
-  wbml:propertyEntityMap [
+  wbml:entityMap [
     wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityType wbml:Property ;
     wbml:propertyType wbml:item ;
   ] ;
 

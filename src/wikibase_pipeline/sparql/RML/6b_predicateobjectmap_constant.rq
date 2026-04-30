@@ -39,19 +39,19 @@ CONSTRUCT {
 WHERE {
   ?tm a rr:TriplesMap ;
       rml:logicalSource ?ls ;
-      wbml:statementMap ?pom .
+      wbml:statementMap ?pom ;
+      wbml:entityMap ?sm .
 
-  {
-    ?tm wbml:itemMap ?sm .
-    BIND("urn:wikibase:item:"    AS ?subjectNodePrefix)
-    BIND("urn:wikibase:itemIRI:" AS ?subjectNodeIRIPrefix)
-  }
-  UNION
-  {
-    ?tm wbml:propertyEntityMap ?sm .
-    BIND("urn:wikibase:property:"    AS ?subjectNodePrefix)
-    BIND("urn:wikibase:propertyIRI:" AS ?subjectNodeIRIPrefix)
-  }
+  OPTIONAL { ?sm wbml:entityType ?entityType . }
+  BIND(COALESCE(?entityType, wbml:Item) AS ?resolvedType)
+  BIND(
+    IF(?resolvedType = wbml:Property, "urn:wikibase:property:", "urn:wikibase:item:")
+    AS ?subjectNodePrefix
+  )
+  BIND(
+    IF(?resolvedType = wbml:Property, "urn:wikibase:propertyIRI:", "urn:wikibase:itemIRI:")
+    AS ?subjectNodeIRIPrefix
+  )
 
   OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
   OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
