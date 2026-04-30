@@ -26,10 +26,10 @@ WHERE {
       wbml:statementMap ?pom ;
       wbml:entityMap ?sm .
 
-  OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
-  OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
-  FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
-  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
+  OPTIONAL { ?sm wbml:entityTemplate ?subjectEntityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?subjectEntityId . }
+  FILTER(BOUND(?subjectEntityTemplate) || BOUND(?subjectEntityId))
+  BIND(COALESCE(?subjectEntityTemplate, ?subjectEntityId) AS ?subjectKey)
 
   ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom ;
@@ -41,7 +41,7 @@ WHERE {
 
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
-  OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
+  OPTIONAL { ?wom wbml:entityTemplate ?mainValueEntityTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
   FILTER(!BOUND(?propertyNode) || ?propertyNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
@@ -50,7 +50,7 @@ WHERE {
 
   BIND(
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
-    IF(BOUND(?mainValueNodeTemplate), CONCAT("_", STR(?mainValueNodeTemplate)),
+    IF(BOUND(?mainValueEntityTemplate), CONCAT("_", STR(?mainValueEntityTemplate)),
     IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
     "")))
   AS ?valueSuffix)

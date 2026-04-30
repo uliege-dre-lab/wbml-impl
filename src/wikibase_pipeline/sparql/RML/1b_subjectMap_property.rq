@@ -17,18 +17,18 @@ WHERE {
   ?tm wbml:entityMap ?sm .
   ?sm wbml:entityType wbml:Property .      # strictly required for property case
 
-  OPTIONAL { ?sm wbml:nodeTemplate ?nodeTemplate . }
-  OPTIONAL { ?sm wbml:nodeId ?nodeId . }
+  OPTIONAL { ?sm wbml:entityTemplate ?entityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?entityId . }
   OPTIONAL { ?sm wbml:propertyType ?propertyType . }
-  FILTER(BOUND(?nodeTemplate) || BOUND(?nodeId))
+  FILTER(BOUND(?entityTemplate) || BOUND(?entityId))
 
   BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
   BIND(IRI(CONCAT(STR(?tm), "/propertyPOM")) AS ?propertyPOM)
   BIND(IRI(CONCAT(STR(?tm), "/propertyOM")) AS ?propertyOM)
   BIND(
-    IF(BOUND(?nodeId),
-      CONCAT("urn:wikibase:propertyIRI:", STR(?nodeId)),
-      CONCAT("urn:wikibase:property:", STR(?nodeTemplate))
+    IF(BOUND(?entityId),
+      CONCAT("urn:wikibase:propertyIRI:", STR(?entityId)),
+      CONCAT("urn:wikibase:property:", STR(?entityTemplate))
     ) AS ?template
   )
 }

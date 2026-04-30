@@ -19,30 +19,30 @@ CONSTRUCT {
 }
 WHERE {
   {
-    SELECT ?tm ?ls ?subjectNodeTemplate ?subjectNodeId ?statID ?wom
+    SELECT ?tm ?ls ?subjectEntityTemplate ?subjectEntityId ?statID ?wom
            ?mainReference ?mainValueNode ?childKey
            ?qualifierPropertyNode ?qualifierPropertyId ?qmap ?qom
-           ?valueNodeTemplate ?valueNodeId ?qualExplicitKey
+           ?valueEntityTemplate ?valueEntityId ?qualExplicitKey
     WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
           wbml:statementMap ?pom ;
           wbml:entityMap ?sm .
 
-      OPTIONAL { ?sm wbml:nodeTemplate ?subjectNodeTemplate . }
-      OPTIONAL { ?sm wbml:nodeId ?subjectNodeId . }
-      FILTER(BOUND(?subjectNodeTemplate) || BOUND(?subjectNodeId))
+      OPTIONAL { ?sm wbml:entityTemplate ?subjectEntityTemplate . }
+      OPTIONAL { ?sm wbml:entityId ?subjectEntityId . }
+      FILTER(BOUND(?subjectEntityTemplate) || BOUND(?subjectEntityId))
 
       ?pom wbint:statID ?statID ;
            wbml:valueMap ?wom ;
            wbml:qualifierMap ?qmap .
 
       OPTIONAL { ?wom wbml:reference ?mainReference . }
-      OPTIONAL { ?wom wbml:nodeTemplate ?mainValueNodeTemplate . }
-      OPTIONAL { ?wom wbml:nodeId ?mainValueNodeId . }
+      OPTIONAL { ?wom wbml:entityTemplate ?mainValueEntityTemplate . }
+      OPTIONAL { ?wom wbml:entityId ?mainValueEntityId . }
       OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
 
-      BIND(COALESCE(?mainValueNodeTemplate, ?mainValueNodeId) AS ?mainValueNode)
+      BIND(COALESCE(?mainValueEntityTemplate, ?mainValueEntityId) AS ?mainValueNode)
 
       ?qmap wbml:valueMap ?qom .
 
@@ -50,19 +50,19 @@ WHERE {
       OPTIONAL { ?qmap wbml:propertyId ?qualifierPropertyId . }
       FILTER(BOUND(?qualifierPropertyNode) || BOUND(?qualifierPropertyId))
 
-      OPTIONAL { ?qualifierPropertyNode wbml:nodeTemplate ?qualExplicitKey . }
+      OPTIONAL { ?qualifierPropertyNode wbml:entityTemplate ?qualExplicitKey . }
       FILTER(
         !BOUND(?qualifierPropertyNode) ||
         isBlank(?qualifierPropertyNode) ||
         STRSTARTS(STR(?qualifierPropertyNode), "https://example.org/wbml#")
       )
 
-      OPTIONAL { ?qom wbml:nodeTemplate ?valueNodeTemplate . }
-      OPTIONAL { ?qom wbml:nodeId ?valueNodeId . }
+      OPTIONAL { ?qom wbml:entityTemplate ?valueEntityTemplate . }
+      OPTIONAL { ?qom wbml:entityId ?valueEntityId . }
       FILTER(
-        (BOUND(?valueNodeTemplate) && !CONTAINS(STR(?valueNodeTemplate), "{")) ||
-        (BOUND(?valueNodeId)       && !CONTAINS(STR(?valueNodeId), "{"))
-  )
+        (BOUND(?valueEntityTemplate) && !CONTAINS(STR(?valueEntityTemplate), "{")) ||
+        (BOUND(?valueEntityId)       && !CONTAINS(STR(?valueEntityId), "{"))
+      )
     }
   }
 
@@ -78,7 +78,7 @@ WHERE {
     "")))
   AS ?valueSuffix)
 
-  BIND(COALESCE(?subjectNodeTemplate, ?subjectNodeId) AS ?subjectKey)
+  BIND(COALESCE(?subjectEntityTemplate, ?subjectEntityId) AS ?subjectKey)
 
   BIND(
     CONCAT("urn:wikibase:statement:", STR(?subjectKey), "_", STR(?statID), ?valueSuffix)
@@ -86,9 +86,9 @@ WHERE {
   )
 
   BIND(
-    IF(BOUND(?valueNodeId),
-      IRI(CONCAT("urn:wikibase:itemIRI:", STR(?valueNodeId))),
-      IRI(CONCAT("urn:wikibase:item:",    STR(?valueNodeTemplate)))
+    IF(BOUND(?valueEntityId),
+      IRI(CONCAT("urn:wikibase:itemIRI:", STR(?valueEntityId))),
+      IRI(CONCAT("urn:wikibase:item:",    STR(?valueEntityTemplate)))
     ) AS ?valueConstant
   )
 

@@ -29,7 +29,7 @@
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Class_{name}" ;
+    wbml:entityTemplate "Class_{name}" ;
   ] ;
 
   wbml:label [
@@ -94,13 +94,13 @@
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Class_{name}" ;
+    wbml:entityTemplate "Class_{name}" ;
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap rdfs:subClassOf ;
     wbml:valueMap [
-      wbml:nodeTemplate "Class_{parent_class}"
+      wbml:entityTemplate "Class_{parent_class}"
     ]
   ] .
 
@@ -131,7 +131,7 @@
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityTemplate "Property_{name}" ;
     wbml:entityType wbml:Property ;
     wbml:propertyType wbml:string
   ] ;
@@ -167,7 +167,7 @@
   wbml:statementMap [
     wbml:propertyMap [
       a wbml:Property ;
-      wbml:nodeTemplate "goodPractice" ;
+      wbml:entityTemplate "goodPractice" ;
       wbml:entityLabel "Good practice"@en ;
       wbml:entityLabel "Bonnes pratiques"@fr ;
       wbml:propertyType wbml:string
@@ -180,7 +180,7 @@
   wbml:statementMap [
     wbml:propertyMap [
       a wbml:Property ;
-      wbml:nodeTemplate "cardinality" ;
+      wbml:entityTemplate "cardinality" ;
       wbml:entityLabel "Cardinality"@en ;
       wbml:entityLabel "Cardinalité"@fr ;
       wbml:propertyType wbml:string
@@ -214,7 +214,7 @@
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityTemplate "Property_{name}" ;
     wbml:entityType wbml:Property ;
     wbml:propertyType wbml:url
   ] ;
@@ -271,7 +271,7 @@
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityTemplate "Property_{name}" ;
     wbml:entityType wbml:Property ;
     wbml:propertyType wbml:time
   ] ;
@@ -329,7 +329,7 @@
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Property_{name}" ;
+    wbml:entityTemplate "Property_{name}" ;
     wbml:entityType wbml:Property ;
     wbml:propertyType wbml:item ;
   ] ;
@@ -365,7 +365,7 @@
   wbml:statementMap [
     wbml:propertyMap [
       a wbml:Property ;
-      wbml:nodeTemplate "goodPractice" ;
+      wbml:entityTemplate "goodPractice" ;
       wbml:entityLabel "Good practice"@en ;
       wbml:entityLabel "Bonnes pratiques"@fr ;
       wbml:propertyType wbml:string
@@ -378,7 +378,7 @@
   wbml:statementMap [
     wbml:propertyMap [
       a wbml:Property ;
-      wbml:nodeTemplate "cardinality" ;
+      wbml:entityTemplate "cardinality" ;
       wbml:entityLabel "Cardinality"@en ;
       wbml:entityLabel "Cardinalité"@fr ;
       wbml:propertyType wbml:string
@@ -391,7 +391,7 @@
   wbml:statementMap [
     wbml:propertyMap [
       a wbml:Property ;
-      wbml:nodeTemplate "inverse" ;
+      wbml:entityTemplate "inverse" ;
       wbml:entityLabel "Inverse property"@en ;
       wbml:entityLabel "Propriété inverse"@fr ;
       wbml:propertyType wbml:string
@@ -404,12 +404,12 @@
   wbml:statementMap [
     wbml:propertyMap [
       a wbml:Property ;
-      wbml:nodeTemplate "rangeClass" ;
+      wbml:entityTemplate "rangeClass" ;
       wbml:entityLabel "Range class"@en ;
       wbml:entityLabel "Classe de portée"@fr ;
       wbml:propertyType wbml:item
     ] ;
     wbml:valueMap [
-      wbml:nodeTemplate "Class_{range_class}"
+      wbml:entityTemplate "Class_{range_class}"
     ]
   ] .

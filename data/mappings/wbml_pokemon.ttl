@@ -190,7 +190,7 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Pokemon_{id}" ;
+    wbml:entityTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
 
@@ -223,7 +223,7 @@ wbml:HasItemCategory a wbml:Property ;
     wbml:propertyMap wbml:HasSpecies ;
     wbml:rank wbml:PreferredRank ;
     wbml:valueMap [
-      wbml:nodeTemplate "Species_{species}"
+      wbml:entityTemplate "Species_{species}"
     ]
   ] ;
 
@@ -255,7 +255,7 @@ wbml:HasItemCategory a wbml:Property ;
   wbml:statementMap [
     wbml:propertyMap [
       a wbml:Property ;
-      wbml:nodeTemplate "Speed" ;
+      wbml:entityTemplate "Speed" ;
       wbml:entityLabel "Speed"@en ;
       wbml:propertyType wbml:quantity ;
       wbml:entityAlias "Base Speed"@en
@@ -319,14 +319,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Pokemon_{id}" ;
+    wbml:entityTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:PokemonHasType ;
     wbml:valueMap [
-      wbml:nodeTemplate "Type_{type_name}" ;
+      wbml:entityTemplate "Type_{type_name}" ;
     ]
   ] .
 
@@ -344,14 +344,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Pokemon_{id}" ;
+    wbml:entityTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:HasEggGroup ;
     wbml:valueMap [
-      wbml:nodeTemplate "EggGroup_{egg_group}"
+      wbml:entityTemplate "EggGroup_{egg_group}"
     ]
   ] .
 
@@ -371,14 +371,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Pokemon_{id}" ;
+    wbml:entityTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:HasAbility ;
     wbml:valueMap [
-      wbml:nodeTemplate "Ability_{ability_name}"
+      wbml:entityTemplate "Ability_{ability_name}"
     ] ;
     wbml:qualifierMap [
       wbml:propertyMap wbml:IsHiddenAbility ;
@@ -436,14 +436,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Pokemon_{id}" ;
+    wbml:entityTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:EvolvesFrom ;
     wbml:valueMap [
-      wbml:nodeTemplate "Pokemon_{prev_id}"
+      wbml:entityTemplate "Pokemon_{prev_id}"
     ] ;
     wbml:qualifierMap [
       wbml:propertyMap wbml:EvolutionCondition ;
@@ -470,14 +470,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Pokemon_{id}" ;
+    wbml:entityTemplate "Pokemon_{id}" ;
     wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:EvolvesTo ;
     wbml:valueMap [
-      wbml:nodeTemplate "Pokemon_{next_id}"
+      wbml:entityTemplate "Pokemon_{next_id}"
     ] ;
     wbml:qualifierMap [
       wbml:propertyMap wbml:EvolutionCondition ;
@@ -502,7 +502,7 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Species_{species}" ;
+    wbml:entityTemplate "Species_{species}" ;
     wbml:class wbml:SpeciesClass
   ] ;
 
@@ -527,7 +527,7 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Ability_{ability_name}" ;
+    wbml:entityTemplate "Ability_{ability_name}" ;
     wbml:class wbml:AbilityClass
   ] ;
 
@@ -548,7 +548,7 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "EggGroup_{egg_group}" ;
+    wbml:entityTemplate "EggGroup_{egg_group}" ;
     wbml:class wbml:EggGroupClass
   ] ;
 
@@ -570,7 +570,7 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Move_{id}" ;
+    wbml:entityTemplate "Move_{id}" ;
     wbml:class wbml:MoveClass
   ] ;
 
@@ -614,7 +614,7 @@ wbml:HasItemCategory a wbml:Property ;
   wbml:statementMap [
     wbml:propertyMap wbml:MoveHasType ;
     wbml:valueMap [
-      wbml:nodeTemplate "Type_{type}"
+      wbml:entityTemplate "Type_{type}"
     ]
   ] .
 
@@ -632,7 +632,7 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Type_{english}" ;
+    wbml:entityTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
 
@@ -662,14 +662,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Type_{english}" ;
+    wbml:entityTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:EffectiveAgainst ;
     wbml:valueMap [
-      wbml:nodeTemplate "Type_{target_type}"
+      wbml:entityTemplate "Type_{target_type}"
     ]
   ] .
 
@@ -687,14 +687,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Type_{english}" ;
+    wbml:entityTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:IneffectiveAgainst ;
     wbml:valueMap [
-      wbml:nodeTemplate "Type_{target_type}"
+      wbml:entityTemplate "Type_{target_type}"
     ]
   ] .
 
@@ -712,14 +712,14 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Type_{english}" ;
+    wbml:entityTemplate "Type_{english}" ;
     wbml:class wbml:TypeClass
   ] ;
 
   wbml:statementMap [
     wbml:propertyMap wbml:NoEffectAgainst ;
     wbml:valueMap [
-      wbml:nodeTemplate "Type_{target_type}"
+      wbml:entityTemplate "Type_{target_type}"
     ]
   ] .
 
@@ -744,7 +744,7 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "Item_{id}" ;
+    wbml:entityTemplate "Item_{id}" ;
     wbml:class wbml:ItemClass
   ] ;
 
@@ -792,10 +792,10 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:entityMap [
-    wbml:nodeTemplate "ItemCategory_{type}" ;
+    wbml:entityTemplate "ItemCategory_{type}" ;
     wbml:class [
       a wbml:Class ;
-      wbml:nodeTemplate "ItemCategory" ;
+      wbml:entityTemplate "ItemCategory" ;
       wbml:entityLabel "Item Category"@en ;
       wbml:entityLabel "Catégorie d'objet"@fr ;
       wbml:entityDescription "A category or classification for items in the Pokémon games."@en ;
