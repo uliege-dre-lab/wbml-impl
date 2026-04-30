@@ -132,7 +132,6 @@ def _resolve_one_class(
     wikibase_api,
     default_language: str,
     verbose: int,
-    lookup: dict | None = None,
 ) -> str:
     """
     Find or create a Wikibase item for the given class.
@@ -147,9 +146,7 @@ def _resolve_one_class(
         wikibase_api,
         meta["labels"],
         default_language,
-        aliases=meta["aliases"],
-        lookup=lookup,
-        current_iri=iri_str,
+        verbose=verbose,
     )
     if qid is not None:
         inform(f"  Found {qid} for <{iri_str}>", verbose)
@@ -340,7 +337,6 @@ def resolve_schema_classes(
                 wikibase_api,
                 language_resolver.language,
                 verbose,
-                lookup=lookup,
             )
             lookup["items"][iri_str] = qid
 
