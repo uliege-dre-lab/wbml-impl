@@ -39,6 +39,7 @@ WHERE {
   OPTIONAL { ?wom wbml:entityTemplate ?mainValueEntityTemplate . }
   OPTIONAL { ?wom wbml:entityId ?mainValueEntityId . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+  OPTIONAL { ?wom wbml:template ?mainValueTemplate . }
 
   BIND(COALESCE(?mainValueEntityTemplate, ?mainValueEntityId) AS ?mainValueNode)
 
@@ -68,7 +69,8 @@ WHERE {
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
     IF(BOUND(?mainValueNode), CONCAT("_", STR(?mainValueNode)),
     IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
-    "")))
+    IF(BOUND(?mainValueTemplate), CONCAT("_", STR(?mainValueTemplate)),
+     ""))))
   AS ?valueSuffix)
 
   BIND(
