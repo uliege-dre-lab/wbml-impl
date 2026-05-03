@@ -98,7 +98,7 @@
   ] ;
 
   wbml:statementMap [
-    wbml:propertyMap rdfs:subClassOf ;
+    wbml:property rdfs:subClassOf ;
     wbml:valueMap [
       wbml:entityTemplate "Class_{parent_class}"
     ]
