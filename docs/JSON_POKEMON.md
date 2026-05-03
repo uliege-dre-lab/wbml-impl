@@ -205,6 +205,8 @@ This problem can be solved by taking the complete dataset.
 
 #### 2. Identical labels for different items
 
-The pipeline implemented aims to be used for small enterprises where the ontology and data should not have many items with the same or similar labels. Therefore label search only checks if an item has the same label or alias, and takes the item with the highest compatibility score when multiple items match.
+The pipeline implemented aims to be used for small enterprises where the ontology and data should not have many items with the same or similar labels. Therefore label search only checks if an item has the same label and takes the first match.
 
-However, in this dataset, the **Psychic Type** and the **Psychic Move** share the same English label. This results in the pipeline reusing the same Wikibase item for both instead of creating a distinct one for the Move. This is unfortunately unresolved in this work. Two workarounds exist: manually pre-creating both items in Wikibase with their respective labels and aliases so the score match selects the most compatible one, or adding them directly to the lookup file to bypass label search entirely.
+However, in this dataset, the **Psychic Type** and the **Psychic Move** share the same English label. This results in the pipeline reusing the same Wikibase item for both instead of creating a distinct one for the Move.
+
+This was resolved by using a `wbml:template` instead of a `wbml:reference` for the label, in order to manually add a discriminator that differentiates the two. For example, appending the class name to the template value allows the pipeline to generate distinct labels such as `Psychic (Type)` and `Psychic (Move)`, ensuring each gets its own Wikibase item during label search.

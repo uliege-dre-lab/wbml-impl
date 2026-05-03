@@ -575,15 +575,15 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:label [
-    wbml:valueMap [ wbml:reference "ename" ; wbml:language "en" ]
+    wbml:valueMap [ wbml:template "{ename} (Move)" ; wbml:language "en" ]
   ] ;
 
   wbml:label [
-    wbml:valueMap [ wbml:reference "jname" ; wbml:language "ja" ]
+    wbml:valueMap [ wbml:template "{jname} (Move)" ; wbml:language "ja" ]
   ] ;
 
   wbml:label [
-    wbml:valueMap [ wbml:reference "cname" ; wbml:language "zh" ]
+    wbml:valueMap [ wbml:template "{cname} (Move)" ; wbml:language "zh" ]
   ] ;
 
   wbml:statementMap [
@@ -637,15 +637,15 @@ wbml:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:label [
-    wbml:valueMap [ wbml:reference "english" ; wbml:language "en" ]
+    wbml:valueMap [ wbml:template "{english} (Type)" ; wbml:language "en" ]
   ] ;
 
   wbml:label [
-    wbml:valueMap [ wbml:reference "japanese" ; wbml:language "ja" ]
+    wbml:valueMap [ wbml:template "{japanese} (Type)" ; wbml:language "ja" ]
   ] ;
 
   wbml:label [
-    wbml:valueMap [ wbml:reference "chinese" ; wbml:language "zh" ]
+    wbml:valueMap [ wbml:template "{chinese} (Type)" ; wbml:language "zh" ]
   ] .
 
 <#TypeEffectiveMapping>
