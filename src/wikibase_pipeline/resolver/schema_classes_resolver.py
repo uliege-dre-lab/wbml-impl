@@ -294,10 +294,11 @@ def _push_subclass_claims(
             continue
 
         try:
-            wikibase_api.add_item_claim(
+            wikibase_api.add_statement(
                 subject_qid=child_qid,
                 property_pid=subclassof_pid,
                 value=parent_qid,
+                property_datatype="wikibase-item",
             )
         except Exception as exc:
             warn(f"  Could not add subClassOf claim on {child_qid}: {exc}", verbose)
