@@ -3,6 +3,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix wbml: <https://example.org/wbml#> .
+@prefix wbint: <https://example.org/wbint#> .
 @prefix rml:   <http://w3id.org/rml/> .
 
 #################################################################
@@ -195,6 +196,12 @@ wbml:entityType
     rdfs:comment "Specifies whether the entity map generates a Wikibase item (wbml:Item, default) or property (wbml:Property)."@en ;
     rdfs:domain wbml:EntityMap .
 
+wbml:propertyType
+    a owl:ObjectProperty ;
+    rdfs:label "property type"@en ;
+    rdfs:comment "Specifies the Wikibase datatype of a property."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Property wbml:EntityMap) ] .
+
 #################################################################
 # Statement map properties
 #################################################################
@@ -375,14 +382,14 @@ wbml:subclassOf
 # Internal/computed properties (used by the converter pipeline)
 #################################################################
 
-wbml:statID
+wbint:statID
     a owl:DatatypeProperty ;
     rdfs:label "statement ID"@en ;
     rdfs:comment "An internally assigned integer identifier for a predicate-object map, used during RML conversion."@en ;
     rdfs:domain wbml:StatementMap ;
     rdfs:range xsd:integer .
 
-wbml:refId
+wbint:refId
     a owl:DatatypeProperty ;
     rdfs:label "reference ID"@en ;
     rdfs:comment "An internally assigned integer identifier for a reference map within a predicate-object map, used during RML conversion."@en ;
