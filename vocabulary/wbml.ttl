@@ -230,9 +230,9 @@ wbml:alias
 wbml:propertyMap
     a owl:ObjectProperty ;
     rdfs:label "property map"@en ;
-    rdfs:comment "The property of a statement, qualifier, or reference. Can be an existing RDF property or a blank-node PredicateSpec."@en ;
+    rdfs:comment "Specifies an inline blank-node property definition for a statement, qualifier, or reference."@en ;
     rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
-    rdfs:range [ wbml:Property ] .
+    rdfs:range wbml:Property .
 
 wbml:propertyId
     a owl:DatatypeProperty ;
@@ -240,6 +240,12 @@ wbml:propertyId
     rdfs:comment "A known Wikibase property ID used to directly reference an existing property, instead of defining it with a PredicateSpec."@en ;
     rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
     rdfs:range xsd:string .
+
+wbml:property
+    a owl:ObjectProperty ;
+    rdfs:label "property"@en ;
+    rdfs:comment "References an existing named property IRI for a statement, qualifier, or reference."@en ;
+    rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] .
 
 wbml:valueMap
     a owl:ObjectProperty ;
