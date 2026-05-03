@@ -35,17 +35,16 @@ WHERE {
        wbml:valueMap ?wom ;
        wbml:rank ?rankIRI .
 
-  OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }
+  OPTIONAL { ?pom wbml:propertyMap ?propertyBlank . }
   OPTIONAL { ?pom wbml:propertyId ?propertyIdStr . }
-  FILTER(BOUND(?propertyNode) || BOUND(?propertyIdStr))
+  OPTIONAL { ?pom wbml:property ?propertyConst . }
+  FILTER(BOUND(?propertyBlank) || BOUND(?propertyIdStr) || BOUND(?propertyConst))
 
 
   OPTIONAL { ?wom wbml:reference ?mainReference . }
   OPTIONAL { ?wom wbml:entityTemplate ?mainValueEntityTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
   OPTIONAL { ?wom wbml:template ?mainValueTemplate . }
-
-  FILTER(!BOUND(?propertyNode) || ?propertyNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
 

@@ -16,8 +16,9 @@ CONSTRUCT {
   ?recordPOM rr:predicate ?refPropIRI ;
              rr:objectMap ?recordOM .
 
-  ?recordOM rr:parentTriplesMap ?parentTM .
-  ?recordOM rr:joinCondition ?joinNode .
+  ?recordOM rr:parentTriplesMap ?parentTM ;
+            rr:joinCondition ?joinNode .
+
   ?joinNode rr:child ?childField ;
             rr:parent ?parentField .
 }
@@ -49,16 +50,18 @@ WHERE {
 
   ?rrec wbml:valueMap ?rom .
 
-  OPTIONAL { ?rrec wbml:propertyMap ?refPropertyNode . }
+  OPTIONAL {
+    ?rrec wbml:propertyMap ?refPropertyBlank .
+    OPTIONAL { ?refPropertyBlank wbml:entityTemplate ?refExplicitKey . }
+  }
   OPTIONAL { ?rrec wbml:propertyId ?refPropertyId . }
-  FILTER(BOUND(?refPropertyNode) || BOUND(?refPropertyId))
+  OPTIONAL {
+    ?rrec wbml:property ?refPropertyConst .
+    OPTIONAL { ?refPropertyConst wbml:entityTemplate ?refConstExplicitKey . }
+    OPTIONAL { ?refPropertyConst wbml:propertyType   ?refConstType . }
+  }
+  FILTER(BOUND(?refPropertyBlank) || BOUND(?refPropertyId) || BOUND(?refPropertyConst))
 
-  OPTIONAL { ?refPropertyNode wbml:entityTemplate ?refExplicitKey . }
-  FILTER(
-    !BOUND(?refPropertyNode) ||
-    isBlank(?refPropertyNode) ||
-    STRSTARTS(STR(?refPropertyNode), "https://example.org/wbml#")
-  )
 
   ?rom wbml:parentTriplesMap ?parentTM .
 
@@ -76,10 +79,16 @@ WHERE {
 
   BIND(
     IF(BOUND(?refPropertyId),
-      IRI(CONCAT("urn:wikibase:referenceIRI:", STR(?refPropertyId))),
-      COALESCE(
-        IRI(CONCAT("urn:wikibase:reference:", ?refExplicitKey)),
-        IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPropertyNode), "#")))
+      IRI(CONCAT("urn:wikibase:referenceIRI:", ?refPropertyId)),
+      IF(BOUND(?refPropertyBlank),
+        IRI(CONCAT("urn:wikibase:reference:", STR(?refExplicitKey))),
+        IF(BOUND(?refConstExplicitKey),
+          IRI(CONCAT("urn:wikibase:reference:", STR(?refConstExplicitKey))),
+          IF(BOUND(?refConstType),
+            IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPropertyConst), "#"))),
+            ?refPropertyConst
+          )
+        )
       )
     ) AS ?refPropIRI
   )
