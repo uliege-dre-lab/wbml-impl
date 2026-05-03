@@ -270,7 +270,7 @@ wbml:referenceMap
     rdfs:range wbml:ReferenceMap .
 
 #################################################################
-# Object map properties
+# Value map properties
 #################################################################
 
 wbml:reference
@@ -312,6 +312,13 @@ wbml:joinCondition
     rdfs:comment "Specifies the child and parent fields to use when joining with a parent triples map."@en ;
     rdfs:domain wbml:ValueMap ;
     rdfs:range wbml:JoinCondition .
+
+wbml:template
+    a owl:DatatypeProperty ;
+    rdfs:label "template"@en ;
+    rdfs:comment "A template string with {variable} placeholders that generates a literal string value by substituting source data fields."@en ;
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range xsd:string .
 
 #################################################################
 # Join condition properties

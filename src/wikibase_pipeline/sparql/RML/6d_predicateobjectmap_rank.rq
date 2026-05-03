@@ -43,6 +43,7 @@ WHERE {
   OPTIONAL { ?wom wbml:reference ?mainReference . }
   OPTIONAL { ?wom wbml:entityTemplate ?mainValueEntityTemplate . }
   OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+  OPTIONAL { ?wom wbml:template ?mainValueTemplate . }
 
   FILTER(!BOUND(?propertyNode) || ?propertyNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
 
@@ -52,7 +53,8 @@ WHERE {
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
     IF(BOUND(?mainValueEntityTemplate), CONCAT("_", STR(?mainValueEntityTemplate)),
     IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
-    "")))
+    IF(BOUND(?mainValueTemplate), CONCAT("_", STR(?mainValueTemplate)),
+     ""))))
   AS ?valueSuffix)
 
   BIND(

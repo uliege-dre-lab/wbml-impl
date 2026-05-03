@@ -16,7 +16,7 @@ CONSTRUCT {
   ?recordPOM rr:predicate ?refPropIRI ;
              rr:objectMap ?recordOM .
 
-  ?recordOM rml:reference ?reference .
+  ?recordOM rr:template ?recordTemplate .
   ?recordOM rr:datatype ?datatype .
   ?recordOM rr:language ?language .
 }
@@ -59,7 +59,7 @@ WHERE {
     STRSTARTS(STR(?refPropertyNode), "https://example.org/wbml#")
   )
 
-  ?rom wbml:reference ?reference .
+  ?rom wbml:template ?recordTemplate .
   OPTIONAL { ?rom wbml:datatype ?datatype . }
   OPTIONAL { ?rom wbml:language ?language . }
 
@@ -77,6 +77,7 @@ WHERE {
       )
     ) AS ?refPropIRI
   )
+
 
   BIND(
     IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
