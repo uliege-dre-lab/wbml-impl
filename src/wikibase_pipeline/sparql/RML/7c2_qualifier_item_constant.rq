@@ -21,8 +21,9 @@ WHERE {
   {
     SELECT ?tm ?ls ?subjectEntityTemplate ?subjectEntityId ?statID ?wom
            ?mainReference ?mainValueNode ?childKey
-           ?qualifierPropertyNode ?qualifierPropertyId ?qmap ?qom
-           ?valueEntityTemplate ?valueEntityId ?qualExplicitKey
+           ?qualifierPropertyBlank ?qualifierPropertyId ?qualifierPropertyConst
+           ?qualExplicitKey ?qualConstExplicitKey ?qualConstType
+           ?qmap ?qom ?valueEntityTemplate ?valueEntityId
     WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
@@ -48,16 +49,17 @@ WHERE {
 
       ?qmap wbml:valueMap ?qom .
 
-      OPTIONAL { ?qmap wbml:propertyMap ?qualifierPropertyNode . }
+      OPTIONAL {
+        ?qmap wbml:propertyMap ?qualifierPropertyBlank .
+        OPTIONAL { ?qualifierPropertyBlank wbml:entityTemplate ?qualExplicitKey . }
+      }
       OPTIONAL { ?qmap wbml:propertyId ?qualifierPropertyId . }
-      FILTER(BOUND(?qualifierPropertyNode) || BOUND(?qualifierPropertyId))
-
-      OPTIONAL { ?qualifierPropertyNode wbml:entityTemplate ?qualExplicitKey . }
-      FILTER(
-        !BOUND(?qualifierPropertyNode) ||
-        isBlank(?qualifierPropertyNode) ||
-        STRSTARTS(STR(?qualifierPropertyNode), "https://example.org/wbml#")
-      )
+      OPTIONAL {
+        ?qmap wbml:property ?qualifierPropertyConst .
+        OPTIONAL { ?qualifierPropertyConst wbml:entityTemplate ?qualConstExplicitKey . }
+        OPTIONAL { ?qualifierPropertyConst wbml:propertyType   ?qualConstType . }
+      }
+      FILTER(BOUND(?qualifierPropertyBlank) || BOUND(?qualifierPropertyId) || BOUND(?qualifierPropertyConst))
 
       OPTIONAL { ?qom wbml:entityTemplate ?valueEntityTemplate . }
       OPTIONAL { ?qom wbml:entityId ?valueEntityId . }
@@ -97,10 +99,16 @@ WHERE {
 
   BIND(
     IF(BOUND(?qualifierPropertyId),
-      IRI(CONCAT("urn:wikibase:qualifierIRI:", STR(?qualifierPropertyId))),
-      COALESCE(
-        IRI(CONCAT("urn:wikibase:qualifier:", ?qualExplicitKey)),
-        IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPropertyNode), "#")))
+      IRI(CONCAT("urn:wikibase:qualifierIRI:", ?qualifierPropertyId)),
+      IF(BOUND(?qualifierPropertyBlank),
+        IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualExplicitKey))),
+        IF(BOUND(?qualConstExplicitKey),
+          IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualConstExplicitKey))),
+          IF(BOUND(?qualConstType),
+            IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPropertyConst), "#"))),
+            ?qualifierPropertyConst
+          )
+        )
       )
     ) AS ?qualifierPropIRI
   )

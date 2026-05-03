@@ -37,8 +37,9 @@ WHERE {
   {
     SELECT ?tm ?ls ?subjectKey ?subjectEntityTemplate ?subjectEntityId
            ?subjectNodePrefix ?subjectNodeIRIPrefix
-           ?propertyNode ?propertyIdStr
-           ?statID ?wom ?valueEntityTemplate ?valueEntityId ?propExplicitKey
+           ?propertyBlank ?propertyIdStr ?propertyConst
+           ?statID ?wom ?valueEntityTemplate ?valueEntityId
+           ?propExplicitKey ?constPropExplicitKey ?constPropType
     WHERE {
       ?tm a rr:TriplesMap ;
           rml:logicalSource ?ls ;
@@ -65,9 +66,17 @@ WHERE {
       ?pom wbint:statID ?statID ;
            wbml:valueMap ?wom .
 
-      OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }
+      OPTIONAL {
+        ?pom wbml:propertyMap ?propertyBlank .
+        OPTIONAL { ?propertyBlank wbml:entityTemplate ?propExplicitKey . }
+      }
       OPTIONAL { ?pom wbml:propertyId ?propertyIdStr . }
-      FILTER(BOUND(?propertyNode) || BOUND(?propertyIdStr))
+      OPTIONAL {
+        ?pom wbml:property ?propertyConst .
+        OPTIONAL { ?propertyConst wbml:entityTemplate ?constPropExplicitKey . }
+        OPTIONAL { ?propertyConst wbml:propertyType   ?constPropType . }
+      }
+      FILTER(BOUND(?propertyBlank) || BOUND(?propertyIdStr) || BOUND(?propertyConst))
 
       OPTIONAL { ?wom wbml:entityTemplate ?valueEntityTemplate . }
       OPTIONAL { ?wom wbml:entityId ?valueEntityId . }
@@ -75,10 +84,6 @@ WHERE {
         (BOUND(?valueEntityTemplate) && !CONTAINS(STR(?valueEntityTemplate), "{")) ||
         (BOUND(?valueEntityId)       && !CONTAINS(STR(?valueEntityId), "{"))
       )
-
-      OPTIONAL { ?propertyNode wbml:entityTemplate ?propExplicitKey . }
-
-      FILTER(!BOUND(?propertyNode) || ?propertyNode NOT IN (rdfs:label, rdfs:comment, skos:altLabel))
     }
   }
 
@@ -96,13 +101,15 @@ WHERE {
 
   BIND(
     IF(BOUND(?propertyIdStr),
-      IRI(CONCAT("urn:wikibase:propertyIRI:", STR(?propertyIdStr))),
-      COALESCE(
-        IRI(CONCAT("urn:wikibase:property:", ?propExplicitKey)),
-        IF(
-          STRSTARTS(STR(?propertyNode), "https://example.org/wbml#"),
-          IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propertyNode), "#"))),
-          ?propertyNode
+      IRI(CONCAT("urn:wikibase:propertyIRI:", ?propertyIdStr)),
+      IF(BOUND(?propertyBlank),
+        IRI(CONCAT("urn:wikibase:property:", STR(?propExplicitKey))),
+        IF(BOUND(?constPropExplicitKey),
+          IRI(CONCAT("urn:wikibase:property:", STR(?constPropExplicitKey))),
+          IF(BOUND(?constPropType),
+            IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propertyConst), "#"))),
+            ?propertyConst
+          )
         )
       )
     ) AS ?propIRI
@@ -123,7 +130,6 @@ WHERE {
     ) AS ?stmtTemplate
   )
 
-  # The constant IRI (was rr:constant ?valueConstant):
   BIND(
     IF(BOUND(?valueEntityId),
       IRI(CONCAT("urn:wikibase:itemIRI:", STR(?valueEntityId))),

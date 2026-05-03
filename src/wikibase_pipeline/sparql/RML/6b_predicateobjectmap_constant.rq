@@ -61,15 +61,22 @@ WHERE {
   ?pom wbint:statID ?statID ;
        wbml:valueMap ?wom .
 
-  OPTIONAL { ?pom wbml:propertyMap ?propertyNode . }
+  OPTIONAL {
+    ?pom wbml:propertyMap ?propertyBlank .
+    OPTIONAL { ?propertyBlank wbml:entityTemplate ?propExplicitKey . }
+  }
   OPTIONAL { ?pom wbml:propertyId ?propertyIdStr . }
-  FILTER(BOUND(?propertyNode) || BOUND(?propertyIdStr))
+  OPTIONAL {
+    ?pom wbml:property ?propertyConst .
+    OPTIONAL { ?propertyConst wbml:entityTemplate ?constPropExplicitKey . }
+    OPTIONAL { ?propertyConst wbml:propertyType   ?constPropType . }
+  }
+  FILTER(BOUND(?propertyBlank) || BOUND(?propertyIdStr) || BOUND(?propertyConst))
 
   ?wom wbml:constant ?constant .
   OPTIONAL { ?wom wbml:datatype ?datatype . }
   OPTIONAL { ?wom wbml:language ?language . }
 
-  OPTIONAL { ?propertyNode wbml:entityTemplate ?propExplicitKey . }
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
@@ -85,13 +92,15 @@ WHERE {
 
   BIND(
     IF(BOUND(?propertyIdStr),
-      IRI(CONCAT("urn:wikibase:propertyIRI:", STR(?propertyIdStr))),
-      COALESCE(
-        IRI(CONCAT("urn:wikibase:property:", ?propExplicitKey)),
-        IF(
-          STRSTARTS(STR(?propertyNode), "https://example.org/wbml#"),
-          IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propertyNode), "#"))),
-          ?propertyNode
+      IRI(CONCAT("urn:wikibase:propertyIRI:", ?propertyIdStr)),
+      IF(BOUND(?propertyBlank),
+        IRI(CONCAT("urn:wikibase:property:", STR(?propExplicitKey))),
+        IF(BOUND(?constPropExplicitKey),
+          IRI(CONCAT("urn:wikibase:property:", STR(?constPropExplicitKey))),
+          IF(BOUND(?constPropType),
+            IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propertyConst), "#"))),
+            ?propertyConst
+          )
         )
       )
     ) AS ?propIRI
