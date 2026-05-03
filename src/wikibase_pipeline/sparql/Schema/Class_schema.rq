@@ -1,9 +1,12 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
 CONSTRUCT {
-  ?classIRI a wbml:Class ;
-            wbml:entityLabel      ?classLabel ;
-            wbml:entityDescription ?classDescription ;
-            wbml:entityAlias      ?classAlias ;
-            wbml:subclassOf       ?parentClassIRI .
+  ?classIRI a rdfs:Class ;
+            rdfs:label    ?classLabel ;
+            rdfs:comment  ?classDescription ;
+            skos:altLabel ?classAlias ;
+            rdfs:subClassOf ?parentClassIRI .
 }
 WHERE {
   {

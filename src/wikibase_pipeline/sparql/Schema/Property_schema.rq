@@ -1,9 +1,14 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wbml: <https://example.org/wbml#>
+
 CONSTRUCT {
-  ?propIRI a wbml:Property ;
-           wbml:entityLabel       ?predicateLabel ;
-           wbml:entityDescription ?predicateDescription ;
-           wbml:entityAlias       ?predicateAlias ;
-           wbml:propertyType      ?predicateType .
+  ?propIRI a rdf:Property ;
+           rdfs:label    ?predicateLabel ;
+           rdfs:comment  ?predicateDescription ;
+           skos:altLabel ?predicateAlias ;
+           wbml:propertyType ?predicateType .
 }
 WHERE {
   {
