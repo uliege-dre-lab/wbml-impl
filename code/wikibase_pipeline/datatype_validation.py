@@ -33,6 +33,10 @@ def value_to_wikibase_datatype(value) -> str | None:
       Language-tagged Literal  -> "monolingualtext"
       Typed Literal            -> mapped via XSD_TO_WIKIBASE (None if unsupported type)
       Plain Literal            -> "string" (cannot be inferred)
+    Input:
+    - value: The RDFLib value to infer the Wikibase datatype from.
+    Output:
+    - The inferred Wikibase datatype as a string, or None if it cannot be inferred.
     """
 
     if isinstance(value, URIRef):
@@ -48,7 +52,7 @@ def value_to_wikibase_datatype(value) -> str | None:
             return "monolingualtext"
         if value.datatype:
             return XSD_TO_WIKIBASE.get(str(value.datatype))
-        return "string"  # plain literal without datatype or language
+        return "string"
 
     return None
 
@@ -60,7 +64,11 @@ def _coerce_missing_value_to_property_datatype(
     """
     Coerce a plain Literal (no explicit datatype, no language tag) to match
     the expected property datatype.
-    Raises ValueError if coercion is not possible.
+    Inputs:
+    - property_datatype: The expected Wikibase property datatype as a string.
+    - value: The RDFLib Literal value to coerce.
+    Output:
+    - The coerced value as an RDFLib Literal or URIRef.
     """
     val_str = str(value)
 
@@ -80,7 +88,6 @@ def _coerce_missing_value_to_property_datatype(
         return Literal(val_str, datatype=XSD.decimal)
 
     if property_datatype == "time":
-        # Best-effort: assume ISO date
         return Literal(val_str, datatype=XSD.date)
 
     if property_datatype == "external-id":
@@ -93,23 +100,25 @@ def _coerce_missing_value_to_property_datatype(
 
 def normalize_value_for_property(
     property_datatype: str,
-    value,
+    value: Literal | URIRef,
     default_language: str,
     verbose: int,
-):
+) -> Literal | URIRef | None:
     """
     Validate and coerce an RDF value to match the expected property datatype.
-    Returns the corrected value on success, or None if the value should be skipped.
-    warn() is called for all coercions and incompatibilities.
-
     Special handling:
-    - string/external-id + language-tagged literal → strip language tag (warn)
+    - string/external-id + language-tagged literal → strip language tag
     - monolingualtext + literal without language → add default language
-      (warn if the original type was not a plain/xsd:string)
-    - monolingualtext + URIRef → incompatible (warn + None)
-    - Any other datatype mismatch → warn + None
+    - monolingualtext + URIRef → incompatible
+    - Any other datatype mismatch → None
+    Inputs:
+    - property_datatype: The expected Wikibase property datatype as a string.
+    - value: The RDFLib value to validate and coerce.
+    - default_language: The default language code to use for monolingualtext values.
+    - verbose: Verbosity level for logging.
+    Output:
+    - The normalized value if valid, otherwise None.
     """
-    # --- string / external-id: strip language tag if present
     if property_datatype in ("string", "external-id"):
         if isinstance(value, Literal) and value.language:
             warn(
@@ -119,12 +128,10 @@ def normalize_value_for_property(
             )
             return Literal(str(value), datatype=XSD.string)
 
-    # --- monolingualtext: coerce anything without a language tag
     if property_datatype == "monolingualtext":
         if isinstance(value, Literal):
             if value.language:
-                return value  # already correct
-            # typed literal that is not a plain string → warn loudly
+                return value
             if value.datatype and str(value.datatype) not in (
                 str(XSD.string),
                 str(XSD.normalizedString),
@@ -135,7 +142,6 @@ def normalize_value_for_property(
                     verbose,
                 )
             return Literal(str(value), lang=default_language)
-        # URIRef or other non-Literal
         warn(
             f"Value {value!r} (type '{value_to_wikibase_datatype(value)}') "
             f"is incompatible with property 'monolingualtext'; skipping.",
@@ -143,7 +149,6 @@ def normalize_value_for_property(
         )
         return None
 
-    # --- standard path
     value_datatype = value_to_wikibase_datatype(value)
 
     if value_datatype is not None:
@@ -156,7 +161,6 @@ def normalize_value_for_property(
             return None
         return value
 
-    # --- plain literal with no datatype: attempt coercion
     if not isinstance(value, Literal):
         warn(
             f"Value {value!r} has no explicit datatype and is not a Literal; "
@@ -188,12 +192,16 @@ def normalize_value_for_property(
 def _time_to_wikibase(value: Literal) -> dict:
     """
     Convert an RDF date/time Literal to a Wikibase time snak dict.
-    Precision is inferred from the XSD datatype.
+    Inputs:
+    - value: The RDFLib Literal with an XSD date/time datatype.
+    Output:
+    - A dict with keys "time", "precision", "timezone", "before", "after",
+    and "calendarmodel".
     """
     dt_str = str(value)
     datatype_uri = str(value.datatype) if value.datatype else ""
-    CALENDAR = "http://www.wikidata.org/entity/Q1985727"
-    base = {"timezone": 0, "before": 0, "after": 0, "calendarmodel": CALENDAR}
+    GREGORIAN_CALENDAR = "http://www.wikidata.org/entity/Q1985727"
+    base = {"timezone": 0, "before": 0, "after": 0, "calendarmodel": GREGORIAN_CALENDAR}
 
     if datatype_uri == str(XSD.gYear):
         return {**base, "time": f"+{dt_str}-00-00T00:00:00Z", "precision": 9}
@@ -205,7 +213,6 @@ def _time_to_wikibase(value: Literal) -> dict:
     if datatype_uri == str(XSD.date):
         return {**base, "time": f"+{dt_str}T00:00:00Z", "precision": 11}
 
-    # xsd:dateTime / xsd:time / fallback — day precision as conservative default
     if not dt_str.startswith(("+", "-")):
         dt_str = f"+{dt_str}"
     if "T" not in dt_str:
@@ -216,16 +223,21 @@ def _time_to_wikibase(value: Literal) -> dict:
 
 
 def rdf_value_to_wikibase_value(
-    value,
+    value: Literal | URIRef,
     property_datatype: str,
     lookup: dict,
     default_language: str,
-):
+) -> dict | str | None:
     """
     Convert a normalized RDF value to the Python object expected by the
-    Wikibase API (will be JSON-serialized by add_statement).
-
-    Raises ValueError if the conversion is not possible.
+    Wikibase API.
+    Inputs:
+    - value: The normalized value, as a Python type.
+    - property_datatype: The datatype of the property to which the value belongs.
+    - lookup: The Wikibase lookup dict.
+    - default_language: The default language for monolingualtext values.
+    Output:
+    - The Python object expected by the Wikibase API.
     """
     if property_datatype == "wikibase-item":
         iri_str = str(value)
