@@ -37,7 +37,7 @@ def update(mapping_file_path: str | Path) -> None:
 
     verbose = cfg["wikibase"]["verbose"]
 
-    inform("Converting WBML to RML...", verbose)
+    inform("...Converting WBML to RML...", verbose)
     rml_mapping = convert_wbml_to_rml(
         mapping_file,
         Path(cfg["paths"]["rml_mapping"]),
@@ -49,27 +49,32 @@ def update(mapping_file_path: str | Path) -> None:
         verbose=verbose,
     )
 
-    inform("Executing RML mapping...", verbose)
+    inform("...Executing RML mapping...", verbose)
     output_value = str(Path(cfg["paths"]["rml_output"]).resolve())
     rml_execute(rml_mapping, output_value, verbose=verbose)
     check_nt_line_prefixes(output_value)
 
-    inform("Loading lookup cache...", verbose)
+    inform("...Loading lookup cache...", verbose)
     lookup = load_lookup(cfg["cache"]["lookup_file"], verbose)
 
-    inform("Wikibase API initialization", verbose)
+    inform("...Initializing Wikibase API...", verbose)
     wb_api = WikibaseAPI(cfg["wikibase"])
 
-    inform("Validating lookup cache...", verbose)
+    inform("...Validating lookup cache...", verbose)
     validate_lookup_cache(lookup, wb_api, verbose)
     valid_languages = wb_api.get_valid_languages()
     language_resolver = LanguageResolver(cfg["wikibase"]["language"], valid_languages)
-    inform("Initialize basic schema metadata", verbose)
+
     g_schema = Graph()
     g_schema.parse(rdf_schema, format="turtle")
 
+    inform("...Resolving built-in properties...", verbose)
     search_builtins_properties(lookup, wb_api, verbose)
+
+    inform("...Resolving schema properties...", verbose)
     resolve_schema_properties(g_schema, lookup, wb_api, language_resolver, verbose)
+
+    inform("...Resolving schema classes...", verbose)
     resolve_schema_classes(g_schema, lookup, wb_api, language_resolver, verbose)
 
     g_objects = Graph()
@@ -81,11 +86,11 @@ def update(mapping_file_path: str | Path) -> None:
     )
     resolve_direct_iris(g_objects, lookup, wb_api, verbose)
 
-    inform("Initialize instance metadata", verbose)
+    inform("Initialize instance metadata...", verbose)
     resolve_instances(g_objects, lookup, wb_api, language_resolver, verbose)
     resolve_property_instances(g_objects, lookup, wb_api, language_resolver, verbose)
 
-    inform("Pushing claims and statements to Wikibase", verbose)
+    inform("Pushing claims and statements to Wikibase...", verbose)
     populate(g_objects, lookup, wb_api, language_resolver, verbose)
 
     if cfg["cache"]["store_file"]:
