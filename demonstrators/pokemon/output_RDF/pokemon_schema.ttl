@@ -1,0 +1,181 @@
+@prefix ns1: <https://example.org/wbml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<urn:wikibase:item:AbilityClass> a rdfs:Class ;
+    rdfs:label "Ability"@en,
+        "Capacité"@fr ;
+    rdfs:comment "A special power or skill that a Pokémon can have."@en ;
+    skos:altLabel "Pokemon Ability"@en .
+
+<urn:wikibase:item:EggGroupClass> a rdfs:Class ;
+    rdfs:label "Egg Group"@en,
+        "Groupe d'œuf"@fr ;
+    rdfs:comment "The egg group classification for Pokémon breeding."@en .
+
+<urn:wikibase:item:ItemCategory> a rdfs:Class ;
+    rdfs:label "Item Category"@en,
+        "Catégorie d'objet"@fr ;
+    rdfs:comment "A category or classification for items in the Pokémon games."@en ;
+    skos:altLabel "Pokemon Item Category"@en .
+
+<urn:wikibase:item:ItemClass> a rdfs:Class ;
+    rdfs:label "Item"@en,
+        "Objet"@fr ;
+    rdfs:comment "An item that can be used in the Pokémon games."@en .
+
+<urn:wikibase:item:MoveClass> a rdfs:Class ;
+    rdfs:label "Move"@en,
+        "Attaque"@fr ;
+    rdfs:comment "A move or ability that a Pokémon can learn."@en .
+
+<urn:wikibase:item:SpeciesClass> a rdfs:Class ;
+    rdfs:label "Species"@en,
+        "Espèce"@fr ;
+    rdfs:comment "The species or classification of a Pokémon."@en ;
+    skos:altLabel "Pokemon Species"@en .
+
+<urn:wikibase:item:TypeClass> a rdfs:Class ;
+    rdfs:label "Type"@en,
+        "Type"@fr ;
+    rdfs:comment "The elemental type of a Pokémon or move."@en .
+
+<urn:wikibase:property:Accuracy> a rdf:Property ;
+    rdfs:label "Accuracy"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:Attack> a rdf:Property ;
+    rdfs:label "Attack"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:Defense> a rdf:Property ;
+    rdfs:label "Defense"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:EffectiveAgainst> a rdf:Property ;
+    rdfs:label "effective against"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:EvolutionCondition> a rdf:Property ;
+    rdfs:label "evolution condition"@en ;
+    ns1:propertyType ns1:string .
+
+<urn:wikibase:property:EvolvesFrom> a rdf:Property ;
+    rdfs:label "evolves from"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:EvolvesTo> a rdf:Property ;
+    rdfs:label "evolves to"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:Gender> a rdf:Property ;
+    rdfs:label "Gender"@en ;
+    ns1:propertyType ns1:string .
+
+<urn:wikibase:property:HP> a rdf:Property ;
+    rdfs:label "HP"@en ;
+    skos:altLabel "Hit Points"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:HasAbility> a rdf:Property ;
+    rdfs:label "has ability"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:HasEggGroup> a rdf:Property ;
+    rdfs:label "has egg group"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:HasImage> a rdf:Property ;
+    rdfs:label "has image"@en ;
+    ns1:propertyType ns1:url .
+
+<urn:wikibase:property:HasItemCategory> a rdf:Property ;
+    rdfs:label "has item category"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:HasSpecies> a rdf:Property ;
+    rdfs:label "has species"@en ;
+    rdfs:comment "Indicates the species of the Pokémon."@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:ImageType> a rdf:Property ;
+    rdfs:label "Image Type"@en ;
+    skos:altLabel "Has Image Type"@en ;
+    ns1:propertyType ns1:string .
+
+<urn:wikibase:property:IneffectiveAgainst> a rdf:Property ;
+    rdfs:label "ineffective against"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:IsHiddenAbility> a rdf:Property ;
+    rdfs:label "is hidden ability"@en ;
+    skos:altLabel "Is Hidden Ability"@en ;
+    ns1:propertyType ns1:string .
+
+<urn:wikibase:property:ItemNumber> a rdf:Property ;
+    rdfs:label "Item Number"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:MoveCategory> a rdf:Property ;
+    rdfs:label "Move Category"@en ;
+    skos:altLabel "Has Category"@en ;
+    ns1:propertyType ns1:string .
+
+<urn:wikibase:property:MoveHasType> a rdf:Property ;
+    rdfs:label "has type"@en ;
+    skos:altLabel "Move Has Type"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:NoEffectAgainst> a rdf:Property ;
+    rdfs:label "no effect against"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:PP> a rdf:Property ;
+    rdfs:label "PP"@en ;
+    skos:altLabel "Power Points"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:PokedexNumber> a rdf:Property ;
+    rdfs:label "Pokédex number"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:PokemonHasType> a rdf:Property ;
+    rdfs:label "has type"@en ;
+    skos:altLabel "Pokemon Has Type"@en ;
+    ns1:propertyType ns1:item .
+
+<urn:wikibase:property:Power> a rdf:Property ;
+    rdfs:label "Power"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:SpecialAttack> a rdf:Property ;
+    rdfs:label "Special Attack"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:SpecialDefense> a rdf:Property ;
+    rdfs:label "Special Defense"@en ;
+    skos:altLabel "Sp. Defense"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:Speed> a rdf:Property ;
+    rdfs:label "Speed"@en ;
+    skos:altLabel "Base Speed"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:StatedIn> a rdf:Property ;
+    rdfs:label "stated in"@en ;
+    ns1:propertyType ns1:string .
+
+<urn:wikibase:property:StatedOn> a rdf:Property ;
+    rdfs:label "stated on"@en ;
+    skos:altLabel "Stated On"@en ;
+    ns1:propertyType ns1:time .
+
+<urn:wikibase:property:TMNumber> a rdf:Property ;
+    rdfs:label "TM Number"@en ;
+    ns1:propertyType ns1:quantity .
+
+<urn:wikibase:property:Weight> a rdf:Property ;
+    rdfs:label "Weight"@en ;
+    ns1:propertyType ns1:string .

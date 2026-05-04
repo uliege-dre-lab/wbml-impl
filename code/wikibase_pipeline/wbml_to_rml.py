@@ -8,8 +8,8 @@ from .utils.verbose_utils import inform, warn
 WBML = Namespace("https://example.org/wbml#")
 WBINT = Namespace("https://example.org/wbint#")
 
-RML_QUERIES_DIR = "src/wikibase_pipeline/sparql/rml"
-SCHEMA_QUERIES_DIR = "src/wikibase_pipeline/sparql/schema"
+RML_QUERIES_DIR = "code/wikibase_pipeline/sparql/rml"
+SCHEMA_QUERIES_DIR = "code/wikibase_pipeline/sparql/schema"
 
 
 def collect_subtree_triples(graph: Graph, root) -> set[tuple]:

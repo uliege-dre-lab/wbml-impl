@@ -1,0 +1,1194 @@
+<urn:wikibase:item:Class_Responsable> <http://www.w3.org/2000/01/rdf-schema#comment> "The person responsible for a technology platform. An officially designated individual who ensures the scientific, strategic, and/or operational supervision of the technology platform."@en .
+<urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Logiciel> <http://www.w3.org/2000/01/rdf-schema#comment> "An identified digital resource used by a technology platform to produce, analyze, process, visualize, or store data as part of its expertise and services."@en .
+<urn:wikibase:item:Class_UR> <http://www.w3.org/2000/01/rdf-schema#comment> "Faculty-based research unit. A structured group of researchers working on shared scientific themes."@en .
+<urn:wikibase:item:Class_Equipement> <http://www.w3.org/2000/01/rdf-schema#comment> "An identified, located, and usable material resource mobilized by a technology platform to support its expertise and deliver its services."@en .
+<urn:wikibase:item:Class_URI> <http://www.w3.org/2000/01/rdf-schema#label> "Interfaculty Research Unit"@en .
+<urn:wikibase:item:Class_Ressource> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Plateforme%20th%C3%A9matique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Production%20scientifique> <http://www.w3.org/2000/01/rdf-schema#comment> "The result or output of a research activity, such as an article, thesis, database, or patent."@en .
+<urn:wikibase:item:Class_Autre> <http://www.w3.org/2000/01/rdf-schema#label> "Other"@en .
+<urn:wikibase:item:Class_Coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#comment> "Information that makes it possible to contact a person, platform, or organization. It generally includes an email address, phone number, postal address, or any other means of communication."@en .
+<urn:wikibase:item:Class_Campus> <http://www.w3.org/2000/01/rdf-schema#label> "Campus"@en .
+<urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#comment> "The set of practical and regulatory conditions that allow a user to access a platform, piece of equipment, or service. This may include, for example, target audience/accessibility (internal, external, clinicians, SMEs), mode of use (autonomous or assisted), user prerequisites, and booking."@en .
+<urn:wikibase:item:Class_Equipement> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Plateforme%20technologique> <http://www.w3.org/2004/02/skos/core#altLabel> "Technology Hub"@en .
+<urn:wikibase:item:Class_Image> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Logo> <http://www.w3.org/2000/01/rdf-schema#comment> "An official graphic element representing the institutional visual identity of an organization or platform."@en .
+<urn:wikibase:item:Class_Domaine%20scientifique> <http://www.w3.org/2000/01/rdf-schema#comment> "A broad field of expertise structuring a platform, a resource, or a person."@en .
+<urn:wikibase:item:Class_Certification> <http://www.w3.org/2000/01/rdf-schema#label> "Certification"@en .
+<urn:wikibase:item:Class_Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "A component of a university organized around a field of teaching and research. It helps situate a person or resource institutionally, for example. Example: Faculty of Medicine, Faculty of Science."@en .
+<urn:wikibase:item:Class_Gouvernance> <http://www.w3.org/2000/01/rdf-schema#label> "Governance"@en .
+<urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge> <http://www.w3.org/2000/01/rdf-schema#label> "CHU of Liège Sites"@en .
+<urn:wikibase:item:Class_Coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#label> "Contact Details"@en .
+<urn:wikibase:item:Class_Plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#label> "Institutional Platform"@en .
+<urn:wikibase:item:Class_Logo> <http://www.w3.org/2000/01/rdf-schema#label> "Logo"@en .
+<urn:wikibase:item:Class_Responsable> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#label> "Thematic Platform"@en .
+<urn:wikibase:item:Class_Plateforme%20technologique> <http://www.w3.org/2000/01/rdf-schema#label> "Technology Platform"@en .
+<urn:wikibase:item:Class_UR> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Localisation> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Personne> <http://www.w3.org/2000/01/rdf-schema#comment> "A natural person involved in a platform or its resources. The person can be identified and contacted through information such as name, contact details, and role. The person is affiliated with a research unit or faculty."@en .
+<urn:wikibase:item:Class_Impact> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Production%20scientifique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Personne> <http://www.w3.org/2000/01/rdf-schema#label> "Person"@en .
+<urn:wikibase:item:Class_Domaine%20scientifique> <http://www.w3.org/2000/01/rdf-schema#label> "Scientific Field"@en .
+<urn:wikibase:item:Class_Infrastructure> <http://www.w3.org/2000/01/rdf-schema#label> "Infrastructure"@en .
+<urn:wikibase:item:Class_B%C3%A2timent> <http://www.w3.org/2000/01/rdf-schema#label> "Building"@en .
+<urn:wikibase:item:Class_Organisation> <http://www.w3.org/2000/01/rdf-schema#comment> "An institutional entity that is structured and recognized by the university. Example: faculty, research unit, CSRV."@en .
+<urn:wikibase:item:Class_CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "Sectoral Council for Research and Valorization"@en .
+<urn:wikibase:item:Class_Conformit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Compliance"@en .
+<urn:wikibase:item:Class_Personne> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Expertise> <http://www.w3.org/2000/01/rdf-schema#comment> "A field of scientific or technological competence mastered by a platform or team, based on demonstrated knowledge, methods, and know-how, and that can be mobilized in research projects or external collaborations."@en .
+<urn:wikibase:item:Class_Acknowledgement> <http://www.w3.org/2000/01/rdf-schema#comment> "An explicit statement of recognition indicating that funding, support, a contribution, or a collaboration contributed to the completion of a project, publication, piece of equipment, or activity. Recognition of funding, acknowledgements to include in a publication, etc."@en .
+<urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Image> <http://www.w3.org/2000/01/rdf-schema#comment> "A digital visual asset associated with an entity (equipment, platform, or person) for identification, illustration, or documentation purposes."@en .
+<urn:wikibase:item:Class_Plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#comment> "A “platform” (or group of platforms / CARE) that has been labeled “ULiège”. A platform recognized by the institution."@en .
+<urn:wikibase:item:Class_Acknowledgement> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Laboratoire%20de%20recherche> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience> <http://www.w3.org/2000/01/rdf-schema#comment> "Information provided by a user or beneficiary describing their experience, opinion, or assessment of a resource or platform. It provides concrete insight into its use, quality, effectiveness, or relevance."@en .
+<urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_URI> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Infrastructure> <http://www.w3.org/2000/01/rdf-schema#comment> "A specialized installation providing the physical and technical environment necessary for scientific or experimental activities. Examples: clean room, cell culture laboratory, experimental greenhouse, climate chamber, animal facility, biological containment facility."@en .
+<urn:wikibase:item:Class_Expertise> <http://www.w3.org/2000/01/rdf-schema#label> "Expertise"@en .
+<urn:wikibase:item:Class_Gouvernance> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Service> <http://www.w3.org/2000/01/rdf-schema#comment> "A formalized, structured offering provided by a platform, mobilizing one or more areas of expertise and/or pieces of equipment to meet an internal or external need. A service is paid for or subject to a different agreement. Example: analysis, training, consulting, technical support."@en .
+<urn:wikibase:item:Class_B%C3%A2timent> <http://www.w3.org/2000/01/rdf-schema#comment> "Example: B60, B28, B4, etc."@en .
+<urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#label> "Beneficiary"@en .
+<urn:wikibase:item:Class_Laboratoire%20de%20recherche> <http://www.w3.org/2000/01/rdf-schema#comment> "A team or academic structure dedicated to research activities in a specific field. A research laboratory is attached to a faculty-based or interfaculty research unit."@en .
+<urn:wikibase:item:Class_Organisation> <http://www.w3.org/2000/01/rdf-schema#label> "Organization"@en .
+<urn:wikibase:item:Class_Service> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Laboratoire%20de%20recherche> <http://www.w3.org/2000/01/rdf-schema#label> "Research Laboratory"@en .
+<urn:wikibase:item:Class_Accr%C3%A9ditation> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "A set of rules, standards, and technical procedures aimed at ensuring the protection of people, equipment, the environment, and data during the use of an infrastructure or the conduct of scientific activities. These standards define the conditions for handling, access, operation, and maintenance of facilities. Examples: biosafety levels (BSL1, BSL2, BSL3), biological containment rules, laser safety standards, chemical handling protocols."@en .
+<urn:wikibase:item:Class_Conformit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "Compliance with the laws, regulations, and legal requirements applicable to scientific activities, infrastructures, and equipment in an institutional, national, or international framework. It ensures that carried-out activities comply with legal obligations and the regulatory frameworks in force. Examples: regulations on animal experimentation; biosafety authorizations; regulations on chemical substances."@en .
+<urn:wikibase:item:Class_CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "Sectoral Council for Research and Valorization. Example: CSRV-SS, CSRV-ST, CSRV-SH."@en .
+<urn:wikibase:item:Class_Article%20de%20presse> <http://www.w3.org/2000/01/rdf-schema#comment> "An article or video appearing in the media that talks about the platform."@en .
+<urn:wikibase:item:Class_Equipe> <http://www.w3.org/2000/01/rdf-schema#comment> "A group of people contributing in a structured way to the scientific, technical, or operational functioning of a technology platform."@en .
+<urn:wikibase:item:Class_Photo> <http://www.w3.org/2000/01/rdf-schema#comment> "An image used to visually represent a person, a resource (for example, equipment), a place, or any other relevant element. It serves to illustrate, identify, or document that element."@en .
+<urn:wikibase:item:Class_Certification> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Autre> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Equipe> <http://www.w3.org/2000/01/rdf-schema#label> "Team"@en .
+<urn:wikibase:item:Class_B%C3%A2timent> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Localisation> <http://www.w3.org/2000/01/rdf-schema#comment> "Information that makes it possible to locate precisely a person, a resource, or any other element in a given space. It may include, for example, an address, campus, building, floor, or room."@en .
+<urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Plateforme%20institutionnelle> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Equipement> <http://www.w3.org/2000/01/rdf-schema#label> "Equipment"@en .
+<urn:wikibase:item:Class_Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Faculty"@en .
+<urn:wikibase:item:Class_CARE> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Production%20scientifique> <http://www.w3.org/2000/01/rdf-schema#label> "Scientific Output"@en .
+<urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#label> "Access Conditions"@en .
+<urn:wikibase:item:Class_Logiciel> <http://www.w3.org/2000/01/rdf-schema#label> "Software"@en .
+<urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#label> "Digital Scientific Identity"@en .
+<urn:wikibase:item:Class_Equipe> <http://www.w3.org/2004/02/skos/core#altLabel> "Team"@en .
+<urn:wikibase:item:Class_CSRV> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Campus> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Image> <http://www.w3.org/2000/01/rdf-schema#label> "Image"@en .
+<urn:wikibase:item:Class_Accr%C3%A9ditation> <http://www.w3.org/2000/01/rdf-schema#comment> "An accreditation attesting technical competence and the ability to carry out tests, analyses, or certifications. It is a recognition of competence."@en .
+<urn:wikibase:item:Class_Accr%C3%A9ditation> <http://www.w3.org/2000/01/rdf-schema#label> "Accreditation"@en .
+<urn:wikibase:item:Class_Article%20de%20presse> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Campus> <http://www.w3.org/2000/01/rdf-schema#comment> "Example: Arlon Campus, Gembloux Campus, Liège City Centre Campus, Liège Sart Tilman Campus."@en .
+<urn:wikibase:item:Class_Cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#label> "Use Case"@en .
+<urn:wikibase:item:Class_Impact> <http://www.w3.org/2000/01/rdf-schema#comment> "Impact refers to a platform's ability to exert influence, visibility, and recognition beyond its immediate perimeter, at the institutional, national, or international level. Example: scientific output, feedback/testimonial, press article."@en .
+<urn:wikibase:item:Class_Gouvernance> <http://www.w3.org/2000/01/rdf-schema#comment> "The set of information related to the governance that structures, coordinates, and guides platforms within thematic or institutional clusters. Example: CARE, thematic platform, technology facility."@en .
+<urn:wikibase:item:Class_Plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#comment> "A thematic platform groups together different technology platforms / facilities."@en .
+<urn:wikibase:item:Class_UR> <http://www.w3.org/2000/01/rdf-schema#label> "Faculty Research Unit"@en .
+<urn:wikibase:item:Class_Organisation> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Autre> <http://www.w3.org/2000/01/rdf-schema#comment> "Example: CSL, Department, etc."@en .
+<urn:wikibase:item:Class_Responsable> <http://www.w3.org/2000/01/rdf-schema#label> "Manager"@en .
+<urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience> <http://www.w3.org/2000/01/rdf-schema#label> "Feedback"@en .
+<urn:wikibase:item:Class_Plateforme%20technologique> <http://www.w3.org/2000/01/rdf-schema#comment> "A state-of-the-art research infrastructure (according to the FNRS definition). A research infrastructure is a specialized facility that provides resources and services to the scientific community, enabling cutting-edge research at the scientific and technological forefront across different fields."@en .
+<urn:wikibase:item:Class_Coordonn%C3%A9es> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#comment> "A concrete and contextualized application of a platform's resources for a specific scientific, clinical, technological, or industrial purpose."@en .
+<urn:wikibase:item:Class_Ressource> <http://www.w3.org/2000/01/rdf-schema#comment> "A means made available to support teaching, research, and services. Resources include equipment, services, software, expertise, and infrastructures."@en .
+<urn:wikibase:item:Class_Conformit%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Logo> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Photo> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Quality Assurance"@en .
+<urn:wikibase:item:Class_Expertise> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "The set of evidence showing that a platform or resource meets recognized standards of quality, safety, and compliance. It relies in particular on applicable accreditations, certifications, and standards."@en .
+<urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#comment> "The target audience of a resource. Indicates who can benefit from a platform's resources. Example: ULiège researchers, other universities, companies, research centers."@en .
+<urn:wikibase:item:Class_Localisation> <http://www.w3.org/2000/01/rdf-schema#label> "Location"@en .
+<urn:wikibase:item:Class_Facult%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Ressource> <http://www.w3.org/2000/01/rdf-schema#label> "Resource"@en .
+<urn:wikibase:item:Class_Impact> <http://www.w3.org/2000/01/rdf-schema#label> "Impact"@en .
+<urn:wikibase:item:Class_URI> <http://www.w3.org/2000/01/rdf-schema#comment> "Interfaculty research unit."@en .
+<urn:wikibase:item:Class_Acknowledgement> <http://www.w3.org/2000/01/rdf-schema#label> "Acknowledgement"@en .
+<urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_CARE> <http://www.w3.org/2000/01/rdf-schema#comment> "Research and Teaching Support Unit. A CARE contains thematic platforms, which themselves contain technology platforms or facilities."@en .
+<urn:wikibase:item:Class_Infrastructure> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Article%20de%20presse> <http://www.w3.org/2000/01/rdf-schema#label> "Press Article"@en .
+<urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge> <http://www.w3.org/2000/01/rdf-schema#comment> "Examples: Sart Tilman, Lucien Brull."@en .
+<urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Safety Standard"@en .
+<urn:wikibase:item:Class_CARE> <http://www.w3.org/2000/01/rdf-schema#label> "Research and Teaching Support Unit"@en .
+<urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#comment> "A set of persistent identifiers and online profiles that make it possible to identify uniquely a researcher or platform member within academic, scientific, and professional digital ecosystems. Example: ORBI profile, ORCID identifier, LinkedIn profile, Google Scholar."@en .
+<urn:wikibase:item:Class_Service> <http://www.w3.org/2000/01/rdf-schema#label> "Service"@en .
+<urn:wikibase:item:Class_Photo> <http://www.w3.org/2000/01/rdf-schema#label> "Photograph"@en .
+<urn:wikibase:item:Class_Logiciel> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Cas%20d%27usage> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Domaine%20scientifique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@en .
+<urn:wikibase:item:Class_Certification> <http://www.w3.org/2000/01/rdf-schema#comment> "An official certification issued by a competent authority attesting that a service, piece of equipment, process, or technology platform complies with the requirements of a standard. Example: ISO standard, GMP (good manufacturing practices), cleanroom."@en .
+<urn:wikibase:item:Class_Personne> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Conformit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Conformité"@fr .
+<urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#label> "Cas d'usage"@fr .
+<urn:wikibase:item:Class_Campus> <http://www.w3.org/2000/01/rdf-schema#comment> "Exemple : Campus d'Arlon, Campus de Gembloux, Campus de Liège Centre-Ville, Campus de Liège Sart Tilman"@fr .
+<urn:wikibase:item:Class_Laboratoire%20de%20recherche> <http://www.w3.org/2000/01/rdf-schema#comment> "Equipe ou une structure académique consacrée à des activités de recherche dans un domaine spécifique. Un laboratoire de recherche est rattaché à une unité de recherche facultaire ou interfacultaire. "@fr .
+<urn:wikibase:item:Class_CSRV> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Plateforme%20technologique> <http://www.w3.org/2000/01/rdf-schema#label> "Plateforme technologique"@fr .
+<urn:wikibase:item:Class_Organisation> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Certification> <http://www.w3.org/2000/01/rdf-schema#label> "Certification"@fr .
+<urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#label> "Bénéficiaire"@fr .
+<urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Garantie de qualité"@fr .
+<urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#comment> "Public cible d'une ressource. Indique qui peut bénéficier des ressources d'une plateforme.\nExemple : chercheurs ULiège, Autres universités, entreprises, centres de recherche"@fr .
+<urn:wikibase:item:Class_B%C3%A2timent> <http://www.w3.org/2000/01/rdf-schema#label> "Bâtiment"@fr .
+<urn:wikibase:item:Class_Service> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Service> <http://www.w3.org/2000/01/rdf-schema#comment> "Prestation formalisée, structurée et proposée par une plateforme, mobilisant une ou plusieurs expertises et/ou équipements, en réponse à un besoin interne ou externe.\nUne prestation est rémunérée ou a un accord différent.\nExemple : analyse, formation, conseil, support technique"@fr .
+<urn:wikibase:item:Class_Domaine%20scientifique> <http://www.w3.org/2000/01/rdf-schema#comment> "Champ large de compétence, structuré d'une plateforme, d'une ressource, d'une personne. "@fr .
+<urn:wikibase:item:Class_Autre> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Production%20scientifique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#comment> "Ensemble des identifiants persistants et profils en ligne permettant d'identifier de manière univoque un chercheur ou un membre d'une plateforme dans les écosystèmes académiques, scientifiques et professionnels numériques.\nExemple : profil ORBI, identifiant ORCID, profil LinkedIn, Google Scholar"@fr .
+<urn:wikibase:item:Class_Accr%C3%A9ditation> <http://www.w3.org/2000/01/rdf-schema#label> "Accréditation"@fr .
+<urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge> <http://www.w3.org/2000/01/rdf-schema#comment> "Exemples: Sart Tilman, Lucien Brull"@fr .
+<urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience> <http://www.w3.org/2000/01/rdf-schema#comment> "Information fournie par un utilisateur ou un bénéficiaire décrivant son vécu, son avis ou son appréciation concernant une ressource ou une plateforme.\nIl permet d'apporter un éclairage concret sur son utilisation, sa qualité, son efficacité ou sa pertinence.\n\n"@fr .
+<urn:wikibase:item:Class_Plateforme%20technologique> <http://www.w3.org/2004/02/skos/core#altLabel> "Plateau technologique"@fr .
+<urn:wikibase:item:Class_Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "Composante d'une université organisée autour d'un domaine d'enseignement et de recherche.\nElle permet de situer institutionnellement une personne ou une ressource, par exemple.\nExemple : Faculté de Médecine, Faculté des Sciences"@fr .
+<urn:wikibase:item:Class_Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Faculté"@fr .
+<urn:wikibase:item:Class_Cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#comment> "Application concrète et contextualisée des ressources d'une plateforme dans un objectif scientifique, clinique, technologique ou industriel déterminé."@fr .
+<urn:wikibase:item:Class_Production%20scientifique> <http://www.w3.org/2000/01/rdf-schema#label> "Production scientifique"@fr .
+<urn:wikibase:item:Class_Equipe> <http://www.w3.org/2004/02/skos/core#altLabel> "Team"@fr .
+<urn:wikibase:item:Class_Logo> <http://www.w3.org/2000/01/rdf-schema#comment> "Elément graphique officiel représentant l'identité visuelle institutionnelle d'une organisation ou d'une plateforme."@fr .
+<urn:wikibase:item:Class_Localisation> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#comment> "Une plateforme thématique regroupe différentes plateformes technologiques / plateaux. "@fr .
+<urn:wikibase:item:Class_Plateforme%20th%C3%A9matique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_URI> <http://www.w3.org/2000/01/rdf-schema#label> "URI"@fr .
+<urn:wikibase:item:Class_UR> <http://www.w3.org/2000/01/rdf-schema#comment> "Unité de recherche facultaire. Groupe structuré de chercheurs travaillant sur des thématiques scientifiques communes. "@fr .
+<urn:wikibase:item:Class_Photo> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Service> <http://www.w3.org/2000/01/rdf-schema#label> "Service"@fr .
+<urn:wikibase:item:Class_Equipement> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Accr%C3%A9ditation> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience> <http://www.w3.org/2000/01/rdf-schema#label> "Retour d'expérience"@fr .
+<urn:wikibase:item:Class_Expertise> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Conformit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "Respect des lois, règlements et exigences légales applicables aux activités scientifiques, aux infrastructures et aux équipements dans un cadre institutionnel, national ou international.\nElle garantit que les activités menées respectent les obligations légales et les cadres réglementaires en vigueur.\nExemples :\nréglementation sur l'expérimentation animale\nautorisations biosécurité, réglementation sur les substances chimiques"@fr .
+<urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#label> "Identité scientifique numérique"@fr .
+<urn:wikibase:item:Class_Acknowledgement> <http://www.w3.org/2000/01/rdf-schema#label> "Acknowledgement"@fr .
+<urn:wikibase:item:Class_URI> <http://www.w3.org/2000/01/rdf-schema#comment> "Unité de recherche interfacultaire."@fr .
+<urn:wikibase:item:Class_Infrastructure> <http://www.w3.org/2000/01/rdf-schema#label> "Infrastructure"@fr .
+<urn:wikibase:item:Class_Plateforme%20institutionnelle> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Campus> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Equipement> <http://www.w3.org/2000/01/rdf-schema#label> "Equipement"@fr .
+<urn:wikibase:item:Class_Autre> <http://www.w3.org/2000/01/rdf-schema#label> "Autre"@fr .
+<urn:wikibase:item:Class_Localisation> <http://www.w3.org/2000/01/rdf-schema#comment> "Informations permettant de situer précisément une personne, une ressource ou tout autre élément dans un espace donné.\nElle peut inclure, par exemple, une adresse, un campus, un bâtiment, un étage ou un local.\n\n"@fr .
+<urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Norme de sécurité"@fr .
+<urn:wikibase:item:Class_Image> <http://www.w3.org/2000/01/rdf-schema#label> "Image"@fr .
+<urn:wikibase:item:Class_Ressource> <http://www.w3.org/2000/01/rdf-schema#comment> "Moyen mis à disposition pour soutenir l'enseignement, la recherche et les services. Parmi les ressources, on retrouve des équipements, des services, des logiciels, des expertises, des infrastructures. "@fr .
+<urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#comment> "Ensemble des modalités pratiques et réglementaires permettant à un utilisateur d'accéder à une plateforme, un équipement, ou un service. Par exemple, public cible / accessibilité ( interne, externe, cliniciens, PME), mode d'utilisation (autonome ou accompagné), prérequis utilisateur, réservation. "@fr .
+<urn:wikibase:item:Class_Responsable> <http://www.w3.org/2000/01/rdf-schema#comment> "Responsable d'une plateforme technologique. Personne officiellement désignée pour assurer la supervision scientifique, stratégique et/ou opérationnelle de la plateforme technologique."@fr .
+<urn:wikibase:item:Class_Photo> <http://www.w3.org/2000/01/rdf-schema#comment> "Image permettant de représenter visuellement une personne, une ressource (par exemple un équipement), un lieu ou tout autre élément pertinent.\nElle sert à illustrer, identifier ou documenter cet élément.\n\n"@fr .
+<urn:wikibase:item:Class_CARE> <http://www.w3.org/2000/01/rdf-schema#comment> "Cellule d'Appui à la Recherche et à l'Enseignement. Une CARE contient des plateformes thématiques, contenant elles-mêmes des plateformes technologiques ou plateaux."@fr .
+<urn:wikibase:item:Class_Accr%C3%A9ditation> <http://www.w3.org/2000/01/rdf-schema#comment> "Accréditation attestant la compétence technique et la capacité à réaliser des essais, analyses ou certifications. C'est une reconnaissance de la compétence."@fr .
+<urn:wikibase:item:Class_Personne> <http://www.w3.org/2000/01/rdf-schema#label> "Personne"@fr .
+<urn:wikibase:item:Class_Laboratoire%20de%20recherche> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Acknowledgement> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Expertise> <http://www.w3.org/2000/01/rdf-schema#comment> "Domaine de compétence scientifique ou technologique maîtrisé par une plateforme ou une équipe, reposant sur des connaissances, méthodes et savoir-faire démontrés, et mobilisable dans des projets de recherche ou des collaborations externes."@fr .
+<urn:wikibase:item:Class_Ressource> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Article%20de%20presse> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Logo> <http://www.w3.org/2000/01/rdf-schema#label> "Logo"@fr .
+<urn:wikibase:item:Class_Logiciel> <http://www.w3.org/2000/01/rdf-schema#label> "Logiciel"@fr .
+<urn:wikibase:item:Class_UR> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Certification> <http://www.w3.org/2000/01/rdf-schema#comment> "Certification officielle délivrée par une autorité compétente attestant qu'un service, un équipement, un processus, une plateforme technologique respecte les exigences d'une norme.\nExemple : norme ISO, GMP (group manufacturing practices), cleanroom."@fr .
+<urn:wikibase:item:Class_Impact> <http://www.w3.org/2000/01/rdf-schema#label> "Impact"@fr .
+<urn:wikibase:item:Class_Gouvernance> <http://www.w3.org/2000/01/rdf-schema#label> "Gouvernance"@fr .
+<urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "Ensemble de règles, standards et procédures techniques visant à garantir la protection des personnes, des équipements, de l'environnement et des données lors de l'utilisation d'une infrastructure ou de la réalisation d'activités scientifiques.\nCes normes définissent les conditions de manipulation, d'accès, d'exploitation et de maintenance des installations.\nExemples : niveaux de biosécurité (BSL1, BSL2, BSL3), règles de confinement biologique, normes de sécurité laser, protocoles de manipulation chimique"@fr .
+<urn:wikibase:item:Class_Article%20de%20presse> <http://www.w3.org/2000/01/rdf-schema#comment> "Article, vidéos apparus dans la presse qui parle de la plateforme."@fr .
+<urn:wikibase:item:Class_Responsable> <http://www.w3.org/2000/01/rdf-schema#label> "Responsable"@fr .
+<urn:wikibase:item:Class_Certification> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Image> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "Conseil sectoriel de la recherche et de la valorisation.\nExemple : CSRV-SS, CSRV-ST, CSRV-SH"@fr .
+<urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "Ensemble des preuves qu'une plateforme ou une ressource répond à des standards reconnus de qualité, de sécurité et de conformité.\nElle s'appuie notamment sur des accréditations, certifications et normes applicables."@fr .
+<urn:wikibase:item:Class_Responsable> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Domaine%20scientifique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Infrastructure> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Impact> <http://www.w3.org/2000/01/rdf-schema#comment> "L'impact désigne la capacité d'une plateforme à exercer une influence, une visibilité et une reconnaissance au-delà de son périmètre immédiat, à l'échelle institutionnelle, nationale ou internationale.\nExemple : production scientifique, retour d'expérience (témoignage), article de presse"@fr .
+<urn:wikibase:item:Class_Photo> <http://www.w3.org/2000/01/rdf-schema#label> "Photo"@fr .
+<urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#label> "Conditions d'accès"@fr .
+<urn:wikibase:item:Class_Impact> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Conformit%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Autre> <http://www.w3.org/2000/01/rdf-schema#comment> "Exemple : CSL, Département, etc. "@fr .
+<urn:wikibase:item:Class_Acknowledgement> <http://www.w3.org/2000/01/rdf-schema#comment> "Mention explicite de reconnaissance indiquant qu'un financement, un soutien, une contribution ou une collaboration a participé à la réalisation d'un projet, d'une publication, d'un équipement ou d'une activité.\nReconnaissance du financement, remerciements à mettre dans une publication, etc. "@fr .
+<urn:wikibase:item:Class_Expertise> <http://www.w3.org/2000/01/rdf-schema#label> "Expertise"@fr .
+<urn:wikibase:item:Class_Laboratoire%20de%20recherche> <http://www.w3.org/2000/01/rdf-schema#label> "Laboratoire de recherche"@fr .
+<urn:wikibase:item:Class_Logiciel> <http://www.w3.org/2000/01/rdf-schema#comment> "Ressource numérique identifiée, utilisée par une plateforme technologique pour produire, analyser, traiter, visualiser ou stocker des données dans le cadre de ses expertises et services."@fr .
+<urn:wikibase:item:Class_CARE> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Ressource> <http://www.w3.org/2000/01/rdf-schema#label> "Ressource"@fr .
+<urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_B%C3%A2timent> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_CARE> <http://www.w3.org/2000/01/rdf-schema#label> "CARE"@fr .
+<urn:wikibase:item:Class_Plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#comment> "“Plateforme” (ou groupe de plateformes/ CARE) qui a été estampillée “ULiège”. Plateforme reconnue par l'institution."@fr .
+<urn:wikibase:item:Class_Article%20de%20presse> <http://www.w3.org/2000/01/rdf-schema#label> "Article de presse"@fr .
+<urn:wikibase:item:Class_UR> <http://www.w3.org/2000/01/rdf-schema#label> "UR"@fr .
+<urn:wikibase:item:Class_Coordonn%C3%A9es> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Infrastructure> <http://www.w3.org/2000/01/rdf-schema#comment> "Installation spécialisée fournissant l'environnement physique et technique nécessaire à des activités scientifiques ou expérimentales.\nExemples : salle blanche (clean room), laboratoire de culture cellulaire, serre expérimentale, chambre climatique, animalerie, installation de confinement biologique"@fr .
+<urn:wikibase:item:Class_Logo> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_URI> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Production%20scientifique> <http://www.w3.org/2000/01/rdf-schema#comment> "Résultat/output d'une activité de recherche comme un article, thèse, base de donnée, ou brevet."@fr .
+<urn:wikibase:item:Class_Plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#label> "Plateforme institutionnelle"@fr .
+<urn:wikibase:item:Class_Equipe> <http://www.w3.org/2000/01/rdf-schema#comment> "Ensemble des personnes contribuant de manière structurée au fonctionnement scientifique, technique ou opérationnel d'une plateforme technologique."@fr .
+<urn:wikibase:item:Class_Organisation> <http://www.w3.org/2000/01/rdf-schema#comment> "Entité institutionnelle, structurée et reconnue par l'université.\nExemple : faculté, unité de recherche, CSRV "@fr .
+<urn:wikibase:item:Class_Campus> <http://www.w3.org/2000/01/rdf-schema#label> "Campus"@fr .
+<urn:wikibase:item:Class_Organisation> <http://www.w3.org/2000/01/rdf-schema#label> "Organisation"@fr .
+<urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#comment> "Informations permettant de contacter une personne, une plateforme, une organisation. Elles comprennent généralement l'adresse e-mail, le numéro de téléphone, l'adresse postale ou tout autre moyen de communication."@fr .
+<urn:wikibase:item:Class_B%C3%A2timent> <http://www.w3.org/2000/01/rdf-schema#comment> "Exemple : B60, B28, B4, …"@fr .
+<urn:wikibase:item:Class_Image> <http://www.w3.org/2000/01/rdf-schema#comment> "Support visuel numérique associé à une entité (équipement, plateforme ou personne) permettant son identification, son illustration ou sa documentation."@fr .
+<urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge> <http://www.w3.org/2000/01/rdf-schema#label> "Implantations du CHU de Liège"@fr .
+<urn:wikibase:item:Class_Logiciel> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Gouvernance> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Facult%C3%A9> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Cas%20d%27usage> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Domaine%20scientifique> <http://www.w3.org/2000/01/rdf-schema#label> "Domaine scientifique"@fr .
+<urn:wikibase:item:Class_Personne> <http://www.w3.org/2000/01/rdf-schema#comment> "Individu physique impliqué dans une plateforme ou des ressources.\nElle peut être identifiée et contactée via des informations telles que son nom, ses coordonnées et sa fonction. Elle est rattachée à une unité de recherche, une faculté.\n\n"@fr .
+<urn:wikibase:item:Class_Gouvernance> <http://www.w3.org/2000/01/rdf-schema#comment> "Ensemble des informations relatives à la gouvernance qui structure, coordonne et oriente les plateformes au sein des clusters thématiques ou institutionnels.\nExemple : CARE, plateforme thématique, plateau technologique"@fr .
+<urn:wikibase:item:Class_Plateforme%20technologique> <http://www.w3.org/2000/01/rdf-schema#comment> "Infrastructure de recherche à la pointe de la technologie (suivant la définition du FNRS). Une infrastructure de recherche est une installation spécialisée qui fournit des ressources et des services à la communauté scientifique pour permettre de conduire des recherches à la pointe au niveau scientifique et technologique dans différents domaines. "@fr .
+<urn:wikibase:item:Class_Coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#label> "Coordonnées"@fr .
+<urn:wikibase:item:Class_Equipe> <http://www.w3.org/2000/01/rdf-schema#label> "Equipe"@fr .
+<urn:wikibase:item:Class_Localisation> <http://www.w3.org/2000/01/rdf-schema#label> "Localisation"@fr .
+<urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> <http://www.w3.org/2004/02/skos/core#altLabel> "None"@fr .
+<urn:wikibase:item:Class_Plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#label> "Plateforme thématique"@fr .
+<urn:wikibase:item:Class_Equipement> <http://www.w3.org/2000/01/rdf-schema#comment> "Ressource matérielle identifiée, localisée et mobilisable par une plateforme technologique pour soutenir ses expertises et délivrer ses services."@fr .
+<urn:wikibase:item:Class_CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "CSRV"@fr .
+<urn:wikibase:property:Property_de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates that the subject belongs to a CSRV."@en .
+<urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_T%C3%A9moignage> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20photo> <http://www.w3.org/2000/01/rdf-schema#label> "has photo"@en .
+<urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_se%20situe> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_DOI> <http://www.w3.org/2000/01/rdf-schema#label> "DOI"@en .
+<urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Type> <http://www.w3.org/2000/01/rdf-schema#comment> "More precise level of classification of a resource, making it possible to identify its technology, operating mode, or specialization of use."@en .
+<urn:wikibase:property:Property_Copyright> <http://www.w3.org/2000/01/rdf-schema#label> "Copyright"@en .
+<urn:wikibase:property:Property_Cat%C3%A9gorie> <http://www.w3.org/2000/01/rdf-schema#comment> "Generic level of classification of a resource, allowing it to be grouped with other resources that share the same function or technological family.\nExample for Software: data analysis, data acquisition, signal processing, algorithm, etc.\nExample for Equipment: microscope, telescope, mass spectrometer, etc.\nExample for Infrastructure: clean room, cell culture laboratory, greenhouse, climate chamber, animal facility, biological containment facility, etc."@en .
+<urn:wikibase:property:Property_Pr%C3%A9nom> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Type> <http://www.w3.org/2000/01/rdf-schema#label> "Type"@en .
+<urn:wikibase:property:Property_Fonction> <http://www.w3.org/2000/01/rdf-schema#label> "Role"@en .
+<urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Acronyme> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20logo> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Local> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Texte%20pour%20publication> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_URI%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20ressource> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_T%C3%A9l%C3%A9phone> <http://www.w3.org/2000/01/rdf-schema#label> "Phone"@en .
+<urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> <http://www.w3.org/2000/01/rdf-schema#label> "has contact person"@en .
+<urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "Faculty is in CSRV"@en .
+<urn:wikibase:property:Property_Labo%20est%20dans%20UR> <http://www.w3.org/2000/01/rdf-schema#label> "Laboratory is in research unit"@en .
+<urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> <http://www.w3.org/2000/01/rdf-schema#label> "is associated with another resource"@en .
+<urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Nom> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Email> <http://www.w3.org/2000/01/rdf-schema#label> "Email"@en .
+<urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20ressource> <http://www.w3.org/2000/01/rdf-schema#label> "has resource"@en .
+<urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#label> "has use case"@en .
+<urn:wikibase:property:Property_Maquette%20promotionnelle> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_DOI> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Date> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_T%C3%A9moignant> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_URI%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "Research support unit is in CSRV"@en .
+<urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#label> "Beneficiary type"@en .
+<urn:wikibase:property:Property_Copyright> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20responsable%20> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#label> "has digital scientific identity"@en .
+<urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#label> "Technology platform is in thematic platform"@en .
+<urn:wikibase:property:Property_Site%20web> <http://www.w3.org/2000/01/rdf-schema#label> "Website"@en .
+<urn:wikibase:property:Property_Version%20du%20logiciel> <http://www.w3.org/2000/01/rdf-schema#label> "Software version"@en .
+<urn:wikibase:property:Property_Acronyme> <http://www.w3.org/2000/01/rdf-schema#label> "Acronym"@en .
+<urn:wikibase:property:Property_ROR> <http://www.w3.org/2000/01/rdf-schema#label> "ROR"@en .
+<urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Maquette%20promotionnelle> <http://www.w3.org/2000/01/rdf-schema#label> "Promotional mock-up"@en .
+<urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "has quality assurance"@en .
+<urn:wikibase:property:Property_T%C3%A9l%C3%A9phone> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20acknowledgement> <http://www.w3.org/2000/01/rdf-schema#label> "has acknowledgement"@en .
+<urn:wikibase:property:Property_a%20comme%20acknowledgement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Date> <http://www.w3.org/2000/01/rdf-schema#label> "Date"@en .
+<urn:wikibase:property:Property_Labo%20est%20dans%20UR> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_License> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Version%20du%20logiciel> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Email> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Lien%20ORBI> <http://www.w3.org/2000/01/rdf-schema#comment> "ORBI link for a scientific output."@en .
+<urn:wikibase:property:Property_de%20URI> <http://www.w3.org/2000/01/rdf-schema#label> "None"@en .
+<urn:wikibase:property:Property_ORCID> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Nom> <http://www.w3.org/2000/01/rdf-schema#label> "Name"@en .
+<urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#label> "is an institutional platform"@en .
+<urn:wikibase:property:Property_Fonction> <http://www.w3.org/2000/01/rdf-schema#comment> "A person's role: manager, user, service provider, etc."@en .
+<urn:wikibase:property:Property_a%20comme%20impact> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20responsable%20> <http://www.w3.org/2000/01/rdf-schema#label> "has person in charge"@en .
+<urn:wikibase:property:Property_T%C3%A9moignage> <http://www.w3.org/2000/01/rdf-schema#label> "Testimonial"@en .
+<urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#label> "has access conditions"@en .
+<urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#label> "Equipment brand"@en .
+<urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Labo%20est%20dans%20URI> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_se%20situe> <http://www.w3.org/2000/01/rdf-schema#label> "is located in"@en .
+<urn:wikibase:property:Property_Local> <http://www.w3.org/2000/01/rdf-schema#label> "Room"@en .
+<urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#label> "has team"@en .
+<urn:wikibase:property:Property_Etage> <http://www.w3.org/2000/01/rdf-schema#label> "Floor"@en .
+<urn:wikibase:property:Property_Site%20web> <http://www.w3.org/2000/01/rdf-schema#comment> "Website link"@en .
+<urn:wikibase:property:Property_a%20comme%20photo> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_de%20URI> <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates that the subject belongs to a Research Support Unit (URI)."@en .
+<urn:wikibase:property:Property_Type%20de%20publication> <http://www.w3.org/2000/01/rdf-schema#comment> "Article, dataset, thesis, patent, others."@en .
+<urn:wikibase:property:Property_ROR> <http://www.w3.org/2000/01/rdf-schema#comment> "Research Organization Registry.\nExample: ULiège can have a ROR."@en .
+<urn:wikibase:property:Property_Pr%C3%A9nom> <http://www.w3.org/2000/01/rdf-schema#label> "First name"@en .
+<urn:wikibase:property:Property_a%20comme%20impact> <http://www.w3.org/2000/01/rdf-schema#label> "has impact"@en .
+<urn:wikibase:property:Property_Labo%20est%20dans%20URI> <http://www.w3.org/2000/01/rdf-schema#label> "Laboratory is in research support unit"@en .
+<urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#label> "is part of the team"@en .
+<urn:wikibase:property:Property_Adresse> <http://www.w3.org/2000/01/rdf-schema#label> "Address"@en .
+<urn:wikibase:property:Property_T%C3%A9moignant> <http://www.w3.org/2000/01/rdf-schema#label> "Witness"@en .
+<urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Type%20de%20publication> <http://www.w3.org/2000/01/rdf-schema#label> "Publication type"@en .
+<urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> <http://www.w3.org/2000/01/rdf-schema#label> "is governed by"@en .
+<urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#label> "has contact details"@en .
+<urn:wikibase:property:Property_Profil%20ORBI> <http://www.w3.org/2000/01/rdf-schema#label> "ORBI profile"@en .
+<urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_ORCID> <http://www.w3.org/2000/01/rdf-schema#label> "ORCID"@en .
+<urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Google%20Scholar> <http://www.w3.org/2000/01/rdf-schema#label> "Google Scholar"@en .
+<urn:wikibase:property:Property_Description> <http://www.w3.org/2000/01/rdf-schema#label> "Description"@en .
+<urn:wikibase:property:Property_Lien%20de%20r%C3%A9servation> <http://www.w3.org/2000/01/rdf-schema#label> "Booking link"@en .
+<urn:wikibase:property:Property_Source%20du%20financement> <http://www.w3.org/2000/01/rdf-schema#label> "Funding source"@en .
+<urn:wikibase:property:Property_Texte%20pour%20publication> <http://www.w3.org/2000/01/rdf-schema#label> "Text for publication"@en .
+<urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "Faculty is part of CSRV"@en .
+<urn:wikibase:property:Property_Etage> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> <http://www.w3.org/2000/01/rdf-schema#label> "Thematic platform is in CARE"@en .
+<urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Cat%C3%A9gorie> <http://www.w3.org/2000/01/rdf-schema#label> "Category"@en .
+<urn:wikibase:property:Property_couvre%20domaine> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> <http://www.w3.org/2000/01/rdf-schema#label> "is attached to"@en .
+<urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Profil%20ORBI> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Google%20Scholar> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Research unit is in Faculty"@en .
+<urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure> <http://www.w3.org/2000/01/rdf-schema#label> "Infrastructure characteristics"@en .
+<urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> <http://www.w3.org/2000/01/rdf-schema#label> "is shared with"@en .
+<urn:wikibase:property:Property_de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "None"@en .
+<urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "Scope of activities, services, facilities, or processes covered by a certification."@en .
+<urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Lien%20ORBI> <http://www.w3.org/2000/01/rdf-schema#label> "ORBI link"@en .
+<urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure> <http://www.w3.org/2000/01/rdf-schema#comment> "Controlled environmental conditions, temperature, humidity, pressure, controlled atmosphere, technical standards, safety systems."@en .
+<urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Scope of the quality guarantee"@en .
+<urn:wikibase:property:Property_a%20comme%20logo> <http://www.w3.org/2000/01/rdf-schema#label> "has logo"@en .
+<urn:wikibase:property:Property_Lien%20de%20r%C3%A9servation> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Adresse> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Description> <http://www.w3.org/2000/01/rdf-schema#comment> "Structured, communication-oriented text that summarizes its positioning, expertise, resources, and added value, with a view to internal and external visibility."@en .
+<urn:wikibase:property:Property_License> <http://www.w3.org/2000/01/rdf-schema#label> "License"@en .
+<urn:wikibase:property:Property_couvre%20domaine> <http://www.w3.org/2000/01/rdf-schema#label> "covers domain"@en .
+<urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#label> "Equipment model"@en .
+<urn:wikibase:property:Property_Source%20du%20financement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@en .
+<urn:wikibase:property:Property_Source%20du%20financement> <http://www.w3.org/2000/01/rdf-schema#label> "Source du financement"@fr .
+<urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#label> "a comme cas d'usage"@fr .
+<urn:wikibase:property:Property_Fonction> <http://www.w3.org/2000/01/rdf-schema#comment> "Fonction d'une personne: responsable, utilisateur, fournisseur de service, …"@fr .
+<urn:wikibase:property:Property_a%20comme%20acknowledgement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "Faculté fait partie de CSRV"@fr .
+<urn:wikibase:property:Property_a%20comme%20logo> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_URI%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "URI est dans CSRV"@fr .
+<urn:wikibase:property:Property_Labo%20est%20dans%20URI> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20acknowledgement> <http://www.w3.org/2000/01/rdf-schema#label> "a comme acknowledgement"@fr .
+<urn:wikibase:property:Property_se%20situe> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#label> "a comme équipe"@fr .
+<urn:wikibase:property:Property_Pr%C3%A9nom> <http://www.w3.org/2000/01/rdf-schema#label> "Prénom"@fr .
+<urn:wikibase:property:Property_Texte%20pour%20publication> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Labo%20est%20dans%20UR> <http://www.w3.org/2000/01/rdf-schema#label> "Labo est dans UR"@fr .
+<urn:wikibase:property:Property_a%20comme%20ressource> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> <http://www.w3.org/2000/01/rdf-schema#label> "Plateforme technologique est dans plateforme thématique"@fr .
+<urn:wikibase:property:Property_Site%20web> <http://www.w3.org/2000/01/rdf-schema#label> "Site web"@fr .
+<urn:wikibase:property:Property_Adresse> <http://www.w3.org/2000/01/rdf-schema#label> "Adresse"@fr .
+<urn:wikibase:property:Property_Texte%20pour%20publication> <http://www.w3.org/2000/01/rdf-schema#label> "Texte pour publication"@fr .
+<urn:wikibase:property:Property_Adresse> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_License> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Acronyme> <http://www.w3.org/2000/01/rdf-schema#label> "Acronyme"@fr .
+<urn:wikibase:property:Property_T%C3%A9moignant> <http://www.w3.org/2000/01/rdf-schema#label> "Témoignant"@fr .
+<urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "UR est dans Faculté"@fr .
+<urn:wikibase:property:Property_couvre%20domaine> <http://www.w3.org/2000/01/rdf-schema#label> "couvre domaine"@fr .
+<urn:wikibase:property:Property_Labo%20est%20dans%20URI> <http://www.w3.org/2000/01/rdf-schema#label> "Labo est dans URI"@fr .
+<urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "a comme garantie de qualité"@fr .
+<urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#label> "est une plateforme institutionnelle"@fr .
+<urn:wikibase:property:Property_Nom> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#label> "Modèle de l'équipement"@fr .
+<urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> <http://www.w3.org/2000/01/rdf-schema#label> "est rattaché à "@fr .
+<urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> <http://www.w3.org/2000/01/rdf-schema#label> "est sous la gourvenance de"@fr .
+<urn:wikibase:property:Property_Labo%20est%20dans%20UR> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Lien%20ORBI> <http://www.w3.org/2000/01/rdf-schema#label> "Lien ORBI"@fr .
+<urn:wikibase:property:Property_Google%20Scholar> <http://www.w3.org/2000/01/rdf-schema#label> "Google Scholar"@fr .
+<urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_ORCID> <http://www.w3.org/2000/01/rdf-schema#label> "ORCID"@fr .
+<urn:wikibase:property:Property_Cat%C3%A9gorie> <http://www.w3.org/2000/01/rdf-schema#comment> "Niveau générique de classification d'une ressource, permettant de la regrouper avec d'autres ressources partageant une même fonction ou une même famille technologique.\nExemple pour Logiciel : analyse de données, acquisition de données, traitement du signal, algorithme, etc.\nExemple pour Equipement : Microspcope, téléscope, Spectromètre de masse, etc.\nExemple pour Infrastructure : salle blanche (clean room), laboratoire de culture cellulaire, serre expérimentale, chambre climatique, animalerie, installation de confinement biologique, etc."@fr .
+<urn:wikibase:property:Property_Version%20du%20logiciel> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Description> <http://www.w3.org/2000/01/rdf-schema#comment> "Texte structuré et orienté communication qui synthétise son positionnement, ses expertises, ses ressources et sa valeur ajoutée, dans une optique de visibilité interne et externe."@fr .
+<urn:wikibase:property:Property_a%20comme%20photo> <http://www.w3.org/2000/01/rdf-schema#label> "a comme photo"@fr .
+<urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#label> "a comme conditions d'accès"@fr .
+<urn:wikibase:property:Property_T%C3%A9l%C3%A9phone> <http://www.w3.org/2000/01/rdf-schema#label> "Téléphone"@fr .
+<urn:wikibase:property:Property_Maquette%20promotionnelle> <http://www.w3.org/2000/01/rdf-schema#label> "Maquette promotionnelle"@fr .
+<urn:wikibase:property:Property_Local> <http://www.w3.org/2000/01/rdf-schema#label> "Local"@fr .
+<urn:wikibase:property:Property_ROR> <http://www.w3.org/2000/01/rdf-schema#label> "ROR"@fr .
+<urn:wikibase:property:Property_Lien%20de%20r%C3%A9servation> <http://www.w3.org/2000/01/rdf-schema#label> "Lien de réservation"@fr .
+<urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "Faculté est dans CSRV"@fr .
+<urn:wikibase:property:Property_T%C3%A9moignage> <http://www.w3.org/2000/01/rdf-schema#label> "Témoignage"@fr .
+<urn:wikibase:property:Property_de%20URI> <http://www.w3.org/2000/01/rdf-schema#label> "de URI"@fr .
+<urn:wikibase:property:Property_couvre%20domaine> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_DOI> <http://www.w3.org/2000/01/rdf-schema#label> "DOI"@fr .
+<urn:wikibase:property:Property_Date> <http://www.w3.org/2000/01/rdf-schema#label> "Date"@fr .
+<urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> <http://www.w3.org/2000/01/rdf-schema#label> "fait partie de l'équipe"@fr .
+<urn:wikibase:property:Property_a%20comme%20responsable%20> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Email> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_de%20URI> <http://www.w3.org/2000/01/rdf-schema#comment> "Indique que le sujet appartient à une URI."@fr .
+<urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Lien%20ORBI> <http://www.w3.org/2000/01/rdf-schema#comment> "Lien orbi d'une production scientifique"@fr .
+<urn:wikibase:property:Property_DOI> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Type%20de%20publication> <http://www.w3.org/2000/01/rdf-schema#comment> "Article, dataset, these, brevet, autres"@fr .
+<urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> <http://www.w3.org/2000/01/rdf-schema#label> "a comme personne référente"@fr .
+<urn:wikibase:property:Property_Etage> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> <http://www.w3.org/2000/01/rdf-schema#label> "Plateforme thématique est dans CARE"@fr .
+<urn:wikibase:property:Property_a%20comme%20ressource> <http://www.w3.org/2000/01/rdf-schema#label> "a comme ressource"@fr .
+<urn:wikibase:property:Property_Etage> <http://www.w3.org/2000/01/rdf-schema#label> "Etage"@fr .
+<urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Site%20web> <http://www.w3.org/2000/01/rdf-schema#comment> "Lien du site web "@fr .
+<urn:wikibase:property:Property_Profil%20ORBI> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Lien%20de%20r%C3%A9servation> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Date> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20impact> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Type> <http://www.w3.org/2000/01/rdf-schema#label> "Type"@fr .
+<urn:wikibase:property:Property_Version%20du%20logiciel> <http://www.w3.org/2000/01/rdf-schema#label> "Version du logiciel"@fr .
+<urn:wikibase:property:Property_de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "Indique que le sujet appartient à un CSRV."@fr .
+<urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#label> "Marque de l'équipement"@fr .
+<urn:wikibase:property:Property_Local> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20photo> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> <http://www.w3.org/2000/01/rdf-schema#label> "est mutualisé avec"@fr .
+<urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#label> "Portée de la garantie de qualité"@fr .
+<urn:wikibase:property:Property_Cat%C3%A9gorie> <http://www.w3.org/2000/01/rdf-schema#label> "Catégorie"@fr .
+<urn:wikibase:property:Property_ROR> <http://www.w3.org/2000/01/rdf-schema#comment> "Research Organisation Registery\nExemple : L'ULiège peut avoir un ROR"@fr .
+<urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Maquette%20promotionnelle> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_T%C3%A9moignant> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Copyright> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_ORCID> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> <http://www.w3.org/2000/01/rdf-schema#label> "a comme identité scientifique numérique"@fr .
+<urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire> <http://www.w3.org/2000/01/rdf-schema#label> "Type de bénéficiaire"@fr .
+<urn:wikibase:property:Property_se%20situe> <http://www.w3.org/2000/01/rdf-schema#label> "se situe"@fr .
+<urn:wikibase:property:Property_Pr%C3%A9nom> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> <http://www.w3.org/2000/01/rdf-schema#label> "est associé à une autre ressource"@fr .
+<urn:wikibase:property:Property_Copyright> <http://www.w3.org/2000/01/rdf-schema#label> "Copyright"@fr .
+<urn:wikibase:property:Property_Description> <http://www.w3.org/2000/01/rdf-schema#label> "Description"@fr .
+<urn:wikibase:property:Property_T%C3%A9l%C3%A9phone> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Google%20Scholar> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Nom> <http://www.w3.org/2000/01/rdf-schema#label> "Nom"@fr .
+<urn:wikibase:property:Property_Profil%20ORBI> <http://www.w3.org/2000/01/rdf-schema#label> "Profil ORBI"@fr .
+<urn:wikibase:property:Property_a%20comme%20logo> <http://www.w3.org/2000/01/rdf-schema#label> "a comme logo"@fr .
+<urn:wikibase:property:Property_Fonction> <http://www.w3.org/2000/01/rdf-schema#label> "Fonction"@fr .
+<urn:wikibase:property:Property_Acronyme> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Source%20du%20financement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#label> "de CSRV"@fr .
+<urn:wikibase:property:Property_License> <http://www.w3.org/2000/01/rdf-schema#label> "License"@fr .
+<urn:wikibase:property:Property_Type%20de%20publication> <http://www.w3.org/2000/01/rdf-schema#label> "Type de publication"@fr .
+<urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9> <http://www.w3.org/2000/01/rdf-schema#comment> "Périmètre des activités, services, installations ou processus couverts par une certification."@fr .
+<urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure> <http://www.w3.org/2000/01/rdf-schema#comment> "Conditions environnementales contrôlées, température, humidité, pression, atmosphère contrôlée, normes techniques, systèmes de sécurité"@fr .
+<urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> <http://www.w3.org/2000/01/rdf-schema#label> "a comme coordonnées"@fr .
+<urn:wikibase:property:Property_Email> <http://www.w3.org/2000/01/rdf-schema#label> "Email"@fr .
+<urn:wikibase:property:Property_Type> <http://www.w3.org/2000/01/rdf-schema#comment> "Niveau plus précis de classification d'une ressource, permettant d'identifier sa technologie, son mode de fonctionnement ou sa spécialisation d'usage."@fr .
+<urn:wikibase:property:Property_T%C3%A9moignage> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_a%20comme%20impact> <http://www.w3.org/2000/01/rdf-schema#label> "a comme impact"@fr .
+<urn:wikibase:property:Property_a%20comme%20responsable%20> <http://www.w3.org/2000/01/rdf-schema#label> "a comme responsable "@fr .
+<urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure> <http://www.w3.org/2000/01/rdf-schema#label> "Caractéristique de l'infrastructure"@fr .
+<urn:wikibase:property:Property_URI%20est%20dans%20CSRV> <http://www.w3.org/2000/01/rdf-schema#comment> "None"@fr .
+<urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_de%20URI> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_URI%20est%20dans%20CSRV> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20ressource> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_couvre%20domaine> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20logo> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20impact> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20acknowledgement> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_Labo%20est%20dans%20UR> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_de%20CSRV> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_se%20situe> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20responsable%20> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_Labo%20est%20dans%20URI> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20photo> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> <https://example.org/wbml#propertyType> <https://example.org/wbml#item> .
+<urn:wikibase:property:Property_Nom> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Description> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Copyright> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_License> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_T%C3%A9l%C3%A9phone> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Maquette%20promotionnelle> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Email> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Local> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Fonction> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Type%20de%20publication> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Texte%20pour%20publication> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Pr%C3%A9nom> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Type> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Source%20du%20financement> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Version%20du%20logiciel> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_T%C3%A9moignage> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Acronyme> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Adresse> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Etage> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Cat%C3%A9gorie> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_T%C3%A9moignant> <https://example.org/wbml#propertyType> <https://example.org/wbml#string> .
+<urn:wikibase:property:Property_Date> <https://example.org/wbml#propertyType> <https://example.org/wbml#time> .
+<urn:wikibase:property:Property_Site%20web> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:property:Property_Google%20Scholar> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:property:Property_ORCID> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:property:Property_Profil%20ORBI> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:property:Property_Lien%20de%20r%C3%A9servation> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:property:Property_ROR> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:property:Property_Lien%20ORBI> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:property:Property_DOI> <https://example.org/wbml#propertyType> <https://example.org/wbml#url> .
+<urn:wikibase:statement:Class_B%C3%A9n%C3%A9ficiaire_1_Class_Conditions%20d%27acc%C3%A8s> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Infrastructure_1_Class_Ressource> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Accr%C3%A9ditation_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge_1_Class_Localisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_URI_1_Class_Organisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Retour%20d%27exp%C3%A9rience_1_Class_Impact> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Campus_1_Class_Localisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Logo_1_Class_Image> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Conformit%C3%A9_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Autre_1_Class_Organisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_CSRV_1_Class_Organisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Service_1_Class_Ressource> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Production%20scientifique_1_Class_Impact> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Norme%20de%20s%C3%A9curit%C3%A9_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_B%C3%A2timent_1_Class_Localisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Responsable_1_Class_Personne> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Certification_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Photo_1_Class_Image> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_UR_1_Class_Organisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Equipement_1_Class_Ressource> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Article%20de%20presse_1_Class_Impact> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Expertise_1_Class_Ressource> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Facult%C3%A9_1_Class_Organisation> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Logiciel_1_Class_Ressource> <https://example.org/wbml#statementProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+<urn:wikibase:statement:Class_Infrastructure_1_Class_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Infrastructure> .
+<urn:wikibase:statement:Class_Accr%C3%A9ditation_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Class_Conformit%C3%A9_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Conformit%C3%A9> .
+<urn:wikibase:statement:Class_Logiciel_1_Class_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Logiciel> .
+<urn:wikibase:statement:Class_UR_1_Class_Organisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_UR> .
+<urn:wikibase:statement:Class_Logo_1_Class_Image> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Logo> .
+<urn:wikibase:statement:Class_Responsable_1_Class_Personne> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Responsable> .
+<urn:wikibase:statement:Class_Certification_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Class_Accr%C3%A9ditation_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Accr%C3%A9ditation> .
+<urn:wikibase:statement:Class_Facult%C3%A9_1_Class_Organisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Facult%C3%A9> .
+<urn:wikibase:statement:Class_Certification_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Certification> .
+<urn:wikibase:statement:Class_Production%20scientifique_1_Class_Impact> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Production%20scientifique> .
+<urn:wikibase:statement:Class_Production%20scientifique_1_Class_Impact> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Impact> .
+<urn:wikibase:statement:Class_Campus_1_Class_Localisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Localisation> .
+<urn:wikibase:statement:Class_Logiciel_1_Class_Ressource> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Ressource> .
+<urn:wikibase:statement:Class_Article%20de%20presse_1_Class_Impact> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Impact> .
+<urn:wikibase:statement:Class_Responsable_1_Class_Personne> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Personne> .
+<urn:wikibase:statement:Class_CSRV_1_Class_Organisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_CSRV> .
+<urn:wikibase:statement:Class_Equipement_1_Class_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Equipement> .
+<urn:wikibase:statement:Class_Photo_1_Class_Image> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Photo> .
+<urn:wikibase:statement:Class_Service_1_Class_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Service> .
+<urn:wikibase:statement:Class_B%C3%A2timent_1_Class_Localisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Localisation> .
+<urn:wikibase:statement:Class_Logo_1_Class_Image> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Image> .
+<urn:wikibase:statement:Class_Norme%20de%20s%C3%A9curit%C3%A9_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Class_URI_1_Class_Organisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_URI> .
+<urn:wikibase:statement:Class_Autre_1_Class_Organisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Organisation> .
+<urn:wikibase:statement:Class_Expertise_1_Class_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Expertise> .
+<urn:wikibase:statement:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge_1_Class_Localisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge> .
+<urn:wikibase:statement:Class_B%C3%A2timent_1_Class_Localisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_B%C3%A2timent> .
+<urn:wikibase:statement:Class_Autre_1_Class_Organisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Autre> .
+<urn:wikibase:statement:Class_Infrastructure_1_Class_Ressource> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Ressource> .
+<urn:wikibase:statement:Class_CSRV_1_Class_Organisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Organisation> .
+<urn:wikibase:statement:Class_URI_1_Class_Organisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Organisation> .
+<urn:wikibase:statement:Class_B%C3%A9n%C3%A9ficiaire_1_Class_Conditions%20d%27acc%C3%A8s> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> .
+<urn:wikibase:statement:Class_Article%20de%20presse_1_Class_Impact> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Article%20de%20presse> .
+<urn:wikibase:statement:Class_B%C3%A9n%C3%A9ficiaire_1_Class_Conditions%20d%27acc%C3%A8s> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire> .
+<urn:wikibase:statement:Class_Conformit%C3%A9_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Class_Expertise_1_Class_Ressource> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Ressource> .
+<urn:wikibase:statement:Class_Service_1_Class_Ressource> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Ressource> .
+<urn:wikibase:statement:Class_Norme%20de%20s%C3%A9curit%C3%A9_1_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9> .
+<urn:wikibase:statement:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge_1_Class_Localisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Localisation> .
+<urn:wikibase:statement:Class_Equipement_1_Class_Ressource> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Ressource> .
+<urn:wikibase:statement:Class_Photo_1_Class_Image> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Image> .
+<urn:wikibase:statement:Class_Retour%20d%27exp%C3%A9rience_1_Class_Impact> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience> .
+<urn:wikibase:statement:Class_UR_1_Class_Organisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Organisation> .
+<urn:wikibase:statement:Class_Facult%C3%A9_1_Class_Organisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Organisation> .
+<urn:wikibase:statement:Class_Retour%20d%27exp%C3%A9rience_1_Class_Impact> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Impact> .
+<urn:wikibase:statement:Class_Campus_1_Class_Localisation> <https://example.org/wbml#statementSubject> <urn:wikibase:item:Class_Campus> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20photo_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_de%20URI_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_se%20situe_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_6_est%20responsable%20de> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_couvre%20domaine_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20impact_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_de%20CSRV_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20logo_6_est%20le%20logo%20de> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_6_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:inverse> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_7_Class_Coordonn%C3%A9es> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_de%20URI_7_Class_URI> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_7_Class_CARE> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_7_Class_Ressource> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_7_Class_Cas%20d%27usage> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20logo_7_Class_Logo> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_7_Class_Acknowledgement> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20photo_7_Class_Image> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_7_Class_Equipe> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_7_Class_Ressource> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_de%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_7_Class_Facult%C3%A9> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_couvre%20domaine_7_Class_Domaine%20scientifique> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_7_Class_URI> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_se%20situe_7_Class_Localisation> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_7_Class_Organisation> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_7_Class_UR> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_7_Class_Plateforme%20th%C3%A9matique> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_7_Class_Responsable> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_7_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_7_Class_Plateforme%20technologique> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_7_Class_Plateforme%20institutionnelle> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20impact_7_Class_Impact> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_7_Class_Equipe> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_7_Class_Conditions%20d%27acc%C3%A8s> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_7_Class_Personne> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_7_Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_7_Class_Gouvernance> <https://example.org/wbml#statementProperty> <urn:wikibase:property:rangeClass> .
+<urn:wikibase:statement:Property_Adresse_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Acronyme_2_Plateforme%20technologique%2C%20organisation%2C%20CARE> <https://example.org/wbml#statementValue> "Plateforme technologique, organisation, CARE" .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_se%20situe_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Fonction_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Marque%20de%20l%27%C3%A9quipement_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Email_2_Personne%2C%20Coordonn%C3%A9es> <https://example.org/wbml#statementValue> "Personne, Coordonnées" .
+<urn:wikibase:statement:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Caract%C3%A9ristique%20de%20l%27infrastructure_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Copyright_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Nom_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_T%C3%A9moignage_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_de%20URI_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_de%20CSRV_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_4_Logiciel%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20Equipement%20ou%20Service.%20Ressource%20%28Equipement%2C%20Service%29%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20%C3%A0%20infrastructure.%20Equipement%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20Service.> <https://example.org/wbml#statementValue> "Logiciel “est associé à une autre ressource” Equipement ou Service. Ressource (Equipement, Service) “est associé à une autre ressource” à infrastructure. Equipement “est associé à une autre ressource” Service." .
+<urn:wikibase:statement:Property_Cat%C3%A9gorie_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_6_est%20responsable%20de> <https://example.org/wbml#statementValue> "est responsable de" .
+<urn:wikibase:statement:Property_Etage_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20photo_4_Personne%2C%20Ressource%20%28Equipement%29> <https://example.org/wbml#statementValue> "Personne, Ressource (Equipement)" .
+<urn:wikibase:statement:Property_T%C3%A9moignage_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Email_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Type_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_T%C3%A9l%C3%A9phone_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20photo_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Type%20de%20publication_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_License_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Acronyme_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Description_3_exactly%201> <https://example.org/wbml#statementValue> "exactly 1" .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_4_Ressource> <https://example.org/wbml#statementValue> "Ressource" .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_se%20situe_4_Plateforme%20technologique%2C%20Ressource%2C%20Personne%2C%20Equipe> <https://example.org/wbml#statementValue> "Plateforme technologique, Ressource, Personne, Equipe" .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_4_Equipement> <https://example.org/wbml#statementValue> "Equipement" .
+<urn:wikibase:statement:Property_Source%20du%20financement_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_5_min%201> <https://example.org/wbml#statementValue> "min 1" .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_4_Ressource%20%28Expertise%2C%20Service%29%20> <https://example.org/wbml#statementValue> "Ressource (Expertise, Service) " .
+<urn:wikibase:statement:Property_couvre%20domaine_4_Plateforme%20technologique%2C%20Ressource%20%28Service%2C%20Infrastructure%2C%20Expertise%29> <https://example.org/wbml#statementValue> "Plateforme technologique, Ressource (Service, Infrastructure, Expertise)" .
+<urn:wikibase:statement:Property_a%20comme%20ressource_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_de%20URI_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Description_2_Plateforme%20technologique%2C%20ressource%2C%20image%2C%20Domaine%20scientifique%2C%20Cas%20d%27usage%2C%20B%C3%A9n%C3%A9ficiaire> <https://example.org/wbml#statementValue> "Plateforme technologique, ressource, image, Domaine scientifique, Cas d'usage, Bénéficiaire" .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20logo_6_est%20le%20logo%20de> <https://example.org/wbml#statementValue> "est le logo de" .
+<urn:wikibase:statement:Property_Maquette%20promotionnelle_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Caract%C3%A9ristique%20de%20l%27infrastructure_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Texte%20pour%20publication_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Nom_2_Plateforme%20technologique%2C%20ressource%2C%20organisation%2C%20CARE%3B%20Personne%2C%20Cas%20d%27usage%2C%20Domaine%20scientifique%2C%20Garantie%20de%20qualit%C3%A9%3B%20Impact> <https://example.org/wbml#statementValue> "Plateforme technologique, ressource, organisation, CARE; Personne, Cas d'usage, Domaine scientifique, Garantie de qualité; Impact" .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Pr%C3%A9nom_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_couvre%20domaine_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_4_Plateforme%20technologique%2C%20Infrastructure> <https://example.org/wbml#statementValue> "Plateforme technologique, Infrastructure" .
+<urn:wikibase:statement:Property_Pr%C3%A9nom_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20logo_4_Plateforme%20technologique%2C%20Acknowledgement> <https://example.org/wbml#statementValue> "Plateforme technologique, Acknowledgement" .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_5_min%201> <https://example.org/wbml#statementValue> "min 1" .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_de%20CSRV_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20impact_4_Plateforme%20technologique%2C%20Ressource> <https://example.org/wbml#statementValue> "Plateforme technologique, Ressource" .
+<urn:wikibase:statement:Property_couvre%20domaine_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Local_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_4_Plateforme%20technologique%2C%20Ressource> <https://example.org/wbml#statementValue> "Plateforme technologique, Ressource" .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Adresse_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Fonction_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Copyright_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Etage_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20photo_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_T%C3%A9moignant_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20ressource_5_min%201> <https://example.org/wbml#statementValue> "min 1" .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20ressource_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_de%20CSRV_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Local_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20impact_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_5_min%201> <https://example.org/wbml#statementValue> "min 1" .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_License_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Maquette%20promotionnelle_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_4_Plateforme%20technologique%2C%20Personne> <https://example.org/wbml#statementValue> "Plateforme technologique, Personne" .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Version%20du%20logiciel_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Texte%20pour%20publication_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Version%20du%20logiciel_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_se%20situe_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Type_2_Infrastructure> <https://example.org/wbml#statementValue> "Infrastructure" .
+<urn:wikibase:statement:Property_Source%20du%20financement_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Type%20de%20publication_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_T%C3%A9moignant_3_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_de%20URI_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20impact_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Marque%20de%20l%27%C3%A9quipement_2_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20logo_5_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_4_Plateforme%20technologique%2C%20Personne%20%E2%80%9Cest%20rattach%C3%A9%20%C3%A0%E2%80%9D%20UR%2C%20URI> <https://example.org/wbml#statementValue> "Plateforme technologique, Personne “est rattaché à” UR, URI" .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_4_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_T%C3%A9l%C3%A9phone_2_Personne%2C%20Coordonn%C3%A9es> <https://example.org/wbml#statementValue> "Personne, Coordonnées" .
+<urn:wikibase:statement:Property_Cat%C3%A9gorie_2_Logiciel%2C%20Infrastructure%2C%20Equipement> <https://example.org/wbml#statementValue> "Logiciel, Infrastructure, Equipement" .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_6_None> <https://example.org/wbml#statementValue> "None" .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_7_Class_Organisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Organisation> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_7_Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_7_Class_Conditions%20d%27acc%C3%A8s> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_7_Class_Ressource> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Ressource> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_7_Class_Personne> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Personne> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_7_Class_Facult%C3%A9> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Facult%C3%A9> .
+<urn:wikibase:statement:Property_de%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_CSRV> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_7_Class_UR> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_UR> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_7_Class_Plateforme%20institutionnelle> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Plateforme%20institutionnelle> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_7_Class_URI> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_URI> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_7_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_7_Class_Plateforme%20th%C3%A9matique> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Plateforme%20th%C3%A9matique> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_7_Class_Equipe> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Equipe> .
+<urn:wikibase:statement:Property_a%20comme%20photo_7_Class_Image> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Image> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_7_Class_CARE> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_CARE> .
+<urn:wikibase:statement:Property_a%20comme%20impact_7_Class_Impact> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Impact> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_CSRV> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_7_Class_Gouvernance> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Gouvernance> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_7_Class_Equipe> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Equipe> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_7_Class_Coordonn%C3%A9es> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Coordonn%C3%A9es> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_7_Class_Cas%20d%27usage> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Cas%20d%27usage> .
+<urn:wikibase:statement:Property_a%20comme%20logo_7_Class_Logo> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Logo> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_7_Class_Ressource> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Ressource> .
+<urn:wikibase:statement:Property_de%20URI_7_Class_URI> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_URI> .
+<urn:wikibase:statement:Property_se%20situe_7_Class_Localisation> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Localisation> .
+<urn:wikibase:statement:Property_couvre%20domaine_7_Class_Domaine%20scientifique> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Domaine%20scientifique> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_7_Class_Acknowledgement> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Acknowledgement> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_7_Class_Plateforme%20technologique> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Plateforme%20technologique> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_7_Class_Responsable> <https://example.org/wbml#statementValue> <urn:wikibase:item:Class_Responsable> .
+<urn:wikibase:statement:Property_a%20comme%20photo_7_Class_Image> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20photo> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_7_Class_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> .
+<urn:wikibase:statement:Property_de%20CSRV_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20CSRV> .
+<urn:wikibase:statement:Property_Caract%C3%A9ristique%20de%20l%27infrastructure_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure> .
+<urn:wikibase:statement:Property_Pr%C3%A9nom_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Pr%C3%A9nom> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_5_min%201> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_7_Class_Conditions%20d%27acc%C3%A8s> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> .
+<urn:wikibase:statement:Property_Etage_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Etage> .
+<urn:wikibase:statement:Property_Texte%20pour%20publication_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Texte%20pour%20publication> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_7_Class_CARE> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_4_Ressource%20%28Expertise%2C%20Service%29%20> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Property_se%20situe_4_Plateforme%20technologique%2C%20Ressource%2C%20Personne%2C%20Equipe> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_se%20situe> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_7_Class_Personne> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> .
+<urn:wikibase:statement:Property_a%20comme%20photo_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20photo> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> .
+<urn:wikibase:statement:Property_Caract%C3%A9ristique%20de%20l%27infrastructure_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_URI%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_5_min%201> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20responsable%20> .
+<urn:wikibase:statement:Property_Type_2_Infrastructure> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Type> .
+<urn:wikibase:statement:Property_Local_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Local> .
+<urn:wikibase:statement:Property_Type%20de%20publication_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Type%20de%20publication> .
+<urn:wikibase:statement:Property_de%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20CSRV> .
+<urn:wikibase:statement:Property_T%C3%A9moignant_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_T%C3%A9moignant> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_4_Plateforme%20technologique%2C%20Personne> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> .
+<urn:wikibase:statement:Property_de%20URI_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20URI> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_5_min%201> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_URI%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20logo_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20logo> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20ressource> .
+<urn:wikibase:statement:Property_Nom_2_Plateforme%20technologique%2C%20ressource%2C%20organisation%2C%20CARE%3B%20Personne%2C%20Cas%20d%27usage%2C%20Domaine%20scientifique%2C%20Garantie%20de%20qualit%C3%A9%3B%20Impact> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Nom> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_6_est%20responsable%20de> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20responsable%20> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_4_Plateforme%20technologique%2C%20Personne%20%E2%80%9Cest%20rattach%C3%A9%20%C3%A0%E2%80%9D%20UR%2C%20URI> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_7_Class_Plateforme%20technologique> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> .
+<urn:wikibase:statement:Property_de%20URI_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20URI> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_7_Class_Facult%C3%A9> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> .
+<urn:wikibase:statement:Property_Type_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Type> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_4_Plateforme%20technologique%2C%20Infrastructure> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20responsable%20> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> .
+<urn:wikibase:statement:Property_Texte%20pour%20publication_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Texte%20pour%20publication> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20UR> .
+<urn:wikibase:statement:Property_Source%20du%20financement_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Source%20du%20financement> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20URI> .
+<urn:wikibase:statement:Property_Etage_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Etage> .
+<urn:wikibase:statement:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement> .
+<urn:wikibase:statement:Property_Nom_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Nom> .
+<urn:wikibase:statement:Property_T%C3%A9moignage_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_T%C3%A9moignage> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> .
+<urn:wikibase:statement:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20UR> .
+<urn:wikibase:statement:Property_Adresse_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Adresse> .
+<urn:wikibase:statement:Property_Email_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Email> .
+<urn:wikibase:statement:Property_Description_3_exactly%201> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Description> .
+<urn:wikibase:statement:Property_a%20comme%20photo_4_Personne%2C%20Ressource%20%28Equipement%29> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20photo> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> .
+<urn:wikibase:statement:Property_couvre%20domaine_7_Class_Domaine%20scientifique> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_couvre%20domaine> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> .
+<urn:wikibase:statement:Property_Fonction_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Fonction> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20ressource> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20URI> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_7_Class_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20ressource> .
+<urn:wikibase:statement:Property_a%20comme%20impact_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20impact> .
+<urn:wikibase:statement:Property_Pr%C3%A9nom_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Pr%C3%A9nom> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_7_Class_Equipe> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> .
+<urn:wikibase:statement:Property_Local_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Local> .
+<urn:wikibase:statement:Property_Copyright_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Copyright> .
+<urn:wikibase:statement:Property_Type%20de%20publication_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Type%20de%20publication> .
+<urn:wikibase:statement:Property_couvre%20domaine_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_couvre%20domaine> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> .
+<urn:wikibase:statement:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20acknowledgement> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> .
+<urn:wikibase:statement:Property_Maquette%20promotionnelle_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Maquette%20promotionnelle> .
+<urn:wikibase:statement:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_7_Class_UR> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20UR> .
+<urn:wikibase:statement:Property_a%20comme%20photo_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20photo> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_7_Class_URI> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20URI> .
+<urn:wikibase:statement:Property_Maquette%20promotionnelle_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Maquette%20promotionnelle> .
+<urn:wikibase:statement:Property_Acronyme_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Acronyme> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> .
+<urn:wikibase:statement:Property_T%C3%A9moignant_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_T%C3%A9moignant> .
+<urn:wikibase:statement:Property_Adresse_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Adresse> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20UR> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> .
+<urn:wikibase:statement:Property_a%20comme%20impact_7_Class_Impact> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20impact> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_URI%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_Email_2_Personne%2C%20Coordonn%C3%A9es> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Email> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_7_Class_Acknowledgement> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20acknowledgement> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_4_Equipement> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> .
+<urn:wikibase:statement:Property_se%20situe_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_se%20situe> .
+<urn:wikibase:statement:Property_a%20comme%20logo_4_Plateforme%20technologique%2C%20Acknowledgement> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20logo> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_7_Class_Plateforme%20institutionnelle> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9> .
+<urn:wikibase:statement:Property_Fonction_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Fonction> .
+<urn:wikibase:statement:Property_T%C3%A9moignage_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_T%C3%A9moignage> .
+<urn:wikibase:statement:Property_se%20situe_7_Class_Localisation> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_se%20situe> .
+<urn:wikibase:statement:Property_couvre%20domaine_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_couvre%20domaine> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec> .
+<urn:wikibase:statement:Property_a%20comme%20logo_7_Class_Logo> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20logo> .
+<urn:wikibase:statement:Property_License_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_License> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> .
+<urn:wikibase:statement:Property_Copyright_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Copyright> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> .
+<urn:wikibase:statement:Property_couvre%20domaine_4_Plateforme%20technologique%2C%20Ressource%20%28Service%2C%20Infrastructure%2C%20Expertise%29> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_couvre%20domaine> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_7_Class_Organisation> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_7_Class_Cas%20d%27usage> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20cas%20d%27usage> .
+<urn:wikibase:statement:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Property_Description_2_Plateforme%20technologique%2C%20ressource%2C%20image%2C%20Domaine%20scientifique%2C%20Cas%20d%27usage%2C%20B%C3%A9n%C3%A9ficiaire> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Description> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_7_Class_CSRV> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> .
+<urn:wikibase:statement:Property_Acronyme_2_Plateforme%20technologique%2C%20organisation%2C%20CARE> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Acronyme> .
+<urn:wikibase:statement:Property_Cat%C3%A9gorie_2_Logiciel%2C%20Infrastructure%2C%20Equipement> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Cat%C3%A9gorie> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Labo%20est%20dans%20URI> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> .
+<urn:wikibase:statement:Property_Version%20du%20logiciel_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Version%20du%20logiciel> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_4_Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_4_Logiciel%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20Equipement%20ou%20Service.%20Ressource%20%28Equipement%2C%20Service%29%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20%C3%A0%20infrastructure.%20Equipement%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20Service.> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> .
+<urn:wikibase:statement:Property_de%20CSRV_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20CSRV> .
+<urn:wikibase:statement:Property_Source%20du%20financement_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Source%20du%20financement> .
+<urn:wikibase:statement:Property_a%20comme%20impact_4_Plateforme%20technologique%2C%20Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20impact> .
+<urn:wikibase:statement:Property_a%20comme%20logo_6_est%20le%20logo%20de> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20logo> .
+<urn:wikibase:statement:Property_Cat%C3%A9gorie_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Cat%C3%A9gorie> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_7_Class_Equipe> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> .
+<urn:wikibase:statement:Property_Version%20du%20logiciel_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Version%20du%20logiciel> .
+<urn:wikibase:statement:Property_de%20URI_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20URI> .
+<urn:wikibase:statement:Property_Marque%20de%20l%27%C3%A9quipement_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe> .
+<urn:wikibase:statement:Property_T%C3%A9l%C3%A9phone_2_Personne%2C%20Coordonn%C3%A9es> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_T%C3%A9l%C3%A9phone> .
+<urn:wikibase:statement:Property_T%C3%A9l%C3%A9phone_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_T%C3%A9l%C3%A9phone> .
+<urn:wikibase:statement:Property_Marque%20de%20l%27%C3%A9quipement_3_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement> .
+<urn:wikibase:statement:Property_de%20URI_7_Class_URI> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20URI> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> .
+<urn:wikibase:statement:Property_License_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_License> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_7_Class_Gouvernance> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_7_Class_Garantie%20de%20qualit%C3%A9> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20acknowledgement> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_URI%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20acknowledgement> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_5_min%201> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20ressource> .
+<urn:wikibase:statement:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement_2_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_7_Class_Plateforme%20th%C3%A9matique> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE> .
+<urn:wikibase:statement:Property_se%20situe_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_se%20situe> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_4_Plateforme%20technologique%2C%20Ressource> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_7_Class_Identit%C3%A9%20scientifique%20num%C3%A9rique> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20%C3%A9quipe> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_7_Class_Coordonn%C3%A9es> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_7_Class_Responsable> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20responsable%20> .
+<urn:wikibase:statement:Property_a%20comme%20impact_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_a%20comme%20impact> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_6_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource> .
+<urn:wikibase:statement:Property_de%20CSRV_5_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_de%20CSRV> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_4_None> <https://example.org/wbml#statementSubject> <urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV> .
+<urn:wikibase:statement:Property_Etage_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Adresse_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Cat%C3%A9gorie_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Local_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Copyright_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Maquette%20promotionnelle_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Source%20du%20financement_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Nom_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_couvre%20domaine_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20impact_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_5_min%201> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_de%20CSRV_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Type_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Version%20du%20logiciel_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_T%C3%A9moignant_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_5_min%201> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_5_min%201> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Email_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Type%20de%20publication_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Texte%20pour%20publication_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Marque%20de%20l%27%C3%A9quipement_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_se%20situe_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20logo_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_5_min%201> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_T%C3%A9moignage_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Description_3_exactly%201> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Acronyme_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Fonction_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20photo_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_License_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_T%C3%A9l%C3%A9phone_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Pr%C3%A9nom_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_de%20URI_5_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_Caract%C3%A9ristique%20de%20l%27infrastructure_3_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:cardinality> .
+<urn:wikibase:statement:Property_est%20rattach%C3%A9%20%C3%A0%20_4_Plateforme%20technologique%2C%20Personne%20%E2%80%9Cest%20rattach%C3%A9%20%C3%A0%E2%80%9D%20UR%2C%20URI> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Version%20du%20logiciel_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_fait%20partie%20de%20l%27%C3%A9quipe_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_URI%20est%20dans%20CSRV_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_T%C3%A9moignage_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_est%20mutualis%C3%A9%20avec_4_Equipement> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Description_2_Plateforme%20technologique%2C%20ressource%2C%20image%2C%20Domaine%20scientifique%2C%20Cas%20d%27usage%2C%20B%C3%A9n%C3%A9ficiaire> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20impact_4_Plateforme%20technologique%2C%20Ressource> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_T%C3%A9moignant_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Acronyme_2_Plateforme%20technologique%2C%20organisation%2C%20CARE> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20est%20dans%20CSRV_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_License_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20photo_4_Personne%2C%20Ressource%20%28Equipement%29> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_UR%20est%20dans%20Facult%C3%A9_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_T%C3%A9l%C3%A9phone_2_Personne%2C%20Coordonn%C3%A9es> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_est%20une%20plateforme%20institutionnelle_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Local_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20garantie%20de%20qualit%C3%A9_4_Plateforme%20technologique%2C%20Ressource> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20coordonn%C3%A9es_4_Plateforme%20technologique%2C%20Personne> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_est%20sous%20la%20gourvenance%20de_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_se%20situe_4_Plateforme%20technologique%2C%20Ressource%2C%20Personne%2C%20Equipe> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Type%20de%20publication_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_de%20CSRV_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20UR_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Cat%C3%A9gorie_2_Logiciel%2C%20Infrastructure%2C%20Equipement> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Maquette%20promotionnelle_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20ressource_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Caract%C3%A9ristique%20de%20l%27infrastructure_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Fonction_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20conditions%20d%27acc%C3%A8s_4_Ressource> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20acknowledgement_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Adresse_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Source%20du%20financement_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Type_2_Infrastructure> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Pr%C3%A9nom_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20responsable%20_4_Plateforme%20technologique%2C%20Infrastructure> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Labo%20est%20dans%20URI_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource_4_Logiciel%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20Equipement%20ou%20Service.%20Ressource%20%28Equipement%2C%20Service%29%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20%C3%A0%20infrastructure.%20Equipement%20%E2%80%9Cest%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource%E2%80%9D%20Service.> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_de%20URI_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Copyright_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Nom_2_Plateforme%20technologique%2C%20ressource%2C%20organisation%2C%20CARE%3B%20Personne%2C%20Cas%20d%27usage%2C%20Domaine%20scientifique%2C%20Garantie%20de%20qualit%C3%A9%3B%20Impact> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente_4_Ressource%20%28Expertise%2C%20Service%29%20> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20logo_4_Plateforme%20technologique%2C%20Acknowledgement> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20%C3%A9quipe_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Etage_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_couvre%20domaine_4_Plateforme%20technologique%2C%20Ressource%20%28Service%2C%20Infrastructure%2C%20Expertise%29> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Marque%20de%20l%27%C3%A9quipement_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Email_2_Personne%2C%20Coordonn%C3%A9es> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_a%20comme%20cas%20d%27usage_4_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .
+<urn:wikibase:statement:Property_Texte%20pour%20publication_2_None> <https://example.org/wbml#statementProperty> <urn:wikibase:property:goodPractice> .

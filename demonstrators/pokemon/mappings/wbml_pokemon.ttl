@@ -185,7 +185,7 @@ ex:HasItemCategory a wbml:Property ;
   a rr:TriplesMap ;
 
   rml:logicalSource [
-    rml:source "data/input/json_pokemon/pokedex_small.json" ;
+    rml:source "demonstrators/pokemon/input_data/pokedex_small.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*]"
   ] ;
@@ -314,7 +314,7 @@ ex:HasItemCategory a wbml:Property ;
       SELECT
         id,
         unnest(type) AS type_name
-      FROM read_json('data/input/json_pokemon/pokedex_small.json')
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
       WHERE type IS NOT NULL
     """
   ] ;
@@ -339,7 +339,7 @@ ex:HasItemCategory a wbml:Property ;
       SELECT
         id,
         unnest(profile.egg) AS egg_group
-      FROM read_json('data/input/json_pokemon/pokedex_small.json')
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
       WHERE profile.egg IS NOT NULL
     """
   ] ;
@@ -365,7 +365,7 @@ ex:HasItemCategory a wbml:Property ;
         id,
         json_extract_string(ability_entry, '$[0]') AS ability_name,
         json_extract_string(ability_entry, '$[1]') AS ability_flag
-      FROM read_json('data/input/json_pokemon/pokedex_small.json'),
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json'),
            unnest(profile.ability) AS t(ability_entry)
       WHERE profile.ability IS NOT NULL
     """
@@ -431,7 +431,7 @@ ex:HasItemCategory a wbml:Property ;
         id,
         json_extract_string(evolution.prev, '$[0]') AS prev_id,
         json_extract_string(evolution.prev, '$[1]') AS prev_condition
-      FROM read_json('data/input/json_pokemon/pokedex_small.json')
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
       WHERE evolution.prev IS NOT NULL
     """
   ] ;
@@ -464,7 +464,7 @@ ex:HasItemCategory a wbml:Property ;
         id,
         json_extract_string(next_entry, '$[0]') AS next_id,
         json_extract_string(next_entry, '$[1]') AS next_condition
-      FROM read_json('data/input/json_pokemon/pokedex_small.json'),
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json'),
            unnest(evolution.next) AS t(next_entry)
       WHERE evolution.next IS NOT NULL
     """
@@ -497,7 +497,7 @@ ex:HasItemCategory a wbml:Property ;
   a rr:TriplesMap ;
 
   rml:logicalSource [
-    rml:source "data/input/json_pokemon/pokedex_small.json" ;
+    rml:source "demonstrators/pokemon/input_data/pokedex_small.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*]"
   ] ;
@@ -521,7 +521,7 @@ ex:HasItemCategory a wbml:Property ;
     rml:query """
       SELECT DISTINCT
         json_extract_string(ability_entry, '$[0]') AS ability_name
-      FROM read_json('data/input/json_pokemon/pokedex_small.json'),
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json'),
            unnest(profile.ability) AS t(ability_entry)
       WHERE profile.ability IS NOT NULL
     """
@@ -543,7 +543,7 @@ ex:HasItemCategory a wbml:Property ;
     rml:query """
       SELECT DISTINCT
         unnest(profile.egg) AS egg_group
-      FROM read_json('data/input/json_pokemon/pokedex_small.json')
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
       WHERE profile.egg IS NOT NULL
     """
   ] ;
@@ -565,7 +565,7 @@ ex:HasItemCategory a wbml:Property ;
   a rr:TriplesMap ;
 
   rml:logicalSource [
-    rml:source "data/input/json_pokemon/moves_small.json" ;
+    rml:source "demonstrators/pokemon/input_data/moves_small.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*]"
   ] ;
@@ -627,7 +627,7 @@ ex:HasItemCategory a wbml:Property ;
   a rr:TriplesMap ;
 
   rml:logicalSource [
-    rml:source "data/input/json_pokemon/types.json" ;
+    rml:source "demonstrators/pokemon/input_data/types.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*]"
   ] ;
@@ -657,7 +657,7 @@ ex:HasItemCategory a wbml:Property ;
       SELECT
         english,
         unnest(effective) AS target_type
-      FROM read_json('data/input/json_pokemon/types.json')
+      FROM read_json('demonstrators/pokemon/input_data/types.json')
       WHERE effective IS NOT NULL
     """
   ] ;
@@ -682,7 +682,7 @@ ex:HasItemCategory a wbml:Property ;
       SELECT
         english,
         unnest(ineffective) AS target_type
-      FROM read_json('data/input/json_pokemon/types.json')
+      FROM read_json('demonstrators/pokemon/input_data/types.json')
       WHERE ineffective IS NOT NULL
     """
   ] ;
@@ -707,7 +707,7 @@ ex:HasItemCategory a wbml:Property ;
       SELECT
         english,
         unnest(no_effect) AS target_type
-      FROM read_json('data/input/json_pokemon/types.json')
+      FROM read_json('demonstrators/pokemon/input_data/types.json')
       WHERE no_effect IS NOT NULL
     """
   ] ;
@@ -740,7 +740,7 @@ ex:HasItemCategory a wbml:Property ;
         name.english AS name_en,
         name.japanese AS name_ja,
         name.chinese AS name_zh
-      FROM read_json('data/input/json_pokemon/items_small.json')
+      FROM read_json('demonstrators/pokemon/input_data/items_small.json')
     """
   ] ;
 
@@ -787,7 +787,7 @@ ex:HasItemCategory a wbml:Property ;
   rml:logicalSource [
     rml:query """
       SELECT DISTINCT type
-      FROM read_json('data/input/json_pokemon/items_small.json')
+      FROM read_json('demonstrators/pokemon/input_data/items_small.json')
       WHERE type IS NOT NULL
     """
   ] ;

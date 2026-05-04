@@ -27,7 +27,7 @@ The dependencies are defined in `pyproject.toml` and are installed automatically
 
 To install the package, run:
 ```
-pip install .
+pip install -e .
 ```
 
 For development (including testing tools):
@@ -80,5 +80,5 @@ chmod +x update.sh
 Run the pipeline from the project root by passing your WBML mapping file:
 
 ```bash
-sh ./update.sh data/mappings/wbml_mapping.ttl
+sh ./code/update.sh path/to/your/mapping.ttl
 ```
