@@ -1,9 +1,10 @@
 import re
 from collections import defaultdict
 
-from rdflib import Graph, Namespace, URIRef
+from rdflib import Graph, URIRef
 from rdflib.namespace import RDF, RDFS, SKOS
 
+from ..utils.claims_utils import find_existing_claim_guid
 from ..utils.items_utils import (
     clean_text,
     iri_suffix,
@@ -11,23 +12,32 @@ from ..utils.items_utils import (
     search_item_by_labels,
 )
 from ..utils.verbose_utils import inform, warn
+from ..wikibase_api import WikibaseAPI
 from .language_resolver import LanguageResolver
 
-WBML = Namespace("https://example.org/wbml#")
-CLASS_PREFIX = "urn:wikibase:item:"
 
-
-def _collect_class_metadata(
+def collect_class_metadata(
     g: Graph,
     class_iri: URIRef,
     language_resolver: LanguageResolver,
     verbose: int,
     require_label: bool = True,
 ) -> dict:
+    """
+    Collect labels, aliases, descriptions,
+    and parent classes for a given rdfs:Class IRI.
+    Inputs:
+    - g: The RDFLib Graph containing the schema.
+    - class_iri: The URIRef of the class to collect metadata for.
+    - language_resolver: An instance of LanguageResolver.
+    - verbose: Verbosity level for logging.
+    - require_label: If True, will use IRI suffix as fallback.
+    Output:
+    - A dictionary with keys: "labels", "aliases", "descriptions".
+    """
     labels: dict[str, str] = {}
     aliases: dict[str, list[str]] = defaultdict(list)
     descriptions: dict[str, str] = {}
-    subclass_of: list[str] = []
     iri_str = str(class_iri)
 
     # Labels
@@ -52,7 +62,7 @@ def _collect_class_metadata(
             else:
                 raise ValueError(
                     f"Duplicate class label @{eff_lang} on <{iri_str}>: "
-                    f"'{labels[eff_lang]}' and '{raw_value}'. "
+                    f"'{labels[eff_lang]}' and '{eff_value}'. "
                     f"At most one label per language is allowed in the mapping."
                 )
         else:
@@ -101,8 +111,8 @@ def _collect_class_metadata(
                 pass
             else:
                 raise ValueError(
-                    f"Duplicate instance description @{eff_lang} on <{iri_str}>: "
-                    f"'{descriptions[eff_lang]}' and '{raw_value}'. "
+                    f"Duplicate class description @{eff_lang} on <{iri_str}>: "
+                    f"'{descriptions[eff_lang]}' and '{eff_value}'. "
                     f"At most one description per language is allowed in the mapping."
                 )
         else:
@@ -115,32 +125,28 @@ def _collect_class_metadata(
                 eff_value = eff_value[:250]
             descriptions[eff_lang] = eff_value
 
-    for parent in g.objects(class_iri, RDFS.subClassOf):
-        subclass_of.append(str(parent))
-
-    return {
-        "labels": labels,
-        "aliases": dict(aliases),
-        "descriptions": descriptions,
-        "subclass_of": subclass_of,
-    }
+    return {"labels": labels, "aliases": dict(aliases), "descriptions": descriptions}
 
 
-def _resolve_one_class(
+def resolve_one_class(
     class_iri: URIRef,
     meta: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     default_language: str,
     verbose: int,
 ) -> str:
     """
     Find or create a Wikibase item for the given class.
-    Search order: default-language label to untagged label to other-language labels.
-    Handles label-with-description-conflict by extracting the existing QID.
-    Returns the QID.
+    Inputs:
+    - class_iri: The URIRef of the class to resolve.
+    - meta: The metadata dictionary for the class.
+    - wikibase_api: An instance of WikibaseAPI class.
+    - default_language: The default language code to prioritize in the search.
+    - verbose: Verbosity level for logging.
+    Output:
+    - The QID of the resolved or created item.
     """
     iri_str = str(class_iri)
-    inform(f"Resolving class <{iri_str}> …", verbose)
 
     qid = search_item_by_labels(
         wikibase_api,
@@ -148,11 +154,11 @@ def _resolve_one_class(
         default_language,
         verbose=verbose,
     )
+
     if qid is not None:
-        inform(f"  Found {qid} for <{iri_str}>", verbose)
+        inform(f"  Found {qid} for <{iri_str}> label by search", verbose)
         return qid
 
-    inform(f"  Not found — creating new item for <{iri_str}>", verbose)
     try:
         qid = wikibase_api.create_item(
             labels=meta["labels"],
@@ -167,26 +173,36 @@ def _resolve_one_class(
             match = re.search(r"\[\[Item:(Q\d+)\|", err)
             if match:
                 qid = match.group(1)
-                inform(f"  Conflict — using existing {qid} for <{iri_str}>", verbose)
+                inform(f"  Conflict: using existing {qid} for <{iri_str}>", verbose)
                 return qid
-            warn(
-                f"  label-with-description-conflict but could not parse QID: {err}",
-                verbose,
-            )
+            else:
+                raise RuntimeError(
+                    f"label-with-description-conflict for <{iri_str}> "
+                    f"but could not parse QID from error: {err}"
+                ) from exc
         raise
 
 
-def _push_class_metadata(
+def push_class_metadata(
     qid: str,
     meta: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     verbose: int,
 ) -> None:
+    """
+    Push metadata (labels, descriptions, aliases) to Wikibase for the given QID.
+    Inputs:
+    - qid: The QID of the item to update.
+    - meta: The metadata dictionary with keys "labels", "descriptions", "aliases".
+    - wikibase_api: An instance of WikibaseAPI class.
+    - verbose: Verbosity level for logging.
+    """
     try:
         entity = wikibase_api.get_entity(qid, props="labels|descriptions|aliases")
     except Exception as exc:
-        warn(f"  Could not fetch entity {qid} to diff metadata: {exc}", verbose)
-        return
+        raise RuntimeError(
+            f"Could not fetch entity {qid} to diff metadata: {exc}"
+        ) from exc
 
     existing_labels: dict[str, str] = {
         lang: info["value"] for lang, info in entity.get("labels", {}).items()
@@ -255,25 +271,30 @@ def _push_class_metadata(
     wikibase_api.edit_entity(qid, entity_data)
 
 
-def _push_subclass_claims(
+def push_subclass_claims(
     g: Graph,
     lookup: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     verbose: int,
 ) -> None:
     """
-    Add rdfs:subClassOf claims for every rdfs:Class that declares a parent.
-    Skips silently if the PID is missing from lookup.
+    Push rdfs:subClassOf claims to Wikibase.
+    Inputs:
+    - g: The RDFLib Graph containing the schema.
+    - lookup: The lookup cache dictionary.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - verbose: Verbosity level for logging.
     """
     subclassof_pid = (
         lookup.get("properties", {}).get(str(RDFS.subClassOf), {}).get("id")
     )
     if subclassof_pid is None:
-        warn(
-            "  rdfs:subClassOf PID not found in lookup. Skipping subclass claims.",
-            verbose,
+        raise ValueError(
+            "subClassOf property not found in lookup cache. "
+            "Make sure to resolve built-in properties before classes."
         )
-        return
+
+    claims_cache: dict[str, dict] = {}
 
     for child_iri, _, parent_iri in g.triples((None, RDFS.subClassOf, None)):
         if (child_iri, RDF.type, RDFS.Class) not in g:
@@ -285,37 +306,49 @@ def _push_subclass_claims(
         parent_qid = lookup["items"].get(parent_str)
 
         if child_qid is None:
-            warn(f"  Child <{child_str}> not in lookup, skipping subClassOf.", verbose)
-            continue
+            raise ValueError(f"Child <{child_str}> not in lookup.")
         if parent_qid is None:
-            warn(
-                f"  Parent <{parent_str}> not in lookup, skipping subClassOf.", verbose
+            raise ValueError(f"Parent <{parent_str}> not in lookup.")
+
+        if child_qid not in claims_cache:
+            claims_cache[child_qid] = wikibase_api.get_entity_claims(child_qid)
+
+        wikibase_value = {"entity-type": "item", "id": parent_qid}
+        if find_existing_claim_guid(
+            claims_cache[child_qid], subclassof_pid, wikibase_value, "wikibase-item"
+        ):
+            inform(
+                f"  subClassOf {child_qid} -> {parent_qid} already exists, skipping.",
+                verbose,
             )
             continue
 
-        try:
-            wikibase_api.add_statement(
-                subject_qid=child_qid,
-                property_pid=subclassof_pid,
-                value=parent_qid,
-                property_datatype="wikibase-item",
-            )
-        except Exception as exc:
-            warn(f"  Could not add subClassOf claim on {child_qid}: {exc}", verbose)
+        wikibase_api.add_statement(
+            subject_qid=child_qid,
+            property_pid=subclassof_pid,
+            value=wikibase_value,
+            property_datatype="wikibase-item",
+        )
 
 
 def resolve_schema_classes(
     schema_graph: Graph,
     lookup: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     language_resolver: LanguageResolver,
-    verbose: int = 1,
+    verbose: int,
 ) -> None:
     """
     Main entry point for class resolution.
-      1. For each rdfs:Class not yet in lookup["items"]: find or create it.
-      2. Push metadata diff (labels, descriptions, aliases).
-      3. Add rdfs:subClassOf claims (builtins must already be resolved).
+    - For each rdfs:Class not yet in lookup["items"]: find or create it.
+    - Push metadata diff (labels, descriptions, aliases).
+    - Add rdfs:subClassOf claims.
+    Inputs:
+    - schema_graph: The RDFLib Graph containing the schema.
+    - lookup: The lookup cache dictionary.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of LanguageResolver class.
+    - verbose: Verbosity level for logging.
     """
     lookup.setdefault("items", {})
 
@@ -323,7 +356,7 @@ def resolve_schema_classes(
         iri_str = str(class_iri)
         already_resolved = iri_str in lookup["items"]
 
-        meta = _collect_class_metadata(
+        meta = collect_class_metadata(
             schema_graph,
             class_iri,
             language_resolver,
@@ -332,7 +365,7 @@ def resolve_schema_classes(
         )
 
         if not already_resolved:
-            qid = _resolve_one_class(
+            qid = resolve_one_class(
                 class_iri,
                 meta,
                 wikibase_api,
@@ -341,6 +374,9 @@ def resolve_schema_classes(
             )
             lookup["items"][iri_str] = qid
 
-        _push_class_metadata(lookup["items"][iri_str], meta, wikibase_api, verbose)
+        if not any([meta["labels"], meta["descriptions"], meta["aliases"]]):
+            continue
 
-    _push_subclass_claims(schema_graph, lookup, wikibase_api, verbose)
+        push_class_metadata(lookup["items"][iri_str], meta, wikibase_api, verbose)
+
+    push_subclass_claims(schema_graph, lookup, wikibase_api, verbose)
