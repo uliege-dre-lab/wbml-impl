@@ -4,7 +4,7 @@ from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, SKOS
 
 from ..utils.items_utils import clean_text, normalize_text
-from ..utils.properties_utils import iri_suffix, lookup_get, search_wikibase_properties
+from ..utils.properties_utils import iri_suffix, search_wikibase_properties
 from ..utils.verbose_utils import inform, warn
 from ..wikibase_api import WikibaseAPI
 from .language_resolver import LanguageResolver
@@ -365,20 +365,25 @@ def resolve_schema_properties(
     for prop_iri in sorted(schema_graph.subjects(RDF.type, RDF.Property)):
         iri_str = str(prop_iri)
         wb_datatype = wb_datatype_from_graph(schema_graph, prop_iri)
+        already_resolved = iri_str in lookup["properties"]
 
         meta = collect_property_metadata(
-            schema_graph, prop_iri, language_resolver, verbose=verbose
+            schema_graph,
+            prop_iri,
+            language_resolver,
+            verbose=verbose,
+            require_label=not already_resolved,
         )
-
-        pid = lookup_get(lookup, iri_str, wb_datatype, wikibase_api)
-
-        if pid is not None:
-            inform(
-                f"Resolved property <{iri_str}> from lookup ->"
-                f" {pid} (datatype='{wb_datatype}')",
-                verbose,
+        if (
+            already_resolved
+            and wb_datatype != lookup["properties"][iri_str]["datatype"]
+        ):
+            raise ValueError(
+                f"Property <{iri_str}> has conflicting datatypes: "
+                f"{lookup['properties'][iri_str]['datatype']} in lookup, "
+                f"{wb_datatype} in schema. "
             )
-        else:
+        if not already_resolved:
             pid, wb_datatype = resolve_one_property(
                 prop_iri,
                 meta,
@@ -393,7 +398,9 @@ def resolve_schema_properties(
         if not any([meta["labels"], meta["descriptions"], meta["aliases"]]):
             continue
 
-        push_property_metadata(pid, meta, wikibase_api, verbose)
+        push_property_metadata(
+            lookup["properties"][iri_str]["id"], meta, wikibase_api, verbose
+        )
 
 
 def collect_property_instance_iris(data_graph: Graph) -> list[URIRef]:
@@ -476,6 +483,14 @@ def resolve_property_instances(
             lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
         else:
             pid = prop_entry["id"]
+            if list(data_graph.objects(prop_iri, WBML.propertyType)):
+                wb_datatype = wb_datatype_from_graph(data_graph, prop_iri)
+                if wb_datatype != prop_entry.get("datatype"):
+                    raise ValueError(
+                        f"Property <{iri_str}> has conflicting datatypes: "
+                        f"{prop_entry['datatype']} in lookup, "
+                        f"{wb_datatype} in data graph."
+                    )
             meta = collect_property_metadata(
                 data_graph,
                 prop_iri,
