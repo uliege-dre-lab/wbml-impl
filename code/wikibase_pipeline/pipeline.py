@@ -35,60 +35,56 @@ def update(mapping_file_path: str | Path) -> None:
     if not mapping_file.is_file():
         raise FileNotFoundError(f"Mapping file not found: {mapping_file_path}")
 
+    verbose = cfg["wikibase"]["verbose"]
+
+    inform("Converting WBML to RML...", verbose)
     rml_mapping = convert_wbml_to_rml(
         mapping_file,
         Path(cfg["paths"]["rml_mapping"]),
-        verbose=cfg["wikibase"]["verbose"],
+        verbose=verbose,
     )
     rdf_schema = run_schema_queries(
         mapping_file,
         Path(cfg["paths"]["schema_output"]),
-        verbose=cfg["wikibase"]["verbose"],
+        verbose=verbose,
     )
 
+    inform("Executing RML mapping...", verbose)
     output_value = str(Path(cfg["paths"]["rml_output"]).resolve())
-    rml_execute(rml_mapping, output_value, verbose=cfg["wikibase"]["verbose"])
+    rml_execute(rml_mapping, output_value, verbose=verbose)
     check_nt_line_prefixes(output_value)
 
-    lookup = load_lookup(cfg["cache"]["lookup_file"], cfg["wikibase"]["verbose"])
+    lookup = load_lookup(cfg["cache"]["lookup_file"], verbose)
     wb_api = WikibaseAPI(cfg["wikibase"])
-    validate_lookup_cache(lookup, wb_api, cfg["wikibase"]["verbose"])
+    validate_lookup_cache(lookup, wb_api, verbose)
     valid_languages = wb_api.get_valid_languages()
     language_resolver = LanguageResolver(
-        cfg["wikibase"]["language"], valid_languages, verbose=cfg["wikibase"]["verbose"]
+        cfg["wikibase"]["language"], valid_languages, verbose=verbose
     )
 
-    inform("Initialize basic schema metadata", cfg["wikibase"]["verbose"])
+    inform("Initialize basic schema metadata", verbose)
     g_schema = Graph()
     g_schema.parse(rdf_schema, format="turtle")
 
-    search_builtins_properties(lookup, wb_api, cfg["wikibase"]["verbose"])
-    resolve_schema_properties(
-        g_schema, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
-    )
-    resolve_schema_classes(
-        g_schema, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
-    )
+    search_builtins_properties(lookup, wb_api, verbose)
+    resolve_schema_properties(g_schema, lookup, wb_api, language_resolver, verbose)
+    resolve_schema_classes(g_schema, lookup, wb_api, language_resolver, verbose)
 
     g_objects = Graph()
     g_objects.parse(output_value, format="nt")
 
     inform(
         "Resolving direct Wikibase IDs (wbml:classId / wbml:predicateId)",
-        cfg["wikibase"]["verbose"],
+        verbose,
     )
-    resolve_direct_iris(g_objects, lookup, wb_api, cfg["wikibase"]["verbose"])
+    resolve_direct_iris(g_objects, lookup, wb_api, verbose)
 
-    inform("Initialize instance metadata", cfg["wikibase"]["verbose"])
-    resolve_instances(
-        g_objects, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
-    )
-    resolve_property_instances(
-        g_objects, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"]
-    )
+    inform("Initialize instance metadata", verbose)
+    resolve_instances(g_objects, lookup, wb_api, language_resolver, verbose)
+    resolve_property_instances(g_objects, lookup, wb_api, language_resolver, verbose)
 
-    inform("Pushing claims and statements to Wikibase", cfg["wikibase"]["verbose"])
-    populate(g_objects, lookup, wb_api, language_resolver, cfg["wikibase"]["verbose"])
+    inform("Pushing claims and statements to Wikibase", verbose)
+    populate(g_objects, lookup, wb_api, language_resolver, verbose)
 
     if cfg["cache"]["store_file"]:
-        save_lookup(cfg["cache"]["lookup_file"], lookup, cfg["wikibase"]["verbose"])
+        save_lookup(cfg["cache"]["lookup_file"], lookup, verbose)
