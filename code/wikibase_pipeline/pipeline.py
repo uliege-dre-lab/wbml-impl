@@ -54,8 +54,13 @@ def update(mapping_file_path: str | Path) -> None:
     rml_execute(rml_mapping, output_value, verbose=verbose)
     check_nt_line_prefixes(output_value)
 
+    inform("Loading lookup cache...", verbose)
     lookup = load_lookup(cfg["cache"]["lookup_file"], verbose)
+
+    inform("Wikibase API initialization", verbose)
     wb_api = WikibaseAPI(cfg["wikibase"])
+
+    inform("Validating lookup cache...", verbose)
     validate_lookup_cache(lookup, wb_api, verbose)
     valid_languages = wb_api.get_valid_languages()
     language_resolver = LanguageResolver(
@@ -88,3 +93,4 @@ def update(mapping_file_path: str | Path) -> None:
 
     if cfg["cache"]["store_file"]:
         save_lookup(cfg["cache"]["lookup_file"], lookup, verbose)
+        inform(f"Lookup cache saved to {cfg['cache']['lookup_file']}", verbose)
