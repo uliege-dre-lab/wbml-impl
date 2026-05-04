@@ -3,6 +3,7 @@ import re
 from rdflib import Graph, URIRef
 
 from ..utils.verbose_utils import inform
+from ..wikibase_api import WikibaseAPI
 
 ITEM_IRI_PREFIX = "urn:wikibase:itemIRI:"
 PROPERTY_IRI_PREFIX = "urn:wikibase:propertyIRI:"
@@ -13,15 +14,17 @@ _ITEM_ID_RE = re.compile(r"^Q\d+$")
 _PROPERTY_ID_RE = re.compile(r"^P\d+$")
 
 
-def _collect_direct_iris(
+def collect_direct_iris(
     data_graph: Graph,
 ) -> tuple[list[str], list[str]]:
     """
     Scan every node in the data graph.
-    Returns:
+    Input:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    Outputs:
       - sorted list of urn:wikibase:itemIRI:* strings
       - sorted list of property-like direct IRI strings
-        (propertyIRI:*, qualifierIRI:*, referenceIRI:* — all P-number based)
+        (propertyIRI:*, qualifierIRI:*, referenceIRI:*)
     """
     item_iris: set[str] = set()
     property_direct_iris: set[str] = set()
@@ -43,8 +46,14 @@ def _collect_direct_iris(
     return sorted(item_iris), sorted(property_direct_iris)
 
 
-def _extract_pid(iri_str: str) -> str:
-    """Extract the P-number suffix from any of the three property-like prefixes."""
+def extract_pid(iri_str: str) -> str:
+    """
+    Extract the P-number suffix from any of the three property-like prefixes.
+    Input:
+    - iri_str: The IRI string to extract the PID from.
+    Output:
+    - The PID string (e.g., "P123") if the prefix is recognized.
+    """
     for prefix in (PROPERTY_IRI_PREFIX, QUALIFIER_IRI_PREFIX, REFERENCE_IRI_PREFIX):
         if iri_str.startswith(prefix):
             return iri_str[len(prefix) :]
@@ -54,24 +63,29 @@ def _extract_pid(iri_str: str) -> str:
 def resolve_direct_iris(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
-    verbose: int = 1,
+    wikibase_api: WikibaseAPI,
+    verbose: int,
 ) -> None:
     """
     Main entry point.
-    Raises ValueError listing all problems found
-    and no data is written to Wikibase before this passes.
+    Writes to the lookup cache valid QIDs and PIDs.
+    Raises ValueError listing all problems found.
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to update with resolved IDs.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - verbose: Verbosity level for logging.
     """
     lookup.setdefault("items", {})
     lookup.setdefault("properties", {})
 
-    item_iris, property_direct_iris = _collect_direct_iris(data_graph)
+    item_iris, property_direct_iris = collect_direct_iris(data_graph)
 
     if not item_iris and not property_direct_iris:
         return
 
     inform(
-        f"Direct IRI resolver: {len(item_iris)} item(s), "
+        f"Resolving direct IRIs: {len(item_iris)} item(s), "
         f"{len(property_direct_iris)} property-like IRI(s) to verify.",
         verbose,
     )
@@ -87,7 +101,7 @@ def resolve_direct_iris(
             )
 
     for iri_str in property_direct_iris:
-        suffix = _extract_pid(iri_str)
+        suffix = extract_pid(iri_str)
         if not _PROPERTY_ID_RE.match(suffix):
             format_errors.append(
                 f"  <{iri_str}>: '{suffix}' is not a valid property ID "
@@ -104,42 +118,32 @@ def resolve_direct_iris(
     existence_errors: list[str] = []
 
     for iri_str in item_iris:
-        if iri_str in lookup["items"]:
-            inform(f"  Direct item <{iri_str}> already in lookup, skipping.", verbose)
-            continue
         qid = iri_str[len(ITEM_IRI_PREFIX) :]
-        inform(f"  Verifying direct item {qid} …", verbose)
+        if iri_str in lookup["items"]:
+            inform(f"  Direct item {qid} already in lookup.", verbose)
+            continue
         try:
             wikibase_api.get_entity(qid, props="labels")
             lookup["items"][iri_str] = qid
-            inform(f"  OK — {qid} found.", verbose)
-        except RuntimeError:
-            existence_errors.append(f"  <{iri_str}>: {qid} does not exist in Wikibase.")
+            inform(f"  Direct item {qid} found.", verbose)
+        except RuntimeError as exc:
+            existence_errors.append(
+                f"  <{iri_str}>: {qid} does not exist in Wikibase. ({exc})"
+            )
 
-    seen_pids: dict[str, str] = {}  # pid → lookup key already stored
+    seen_pids: dict[str, str] = {}
 
     for iri_str in property_direct_iris:
-        pid = _extract_pid(iri_str)
+        pid = extract_pid(iri_str)
         lookup_key = PROPERTY_IRI_PREFIX + pid
 
         if lookup_key in lookup["properties"]:
-            inform(
-                f"  Direct property {pid} already in lookup "
-                f"(from <{iri_str}>), skipping.",
-                verbose,
-            )
+            inform(f"  Direct property {pid} already in lookup.", verbose)
             seen_pids[pid] = lookup_key
             continue
 
         if pid in seen_pids:
-            inform(
-                f"  Direct property {pid} already resolved "
-                f"(from a previous IRI variant), skipping <{iri_str}>.",
-                verbose,
-            )
             continue
-
-        inform(f"  Verifying direct property {pid} (from <{iri_str}>) …", verbose)
         try:
             entity = wikibase_api.get_entity(pid, props="datatype")
             datatype = entity.get("datatype")
@@ -150,14 +154,14 @@ def resolve_direct_iris(
                 continue
             lookup["properties"][lookup_key] = {"id": pid, "datatype": datatype}
             seen_pids[pid] = lookup_key
-            inform(f"  OK — {pid} found (datatype='{datatype}').", verbose)
-        except RuntimeError:
-            existence_errors.append(f"  <{iri_str}>: {pid} does not exist in Wikibase.")
+            inform(f"  Direct property {pid} found (datatype='{datatype}').", verbose)
+        except RuntimeError as exc:
+            existence_errors.append(
+                f"  <{iri_str}>: {pid} does not exist in Wikibase. ({exc})"
+            )
 
     if existence_errors:
         raise ValueError(
             "Direct IRI existence check failed — these IDs were not found "
             "in your Wikibase instance:\n" + "\n".join(existence_errors)
         )
-
-    inform("Direct IRI resolution complete.", verbose)
