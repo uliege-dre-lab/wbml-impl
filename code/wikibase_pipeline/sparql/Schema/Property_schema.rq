@@ -18,6 +18,11 @@ WHERE {
       FILTER NOT EXISTS { ?propNode a wbml:Property } }
   }
 
+  FILTER NOT EXISTS {
+    ?propNode wbml:entityTemplate ?dynTemplate .
+    FILTER(CONTAINS(STR(?dynTemplate), "{"))
+  }
+
   OPTIONAL { ?propNode wbml:entityLabel       ?predicateLabel . }
   OPTIONAL { ?propNode wbml:entityDescription ?predicateDescription . }
   OPTIONAL { ?propNode wbml:entityAlias       ?predicateAlias . }
