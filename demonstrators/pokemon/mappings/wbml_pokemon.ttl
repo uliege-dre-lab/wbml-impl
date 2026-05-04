@@ -83,8 +83,8 @@ ex:StatedOn a wbml:Property ;
     wbml:entityAlias "Stated On"@en .
 
 ex:PokemonHasType a wbml:Property ;
-    wbml:entityLabel "has type"@en ;
-    wbml:entityAlias "Pokemon Has Type"@en ;
+    wbml:entityLabel "Pokemon has type"@en ;
+    wbml:entityAlias "Has Type"@en ;
     wbml:propertyType wbml:item .
 
 ex:HasEggGroup a wbml:Property ;
@@ -120,8 +120,8 @@ ex:HasImage a wbml:Property ;
     wbml:propertyType wbml:url .
 
 ex:MoveHasType a wbml:Property ;
-    wbml:entityLabel "has type"@en ;
-    wbml:entityAlias "Move Has Type"@en ;
+    wbml:entityLabel "Move has type"@en ;
+    wbml:entityAlias "Has Type"@en ;
     wbml:propertyType wbml:item .
 
 ex:Accuracy a wbml:Property ;
