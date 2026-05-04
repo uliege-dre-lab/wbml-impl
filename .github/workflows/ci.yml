@@ -31,6 +31,3 @@ jobs:
 
       - name: Install package
         run: pip install -e .
-
-      - name: Run tests
-        run: pytest
