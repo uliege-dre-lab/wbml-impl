@@ -63,10 +63,7 @@ def update(mapping_file_path: str | Path) -> None:
     inform("Validating lookup cache...", verbose)
     validate_lookup_cache(lookup, wb_api, verbose)
     valid_languages = wb_api.get_valid_languages()
-    language_resolver = LanguageResolver(
-        cfg["wikibase"]["language"], valid_languages, verbose=verbose
-    )
-
+    language_resolver = LanguageResolver(cfg["wikibase"]["language"], valid_languages)
     inform("Initialize basic schema metadata", verbose)
     g_schema = Graph()
     g_schema.parse(rdf_schema, format="turtle")
