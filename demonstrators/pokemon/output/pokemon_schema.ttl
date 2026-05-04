@@ -123,8 +123,8 @@
     ns1:propertyType ns1:string .
 
 <urn:wikibase:property:MoveHasType> a rdf:Property ;
-    rdfs:label "has type"@en ;
-    skos:altLabel "Move Has Type"@en ;
+    rdfs:label "Move has type"@en ;
+    skos:altLabel "Has Type"@en ;
     ns1:propertyType ns1:item .
 
 <urn:wikibase:property:NoEffectAgainst> a rdf:Property ;
@@ -141,8 +141,8 @@
     ns1:propertyType ns1:quantity .
 
 <urn:wikibase:property:PokemonHasType> a rdf:Property ;
-    rdfs:label "has type"@en ;
-    skos:altLabel "Pokemon Has Type"@en ;
+    rdfs:label "Pokemon has type"@en ;
+    skos:altLabel "Has Type"@en ;
     ns1:propertyType ns1:item .
 
 <urn:wikibase:property:Power> a rdf:Property ;
