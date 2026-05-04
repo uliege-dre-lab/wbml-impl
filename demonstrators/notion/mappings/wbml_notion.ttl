@@ -20,7 +20,7 @@
         "Alternative labels (EN)" AS alias_en,
         "Description (EN)" AS description_en
       FROM read_csv(
-        'data/input/csv_notion/classes_with_english_translations.csv',
+        'demonstrators/notion/input_data/classes_with_english_translations.csv',
         header = true
       )
       WHERE "Nom de la classe" IS NOT NULL
@@ -83,7 +83,7 @@
         "Nom de la classe" AS name,
         "Hiérarchie (classe parent)" AS parent_class
       FROM read_csv(
-        'data/input/csv_notion/classes_with_english_translations.csv',
+        'demonstrators/notion/input_data/classes_with_english_translations.csv',
         header = true
       )
       WHERE "Nom de la classe" IS NOT NULL
@@ -118,7 +118,7 @@
         "Cardinalité" AS cardinality,
         "Bonnes pratiques" AS good_practices
       FROM read_csv(
-        'data/input/csv_notion/data_properties_with_english_translations.csv',
+        'demonstrators/notion/input_data/data_properties_with_english_translations.csv',
         header = true
       )
       WHERE "Nom" IS NOT NULL
@@ -204,7 +204,7 @@
         "Cardinalité" AS cardinality,
         "Bonnes pratiques" AS good_practices
       FROM read_csv(
-        'data/input/csv_notion/data_properties_with_english_translations.csv',
+        'demonstrators/notion/input_data/data_properties_with_english_translations.csv',
         header = true
       )
       WHERE "Nom" IS NOT NULL
@@ -261,7 +261,7 @@
         "Cardinalité" AS cardinality,
         "Bonnes pratiques" AS good_practices
       FROM read_csv(
-        'data/input/csv_notion/data_properties_with_english_translations.csv',
+        'demonstrators/notion/input_data/data_properties_with_english_translations.csv',
         header = true
       )
       WHERE "Nom" IS NOT NULL
@@ -320,7 +320,7 @@
         "Inverse" AS inverse,
         regexp_replace("Portée", ' \\(.*\\)$', '') AS range_class
       FROM read_csv(
-        'data/input/csv_notion/object_properties_with_english_translations.csv',
+        'demonstrators/notion/input_data/object_properties_with_english_translations.csv',
         header = true
       )
       WHERE "Nom" IS NOT NULL
