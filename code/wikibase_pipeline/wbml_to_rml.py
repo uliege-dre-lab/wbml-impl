@@ -12,7 +12,7 @@ RML_QUERIES_DIR = "code/wikibase_pipeline/sparql/rml"
 SCHEMA_QUERIES_DIR = "code/wikibase_pipeline/sparql/schema"
 
 
-def collect_subtree_triples(graph: Graph, root) -> set[tuple]:
+def collect_subtree_triples(graph: Graph, root: BNode) -> set[tuple]:
     """
     Collect all triples in the subtree rooted at the given node.
     Used to remove entire WBML blocks after conversion to RML.
@@ -42,12 +42,11 @@ def collect_subtree_triples(graph: Graph, root) -> set[tuple]:
     return triples_to_remove
 
 
-def delete_wbml_blocks(graph: Graph, verbose: int) -> None:
+def delete_wbml_blocks(graph: Graph) -> None:
     """
     Remove all triples related to WBML from the graph.
     Inputs:
     - graph: the RDF graph to modify
-    - verbose: verbosity level for logging
     """
     triples_to_remove = set()
 
@@ -141,7 +140,7 @@ def convert_wbml_to_rml(
         else:
             inform(f"{query_file.name}: no triples added", verbose)
 
-    delete_wbml_blocks(result_graph, verbose)
+    delete_wbml_blocks(result_graph)
     len_after = len(result_graph)
     if len_after == 0:
         warn("Result graph is empty after removing WBML triples", verbose)
