@@ -311,7 +311,11 @@ def push_subclass_claims(
             raise ValueError(f"Parent <{parent_str}> not in lookup.")
 
         if child_qid not in claims_cache:
-            claims_cache[child_qid] = wikibase_api.get_entity_claims(child_qid)
+            try:
+                claims_cache[child_qid] = wikibase_api.get_entity_claims(child_qid)
+            except Exception as exc:
+                warn(f"  Could not fetch claims for {child_qid}: {exc}", verbose)
+                claims_cache[child_qid] = {}
 
         wikibase_value = {"entity-type": "item", "id": parent_qid}
         if find_existing_claim_guid(

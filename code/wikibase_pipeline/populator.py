@@ -6,8 +6,10 @@ from .datatype_validation import (
     normalize_value_for_property,
     rdf_value_to_wikibase_value,
 )
+from .resolver.language_resolver import LanguageResolver
 from .utils.claims_utils import find_existing_claim_guid
 from .utils.verbose_utils import inform, warn
+from .wikibase_api import WikibaseAPI
 
 WBML = Namespace("https://example.org/wbml#")
 
@@ -33,12 +35,17 @@ REFERENCE_IRI_PREFIX = "urn:wikibase:referenceIRI:"
 def _push_instance_of_claims(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     verbose: int,
 ) -> None:
     """
     For every rdf:type triple in the data graph, add an 'instance of' claim
-    in Wikibase, provided both subject and object are in lookup["items"].
+    in Wikibase.
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to read/write resolved IDs.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - verbose: Verbosity level for logging.
     """
     pid = lookup.get("properties", {}).get(str(RDF.type), {}).get("id")
     if pid is None:
@@ -85,7 +92,7 @@ def _push_instance_of_claims(
             claims_cache[subject_qid], pid, wikibase_value, "wikibase-item"
         ):
             inform(
-                f"  [{subject_qid}] instance-of {obj_qid} already exists, skipping.",
+                f"  [{subject_qid}] already has 'instance of' {obj_qid} claim.",
                 verbose,
             )
             continue
@@ -117,18 +124,25 @@ def _push_instance_of_claims(
 def _push_statements(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
-    language_resolver,
+    wikibase_api: WikibaseAPI,
+    language_resolver: LanguageResolver,
     verbose: int,
 ) -> list[str]:
     """
     For every statement node in the data graph:
-      stmt wbml:StatementSubject  subject_iri
-      stmt wbml:StatementProperty property_iri
-      stmt wbml:StatementValue    value_rdf
-      stmt wbml:rank              rank_iri    (optional, defaults to normal)
-
-    Creates the main snak in Wikibase and stores the GUID in lookup["statements"].
+    - stmt wbml:StatementSubject  subject_iri
+    - stmt wbml:StatementProperty property_iri
+    - stmt wbml:StatementValue    value_rdf
+    - stmt wbml:rank              rank_iri    (optional, defaults to normal)
+    creates the main snak in Wikibase and stores the GUID in lookup["statements"].
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to read/write resolved IDs.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
+    Output:
+    - new_statement_iris: A list of GUIDs for the newly created statements.
     """
     lookup.setdefault("statements", {})
 
@@ -137,6 +151,7 @@ def _push_statements(
         for node in data_graph.subjects(STMT_PROPERTY, None)
         if isinstance(node, URIRef) and str(node).startswith(STATEMENT_PREFIX)
     )
+    inform(f"Pushing {len(stmt_nodes)} statement(s) …", verbose)
     added_count = 0
     new_statement_iris: list[str] = []
     claims_cache: dict[str, dict] = {}
@@ -286,18 +301,21 @@ def _push_statements(
 def _push_qualifiers(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
-    language_resolver,
+    wikibase_api: WikibaseAPI,
+    language_resolver: LanguageResolver,
     verbose: int,
     new_statement_iris: list[str],
 ) -> None:
     """
-    For every newly-created statement, find qualifier triples:
-      <statement_iri> <urn:wikibase:qualifier:PropKey> value
-
-    The qualifier predicate prefix is swapped to urn:wikibase:property:PropKey
-    to look up the PID and datatype from lookup["properties"].
-    Values are validated against the property datatype before pushing.
+    For every statement, find qualifier triples:
+      <statement_iri> <urn:wikibase:qualifier:*> value
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to read/write resolved IDs.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
+    - new_statement_iris: A list of statement IRIs that were added this run.
     """
     if not new_statement_iris:
         inform("  No new statements this run, skipping qualifier push.", verbose)
@@ -373,10 +391,6 @@ def _push_qualifiers(
                     value=wikibase_value,
                 )
                 added_count += 1
-                inform(
-                    f"  [{guid}] Added qualifier {pid} = {wikibase_value!r}",
-                    verbose,
-                )
             except Exception as exc:
                 warn(
                     f"  Qualifier <{pred_str}> on <{stmt_iri_str}>:"
@@ -396,10 +410,18 @@ def _push_reference_nodes(
     """
     Discover reference nodes attached to newly-created statements via
     wbml:statementReference and register them in lookup["references"].
-
-    lookup["references"][ref_iri_str] = None   → discovered, not yet created
-    lookup["references"][ref_iri_str] = hash   → already pushed to Wikibase
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to read/write resolved IDs.
+    - verbose: Verbosity level for logging.
+    - new_statement_iris: A list of statement IRIs that were added this run.
     """
+    if not new_statement_iris:
+        inform(
+            "  No new statements this run, skipping reference node discovery.", verbose
+        )
+        return
+
     lookup.setdefault("references", {})
     count = 0
 
@@ -417,18 +439,24 @@ def _push_reference_nodes(
 def _push_reference_records(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
-    language_resolver,
+    wikibase_api: WikibaseAPI,
+    language_resolver: LanguageResolver,
     verbose: int,
 ) -> None:
     """
     For each reference node registered in lookup["references"] that has not
     yet been pushed (hash is None):
-      - find the parent statement GUID via wbml:statementReference
-      - collect all <urn:wikibase:reference:PropKey> triples
-      - validate each value against its property datatype
-      - create the reference in Wikibase with all snaks at once
-      - store the returned hash in lookup["references"]
+    - find the parent statement GUID via wbml:statementReference
+    - collect all <urn:wikibase:reference:PropKey> triples
+    - validate each value against its property datatype
+    - create the reference in Wikibase with all snaks at once
+    - store the returned hash in lookup["references"]
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to read/write resolved IDs.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
     """
     pending = {
         ref_str
@@ -532,7 +560,6 @@ def _push_reference_records(
             ref_hash = wikibase_api.add_reference(guid, snaks)
             lookup["references"][ref_str] = ref_hash
             added_count += 1
-            inform(f"  <{ref_str}> → hash={ref_hash}", verbose)
         except Exception as exc:
             warn(f"  Reference <{ref_str}>: could not create — {exc}", verbose)
 
@@ -542,9 +569,9 @@ def _push_reference_records(
 def populate(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
-    language_resolver,
-    verbose: int = 1,
+    wikibase_api: WikibaseAPI,
+    language_resolver: LanguageResolver,
+    verbose: int,
 ) -> None:
     """
     Main entry point for populating Wikibase with claims and statements.
@@ -553,6 +580,12 @@ def populate(
     3. Qualifiers               (urn:wikibase:qualifier: triples)
     4. Reference node discovery (wbml:statementReference triples)
     5. Reference records        (urn:wikibase:reference: triples)
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to read/write resolved IDs.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
     """
     _push_instance_of_claims(data_graph, lookup, wikibase_api, verbose)
     new_stmts = _push_statements(
