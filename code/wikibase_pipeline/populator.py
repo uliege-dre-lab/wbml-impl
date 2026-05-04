@@ -6,56 +6,10 @@ from .datatype_validation import (
     normalize_value_for_property,
     rdf_value_to_wikibase_value,
 )
+from .utils.claims_utils import find_existing_claim_guid
 from .utils.verbose_utils import inform, warn
 
 WBML = Namespace("https://example.org/wbml#")
-
-
-def _values_match(wikibase_value, existing_value, property_datatype: str) -> bool:
-    """
-    Compare the value we would send to Wikibase against a value already
-    stored in a claim returned by wbgetentities (mainsnak.datavalue.value).
-    """
-    if property_datatype == "wikibase-item":
-        return isinstance(existing_value, dict) and wikibase_value.get(
-            "id"
-        ) == existing_value.get("id")
-    if property_datatype in ("string", "url"):
-        return wikibase_value == existing_value
-    if property_datatype == "monolingualtext":
-        return (
-            isinstance(existing_value, dict)
-            and wikibase_value.get("text") == existing_value.get("text")
-            and wikibase_value.get("language") == existing_value.get("language")
-        )
-    if property_datatype == "quantity":
-        return isinstance(existing_value, dict) and wikibase_value.get(
-            "amount"
-        ) == existing_value.get("amount")
-    if property_datatype == "time":
-        return (
-            isinstance(existing_value, dict)
-            and wikibase_value.get("time") == existing_value.get("time")
-            and wikibase_value.get("precision") == existing_value.get("precision")
-        )
-    return False
-
-
-def _find_existing_claim_guid(
-    claims_by_pid: dict,
-    pid: str,
-    wikibase_value,
-    property_datatype: str,
-) -> str | None:
-    """Return the GUID of a matching existing claim, or None."""
-    for claim in claims_by_pid.get(pid, []):
-        if claim.get("mainsnak", {}).get("snaktype") != "value":
-            continue
-        existing_value = claim["mainsnak"].get("datavalue", {}).get("value")
-        if _values_match(wikibase_value, existing_value, property_datatype):
-            return claim["id"]
-    return None
-
 
 WBML_RANKS: dict[str, str] = {
     str(WBML.PreferredRank): "preferred",
@@ -127,7 +81,7 @@ def _push_instance_of_claims(
                 claims_cache[subject_qid] = {}
 
         wikibase_value = {"entity-type": "item", "id": obj_qid}
-        if _find_existing_claim_guid(
+        if find_existing_claim_guid(
             claims_cache[subject_qid], pid, wikibase_value, "wikibase-item"
         ):
             inform(
@@ -290,7 +244,7 @@ def _push_statements(
                 warn(f"  Could not fetch claims for {subject_qid}: {exc}", verbose)
                 claims_cache[subject_qid] = {}
 
-        existing_guid = _find_existing_claim_guid(
+        existing_guid = find_existing_claim_guid(
             claims_cache[subject_qid], pid, wikibase_value, property_datatype
         )
         if existing_guid is not None:
