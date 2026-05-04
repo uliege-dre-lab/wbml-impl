@@ -89,7 +89,6 @@ def validate_lookup_cache(lookup: dict, wb_api: WikibaseAPI, verbose: int) -> No
     if not all_ids:
         return
 
-    inform(f"Validating {len(all_ids)} cached IDs against Wikibase…", verbose)
     existing = wb_api.filter_existing_ids(all_ids)
 
     stale_item_iris = [iri for iri, qid in item_iris.items() if qid not in existing]
