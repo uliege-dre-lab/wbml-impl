@@ -6,13 +6,13 @@ from rdflib.namespace import RDF, RDFS, SKOS
 from ..utils.items_utils import clean_text, normalize_text
 from ..utils.properties_utils import iri_suffix, lookup_get, search_wikibase_properties
 from ..utils.verbose_utils import inform, warn
+from ..wikibase_api import WikibaseAPI
 from .language_resolver import LanguageResolver
 
 WBML = Namespace("https://example.org/wbml#")
 PROPERTY_PREFIX = "urn:wikibase:property:"
 PROPERTY_IRI_PREFIX = "urn:wikibase:propertyIRI:"
 
-# Maps wbml: local names (used in .ttl files) → Wikibase API datatype strings
 WBML_DATATYPE_MAP: dict[str, str] = {
     "item": "wikibase-item",
     "string": "string",
@@ -27,6 +27,8 @@ WBML_DATATYPE_MAP: dict[str, str] = {
 def validate_schema_properties(g: Graph) -> None:
     """
     Validate that every rdf:Property has exactly one wbml:propertyType.
+    Input:
+    - g: The RDFLib Graph containing the schema.
     """
     errors: list[str] = []
 
@@ -50,7 +52,15 @@ def validate_schema_properties(g: Graph) -> None:
         raise ValueError("Schema property validation failed:\n" + "\n".join(errors))
 
 
-def _wb_datatype_from_graph(g: Graph, prop_iri: URIRef) -> str:
+def wb_datatype_from_graph(g: Graph, prop_iri: URIRef) -> str:
+    """
+    Extract the Wikibase datatype string for the given property IRI from the graph.
+    Inputs:
+    - g: The RDFLib Graph containing the schema.
+    - prop_iri: The URIRef of the property to check.
+    Output:
+    - The Wikibase datatype string.
+    """
     prop_type_uri = str(next(g.objects(prop_iri, WBML.propertyType)))
     wbml_ns = str(WBML)
 
@@ -68,16 +78,28 @@ def _wb_datatype_from_graph(g: Graph, prop_iri: URIRef) -> str:
             f"Supported: {sorted(WBML_DATATYPE_MAP)}"
         )
 
-    return WBML_DATATYPE_MAP[local_name]  # returns the Wikibase API string
+    return WBML_DATATYPE_MAP[local_name]
 
 
-def _collect_property_metadata(
+def collect_property_metadata(
     g: Graph,
     prop_iri: URIRef,
     language_resolver: LanguageResolver,
     verbose: int,
     require_label: bool = True,
 ) -> dict:
+    """
+    Collect labels, aliases, and descriptions for a property from the graph.
+    Inputs:
+    - g: The RDFLib Graph containing the schema.
+    - prop_iri: The URIRef of the property to collect metadata for.
+    - language_resolver: An instance of LanguageResolver to resolve languages.
+    - verbose: Verbosity level for logging.
+    - require_label: If True, will warn and use IRI suffix as fallback.
+    Output:
+    - A dictionary with keys "labels", "aliases", "descriptions"
+    containing the collected metadata.
+    """
     labels: dict[str, str] = {}
     aliases: dict[str, list[str]] = defaultdict(list)
     descriptions: dict[str, str] = {}
@@ -105,7 +127,7 @@ def _collect_property_metadata(
             else:
                 raise ValueError(
                     f"Duplicate property label @{eff_lang} on <{iri_str}>: "
-                    f"'{labels[eff_lang]}' and '{raw_value}'. "
+                    f"'{labels[eff_lang]}' and '{eff_value}'. "
                     f"At most one label per language is allowed in the mapping."
                 )
         else:
@@ -154,8 +176,8 @@ def _collect_property_metadata(
                 pass
             else:
                 raise ValueError(
-                    f"Duplicate instance description @{eff_lang} on <{iri_str}>: "
-                    f"'{descriptions[eff_lang]}' and '{raw_value}'. "
+                    f"Duplicate property description @{eff_lang} on <{iri_str}>: "
+                    f"'{descriptions[eff_lang]}' and '{eff_value}'. "
                     f"At most one description per language is allowed in the mapping."
                 )
         else:
@@ -175,28 +197,28 @@ def _collect_property_metadata(
     }
 
 
-def _resolve_one_property(
+def resolve_one_property(
     prop_iri: URIRef,
     meta: dict,
     schema_graph: Graph,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     default_language: str,
     verbose: int,
 ) -> tuple[str, str]:
     """
     Find or create a Wikibase property for the given schema property IRI.
-    Search is ordered by label priority and filtered by datatype.
-    Falls back to the IRI suffix as label if no labels are defined.
-    Returns (pid, datatype).
+    Inputs:
+    - prop_iri: The URIRef of the property to resolve.
+    - meta: A dictionary containing the property's metadata.
+    - schema_graph: The RDFLib Graph containing the schema.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - default_language: The default language code to prioritize in label search.
+    - verbose: Verbosity level for logging.
+    Output:
+    - A tuple of (property ID, Wikibase datatype string).
     """
-    iri_str = str(prop_iri)
-    wb_datatype = _wb_datatype_from_graph(schema_graph, prop_iri)
+    wb_datatype = wb_datatype_from_graph(schema_graph, prop_iri)
     labels = meta["labels"]
-
-    inform(
-        f"Resolving property <{iri_str}> (datatype='{wb_datatype}') …",
-        verbose,
-    )
 
     pid = search_wikibase_properties(
         wikibase_api,
@@ -207,39 +229,46 @@ def _resolve_one_property(
     )
 
     if pid is not None:
-        inform(f"  Found {pid} for <{iri_str}>", verbose)
+        inform(
+            f"Resolved property <{prop_iri}> by label search -> "
+            f"{pid} (datatype='{wb_datatype}')",
+            verbose,
+        )
         return pid, wb_datatype
 
-    inform(f"  Not found — creating new property for <{iri_str}>", verbose)
     pid = wikibase_api.create_property(
         labels=labels,
         datatype=wb_datatype,
         descriptions=meta["descriptions"],
         aliases=meta["aliases"],
     )
-    inform(f"  Created {pid} for <{iri_str}>", verbose)
+    inform(
+        f"Created new property {pid} for <{prop_iri}> (datatype='{wb_datatype}')",
+        verbose,
+    )
     return pid, wb_datatype
 
 
-def _push_property_metadata(
+def push_property_metadata(
     pid: str,
     meta: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     verbose: int,
-    overwrite_on_conflict: bool = False,
 ) -> None:
     """
     Push a labels/aliases/descriptions diff to an existing Wikibase property.
-    - New values are added.
-    - Conflicts: warn + skip (or overwrite if overwrite_on_conflict=True).
-    - Aliases: union only, never remove existing ones.
-    - Empty language keys (untagged RDF literals) are skipped.
+    Inputs:
+    - pid: The property ID to update.
+    - meta: A dictionary containing the property's metadata.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - verbose: Verbosity level for logging.
     """
     try:
         entity = wikibase_api.get_entity(pid, props="labels|descriptions|aliases")
     except Exception as exc:
-        warn(f"  Could not fetch entity {pid} to diff metadata: {exc}", verbose)
-        return
+        raise RuntimeError(
+            f"Could not fetch entity {pid} to diff metadata: {exc}"
+        ) from exc
 
     existing_labels: dict[str, str] = {
         lang: info["value"] for lang, info in entity.get("labels", {}).items()
@@ -311,28 +340,33 @@ def _push_property_metadata(
 def resolve_schema_properties(
     schema_graph: Graph,
     lookup: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     language_resolver: LanguageResolver,
-    verbose: int = 1,
+    verbose: int,
 ) -> None:
     """
-    Main entry point for property resolution.
-
+    Main entry point for schema property resolution.
     For each rdf:Property in the schema:
-    1. Validate it has exactly one wbml:propertyType.
-    2. Check lookup — correct datatype to use it; wrong datatype to raise.
-    3. Search Wikibase by label (ordered) + datatype filter.
-    4. If not found, create it.
-    5. Push metadata diff (labels, descriptions, aliases).
+    - Validate it has exactly one wbml:propertyType.
+    - Check lookup.
+    - Search Wikibase by label + datatype filter.
+    - If not found, create it.
+    - Push metadata diff (labels, descriptions, aliases).
+    Inputs:
+    - schema_graph: The RDFLib Graph containing the schema.
+    - lookup: The lookup cache dictionary to check and update.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
     """
     validate_schema_properties(schema_graph)
     lookup.setdefault("properties", {})
 
     for prop_iri in sorted(schema_graph.subjects(RDF.type, RDF.Property)):
         iri_str = str(prop_iri)
-        wb_datatype = _wb_datatype_from_graph(schema_graph, prop_iri)
+        wb_datatype = wb_datatype_from_graph(schema_graph, prop_iri)
 
-        meta = _collect_property_metadata(
+        meta = collect_property_metadata(
             schema_graph, prop_iri, language_resolver, verbose=verbose
         )
 
@@ -345,7 +379,7 @@ def resolve_schema_properties(
                 verbose,
             )
         else:
-            pid, wb_datatype = _resolve_one_property(
+            pid, wb_datatype = resolve_one_property(
                 prop_iri,
                 meta,
                 schema_graph,
@@ -355,14 +389,21 @@ def resolve_schema_properties(
             )
             lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
 
-        _push_property_metadata(pid, meta, wikibase_api, verbose)
+        # Skip API call if nothing to push
+        if not any([meta["labels"], meta["descriptions"], meta["aliases"]]):
+            continue
+
+        push_property_metadata(pid, meta, wikibase_api, verbose)
 
 
-def _collect_property_instance_iris(data_graph: Graph) -> list[URIRef]:
+def collect_property_instance_iris(data_graph: Graph) -> list[URIRef]:
     """
     Collect all urn:wikibase:property: and urn:wikibase:propertyIRI: IRIs
     that appear as subjects or objects in the data graph.
-    Returns a sorted list of unique URIRefs.
+    Input:
+    - data_graph: The RDFLib Graph containing the data.
+    Output:
+    - A sorted list of unique URIRefs.
     """
     props: set[URIRef] = set()
     for s, _, o in data_graph:
@@ -380,29 +421,35 @@ def _collect_property_instance_iris(data_graph: Graph) -> list[URIRef]:
 def resolve_property_instances(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     language_resolver: LanguageResolver,
-    verbose: int = 1,
+    verbose: int,
 ) -> None:
     """
-    For every urn:wikibase:property: or urn:wikibase:propertyIRI: IRI that
-    appears in the data graph:
+    Main entry point for property instance resolution.
+    For every urn:wikibase:property: or urn:wikibase:propertyIRI:
+    IRI that appears in the data graph:
     - Already in lookup: push any label/description/alias metadata diff.
     - Not in lookup but wbml:propertyType present in data graph (generated by
-      1b_subjectMap_property.rq from wbml:propertyEntityMap): resolve or
+      1b_subjectMap_property.rq from wbml:entityMap): resolve or
       create the property in Wikibase, then push metadata.
-    - Not in lookup and no wbml:propertyType: raise ValueError — it must be
-      declared in the schema (rdf:Property) or via wbml:nodeId.
+    - Not in lookup and no wbml:propertyType: raise ValueError.
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data.
+    - lookup: The lookup cache dictionary to check and update.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
     """
     lookup.setdefault("properties", {})
 
-    for prop_iri in _collect_property_instance_iris(data_graph):
+    for prop_iri in collect_property_instance_iris(data_graph):
         iri_str = str(prop_iri)
         prop_entry = lookup["properties"].get(iri_str)
 
+        # if not in lookup
         if prop_entry is None:
-            # Not in lookup: valid only if 1b generated wbml:propertyType
-            # on this IRI (i.e. it comes from wbml:propertyEntityMap)
+            # if no wbml:propertyType
             if not list(data_graph.objects(prop_iri, WBML.propertyType)):
                 raise ValueError(
                     f"Property entity <{iri_str}> found in data graph but not in "
@@ -410,28 +457,26 @@ def resolve_property_instances(
                     f"(rdf:Property + wbml:propertyType) or referenced via "
                     f"wbml:propertyEntityMap with wbml:nodeId."
                 )
-            # propertyEntityMap-generated property: resolve or create it
-            wb_datatype = _wb_datatype_from_graph(data_graph, prop_iri)
-            meta = _collect_property_metadata(
+            # wbml:propertyType present → resolve/create and push metadata
+            wb_datatype = wb_datatype_from_graph(data_graph, prop_iri)
+            meta = collect_property_metadata(
                 data_graph,
                 prop_iri,
                 language_resolver,
                 verbose=verbose,
             )
-            pid = lookup_get(lookup, iri_str, wb_datatype, wikibase_api)
-            if pid is None:
-                pid, wb_datatype = _resolve_one_property(
-                    prop_iri,
-                    meta,
-                    data_graph,
-                    wikibase_api,
-                    language_resolver.language,
-                    verbose,
-                )
-                lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
+            pid, wb_datatype = resolve_one_property(
+                prop_iri,
+                meta,
+                data_graph,
+                wikibase_api,
+                language_resolver.language,
+                verbose,
+            )
+            lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
         else:
             pid = prop_entry["id"]
-            meta = _collect_property_metadata(
+            meta = collect_property_metadata(
                 data_graph,
                 prop_iri,
                 language_resolver,
@@ -440,8 +485,7 @@ def resolve_property_instances(
             )
 
         # Skip API call if nothing to push
-        # (property used only as a predicate with no metadata in data graph)
         if not any([meta["labels"], meta["descriptions"], meta["aliases"]]):
             continue
 
-        _push_property_metadata(pid, meta, wikibase_api, verbose)
+        push_property_metadata(pid, meta, wikibase_api, verbose)

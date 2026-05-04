@@ -7,11 +7,11 @@ from .config import load_env_config
 from .lookup_io import load_lookup, save_lookup, validate_lookup_cache
 from .populator import populate
 from .resolver.builtins_properties import search_builtins_properties
+from .resolver.classes_resolver import resolve_schema_classes
 from .resolver.direct_iri_resolver import resolve_direct_iris
-from .resolver.instance_resolver import resolve_instances
+from .resolver.items_resolver import resolve_instances
 from .resolver.language_resolver import LanguageResolver
-from .resolver.schema_classes_resolver import resolve_schema_classes
-from .resolver.schema_properties_resolver import (
+from .resolver.properties_resolver import (
     resolve_property_instances,
     resolve_schema_properties,
 )
