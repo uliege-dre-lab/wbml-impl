@@ -37,16 +37,14 @@ def _build_morph_kgc_ini(
 def rml_execute(
     mapping_path: Path | str,
     output_path: Path | str,
-    verbose: int = 1,
-) -> Path:
+    verbose: int,
+):
     """
     Execute the RML mapping using morph-kgc and write the output to a file.
     Inputs:
     - mapping_path: path to the RML mapping file
     - output_path: path where the output RDF file will be written
     - verbose: verbosity level for logging
-    Output:
-    - the path to the generated RDF file
     """
 
     mapping_path = Path(mapping_path).resolve()
@@ -86,8 +84,6 @@ def rml_execute(
 
     if not output_path.is_file():
         raise FileNotFoundError(f"Expected output file not found: {output_path}")
-
-    return output_path
 
 
 def check_nt_line_prefixes(nt_path: str | Path) -> None:
