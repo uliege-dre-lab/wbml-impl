@@ -290,7 +290,6 @@ def _push_statements(
                 }
             )
             added_count += 1
-            inform(f"  <{stmt_str}> → {guid}", verbose)
         except Exception as exc:
             warn(f"  <{stmt_str}>: could not add statement: {exc}", verbose)
 
