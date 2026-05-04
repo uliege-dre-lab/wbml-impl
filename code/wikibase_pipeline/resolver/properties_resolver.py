@@ -225,7 +225,6 @@ def resolve_one_property(
         labels=labels,
         default_language=default_language,
         expected_datatype=wb_datatype,
-        verbose=verbose,
     )
 
     if pid is not None:
