@@ -6,7 +6,7 @@ import requests
 from dotenv import load_dotenv
 from urllib3.exceptions import InsecureRequestWarning
 
-from .utils.verbose_utils import inform, warn
+from .utils.verbose_utils import inform
 
 
 class WikibaseAPI:
@@ -21,22 +21,20 @@ class WikibaseAPI:
         Initialize a WikibaseAPI instance.
         """
         self.api_url = params["api_url"]
-        self.session = requests.Session()
-
         self.language = params["language"]
-
+        self.verbose = params["verbose"]
         self.verify = params["tls_verify"]
+
+        self._property_datatypes_cache: dict[str, str] = {}
+        self._valid_languages_cache: set[str] | None = None
+        self.csrf_token: str | None = None
+
         if self.verify is False:
             requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-        self.verbose = params["verbose"]
-        self._property_datatypes_cache: dict[str, str] = {}
-
+        self.session = requests.Session()
         self.user, self.password = self._load_env()
-        self.csrf_token: str | None = None
         self._login()
-
-        self._valid_languages_cache: set[str] | None = None
 
     def _load_env(self) -> tuple[str, str]:
         """
@@ -105,10 +103,6 @@ class WikibaseAPI:
         self.csrf_token = None
         self.csrf_token = self._get_token("csrf")
 
-        inform(
-            f"Successfully connected to Wikibase API at {self.api_url}.", self.verbose
-        )
-
     def _refresh_csrf_token(self) -> str:
         """
         Refresh and return a new CSRF token.
@@ -137,16 +131,13 @@ class WikibaseAPI:
         self._raise_api_error(data)
         return data
 
-    def _api_post(
-        self, data: dict[str, Any], retry_on_badtoken: bool = True
-    ) -> dict[str, Any]:
+    def _api_post(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Generic method to perform a POST request
         to the Wikibase API with the given data.
         If the CSRF token is invalid, refresh it and retry once.
         Input:
         - data: The form data to send in the POST request.
-        - retry_on_badtoken: Whether to retry once if a badtoken error is encountered.
         Output:
         - The parsed JSON response from the API.
         """
@@ -170,9 +161,6 @@ class WikibaseAPI:
 
         error = payload.get("error")
         if error and error.get("code") == "badtoken":
-            if not retry_on_badtoken:
-                raise RuntimeError(f"Wikibase API error: {error}")
-
             inform(
                 "CSRF token expired or invalid; refreshing token and retrying once.",
                 self.verbose,
@@ -206,6 +194,8 @@ class WikibaseAPI:
         Return the set of content languages supported by this Wikibase instance.
         Input:
         - refresh: Whether to refresh the cache.
+        Output:
+        - A set of valid language codes.
         """
         if self._valid_languages_cache is not None and not refresh:
             return self._valid_languages_cache
@@ -227,22 +217,20 @@ class WikibaseAPI:
 
         valid_langs = set(raw_languages.keys())
         self._valid_languages_cache = valid_langs
-
-        inform(
-            f"Loaded {len(valid_langs)} Wikibase content languages: "
-            f"{sorted(valid_langs)}",
-            self.verbose,
-        )
         return valid_langs
 
-    def search_properties_by_label(self, label: str, language: str = "en") -> list[str]:
+    def search_properties_by_label(self, label: str, language: str | None) -> list[str]:
         """
         Search Wikibase for properties matching the given label.
         Inputs:
         - label: The label to search for.
         - language: The language to search in.
-        Returns only PIDs whose label is an exact match.
+        Outputs:
+        - only PIDs whose label is an exact match.
         """
+        if language is None:
+            language = self.language
+
         data = self._api_get(
             {
                 "action": "wbsearchentities",
@@ -252,11 +240,11 @@ class WikibaseAPI:
                 "limit": 50,
             }
         )
-        needle = label.strip().lower()
+        needle = label.strip()
         return [
             result["id"]
             for result in data.get("search", [])
-            if result.get("match", {}).get("text", "").strip().lower() == needle
+            if result.get("match", {}).get("text", "").strip() == needle
         ]
 
     def get_property_datatype(self, pid: str) -> str:
@@ -293,16 +281,17 @@ class WikibaseAPI:
         - datatype: The Wikibase datatype for this property
         - descriptions: Optional dict of language code to description string.
         - aliases: Optional dict of language code to list of alias strings.
-        Metadata are associated with language codes, which must be valid BCP47 codes
         """
         entity_data: dict = {"datatype": datatype}
 
-        if labels:
-            entity_data["labels"] = {
-                lang: {"language": lang, "value": value}
-                for lang, value in labels.items()
-                if lang
-            }
+        if not labels:
+            raise ValueError("Property must have at least one label")
+
+        entity_data["labels"] = {
+            lang: {"language": lang, "value": value}
+            for lang, value in labels.items()
+            if lang
+        }
         if descriptions:
             entity_data["descriptions"] = {
                 lang: {"language": lang, "value": value}
@@ -334,7 +323,8 @@ class WikibaseAPI:
         Inputs:
         - label: The label to search for.
         - language: The language to search in.
-        Returns only QIDs whose label is an exact match.
+        Outputs:
+        - only QIDs whose label is an exact match.
         """
         data = self._api_get(
             {
@@ -345,11 +335,11 @@ class WikibaseAPI:
                 "limit": 50,
             }
         )
-        needle = label.strip().lower()
+        needle = label.strip()
         return [
             result["id"]
             for result in data.get("search", [])
-            if result.get("match", {}).get("text", "").strip().lower() == needle
+            if result.get("match", {}).get("text", "").strip() == needle
         ]
 
     def get_entity_claims(self, qid: str) -> dict:
@@ -402,17 +392,19 @@ class WikibaseAPI:
         - labels: A dict of language code to label string.
         - descriptions: Optional dict of language code to description string.
         - aliases: Optional dict of language code to list of alias strings.
-        Metadata are associated with language codes, which must be valid BCP47 codes.
-        Returns the new QID.
+        Output:
+        - the new QID.
         """
         entity_data: dict = {}
 
-        if labels:
-            entity_data["labels"] = {
-                lang: {"language": lang, "value": value}
-                for lang, value in labels.items()
-                if lang  # skip RDF literals without a language tag
-            }
+        if not labels:
+            raise ValueError("Item must have at least one label")
+
+        entity_data["labels"] = {
+            lang: {"language": lang, "value": value}
+            for lang, value in labels.items()
+            if lang
+        }
         if descriptions:
             entity_data["descriptions"] = {
                 lang: {"language": lang, "value": value}
@@ -493,9 +485,14 @@ class WikibaseAPI:
         Inputs:
         - subject_qid: The QID of the entity to which to add the statement.
         - property_pid: The PID of the property for which to add the statement.
-        - value: The value of the claim, as a simple Python type (e.g.,
+        - value: The value of the claim, as a simple Python type
+        - property_datatype: The Wikibase datatype of the property
+        - rank: The rank of the claim ("normal", "preferred", or "deprecated")
+        Output:
+        - The GUID of the created claim.
         """
-        # Step 1: create the claim (always lands at normal rank)
+
+        # Create the claim with a simple value first
         data = self._api_post(
             {
                 "action": "wbcreateclaim",
@@ -511,7 +508,7 @@ class WikibaseAPI:
                 f"Failed to create statement on {subject_qid} / {property_pid}: {data}"
             )
 
-        # Step 2: if a non-normal rank is required, update via wbeditentity
+        # Optionally set the rank if it's not the default "normal"
         if rank != "normal":
             self._api_post(
                 {
@@ -663,10 +660,9 @@ class WikibaseAPI:
             qid = f"Q{i}"
             try:
                 self.delete_entity(qid)
-                inform(f"Deleted item {qid}", self.verbose)
                 deleted += 1
             except Exception as exc:
-                warn(f"Skipping {qid}: {exc}", self.verbose)
+                inform(f"Skipping {qid}: {exc}", self.verbose)
                 skipped += 1
 
         inform(
@@ -692,10 +688,9 @@ class WikibaseAPI:
             pid = f"P{i}"
             try:
                 self.delete_entity(pid)
-                inform(f"Deleted property {pid}", self.verbose)
                 deleted += 1
             except Exception as exc:
-                warn(f"Skipping {pid}: {exc}", self.verbose)
+                inform(f"Skipping {pid}: {exc}", self.verbose)
                 skipped += 1
 
         inform(
