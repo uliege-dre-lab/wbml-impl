@@ -11,6 +11,7 @@ from ..utils.items_utils import (
     search_item_by_labels,
 )
 from ..utils.verbose_utils import inform, warn
+from ..wikibase_api import WikibaseAPI
 from .language_resolver import LanguageResolver
 
 ITEM_PREFIX = "urn:wikibase:item:"
@@ -21,11 +22,13 @@ def _is_item_iri(node) -> bool:
     return isinstance(node, URIRef) and str(node).startswith(ITEM_PREFIX)
 
 
-def _collect_instance_iris(g: Graph) -> list[URIRef]:
+def collect_instance_iris(g: Graph) -> list[URIRef]:
     """
     Collect all instance IRIs from the data graph.
-    Considers every subject or object URIRef with the Wikibase item prefix.
-    Returns a sorted list of unique URIRefs.
+    Input:
+    - g: The RDFLib Graph containing the data to be processed.
+    Output:
+    - Sorted list of URIRefs that are subjects or objects with the item prefix.
     """
     items: set[URIRef] = set()
     for s, _, o in g:
@@ -36,13 +39,25 @@ def _collect_instance_iris(g: Graph) -> list[URIRef]:
     return sorted(items)
 
 
-def _collect_instance_metadata(
+def collect_instance_metadata(
     g: Graph,
     item_iri: URIRef,
     language_resolver: LanguageResolver,
     verbose: int,
-    already_resolved: bool = False,
+    require_label: bool = True,
 ) -> dict:
+    """
+    Collect labels, aliases, and descriptions for an instance IRI.
+    Input:
+    - g: The RDFLib Graph containing the data to be processed.
+    - item_iri: The URIRef of the instance to collect metadata for.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
+    - require_label: Flag indicating if a label is required for the item.
+    Output:
+    - A dictionary with keys "labels", "aliases", and "descriptions"
+    containing the collected metadata.
+    """
     labels: dict[str, str] = {}
     aliases: dict[str, list[str]] = defaultdict(list)
     descriptions: dict[str, str] = {}
@@ -70,7 +85,7 @@ def _collect_instance_metadata(
             else:
                 raise ValueError(
                     f"Duplicate instance label @{eff_lang} on <{iri_str}>: "
-                    f"'{labels[eff_lang]}' and '{raw_value}'. "
+                    f"'{labels[eff_lang]}' and '{eff_value}'. "
                     f"At most one label per language is allowed in the mapping."
                 )
         else:
@@ -92,7 +107,7 @@ def _collect_instance_metadata(
             aliases[eff_lang].append(eff_value)
 
     # Fallback if still no labels: IRI suffix
-    if not labels and not already_resolved:
+    if not labels and require_label:
         fallback_lang = language_resolver.language
         fallback = iri_suffix(iri_str)
         warn(
@@ -120,7 +135,7 @@ def _collect_instance_metadata(
             else:
                 raise ValueError(
                     f"Duplicate instance description @{eff_lang} on <{iri_str}>: "
-                    f"'{descriptions[eff_lang]}' and '{raw_value}'. "
+                    f"'{descriptions[eff_lang]}' and '{eff_value}'. "
                     f"At most one description per language is allowed in the mapping."
                 )
         else:
@@ -140,62 +155,77 @@ def _collect_instance_metadata(
     }
 
 
-def _resolve_one_instance(
-    item_iri: URIRef, meta: dict, wikibase_api, default_language: str, verbose: int
+def resolve_one_instance(
+    item_iri: URIRef,
+    meta: dict,
+    wikibase_api: WikibaseAPI,
+    default_language: str,
+    verbose: int,
 ) -> str:
-    """
+    r"""
     Find or create a Wikibase item for the given instance IRI.
-    Search order: default-language label to untagged label to other-language labels.
-    Returns the QID.
+    Input:
+    - item_iri: The URIRef of the instance to resolve.
+    - meta: A dictionary containing the instance metadata\.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - default_language: The default language.
+    - verbose: Verbosity level for logging.
+    Output:
+    - The QID of the resolved or created Wikibase item.
     """
     iri_str = str(item_iri)
-    inform(f"Resolving instance <{iri_str}> …", verbose)
 
-    qid = search_item_by_labels(wikibase_api, meta["labels"], default_language)
+    qid = search_item_by_labels(
+        wikibase_api, meta["labels"], default_language, verbose=verbose
+    )
     if qid is not None:
-        inform(f"  Found {qid} for <{iri_str}>", verbose)
+        inform(f"  Found {qid} for <{iri_str}> by label search", verbose)
         return qid
 
-    inform(f"  Not found — creating new item for <{iri_str}>", verbose)
     try:
         qid = wikibase_api.create_item(
             labels=meta["labels"],
             descriptions=meta["descriptions"],
             aliases=meta["aliases"],
         )
+        inform(f"  Created {qid} for <{iri_str}>", verbose)
+        return qid
     except RuntimeError as exc:
         err = str(exc)
         if "label-with-description-conflict" in err:
             match = re.search(r"\[\[Item:(Q\d+)\|", err)
             if match:
                 qid = match.group(1)
-                inform(f"  Conflict — using existing {qid} for <{iri_str}>", verbose)
+                inform(f"  Conflict: using existing {qid} for <{iri_str}>", verbose)
                 return qid
-            warn(
-                f"  label-with-description-conflict but could not parse QID: {err}",
-                verbose,
-            )
-    inform(f"  Created {qid} for <{iri_str}>", verbose)
-    return qid
+            else:
+                raise RuntimeError(
+                    f"label-with-description-conflict for <{iri_str}> "
+                    f"but could not parse QID from error: {err}"
+                ) from exc
+        raise
 
 
-def _push_instance_metadata(
+def push_instance_metadata(
     qid: str,
     meta: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     verbose: int,
 ) -> None:
     """
     Push a labels/aliases/descriptions diff to an existing Wikibase item.
-    - New values are added.
-    - Conflicts: warn + skip.
-    - Aliases: union only, never remove existing ones.
+    Inputs:
+    - qid: The QID of the existing Wikibase item.
+    - meta: A dictionary containing the metadata changes to push.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - verbose: Verbosity level for logging.
     """
     try:
         entity = wikibase_api.get_entity(qid, props="labels|descriptions|aliases")
     except Exception as exc:
-        warn(f"  Could not fetch entity {qid} to diff metadata: {exc}", verbose)
-        return
+        raise RuntimeError(
+            f"Could not fetch entity {qid} to diff metadata: {exc}"
+        ) from exc
 
     existing_labels: dict[str, str] = {
         lang: info["value"] for lang, info in entity.get("labels", {}).items()
@@ -267,35 +297,44 @@ def _push_instance_metadata(
 def resolve_instances(
     data_graph: Graph,
     lookup: dict,
-    wikibase_api,
+    wikibase_api: WikibaseAPI,
     language_resolver: LanguageResolver,
-    verbose: int = 1,
+    verbose: int,
 ) -> None:
     """
     Main entry point for instance resolution.
-      1. Collect all item IRIs from the data graph
-      (subjects and objects with item prefix).
-      2. For each item not yet in lookup["items"]: find or create it.
-      3. Push metadata diff (labels, descriptions, aliases).
+    - Collect all item IRIs from the data graph
+    (subjects and objects with item prefix).
+    - For each item not yet in lookup["items"]: find or create it.
+    - Push metadata diff (labels, descriptions, aliases).
+    Inputs:
+    - data_graph: The RDFLib Graph containing the data to be processed.
+    - lookup: The lookup cache dictionary to update with resolved IDs.
+    - wikibase_api: An instance of the WikibaseAPI class.
+    - language_resolver: An instance of the LanguageResolver class.
+    - verbose: Verbosity level for logging.
     """
     lookup.setdefault("items", {})
 
-    for item_iri in _collect_instance_iris(data_graph):
+    for item_iri in collect_instance_iris(data_graph):
         iri_str = str(item_iri)
         already_resolved = iri_str in lookup["items"]
 
-        meta = _collect_instance_metadata(
+        meta = collect_instance_metadata(
             data_graph,
             item_iri,
             language_resolver,
             verbose=verbose,
-            already_resolved=already_resolved,
+            require_label=not already_resolved,
         )
 
         if not already_resolved:
-            qid = _resolve_one_instance(
+            qid = resolve_one_instance(
                 item_iri, meta, wikibase_api, language_resolver.language, verbose
             )
             lookup["items"][iri_str] = qid
 
-        _push_instance_metadata(lookup["items"][iri_str], meta, wikibase_api, verbose)
+        if not any([meta["labels"], meta["descriptions"], meta["aliases"]]):
+            continue
+
+        push_instance_metadata(lookup["items"][iri_str], meta, wikibase_api, verbose)

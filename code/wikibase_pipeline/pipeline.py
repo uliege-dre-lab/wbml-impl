@@ -81,12 +81,12 @@ def update(mapping_file_path: str | Path) -> None:
     g_objects.parse(output_value, format="nt")
 
     inform(
-        "Resolving direct Wikibase IDs (wbml:classId / wbml:predicateId)",
+        "...Resolving direct Wikibase IDs (wbml:classId / wbml:predicateId)...",
         verbose,
     )
     resolve_direct_iris(g_objects, lookup, wb_api, verbose)
 
-    inform("Initialize instance metadata...", verbose)
+    inform("...Initialize instance metadata...", verbose)
     resolve_instances(g_objects, lookup, wb_api, language_resolver, verbose)
     resolve_property_instances(g_objects, lookup, wb_api, language_resolver, verbose)
 
