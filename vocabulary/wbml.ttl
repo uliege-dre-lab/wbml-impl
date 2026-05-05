@@ -352,10 +352,10 @@ wbml:datatype
     rdfs:domain wbml:ValueMap ;
     rdfs:range rdfs:Datatype .
 
-wbml:parentTriplesMap
+wbml:parentStatementsMap
     a owl:ObjectProperty ;
-    rdfs:label "parent triples map"@en ;
-    rdfs:comment "References another triples map to join with, creating an item-valued object via a foreign-key relationship."@en ;
+    rdfs:label "parent statements map"@en ;
+    rdfs:comment "References another statements map to join with, creating an item-valued object via a foreign-key relationship."@en ;
     rdfs:domain wbml:ValueMap ;
     rdfs:range wbml:StatementsMap .
 

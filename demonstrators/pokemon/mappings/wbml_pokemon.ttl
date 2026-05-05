@@ -749,7 +749,7 @@ ex:HasItemCategory a wbml:Property ;
   wbml:statementMap [
     wbml:property ex:HasItemCategory ;
     wbml:valueMap [
-        wbml:parentTriplesMap <#ItemCategoryMapping> ;
+        wbml:parentStatementsMap <#ItemCategoryMapping> ;
         wbml:joinCondition [
         wbml:child "type" ;
         wbml:parent "type"

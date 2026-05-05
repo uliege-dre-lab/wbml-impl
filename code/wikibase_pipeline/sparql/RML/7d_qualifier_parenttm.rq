@@ -59,7 +59,7 @@ WHERE {
   }
   FILTER(BOUND(?qualifierPropertyBlank) || BOUND(?qualifierPropertyId) || BOUND(?qualifierPropertyConst))
 
-  ?qom wbml:parentTriplesMap ?parentTM .
+  ?qom wbml:parentStatementsMap ?parentTM .
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
   BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)

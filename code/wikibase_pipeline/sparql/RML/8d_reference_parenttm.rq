@@ -63,7 +63,7 @@ WHERE {
   FILTER(BOUND(?refPropertyBlank) || BOUND(?refPropertyId) || BOUND(?refPropertyConst))
 
 
-  ?rom wbml:parentTriplesMap ?parentTM .
+  ?rom wbml:parentStatementsMap ?parentTM .
 
   BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID), "/reference/", STR(?refId))) AS ?refTM)
   BIND(IRI(CONCAT(STR(?refTM), "/subjectMap")) AS ?refSM)
