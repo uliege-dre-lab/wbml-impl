@@ -1,0 +1,39 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wbml: <https://example.org/wbml#>
+
+CONSTRUCT {
+  ?propIRI a rdf:Property ;
+           rdfs:label    ?predicateLabel ;
+           rdfs:comment  ?predicateDescription ;
+           skos:altLabel ?predicateAlias ;
+           wbml:propertyType ?predicateType .
+}
+WHERE {
+  {
+    { ?propNode a wbml:Property . }
+    UNION
+    { ?propNode wbml:propertyType ?inferredType .
+      FILTER NOT EXISTS { ?propNode a wbml:Property } }
+  }
+
+  FILTER NOT EXISTS {
+    ?propNode wbml:entityTemplate ?dynTemplate .
+    FILTER(CONTAINS(STR(?dynTemplate), "{"))
+  }
+
+  OPTIONAL { ?propNode wbml:entityLabel       ?predicateLabel . }
+  OPTIONAL { ?propNode wbml:entityDescription ?predicateDescription . }
+  OPTIONAL { ?propNode wbml:entityAlias       ?predicateAlias . }
+  OPTIONAL { ?propNode wbml:propertyType      ?predicateType . }
+  OPTIONAL { ?propNode wbml:entityTemplate      ?propExplicitKey .
+             FILTER(!CONTAINS(STR(?propExplicitKey), "{")) }
+
+  BIND(
+    COALESCE(
+      IRI(CONCAT("urn:wikibase:property:", ?propExplicitKey)),
+      IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propNode), "#")))
+    ) AS ?propIRI
+  )
+}

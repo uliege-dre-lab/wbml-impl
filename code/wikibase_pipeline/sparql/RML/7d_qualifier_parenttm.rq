@@ -1,0 +1,106 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX wbint: <https://example.org/wbint#>
+
+CONSTRUCT {
+  ?stmtTM a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          rr:subjectMap ?stmtSM ;
+          rr:predicateObjectMap ?qualifierPOM .
+
+  ?stmtSM rr:template ?stmtTemplate ;
+          rr:termType rr:IRI .
+
+  ?qualifierPOM rr:predicate ?qualifierPropIRI ;
+                rr:objectMap ?qualifierOM .
+
+  ?qualifierOM rr:parentTriplesMap ?parentTM ;
+               rr:joinCondition ?joinNode .
+
+  ?joinNode rr:child ?childField ;
+            rr:parent ?parentField .
+}
+WHERE {
+  ?tm a rr:TriplesMap ;
+      rml:logicalSource ?ls ;
+      wbml:statementMap ?pom ;
+      wbml:entityMap ?sm .
+
+  OPTIONAL { ?sm wbml:entityTemplate ?subjectEntityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?subjectEntityId . }
+  FILTER(BOUND(?subjectEntityTemplate) || BOUND(?subjectEntityId))
+  BIND(COALESCE(?subjectEntityTemplate, ?subjectEntityId) AS ?subjectKey)
+
+  ?pom wbint:statID ?statID ;
+       wbml:valueMap ?wom ;
+       wbml:qualifierMap ?qmap .
+
+  OPTIONAL { ?wom wbml:reference ?mainReference . }
+  OPTIONAL { ?wom wbml:entityTemplate ?mainValueEntityTemplate . }
+  OPTIONAL { ?wom wbml:entityId ?mainValueEntityId . }
+  OPTIONAL { ?wom wbml:joinCondition / wbml:child ?childKey . }
+  OPTIONAL { ?wom wbml:template ?mainValueTemplate . }
+
+  BIND(COALESCE(?mainValueEntityTemplate, ?mainValueEntityId) AS ?mainValueNode)
+
+  ?qmap wbml:valueMap ?qom .
+
+  OPTIONAL {
+    ?qmap wbml:propertyMap ?qualifierPropertyBlank .
+    OPTIONAL { ?qualifierPropertyBlank wbml:entityTemplate ?qualExplicitKey . }
+  }
+  OPTIONAL { ?qmap wbml:propertyId ?qualifierPropertyId . }
+  OPTIONAL {
+    ?qmap wbml:property ?qualifierPropertyConst .
+    OPTIONAL { ?qualifierPropertyConst wbml:entityTemplate ?qualConstExplicitKey . }
+    OPTIONAL { ?qualifierPropertyConst wbml:propertyType   ?qualConstType . }
+  }
+  FILTER(BOUND(?qualifierPropertyBlank) || BOUND(?qualifierPropertyId) || BOUND(?qualifierPropertyConst))
+
+  ?qom wbml:parentTriplesMap ?parentTM .
+
+  BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/pom/qualifier/", ENCODE_FOR_URI(STR(?qmap)))) AS ?qualifierPOM)
+  BIND(IRI(CONCAT(STR(?qualifierPOM), "/om")) AS ?qualifierOM)
+
+  OPTIONAL {
+    ?qom wbml:joinCondition ?jc .
+    ?jc wbml:child ?childField ;
+        wbml:parent ?parentField .
+    BIND(IRI(CONCAT(STR(?qualifierOM), "/joinCondition/", ENCODE_FOR_URI(STR(?jc)))) AS ?joinNode)
+  }
+
+  BIND(
+    IF(BOUND(?qualifierPropertyId),
+      IRI(CONCAT("urn:wikibase:qualifierIRI:", ?qualifierPropertyId)),
+      IF(BOUND(?qualifierPropertyBlank),
+        IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualExplicitKey))),
+        IF(BOUND(?qualConstExplicitKey),
+          IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualConstExplicitKey))),
+          IF(BOUND(?qualConstType),
+            IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPropertyConst), "#"))),
+            ?qualifierPropertyConst
+          )
+        )
+      )
+    ) AS ?qualifierPropIRI
+  )
+
+  BIND(
+    IF(BOUND(?mainReference),       CONCAT("_{", STR(?mainReference), "}"),
+    IF(BOUND(?mainValueNode), CONCAT("_", STR(?mainValueNode)),
+    IF(BOUND(?childKey),            CONCAT("_{", STR(?childKey), "}"),
+    IF(BOUND(?mainValueTemplate), CONCAT("_", STR(?mainValueTemplate)),
+     ""))))
+  AS ?valueSuffix)
+
+  BIND(
+    CONCAT(
+      "urn:wikibase:statement:", STR(?subjectKey), "_", STR(?statID), ?valueSuffix
+    )
+    AS ?stmtTemplate
+  )
+}

@@ -3,6 +3,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix wbml: <https://example.org/wbml#> .
+@prefix wbint: <https://example.org/wbint#> .
 @prefix rml:   <http://w3id.org/rml/> .
 
 #################################################################
@@ -12,32 +13,26 @@
 <https://example.org/wbml>
     a owl:Ontology ;
     rdfs:label "Wikibase Mapping Language (WBML) Vocabulary"@en ;
-    rdfs:comment "Vocabulary for the Wikibase Mapping Language, an RML-compatible mapping language that supports Wikibase-specific features such as statements, qualifiers, references, and ranks."@en ;
-    .
+    rdfs:comment "Vocabulary for the Wikibase Mapping Language, an RML-compatible mapping language that supports Wikibase-specific features such as statements, qualifiers, references, and ranks."@en .
+
+<https://example.org/wbint>
+    a owl:Ontology ;
+    rdfs:label "WBML Internal Vocabulary"@en ;
+    rdfs:comment "Internal computed properties assigned by the WBML-to-RML conversion pipeline. Not intended for use in WBML mapping files."@en .
 
 #################################################################
 # Classes
 #################################################################
 
-wbml:ItemMap
+wbml:EntityMap
     a owl:Class ;
-    rdfs:label "Item Map"@en ;
-    rdfs:comment "Describes how to generate the Wikibase item (subject) for each row of input data."@en .
-
-wbml:ClassSpec
-    a owl:Class ;
-    rdfs:label "Class Specification"@en ;
-    rdfs:comment "Describes a Wikibase class to be created or referenced, including its key, labels, and descriptions."@en .
+    rdfs:label "Entity Map"@en ;
+    rdfs:comment "Describes how to generate the Wikibase entity (subject) for each row of input data."@en .
 
 wbml:StatementMap
     a owl:Class ;
     rdfs:label "Statement Map"@en ;
     rdfs:comment "Maps a source data field to a Wikibase statement (property + value), optionally with qualifiers, references, and a rank."@en .
-
-wbml:PredicateSpec
-    a owl:Class ;
-    rdfs:label "Predicate Specification"@en ;
-    rdfs:comment "Describes a Wikibase property to be created or referenced, including its key, labels, descriptions, and datatype."@en .
 
 wbml:ValueMap
     a owl:Class ;
@@ -69,6 +64,55 @@ wbml:Rank
     rdfs:label "Rank"@en ;
     rdfs:comment "The rank of a Wikibase statement (preferred, normal, or deprecated)."@en .
 
+wbml:Class
+    a owl:Class ;
+    rdfs:label "class"@en ;
+    rdfs:comment "A Wikibase class in the schema."@en .
+
+#################################################################
+# Entity declaration properties - used in schema declarations
+#################################################################
+
+wbml:entityLabel
+    a owl:AnnotationProperty ;
+    rdfs:label "entity label"@en ;
+    rdfs:comment "A human-readable label for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:label in WBML schema declarations."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
+
+wbml:entityDescription
+    a owl:AnnotationProperty ;
+    rdfs:label "entity description"@en ;
+    rdfs:comment "A human-readable description for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:comment in WBML schema declarations."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
+
+wbml:entityAlias
+    a owl:AnnotationProperty ;
+    rdfs:label "entity alias"@en ;
+    rdfs:comment "An alternative label for a declared Wikibase class or property, optionally language-tagged. Replaces skos:altLabel in WBML schema declarations."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
+
+#################################################################
+# Entity declaration properties - used in schema declarations
+#################################################################
+
+wbml:entityLabel
+    a owl:AnnotationProperty ;
+    rdfs:label "entity label"@en ;
+    rdfs:comment "A human-readable label for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:label in WBML schema declarations."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
+
+wbml:entityDescription
+    a owl:AnnotationProperty ;
+    rdfs:label "entity description"@en ;
+    rdfs:comment "A human-readable description for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:comment in WBML schema declarations."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
+
+wbml:entityAlias
+    a owl:AnnotationProperty ;
+    rdfs:label "entity alias"@en ;
+    rdfs:comment "An alternative label for a declared Wikibase class or property, optionally language-tagged. Replaces skos:altLabel in WBML schema declarations."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
+
 #################################################################
 # Named individuals — ranks and special types
 #################################################################
@@ -91,61 +135,105 @@ wbml:DeprecatedRank
 wbml:Item
     a owl:NamedIndividual ;
     rdfs:label "Item"@en ;
-    rdfs:comment "Used as the value of wbml:propertyType to indicate that the property links to a Wikibase item."@en .
+    rdfs:comment "Used as the value of wbml:entityType to indicate that the entity map generates a Wikibase item (default when entityType is absent)."@en .
+
+wbml:Property
+    a owl:Class, owl:NamedIndividual ;
+    rdfs:label "Property"@en ;
+    rdfs:comment "A Wikibase property in the schema. As a named individual: value of wbml:entityType to indicate the entity map generates a Wikibase property."@en .
 
 #################################################################
-# Item map properties
+# Property datatype individuals - values for wbml:propertyType
 #################################################################
 
-wbml:itemMap
+wbml:item
+    a owl:NamedIndividual ;
+    rdfs:label "item"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'wikibase-item' (links to another item)."@en .
+
+wbml:string
+    a owl:NamedIndividual ;
+    rdfs:label "string"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'string'."@en .
+
+wbml:url
+    a owl:NamedIndividual ;
+    rdfs:label "url"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'url'."@en .
+
+wbml:externalId
+    a owl:NamedIndividual ;
+    rdfs:label "external ID"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'external-id'."@en .
+
+wbml:quantity
+    a owl:NamedIndividual ;
+    rdfs:label "quantity"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'quantity'."@en .
+
+wbml:time
+    a owl:NamedIndividual ;
+    rdfs:label "time"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'time'."@en .
+
+wbml:monolingualText
+    a owl:NamedIndividual ;
+    rdfs:label "monolingual text"@en ;
+    rdfs:comment "Value of wbml:propertyType: the property has Wikibase datatype 'monolingualtext'."@en .
+
+#################################################################
+# Entity map properties
+#################################################################
+
+wbml:entityMap
     a owl:ObjectProperty ;
-    rdfs:label "item map"@en ;
-    rdfs:comment "Attaches an item map to a triples map, defining how the Wikibase item identifier is generated."@en ;
+    rdfs:label "entity map"@en ;
+    rdfs:comment "Attaches an entity map to a triples map, defining how the Wikibase entity identifier is generated. Defaults to generating a Wikibase item unless wbml:entityType specifies otherwise."@en ;
     rdfs:domain rml:TriplesMap ;
-    rdfs:range wbml:ItemMap .
+    rdfs:range wbml:EntityMap .
 
-wbml:nodeTemplate
+wbml:entityTemplate
     a owl:DatatypeProperty ;
-    rdfs:label "node template"@en ;
-    rdfs:comment "A template string (with {variable} placeholders) used to construct the Wikibase item identifier."@en ;
-    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
+    rdfs:label "entity template"@en ;
+    rdfs:comment "A template string (with {variable} placeholders) used to construct the Wikibase entity identifier."@en ;
+    rdfs:domain [ owl:unionOf (wbml:EntityMap wbml:ValueMap) ] ;
     rdfs:range xsd:string .
+
+wbml:entityId
+    a owl:DatatypeProperty ;
+    rdfs:label "entity ID"@en ;
+    rdfs:comment "A known Wikibase entity ID used to directly reference an existing item or property, instead of deriving its IRI from a template."@en ;
+    rdfs:domain [ owl:unionOf (wbml:EntityMap wbml:ValueMap) ] ;
+    rdfs:range xsd:string .
+
 
 wbml:class
     a owl:ObjectProperty ;
     rdfs:label "class"@en ;
-    rdfs:comment "Specifies the Wikibase class that the generated item should be an instance of."@en ;
-    rdfs:domain [ owl:unionOf (wbml:ItemMap wbml:ValueMap) ] ;
-    rdfs:range wbml:ClassSpec .
+    rdfs:comment "Specifies the Wikibase class that the generated entity should be an instance of."@en ;
+    rdfs:domain [ owl:unionOf (wbml:EntityMap wbml:ValueMap) ] ;
+    rdfs:range wbml:Class .
 
-#################################################################
-# Class specification properties
-#################################################################
-
-wbml:classKey
+wbml:classId
     a owl:DatatypeProperty ;
-    rdfs:label "class key"@en ;
-    rdfs:comment "A unique string identifier for a Wikibase class, used to look up or create the corresponding Wikibase item."@en ;
-    rdfs:domain wbml:ClassSpec ;
+    rdfs:label "class ID"@en ;
+    rdfs:comment "A known Wikibase item ID for the class used to directly reference an existing class instead of resolving it from a spec node."@en ;
+    rdfs:domain wbml:EntityMap ;
     rdfs:range xsd:string .
 
-wbml:classLabel
-    a owl:DatatypeProperty ;
-    rdfs:label "class label"@en ;
-    rdfs:comment "A human-readable label for the Wikibase class, optionally language-tagged."@en ;
-    rdfs:domain wbml:ClassSpec .
+wbml:entityType
+    a owl:ObjectProperty ;
+    rdfs:label "entity type"@en ;
+    rdfs:comment "Specifies whether the entity map generates a Wikibase item (wbml:Item, default) or property (wbml:Property)."@en ;
+    rdfs:domain wbml:EntityMap ;
+    rdfs:range [ owl:unionOf (wbml:Item wbml:Property) ] .
 
-wbml:classDescription
-    a owl:DatatypeProperty ;
-    rdfs:label "class description"@en ;
-    rdfs:comment "A human-readable description for the Wikibase class, optionally language-tagged."@en ;
-    rdfs:domain wbml:ClassSpec .
-
-wbml:classAlias
-    a owl:DatatypeProperty ;
-    rdfs:label "class alias"@en ;
-    rdfs:comment "An alternative label (alias) for the Wikibase class, optionally language-tagged."@en ;
-    rdfs:domain wbml:ClassSpec .
+wbml:propertyType
+    a owl:ObjectProperty ;
+    rdfs:label "property type"@en ;
+    rdfs:comment "Specifies the Wikibase datatype of a property."@en ;
+    rdfs:domain [ owl:unionOf (wbml:Property wbml:EntityMap) ] ;
+    rdfs:range [ owl:unionOf (wbml:item wbml:string wbml:url wbml:externalId wbml:quantity wbml:time wbml:monolingualText) ] .
 
 #################################################################
 # Statement map properties
@@ -161,28 +249,42 @@ wbml:statementMap
 wbml:label
     a owl:ObjectProperty ;
     rdfs:label "label"@en ;
-    rdfs:comment "Relating a label to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:comment "Relating a label to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:description
     a owl:ObjectProperty ;
     rdfs:label "description"@en ;
-    rdfs:comment "Relating a description to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:comment "Relating a description to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:alias
     a owl:ObjectProperty ;
     rdfs:label "alias"@en ;
-    rdfs:comment "Relating an alias to an Item's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:comment "Relating an alias to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:propertyMap
     a owl:ObjectProperty ;
     rdfs:label "property map"@en ;
-    rdfs:comment "The property of a statement, qualifier, or reference. Can be an existing RDF property or a blank-node PredicateSpec."@en ;
+    rdfs:comment "Specifies an inline blank-node property definition for a statement, qualifier, or reference."@en ;
+    rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
+    rdfs:range wbml:Property .
+
+wbml:propertyId
+    a owl:DatatypeProperty ;
+    rdfs:label "property ID"@en ;
+    rdfs:comment "A known Wikibase property ID used to directly reference an existing property, instead of defining it with a PredicateSpec."@en ;
+    rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] ;
+    rdfs:range xsd:string .
+
+wbml:property
+    a owl:ObjectProperty ;
+    rdfs:label "property"@en ;
+    rdfs:comment "References an existing named property IRI for a statement, qualifier, or reference."@en ;
     rdfs:domain [ owl:unionOf (wbml:StatementMap wbml:QualifierMap wbml:ReferenceRecord) ] .
 
 wbml:valueMap
@@ -214,42 +316,7 @@ wbml:referenceMap
     rdfs:range wbml:ReferenceMap .
 
 #################################################################
-# Predicate specification properties
-#################################################################
-
-wbml:propertyKey
-    a owl:DatatypeProperty ;
-    rdfs:label "predicate key"@en ;
-    rdfs:comment "A unique string identifier for a Wikibase property, used to look up or create it."@en ;
-    rdfs:domain wbml:PredicateSpec ;
-    rdfs:range xsd:string .
-
-wbml:propertyLabel
-    a owl:DatatypeProperty ;
-    rdfs:label "predicate label"@en ;
-    rdfs:comment "A human-readable label for the Wikibase property, optionally language-tagged."@en ;
-    rdfs:domain wbml:PredicateSpec .
-
-wbml:propertyDescription
-    a owl:DatatypeProperty ;
-    rdfs:label "predicate description"@en ;
-    rdfs:comment "A human-readable description for the Wikibase property, optionally language-tagged."@en ;
-    rdfs:domain wbml:PredicateSpec .
-
-wbml:predicateAlias
-    a owl:DatatypeProperty ;
-    rdfs:label "predicate alias"@en ;
-    rdfs:comment "An alternative label (alias) for the Wikibase property, optionally language-tagged."@en ;
-    rdfs:domain wbml:PredicateSpec .
-
-wbml:propertyType
-    a owl:ObjectProperty ;
-    rdfs:label "property type"@en ;
-    rdfs:comment "The Wikibase datatype of the property. Use wbml:Item for item-valued properties, or an XSD datatype for literal-valued properties."@en ;
-    rdfs:domain wbml:PredicateSpec .
-
-#################################################################
-# Object map properties
+# Value map properties
 #################################################################
 
 wbml:reference
@@ -276,7 +343,8 @@ wbml:datatype
     a owl:ObjectProperty ;
     rdfs:label "datatype"@en ;
     rdfs:comment "The XSD datatype to use when constructing the typed literal for the object."@en ;
-    rdfs:domain wbml:ValueMap .
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range rdfs:Datatype .
 
 wbml:parentTriplesMap
     a owl:ObjectProperty ;
@@ -291,6 +359,13 @@ wbml:joinCondition
     rdfs:comment "Specifies the child and parent fields to use when joining with a parent triples map."@en ;
     rdfs:domain wbml:ValueMap ;
     rdfs:range wbml:JoinCondition .
+
+wbml:template
+    a owl:DatatypeProperty ;
+    rdfs:label "template"@en ;
+    rdfs:comment "A template string with {variable} placeholders that generates a literal string value by substituting source data fields."@en ;
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range xsd:string .
 
 #################################################################
 # Join condition properties
@@ -325,16 +400,6 @@ wbml:referenceRecord
 # Schema-level properties (used by Schema SPARQL queries)
 #################################################################
 
-wbml:Class
-    a owl:Class ;
-    rdfs:label "Class"@en ;
-    rdfs:comment "A Wikibase class derived from the mapping, representing a type of item."@en .
-
-wbml:Property
-    a owl:Class ;
-    rdfs:label "Property"@en ;
-    rdfs:comment "A Wikibase property derived from the mapping."@en .
-
 wbml:subclassOf
     a owl:ObjectProperty ;
     rdfs:label "subclass of"@en ;
@@ -346,14 +411,14 @@ wbml:subclassOf
 # Internal/computed properties (used by the converter pipeline)
 #################################################################
 
-wbml:statID
+wbint:statID
     a owl:DatatypeProperty ;
     rdfs:label "statement ID"@en ;
     rdfs:comment "An internally assigned integer identifier for a predicate-object map, used during RML conversion."@en ;
     rdfs:domain wbml:StatementMap ;
     rdfs:range xsd:integer .
 
-wbml:refId
+wbint:refId
     a owl:DatatypeProperty ;
     rdfs:label "reference ID"@en ;
     rdfs:comment "An internally assigned integer identifier for a reference map within a predicate-object map, used during RML conversion."@en ;

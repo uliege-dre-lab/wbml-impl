@@ -1,0 +1,41 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX wbml: <https://example.org/wbml#>
+
+CONSTRUCT {
+  ?tm rr:subjectMap ?subjectMap .
+
+  ?subjectMap rr:template ?template ;
+              rr:termType rr:IRI ;
+              rr:class ?classIRI .
+}
+WHERE {
+  ?tm wbml:entityMap ?sm .
+  OPTIONAL { ?sm wbml:entityType ?entityType . }
+  FILTER(!BOUND(?entityType) || ?entityType = wbml:Item)
+
+  OPTIONAL { ?sm wbml:entityTemplate ?entityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?entityId . }
+  FILTER(BOUND(?entityTemplate) || BOUND(?entityId))
+
+  OPTIONAL {
+    {
+      ?sm wbml:class ?classNode .
+      OPTIONAL { ?classNode wbml:entityTemplate ?classExplicitKey . }
+      BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
+      BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
+    }
+    UNION
+    {
+      ?sm wbml:classId ?classIdStr .
+      BIND(IRI(CONCAT("urn:wikibase:itemIRI:", STR(?classIdStr))) AS ?classIRI)
+    }
+  }
+
+  BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
+  BIND(
+    IF(BOUND(?entityId),
+      CONCAT("urn:wikibase:itemIRI:", STR(?entityId)),
+      CONCAT("urn:wikibase:item:", STR(?entityTemplate))
+    ) AS ?template
+  )
+}

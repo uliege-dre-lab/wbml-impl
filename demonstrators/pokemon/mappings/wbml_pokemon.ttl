@@ -1,0 +1,809 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix wbml: <https://example.org/wbml#> .
+@prefix ex: <https://example.org/pokemon#> .
+
+# Class definitions
+ex:AbilityClass a wbml:Class ;
+  wbml:entityLabel "Ability"@en ;
+  wbml:entityLabel "Capacité"@fr ;
+  wbml:entityDescription "A special power or skill that a Pokémon can have."@en ;
+  wbml:entityAlias "Pokemon Ability"@en .
+
+ex:SpeciesClass a wbml:Class ;
+  wbml:entityLabel "Species"@en ;
+  wbml:entityLabel "Espèce"@fr ;
+  wbml:entityDescription "The species or classification of a Pokémon."@en ;
+  wbml:entityAlias "Pokemon Species"@en .
+
+ex:TypeClass a wbml:Class ;
+  wbml:entityLabel "Type"@en ;
+  wbml:entityLabel "Type"@fr ;
+  wbml:entityDescription "The elemental type of a Pokémon or move."@en .
+
+ex:EggGroupClass a wbml:Class ;
+  wbml:entityLabel "Egg Group"@en ;
+  wbml:entityLabel "Groupe d'œuf"@fr ;
+  wbml:entityDescription "The egg group classification for Pokémon breeding."@en .
+
+ex:MoveClass a wbml:Class ;
+  wbml:entityLabel "Move"@en ;
+  wbml:entityLabel "Attaque"@fr ;
+  wbml:entityDescription "A move or ability that a Pokémon can learn."@en .
+
+ex:ItemClass a wbml:Class ;
+  wbml:entityLabel "Item"@en ;
+  wbml:entityLabel "Objet"@fr ;
+  wbml:entityDescription "An item that can be used in the Pokémon games."@en .
+
+# Predicate definitions
+ex:HasSpecies a wbml:Property ;
+    wbml:entityLabel "has species"@en ;
+    wbml:entityDescription "Indicates the species of the Pokémon."@en ;
+    wbml:propertyType wbml:item .
+
+ex:IsHiddenAbility a wbml:Property ;
+    wbml:entityLabel "is hidden ability"@en ;
+    wbml:propertyType wbml:string ;
+    wbml:entityAlias "Is Hidden Ability"@en .
+
+ex:PokedexNumber a  wbml:Property ;
+    wbml:entityLabel "Pokédex number"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:Attack a wbml:Property ;
+    wbml:entityLabel "Attack"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:SpecialAttack a wbml:Property ;
+    wbml:entityLabel "Special Attack"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:Gender a wbml:Property ;
+    wbml:entityLabel "Gender"@en ;
+    wbml:propertyType wbml:string .
+
+ex:HasAbility a wbml:Property ;
+    wbml:entityLabel "has ability"@en ;
+    wbml:propertyType wbml:item .
+
+ex:StatedIn a wbml:Property ;
+    wbml:entityLabel "stated in"@en ;
+    wbml:propertyType wbml:string .
+
+ex:StatedOn a wbml:Property ;
+    wbml:entityLabel "stated on"@en ;
+    wbml:propertyType wbml:time ;
+    wbml:entityAlias "Stated On"@en .
+
+ex:PokemonHasType a wbml:Property ;
+    wbml:entityLabel "Pokemon has type"@en ;
+    wbml:entityAlias "Has Type"@en ;
+    wbml:propertyType wbml:item .
+
+ex:HasEggGroup a wbml:Property ;
+    wbml:entityLabel "has egg group"@en ;
+    wbml:propertyType wbml:item .
+
+ex:EvolvesFrom a wbml:Property ;
+    wbml:entityLabel "evolves from"@en ;
+    wbml:propertyType wbml:item .
+
+ex:EvolvesTo a wbml:Property ;
+    wbml:entityLabel "evolves to"@en ;
+    wbml:propertyType wbml:item .
+
+ex:EvolutionCondition a wbml:Property ;
+    wbml:entityLabel "evolution condition"@en ;
+    wbml:propertyType wbml:string .
+
+ex:EffectiveAgainst a wbml:Property ;
+    wbml:entityLabel "effective against"@en ;
+    wbml:propertyType wbml:item .
+
+ex:IneffectiveAgainst a wbml:Property ;
+    wbml:entityLabel "ineffective against"@en ;
+    wbml:propertyType wbml:item .
+
+ex:NoEffectAgainst a wbml:Property ;
+    wbml:entityLabel "no effect against"@en ;
+    wbml:propertyType wbml:item .
+
+ex:HasImage a wbml:Property ;
+    wbml:entityLabel "has image"@en ;
+    wbml:propertyType wbml:url .
+
+ex:MoveHasType a wbml:Property ;
+    wbml:entityLabel "Move has type"@en ;
+    wbml:entityAlias "Has Type"@en ;
+    wbml:propertyType wbml:item .
+
+ex:Accuracy a wbml:Property ;
+    wbml:entityLabel "Accuracy"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:Power a wbml:Property ;
+    wbml:entityLabel "Power"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:PP a wbml:Property ;
+    wbml:entityLabel "PP"@en ;
+    wbml:propertyType wbml:quantity ;
+    wbml:entityAlias "Power Points"@en .
+
+ex:MoveCategory a wbml:Property ;
+    wbml:entityLabel "Move Category"@en ;
+    wbml:propertyType wbml:string ;
+    wbml:entityAlias "Has Category"@en .
+
+ex:TMNumber a wbml:Property ;
+    wbml:entityLabel "TM Number"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:ImageType a wbml:Property ;
+    wbml:entityLabel "Image Type"@en ;
+    wbml:propertyType wbml:string ;
+    wbml:entityAlias "Has Image Type"@en .
+
+ex:HP a wbml:Property ;
+    wbml:entityLabel "HP"@en ;
+    wbml:propertyType wbml:quantity ;
+    wbml:entityAlias "Hit Points"@en .
+
+ex:Defense a wbml:Property ;
+    wbml:entityLabel "Defense"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:SpecialDefense a wbml:Property ;
+    wbml:entityLabel "Special Defense"@en ;
+    wbml:propertyType wbml:quantity ;
+    wbml:entityAlias "Sp. Defense"@en .
+
+ex:Weight a wbml:Property ;
+    wbml:entityLabel "Weight"@en ;
+    wbml:propertyType wbml:string .
+
+ex:ItemNumber a wbml:Property ;
+    wbml:entityLabel "Item Number"@en ;
+    wbml:propertyType wbml:quantity .
+
+ex:HasItemCategory a wbml:Property ;
+    wbml:entityLabel "has item category"@en ;
+    wbml:propertyType wbml:item .
+
+#################################################################
+# POKEMON
+#################################################################
+
+<#PokemonMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "demonstrators/pokemon/input_data/pokedex_small.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Pokemon_{id}" ;
+    wbml:classId "Q6999"
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "name.english" ; wbml:language "en" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "name.japanese" ; wbml:language "ja" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "name.chinese" ; wbml:language "zh" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "name.french" ; wbml:language "fr" ]
+  ] ;
+
+  wbml:description [
+    wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:PokedexNumber ;
+    wbml:valueMap [ wbml:reference "id" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HasSpecies ;
+    wbml:rank wbml:PreferredRank ;
+    wbml:valueMap [
+      wbml:entityTemplate "Species_{species}"
+    ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HP ;
+    wbml:valueMap [ wbml:reference "base.HP" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:Attack ;
+    wbml:valueMap [ wbml:reference "base.Attack" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:Defense ;
+    wbml:valueMap [ wbml:reference "base.Defense" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:SpecialAttack ;
+    wbml:valueMap [ wbml:reference "base.Sp. Attack" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:SpecialDefense ;
+    wbml:valueMap [ wbml:reference "base.Sp. Defense" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Speed" ;
+      wbml:entityLabel "Speed"@en ;
+      wbml:propertyType wbml:quantity ;
+      wbml:entityAlias "Base Speed"@en
+    ] ;
+    wbml:valueMap [ wbml:reference "base.Speed" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyId "P56" ;
+    wbml:valueMap [ wbml:reference "profile.height" ; wbml:datatype xsd:string ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:Weight ;
+    wbml:valueMap [ wbml:reference "profile.weight" ; wbml:datatype xsd:string ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:Gender ;
+    wbml:valueMap [ wbml:reference "profile.gender" ; wbml:datatype xsd:string ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HasImage ;
+    wbml:valueMap [ wbml:reference "image.sprite" ; wbml:datatype xsd:anyURI ] ;
+    wbml:qualifierMap [
+      wbml:property ex:ImageType ;
+      wbml:valueMap [ wbml:constant "sprite" ; wbml:datatype xsd:string ]
+    ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HasImage ;
+    wbml:valueMap [ wbml:reference "image.thumbnail" ; wbml:datatype xsd:anyURI ] ;
+    wbml:qualifierMap [
+      wbml:property ex:ImageType ;
+      wbml:valueMap [ wbml:constant "thumbnail" ; wbml:datatype xsd:string ]
+    ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HasImage ;
+    wbml:valueMap [ wbml:reference "image.hires" ; wbml:datatype xsd:anyURI ] ;
+    wbml:qualifierMap [
+      wbml:property ex:ImageType ;
+      wbml:valueMap [ wbml:constant "hires" ; wbml:datatype xsd:string ]
+    ]
+  ] .
+
+<#PokemonTypeMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        unnest(type) AS type_name
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
+      WHERE type IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Pokemon_{id}" ;
+    wbml:classId "Q6999"
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:PokemonHasType ;
+    wbml:valueMap [
+      wbml:entityTemplate "Type_{type_name}" ;
+    ]
+  ] .
+
+<#PokemonEggGroupMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        unnest(profile.egg) AS egg_group
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
+      WHERE profile.egg IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Pokemon_{id}" ;
+    wbml:classId "Q6999"
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HasEggGroup ;
+    wbml:valueMap [
+      wbml:entityTemplate "EggGroup_{egg_group}"
+    ]
+  ] .
+
+<#PokemonAbilityStatementMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        json_extract_string(ability_entry, '$[0]') AS ability_name,
+        json_extract_string(ability_entry, '$[1]') AS ability_flag
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json'),
+           unnest(profile.ability) AS t(ability_entry)
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Pokemon_{id}" ;
+    wbml:classId "Q6999"
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HasAbility ;
+    wbml:valueMap [
+      wbml:entityTemplate "Ability_{ability_name}"
+    ] ;
+    wbml:qualifierMap [
+      wbml:property ex:IsHiddenAbility ;
+      wbml:valueMap [
+        wbml:reference "ability_flag" ;
+        wbml:datatype xsd:boolean
+      ]
+    ] ;
+    wbml:referenceMap [
+      wbml:referenceRecord [
+        wbml:property ex:StatedIn ;
+        wbml:valueMap [
+          wbml:constant "pokedex.json" ;
+          wbml:datatype xsd:string
+        ]
+      ] ;
+      wbml:referenceRecord [
+        wbml:property ex:StatedOn ;
+        wbml:valueMap [
+          wbml:constant "2023-01-01" ;
+          wbml:datatype xsd:date
+        ]
+      ]
+    ] ;
+    wbml:referenceMap [
+      wbml:referenceRecord [
+        wbml:property ex:StatedIn ;
+        wbml:valueMap [
+          wbml:constant "pokedex.json" ;
+          wbml:datatype xsd:string
+        ]
+      ] ;
+      wbml:referenceRecord [
+        wbml:property ex:StatedOn ;
+        wbml:valueMap [
+          wbml:constant "2023-01-05" ;
+          wbml:datatype xsd:date
+        ]
+      ]
+    ]
+  ] .
+
+<#PokemonEvolutionPrevMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        json_extract_string(evolution.prev, '$[0]') AS prev_id,
+        json_extract_string(evolution.prev, '$[1]') AS prev_condition
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
+      WHERE evolution.prev IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Pokemon_{id}" ;
+    wbml:classId "Q6999"
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:EvolvesFrom ;
+    wbml:valueMap [
+      wbml:entityTemplate "Pokemon_{prev_id}"
+    ] ;
+    wbml:qualifierMap [
+      wbml:property ex:EvolutionCondition ;
+      wbml:valueMap [
+        wbml:reference "prev_condition" ;
+        wbml:datatype xsd:string
+      ]
+    ]
+  ] .
+
+<#PokemonEvolutionNextMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        json_extract_string(next_entry, '$[0]') AS next_id,
+        json_extract_string(next_entry, '$[1]') AS next_condition
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json'),
+           unnest(evolution.next) AS t(next_entry)
+      WHERE evolution.next IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Pokemon_{id}" ;
+    wbml:classId "Q6999"
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:EvolvesTo ;
+    wbml:valueMap [
+      wbml:entityTemplate "Pokemon_{next_id}"
+    ] ;
+    wbml:qualifierMap [
+      wbml:property ex:EvolutionCondition ;
+      wbml:valueMap [
+        wbml:reference "next_condition" ;
+        wbml:datatype xsd:string
+      ]
+    ]
+  ] .
+
+#################################################################
+# POKEMON SUPPORT ENTITIES
+#################################################################
+
+<#SpeciesMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "demonstrators/pokemon/input_data/pokedex_small.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Species_{species}" ;
+    wbml:class ex:SpeciesClass
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [
+      wbml:reference "species" ;
+      wbml:language "en"
+    ]
+  ] .
+
+<#AbilityMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT
+        json_extract_string(ability_entry, '$[0]') AS ability_name
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json'),
+           unnest(profile.ability) AS t(ability_entry)
+      WHERE profile.ability IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Ability_{ability_name}" ;
+    wbml:class ex:AbilityClass
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "ability_name" ; wbml:language "en" ]
+  ] .
+
+<#EggGroupMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT
+        unnest(profile.egg) AS egg_group
+      FROM read_json('demonstrators/pokemon/input_data/pokedex_small.json')
+      WHERE profile.egg IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "EggGroup_{egg_group}" ;
+    wbml:class ex:EggGroupClass
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "egg_group" ; wbml:language "en" ]
+  ] .
+
+#################################################################
+# MOVES
+#################################################################
+
+<#MoveMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "demonstrators/pokemon/input_data/moves_small.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Move_{id}" ;
+    wbml:class ex:MoveClass
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:template "{ename} (Move)" ; wbml:language "en" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:template "{jname} (Move)" ; wbml:language "ja" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:template "{cname} (Move)" ; wbml:language "zh" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:Accuracy ;
+    wbml:valueMap [ wbml:reference "accuracy" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:Power ;
+    wbml:valueMap [ wbml:reference "power" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:PP ;
+    wbml:valueMap [ wbml:reference "pp" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:MoveCategory ;
+    wbml:valueMap [ wbml:reference "category" ; wbml:datatype xsd:string ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:TMNumber ;
+    wbml:valueMap [ wbml:reference "tm" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:MoveHasType ;
+    wbml:valueMap [
+      wbml:entityTemplate "Type_{type}"
+    ]
+  ] .
+
+#################################################################
+# TYPES
+#################################################################
+
+<#TypeMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "demonstrators/pokemon/input_data/types.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Type_{english}" ;
+    wbml:class ex:TypeClass
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:template "{english} (Type)" ; wbml:language "en" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:template "{japanese} (Type)" ; wbml:language "ja" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:template "{chinese} (Type)" ; wbml:language "zh" ]
+  ] .
+
+<#TypeEffectiveMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        english,
+        unnest(effective) AS target_type
+      FROM read_json('demonstrators/pokemon/input_data/types.json')
+      WHERE effective IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Type_{english}" ;
+    wbml:class ex:TypeClass
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:EffectiveAgainst ;
+    wbml:valueMap [
+      wbml:entityTemplate "Type_{target_type}"
+    ]
+  ] .
+
+<#TypeIneffectiveMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        english,
+        unnest(ineffective) AS target_type
+      FROM read_json('demonstrators/pokemon/input_data/types.json')
+      WHERE ineffective IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Type_{english}" ;
+    wbml:class ex:TypeClass
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:IneffectiveAgainst ;
+    wbml:valueMap [
+      wbml:entityTemplate "Type_{target_type}"
+    ]
+  ] .
+
+<#TypeNoEffectMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        english,
+        unnest(no_effect) AS target_type
+      FROM read_json('demonstrators/pokemon/input_data/types.json')
+      WHERE no_effect IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Type_{english}" ;
+    wbml:class ex:TypeClass
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:NoEffectAgainst ;
+    wbml:valueMap [
+      wbml:entityTemplate "Type_{target_type}"
+    ]
+  ] .
+
+#################################################################
+# ITEMS
+#################################################################
+
+<#ItemMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        id,
+        type,
+        description,
+        name.english AS name_en,
+        name.japanese AS name_ja,
+        name.chinese AS name_zh
+      FROM read_json('demonstrators/pokemon/input_data/items_small.json')
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Item_{id}" ;
+    wbml:class ex:ItemClass
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "name_en" ; wbml:language "en" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "name_ja" ; wbml:language "ja" ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "name_zh" ; wbml:language "zh" ]
+  ] ;
+
+  wbml:description [
+    wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:ItemNumber ;
+    wbml:valueMap [ wbml:reference "id" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:property ex:HasItemCategory ;
+    wbml:valueMap [
+        wbml:parentTriplesMap <#ItemCategoryMapping> ;
+        wbml:joinCondition [
+        wbml:child "type" ;
+        wbml:parent "type"
+        ]
+    ]
+    ] .
+
+<#ItemCategoryMapping>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT DISTINCT type
+      FROM read_json('demonstrators/pokemon/input_data/items_small.json')
+      WHERE type IS NOT NULL
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "ItemCategory_{type}" ;
+    wbml:class [
+      a wbml:Class ;
+      wbml:entityTemplate "ItemCategory" ;
+      wbml:entityLabel "Item Category"@en ;
+      wbml:entityLabel "Catégorie d'objet"@fr ;
+      wbml:entityDescription "A category or classification for items in the Pokémon games."@en ;
+      wbml:entityAlias "Pokemon Item Category"@en
+    ]
+  ] ;
+
+  wbml:label [
+    wbml:valueMap [ wbml:reference "type" ; wbml:language "en" ]
+  ] .

@@ -1,0 +1,34 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX wbml: <https://example.org/wbml#>
+
+CONSTRUCT {
+  ?tm rr:subjectMap ?subjectMap ;
+      rr:predicateObjectMap ?propertyPOM .
+
+  ?subjectMap rr:template ?template ;
+              rr:termType rr:IRI .
+
+  ?propertyPOM rr:predicate wbml:propertyType ;
+               rr:objectMap ?propertyOM .
+  ?propertyOM  rr:constant ?propertyType
+
+}
+WHERE {
+  ?tm wbml:entityMap ?sm .
+  ?sm wbml:entityType wbml:Property .      # strictly required for property case
+
+  OPTIONAL { ?sm wbml:entityTemplate ?entityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?entityId . }
+  OPTIONAL { ?sm wbml:propertyType ?propertyType . }
+  FILTER(BOUND(?entityTemplate) || BOUND(?entityId))
+
+  BIND(IRI(CONCAT(STR(?tm), "/subjectMap")) AS ?subjectMap)
+  BIND(IRI(CONCAT(STR(?tm), "/propertyPOM")) AS ?propertyPOM)
+  BIND(IRI(CONCAT(STR(?tm), "/propertyOM")) AS ?propertyOM)
+  BIND(
+    IF(BOUND(?entityId),
+      CONCAT("urn:wikibase:propertyIRI:", STR(?entityId)),
+      CONCAT("urn:wikibase:property:", STR(?entityTemplate))
+    ) AS ?template
+  )
+}

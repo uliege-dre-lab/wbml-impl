@@ -1,0 +1,103 @@
+PREFIX rr:   <http://www.w3.org/ns/r2rml#>
+PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
+PREFIX wbml: <https://example.org/wbml#>
+PREFIX wbint: <https://example.org/wbint#>
+
+CONSTRUCT {
+  ?stmtTM a rr:TriplesMap ;
+          rml:logicalSource ?ls ;
+          rr:subjectMap ?stmtSM ;
+          rr:predicateObjectMap ?subjectPOM ;
+          rr:predicateObjectMap ?propertyPOM ;
+          rr:predicateObjectMap ?valuePOM .
+
+  ?stmtSM rr:template ?stmtTemplate ;
+          rr:termType rr:IRI .
+
+  ?subjectPOM rr:predicate wbml:statementSubject ;
+              rr:objectMap ?subjectOM .
+  ?subjectOM  rr:template ?subjectTemplate ;
+              rr:termType rr:IRI .
+
+  ?propertyPOM rr:predicate wbml:statementProperty ;
+               rr:objectMap ?propertyOM .
+  ?propertyOM  rr:constant ?propIRI .
+
+  ?valuePOM rr:predicate wbml:statementValue ;
+            rr:objectMap ?valueOM .
+
+  ?valueOM rr:template ?valueTemplate .
+  ?valueOM rr:language ?language .
+  ?valueOM rr:datatype ?datatype .
+}
+WHERE {
+  ?tm a rr:TriplesMap ;
+      rml:logicalSource ?ls ;
+      wbml:statementMap ?pom ;
+      wbml:entityMap ?sm .
+
+  OPTIONAL { ?sm wbml:entityType ?entityType . }
+  BIND(COALESCE(?entityType, wbml:Item) AS ?resolvedType)
+  BIND(IF(?resolvedType = wbml:Property, "urn:wikibase:property:", "urn:wikibase:item:") AS ?subjectNodePrefix)
+  BIND(IF(?resolvedType = wbml:Property, "urn:wikibase:propertyIRI:", "urn:wikibase:itemIRI:") AS ?subjectNodeIRIPrefix)
+
+  OPTIONAL { ?sm wbml:entityTemplate ?subjectEntityTemplate . }
+  OPTIONAL { ?sm wbml:entityId ?subjectEntityId . }
+  FILTER(BOUND(?subjectEntityTemplate) || BOUND(?subjectEntityId))
+  BIND(COALESCE(?subjectEntityTemplate, ?subjectEntityId) AS ?subjectKey)
+
+  ?pom wbint:statID ?statID ;
+       wbml:valueMap ?wom .
+
+  OPTIONAL {
+    ?pom wbml:propertyMap ?propertyBlank .
+    OPTIONAL { ?propertyBlank wbml:entityTemplate ?propExplicitKey . }
+  }
+  OPTIONAL { ?pom wbml:propertyId ?propertyIdStr . }
+  OPTIONAL {
+    ?pom wbml:property ?propertyConst .
+    OPTIONAL { ?propertyConst wbml:entityTemplate ?constPropExplicitKey . }
+    OPTIONAL { ?propertyConst wbml:propertyType   ?constPropType . }
+  }
+  FILTER(BOUND(?propertyBlank) || BOUND(?propertyIdStr) || BOUND(?propertyConst))
+
+  ?wom wbml:template ?valueTemplate .
+  OPTIONAL { ?wom wbml:language ?language . }
+  OPTIONAL { ?wom wbml:datatype ?datatype . }
+
+  BIND(IRI(CONCAT(STR(?tm), "/statement/", STR(?statID))) AS ?stmtTM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/subjectMap")) AS ?stmtSM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/pom/subject")) AS ?subjectPOM)
+  BIND(IRI(CONCAT(STR(?subjectPOM), "/om")) AS ?subjectOM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/pom/property")) AS ?propertyPOM)
+  BIND(IRI(CONCAT(STR(?propertyPOM), "/om")) AS ?propertyOM)
+  BIND(IRI(CONCAT(STR(?stmtTM), "/pom/value/", ENCODE_FOR_URI(STR(?wom)))) AS ?valuePOM)
+  BIND(IRI(CONCAT(STR(?valuePOM), "/om")) AS ?valueOM)
+
+  BIND(
+    IF(BOUND(?propertyIdStr),
+      IRI(CONCAT("urn:wikibase:propertyIRI:", ?propertyIdStr)),
+      IF(BOUND(?propertyBlank),
+        IRI(CONCAT("urn:wikibase:property:", STR(?propExplicitKey))),
+        IF(BOUND(?constPropExplicitKey),
+          IRI(CONCAT("urn:wikibase:property:", STR(?constPropExplicitKey))),
+          IF(BOUND(?constPropType),
+            IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propertyConst), "#"))),
+            ?propertyConst
+          )
+        )
+      )
+    ) AS ?propIRI
+  )
+
+  BIND(
+    IF(BOUND(?subjectEntityId),
+      CONCAT(?subjectNodeIRIPrefix, STR(?subjectEntityId)),
+      CONCAT(?subjectNodePrefix, STR(?subjectEntityTemplate))
+    ) AS ?subjectTemplate
+  )
+
+  BIND(
+    CONCAT("urn:wikibase:statement:", STR(?subjectKey), "_", STR(?statID)) AS ?stmtTemplate
+  )
+}

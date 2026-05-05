@@ -17,6 +17,12 @@ The pipeline handles:
 
 The objective is to simplify and automate the process of integrating external data into Wikibase while preserving consistency with the existing knowledge graph.
 
+## Project Structure
+
+- `vocabulary/` — WBML ontology declaration (`wbml.ttl`)
+- `code/`       — Pipeline source code and SPARQL queries
+- `demonstrators/` — Example use cases with input data and mappings
+
 ## Prerequisites
 
 ### General
@@ -27,7 +33,7 @@ The dependencies are defined in `pyproject.toml` and are installed automatically
 
 To install the package, run:
 ```
-pip install .
+pip install -e .
 ```
 
 For development (including testing tools):
@@ -74,11 +80,14 @@ Then fill in the required values. Optional variables can be left empty to use th
 If you are on Linux or macOS, first make the script executable:
 
 ```bash
-chmod +x update.sh
+chmod +x code/update.sh
 ```
 
 Run the pipeline from the project root by passing your WBML mapping file:
 
 ```bash
-sh ./update.sh data/mappings/wbml_mapping.ttl
+sh ./code/update.sh path/to/your/mapping.ttl
 ```
+
+## License
+MIT — see [LICENSE](LICENSE).
