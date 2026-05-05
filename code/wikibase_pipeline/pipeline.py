@@ -90,7 +90,7 @@ def update(mapping_file_path: str | Path) -> None:
     resolve_instances(g_objects, lookup, wb_api, language_resolver, verbose)
     resolve_property_instances(g_objects, lookup, wb_api, language_resolver, verbose)
 
-    inform("Pushing claims and statements to Wikibase...", verbose)
+    inform("...Pushing claims and statements to Wikibase...", verbose)
     populate(g_objects, lookup, wb_api, language_resolver, verbose)
 
     if cfg["cache"]["store_file"]:
