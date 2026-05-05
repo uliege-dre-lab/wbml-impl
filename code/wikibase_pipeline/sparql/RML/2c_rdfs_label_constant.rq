@@ -13,12 +13,11 @@ CONSTRUCT {
   ?objectMap rr:language ?language .
 }
 WHERE {
-  ?tm wbml:label ?pom .
-  ?pom wbml:valueMap ?wom .
+  ?tm wbml:labelMap ?wom .
 
   ?wom wbml:constant ?constant .
   OPTIONAL { ?wom wbml:language ?language . }
 
-  BIND(IRI(CONCAT(STR(?tm), "/pom/label/", ENCODE_FOR_URI(STR(?wom)))) AS ?pomMap)
+  BIND(IRI(CONCAT(STR(?tm), "/pom/labelMap/", ENCODE_FOR_URI(STR(?wom)))) AS ?pomMap)
   BIND(IRI(CONCAT(STR(?pomMap), "/om")) AS ?objectMap)
 }

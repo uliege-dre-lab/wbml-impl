@@ -246,10 +246,10 @@ wbml:statementMap
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:StatementMap .
 
-wbml:label
+wbml:labelMap
     a owl:ObjectProperty ;
-    rdfs:label "label"@en ;
-    rdfs:comment "Relating a label to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:label "label map"@en ;
+    rdfs:comment "Relating a label to an Entity's fingerprint. The blank node directly holds wbml:reference, wbml:template, or wbml:constant together with wbml:language."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
