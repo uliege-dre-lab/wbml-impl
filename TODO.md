@@ -1,0 +1,7 @@
+- [x] wbml:alias into wbml:aliasMap
+- [x] wbml:label into wbml:labelMap
+- [x] wbml:description into wbml:descriptionMap
+- [ ] wbml:id instead of propertyID and classID?
+- [ ] wbml:id for itemID as well?
+- [ ] wbml:StatementsMap
+- [ ] wbml:parentStatementsMap

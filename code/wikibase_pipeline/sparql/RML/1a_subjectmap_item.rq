@@ -2,7 +2,8 @@ PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX wbml: <https://example.org/wbml#>
 
 CONSTRUCT {
-  ?tm rr:subjectMap ?subjectMap .
+  ?tm a rr:TriplesMap ;
+      rr:subjectMap ?subjectMap .
 
   ?subjectMap rr:template ?template ;
               rr:termType rr:IRI ;

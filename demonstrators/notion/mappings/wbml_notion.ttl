@@ -8,7 +8,7 @@
 @prefix wbml: <https://example.org/wbml#> .
 
 <#ClassMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -63,7 +63,7 @@
   ] .
 
 <#ClassesHierarchyMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -93,7 +93,7 @@
   ] .
 
 <#StringDataPropertyMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -171,7 +171,7 @@
   ] .
 
 <#URLDataPropertyMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -220,7 +220,7 @@
   ] .
 
 <#TimeDataPropertyMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -269,7 +269,7 @@
   ] .
 
 <#ObjectPropertyMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """

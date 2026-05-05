@@ -41,7 +41,7 @@ WHERE {
            ?statID ?wom ?valueEntityTemplate ?valueEntityId
            ?propExplicitKey ?constPropExplicitKey ?constPropType
     WHERE {
-      ?tm a rr:TriplesMap ;
+      ?tm a wbml:StatementsMap ;
           rml:logicalSource ?ls ;
           wbml:statementMap ?pom ;
           wbml:entityMap ?sm .

@@ -24,6 +24,12 @@
 # Classes
 #################################################################
 
+wbml:StatementsMap
+    a owl:Class ;
+    rdfs:label "Statements Map"@en ;
+    rdfs:comment "A WBML mapping unit that groups a logical source, an entity map, and statement/fingerprint maps. Subclass of rml:TriplesMap — the converter produces one or more rml:TriplesMaps from it."@en ;
+    rdfs:subClassOf rml:TriplesMap .
+
 wbml:EntityMap
     a owl:Class ;
     rdfs:label "Entity Map"@en ;
@@ -189,7 +195,7 @@ wbml:entityMap
     a owl:ObjectProperty ;
     rdfs:label "entity map"@en ;
     rdfs:comment "Attaches an entity map to a triples map, defining how the Wikibase entity identifier is generated. Defaults to generating a Wikibase item unless wbml:entityType specifies otherwise."@en ;
-    rdfs:domain rml:TriplesMap ;
+    rdfs:domain wbml:StatementsMap ;
     rdfs:range wbml:EntityMap .
 
 wbml:entityTemplate
@@ -243,28 +249,28 @@ wbml:statementMap
     a owl:ObjectProperty ;
     rdfs:label "statement map"@en ;
     rdfs:comment "Attaches a statement map to a triples map, defining a Wikibase statement to generate."@en ;
-    rdfs:domain rml:TriplesMap ;
+    rdfs:domain wbml:StatementsMap ;
     rdfs:range wbml:StatementMap .
 
 wbml:labelMap
     a owl:ObjectProperty ;
     rdfs:label "label map"@en ;
     rdfs:comment "Relating a label to an Entity's fingerprint. The blank node directly holds wbml:reference, wbml:template, or wbml:constant together with wbml:language."@en ;
-    rdfs:domain rml:TriplesMap ;
+    rdfs:domain wbml:StatementsMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:descriptionMap
     a owl:ObjectProperty ;
     rdfs:label "description map"@en ;
     rdfs:comment "Relating a description to an Entity's fingerprint. The blank node directly holds wbml:reference, wbml:template, or wbml:constant together with wbml:language."@en ;
-    rdfs:domain rml:TriplesMap ;
+    rdfs:domain wbml:StatementsMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:aliasMap
     a owl:ObjectProperty ;
     rdfs:label "alias map"@en ;
     rdfs:comment "Relating an alias to an Entity's fingerprint. The blank node directly holds wbml:reference, wbml:template, or wbml:constant together with wbml:language."@en ;
-    rdfs:domain rml:TriplesMap ;
+    rdfs:domain wbml:StatementsMap ;
     rdfs:range wbml:ValueMap .
 
 wbml:propertyMap
@@ -351,7 +357,7 @@ wbml:parentTriplesMap
     rdfs:label "parent triples map"@en ;
     rdfs:comment "References another triples map to join with, creating an item-valued object via a foreign-key relationship."@en ;
     rdfs:domain wbml:ValueMap ;
-    rdfs:range rml:TriplesMap .
+    rdfs:range wbml:StatementsMap .
 
 wbml:joinCondition
     a owl:ObjectProperty ;

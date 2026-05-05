@@ -182,7 +182,7 @@ ex:HasItemCategory a wbml:Property ;
 #################################################################
 
 <#PokemonMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:source "demonstrators/pokemon/input_data/pokedex_small.json" ;
@@ -306,7 +306,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#PokemonTypeMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -330,7 +330,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#PokemonEggGroupMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -362,7 +362,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#PokemonAbilityStatementMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -427,7 +427,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#PokemonEvolutionPrevMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -459,7 +459,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#PokemonEvolutionNextMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -496,7 +496,7 @@ ex:HasItemCategory a wbml:Property ;
 #################################################################
 
 <#SpeciesMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:source "demonstrators/pokemon/input_data/pokedex_small.json" ;
@@ -515,7 +515,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#AbilityMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -535,7 +535,7 @@ ex:HasItemCategory a wbml:Property ;
   wbml:labelMap [ wbml:reference "ability_name" ; wbml:language "en" ] .
 
 <#EggGroupMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -558,7 +558,7 @@ ex:HasItemCategory a wbml:Property ;
 #################################################################
 
 <#MoveMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:source "demonstrators/pokemon/input_data/moves_small.json" ;
@@ -614,7 +614,7 @@ ex:HasItemCategory a wbml:Property ;
 #################################################################
 
 <#TypeMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:source "demonstrators/pokemon/input_data/types.json" ;
@@ -634,7 +634,7 @@ ex:HasItemCategory a wbml:Property ;
   wbml:labelMap [ wbml:template "{chinese} (Type)" ; wbml:language "zh" ] .
 
 <#TypeEffectiveMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -659,7 +659,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#TypeIneffectiveMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -684,7 +684,7 @@ ex:HasItemCategory a wbml:Property ;
   ] .
 
 <#TypeNoEffectMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -713,7 +713,7 @@ ex:HasItemCategory a wbml:Property ;
 #################################################################
 
 <#ItemMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """
@@ -758,7 +758,7 @@ ex:HasItemCategory a wbml:Property ;
     ] .
 
 <#ItemCategoryMapping>
-  a rr:TriplesMap ;
+  a wbml:StatementsMap ;
 
   rml:logicalSource [
     rml:query """

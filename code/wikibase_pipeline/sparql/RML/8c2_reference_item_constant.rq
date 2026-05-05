@@ -24,7 +24,7 @@ WHERE {
            ?rmap ?refId ?rrec ?refPropertyBlank ?refPropertyId ?refPropertyConst
            ?rom ?valueEntityTemplate ?valueEntityId ?refExplicitKey ?refConstExplicitKey ?refConstType
     WHERE {
-      ?tm a rr:TriplesMap ;
+      ?tm a wbml:StatementsMap ;
           rml:logicalSource ?ls ;
           wbml:statementMap ?pom ;
           wbml:entityMap ?sm .

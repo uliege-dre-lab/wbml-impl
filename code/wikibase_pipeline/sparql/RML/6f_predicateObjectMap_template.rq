@@ -31,7 +31,7 @@ CONSTRUCT {
   ?valueOM rr:datatype ?datatype .
 }
 WHERE {
-  ?tm a rr:TriplesMap ;
+  ?tm a wbml:StatementsMap ;
       rml:logicalSource ?ls ;
       wbml:statementMap ?pom ;
       wbml:entityMap ?sm .
