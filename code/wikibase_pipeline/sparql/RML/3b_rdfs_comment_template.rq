@@ -13,12 +13,11 @@ CONSTRUCT {
   ?objectMap rr:language ?language .
 }
 WHERE {
-  ?tm wbml:description ?pom .
-  ?pom wbml:valueMap ?wom .
+  ?tm wbml:descriptionMap ?wom .
 
   ?wom wbml:template ?template .
   OPTIONAL { ?wom wbml:language ?language . }
 
-  BIND(IRI(CONCAT(STR(?tm), "/pom/comment/", ENCODE_FOR_URI(STR(?wom)))) AS ?pomMap)
+  BIND(IRI(CONCAT(STR(?tm), "/pom/descriptionMap/", ENCODE_FOR_URI(STR(?wom)))) AS ?pomMap)
   BIND(IRI(CONCAT(STR(?pomMap), "/om")) AS ?objectMap)
 }

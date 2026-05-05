@@ -192,28 +192,26 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    wbml:classId "Q6999"
+    # wbml:classId "Q6999" #-- IGNORE (todo) -
+    wbml:entityClass [
+      a wbml:Class ;
+      wbml:entityTemplate "Pokemon" ;
+      wbml:entityLabel "Pokemon"@en ;
+      wbml:entityLabel "Pokémon"@fr ;
+      wbml:entityDescription "A creature from the Pokémon universe."@en ;
+      wbml:entityAlias "Pokemon"@en
+    ]
   ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "name.english" ; wbml:language "en" ]
-  ] ;
+  wbml:labelMap [ wbml:reference "name.english" ; wbml:language "en" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "name.japanese" ; wbml:language "ja" ]
-  ] ;
+  wbml:labelMap [ wbml:reference "name.japanese" ; wbml:language "ja" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "name.chinese" ; wbml:language "zh" ]
-  ] ;
+  wbml:labelMap [ wbml:reference "name.chinese" ; wbml:language "zh" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "name.french" ; wbml:language "fr" ]
-  ] ;
+  wbml:labelMap [ wbml:reference "name.french" ; wbml:language "fr" ] ;
 
-  wbml:description [
-    wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
-  ] ;
+  wbml:descriptionMap [ wbml:reference "description" ; wbml:language "en" ] ;
 
   wbml:statementMap [
     wbml:property ex:PokedexNumber ;
@@ -265,7 +263,8 @@ ex:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:statementMap [
-    wbml:propertyId "P56" ;
+    # wbml:propertyId "P56" ; # IGNORE (todo)
+    wbml:property ex:Height ;
     wbml:valueMap [ wbml:reference "profile.height" ; wbml:datatype xsd:string ]
   ] ;
 
@@ -321,7 +320,6 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
@@ -346,7 +344,14 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    wbml:classId "Q6999"
+    wbml:entityClass [
+      a wbml:Class ;
+      wbml:entityTemplate "Pokemon" ;
+      wbml:entityLabel "Pokemon"@en ;
+      wbml:entityLabel "Pokémon"@fr ;
+      wbml:entityDescription "A creature from the Pokémon universe."@en ;
+      wbml:entityAlias "Pokemon"@en
+    ]
   ] ;
 
   wbml:statementMap [
@@ -373,7 +378,6 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
@@ -438,7 +442,6 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
@@ -472,7 +475,6 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    wbml:classId "Q6999"
   ] ;
 
   wbml:statementMap [
@@ -507,11 +509,9 @@ ex:HasItemCategory a wbml:Property ;
     wbml:class ex:SpeciesClass
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "species" ;
-      wbml:language "en"
-    ]
+  wbml:labelMap [
+    wbml:reference "species" ;
+    wbml:language "en"
   ] .
 
 <#AbilityMapping>
@@ -532,9 +532,7 @@ ex:HasItemCategory a wbml:Property ;
     wbml:class ex:AbilityClass
   ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "ability_name" ; wbml:language "en" ]
-  ] .
+  wbml:labelMap [ wbml:reference "ability_name" ; wbml:language "en" ] .
 
 <#EggGroupMapping>
   a rr:TriplesMap ;
@@ -553,9 +551,7 @@ ex:HasItemCategory a wbml:Property ;
     wbml:class ex:EggGroupClass
   ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "egg_group" ; wbml:language "en" ]
-  ] .
+  wbml:labelMap [ wbml:reference "egg_group" ; wbml:language "en" ] .
 
 #################################################################
 # MOVES
@@ -575,17 +571,11 @@ ex:HasItemCategory a wbml:Property ;
     wbml:class ex:MoveClass
   ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:template "{ename} (Move)" ; wbml:language "en" ]
-  ] ;
+  wbml:labelMap [ wbml:template "{ename} (Move)" ; wbml:language "en" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:template "{jname} (Move)" ; wbml:language "ja" ]
-  ] ;
+  wbml:labelMap [ wbml:template "{jname} (Move)" ; wbml:language "ja" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:template "{cname} (Move)" ; wbml:language "zh" ]
-  ] ;
+  wbml:labelMap [ wbml:template "{cname} (Move)" ; wbml:language "zh" ] ;
 
   wbml:statementMap [
     wbml:property ex:Accuracy ;
@@ -637,17 +627,11 @@ ex:HasItemCategory a wbml:Property ;
     wbml:class ex:TypeClass
   ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:template "{english} (Type)" ; wbml:language "en" ]
-  ] ;
+  wbml:labelMap [ wbml:template "{english} (Type)" ; wbml:language "en" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:template "{japanese} (Type)" ; wbml:language "ja" ]
-  ] ;
+  wbml:labelMap [ wbml:template "{japanese} (Type)" ; wbml:language "ja" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:template "{chinese} (Type)" ; wbml:language "zh" ]
-  ] .
+  wbml:labelMap [ wbml:template "{chinese} (Type)" ; wbml:language "zh" ] .
 
 <#TypeEffectiveMapping>
   a rr:TriplesMap ;
@@ -749,21 +733,13 @@ ex:HasItemCategory a wbml:Property ;
     wbml:class ex:ItemClass
   ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "name_en" ; wbml:language "en" ]
-  ] ;
+  wbml:labelMap [ wbml:reference "name_en" ; wbml:language "en" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "name_ja" ; wbml:language "ja" ]
-  ] ;
+  wbml:labelMap [ wbml:reference "name_ja" ; wbml:language "ja" ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "name_zh" ; wbml:language "zh" ]
-  ] ;
+  wbml:labelMap [ wbml:reference "name_zh" ; wbml:language "zh" ] ;
 
-  wbml:description [
-    wbml:valueMap [ wbml:reference "description" ; wbml:language "en" ]
-  ] ;
+  wbml:descriptionMap [ wbml:reference "description" ; wbml:language "en" ] ;
 
   wbml:statementMap [
     wbml:property ex:ItemNumber ;
@@ -804,6 +780,4 @@ ex:HasItemCategory a wbml:Property ;
     ]
   ] ;
 
-  wbml:label [
-    wbml:valueMap [ wbml:reference "type" ; wbml:language "en" ]
-  ] .
+  wbml:labelMap [ wbml:reference "type" ; wbml:language "en" ] .

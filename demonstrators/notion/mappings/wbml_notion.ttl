@@ -32,46 +32,34 @@
     wbml:entityTemplate "Class_{name}" ;
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name" ;
-      wbml:language "fr"
-    ]
+  wbml:labelMap [
+    wbml:reference "name" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name_en" ;
-      wbml:language "en"
-    ]
+  wbml:labelMap [
+    wbml:reference "name_en" ;
+    wbml:language "en"
   ] ;
 
-  wbml:alias [
-    wbml:valueMap [
-      wbml:reference "alias" ;
-      wbml:language "fr"
-    ]
+  wbml:aliasMap [
+    wbml:reference "alias" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:alias [
-    wbml:valueMap [
-      wbml:reference "alias_en" ;
-      wbml:language "en"
-    ]
+  wbml:aliasMap [
+    wbml:reference "alias_en" ;
+    wbml:language "en"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description" ;
-      wbml:language "fr"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description_en" ;
-      wbml:language "en"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description_en" ;
+    wbml:language "en"
   ] .
 
 <#ClassesHierarchyMapping>
@@ -136,32 +124,24 @@
     wbml:propertyType wbml:string
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name" ;
-      wbml:language "fr"
-    ]
+  wbml:labelMap [
+    wbml:reference "name" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name_en" ;
-      wbml:language "en"
-    ]
+  wbml:labelMap [
+    wbml:reference "name_en" ;
+    wbml:language "en"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description" ;
-      wbml:language "fr"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description_en" ;
-      wbml:language "en"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description_en" ;
+    wbml:language "en"
   ] ;
 
   wbml:statementMap [
@@ -219,32 +199,24 @@
     wbml:propertyType wbml:url
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name" ;
-      wbml:language "fr"
-    ]
+  wbml:labelMap [
+    wbml:reference "name" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name_en" ;
-      wbml:language "en"
-    ]
+  wbml:labelMap [
+    wbml:reference "name_en" ;
+    wbml:language "en"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description" ;
-      wbml:language "fr"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description_en" ;
-      wbml:language "en"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description_en" ;
+    wbml:language "en"
   ] .
 
 <#TimeDataPropertyMapping>
@@ -276,32 +248,24 @@
     wbml:propertyType wbml:time
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name" ;
-      wbml:language "fr"
-    ]
+  wbml:labelMap [
+    wbml:reference "name" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name_en" ;
-      wbml:language "en"
-    ]
+  wbml:labelMap [
+    wbml:reference "name_en" ;
+    wbml:language "en"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description" ;
-      wbml:language "fr"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description_en" ;
-      wbml:language "en"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description_en" ;
+    wbml:language "en"
   ] .
 
 <#ObjectPropertyMapping>
@@ -334,32 +298,24 @@
     wbml:propertyType wbml:item ;
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name" ;
-      wbml:language "fr"
-    ]
+  wbml:labelMap [
+    wbml:reference "name" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:label [
-    wbml:valueMap [
-      wbml:reference "name_en" ;
-      wbml:language "en"
-    ]
+  wbml:labelMap [
+    wbml:reference "name_en" ;
+    wbml:language "en"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description" ;
-      wbml:language "fr"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description" ;
+    wbml:language "fr"
   ] ;
 
-  wbml:description [
-    wbml:valueMap [
-      wbml:reference "description_en" ;
-      wbml:language "en"
-    ]
+  wbml:descriptionMap [
+    wbml:reference "description_en" ;
+    wbml:language "en"
   ] ;
 
   wbml:statementMap [

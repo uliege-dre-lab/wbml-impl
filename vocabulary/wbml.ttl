@@ -253,17 +253,17 @@ wbml:labelMap
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
-wbml:description
+wbml:descriptionMap
     a owl:ObjectProperty ;
-    rdfs:label "description"@en ;
-    rdfs:comment "Relating a description to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:label "description map"@en ;
+    rdfs:comment "Relating a description to an Entity's fingerprint. The blank node directly holds wbml:reference, wbml:template, or wbml:constant together with wbml:language."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
-wbml:alias
+wbml:aliasMap
     a owl:ObjectProperty ;
-    rdfs:label "alias"@en ;
-    rdfs:comment "Relating an alias to an Entity's fingerprint. The blank node holds only a wbml:valueMap."@en ;
+    rdfs:label "alias map"@en ;
+    rdfs:comment "Relating an alias to an Entity's fingerprint. The blank node directly holds wbml:reference, wbml:template, or wbml:constant together with wbml:language."@en ;
     rdfs:domain rml:TriplesMap ;
     rdfs:range wbml:ValueMap .
 
