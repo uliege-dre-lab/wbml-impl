@@ -1,10 +1,8 @@
-# ATFE9009 – Wikibase RDF Pipeline
+# Wikibase RDF Pipeline
 
 Declarative generation of Wikibase statements.
 
 ## Project Overview
-
-This project is developed as part of the Master's thesis in Engineering in Data Science.
 
 The goal of this project is to design a **declarative pipeline** that generates Wikibase statements from structured data and inserts them into a Wikibase instance.
 
