@@ -81,7 +81,7 @@ def update(mapping_file_path: str | Path) -> None:
     g_objects.parse(output_value, format="nt")
 
     inform(
-        "...Resolving direct Wikibase IDs (wbml:classId / wbml:predicateId)...",
+        "...Resolving direct Wikibase IDs (wbml:classId / wbml:propertyId)...",
         verbose,
     )
     resolve_direct_iris(g_objects, lookup, wb_api, verbose)

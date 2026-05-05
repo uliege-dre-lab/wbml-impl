@@ -162,11 +162,11 @@ def resolve_one_instance(
     default_language: str,
     verbose: int,
 ) -> str:
-    r"""
+    """
     Find or create a Wikibase item for the given instance IRI.
     Input:
     - item_iri: The URIRef of the instance to resolve.
-    - meta: A dictionary containing the instance metadata\.
+    - meta: A dictionary containing the instance metadata.
     - wikibase_api: An instance of the WikibaseAPI class.
     - default_language: The default language.
     - verbose: Verbosity level for logging.
