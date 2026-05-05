@@ -3,5 +3,9 @@
 - [x] wbml:description into wbml:descriptionMap
 - [ ] wbml:id instead of propertyID and classID?
 - [ ] wbml:id for itemID as well?
-- [ ] wbml:StatementsMap
-- [ ] wbml:parentStatementsMap
+- [x] wbml:StatementsMap
+- [x] wbml:parentStatementsMap
+- [ ] wbml:entityTemplate --> wbml:template
+- [ ] wbml:entityLabel --> wbml:label
+- [ ] wbml:entityDescription --> wbml:description
+- [ ] wbml:entityAlias --> wbml:alias
