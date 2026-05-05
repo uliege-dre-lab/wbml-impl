@@ -13,8 +13,12 @@
 <https://example.org/wbml>
     a owl:Ontology ;
     rdfs:label "Wikibase Mapping Language (WBML) Vocabulary"@en ;
-    rdfs:comment "Vocabulary for the Wikibase Mapping Language, an RML-compatible mapping language that supports Wikibase-specific features such as statements, qualifiers, references, and ranks."@en ;
-    .
+    rdfs:comment "Vocabulary for the Wikibase Mapping Language, an RML-compatible mapping language that supports Wikibase-specific features such as statements, qualifiers, references, and ranks."@en .
+
+<https://example.org/wbint>
+    a owl:Ontology ;
+    rdfs:label "WBML Internal Vocabulary"@en ;
+    rdfs:comment "Internal computed properties assigned by the WBML-to-RML conversion pipeline. Not intended for use in WBML mapping files."@en .
 
 #################################################################
 # Classes
@@ -59,6 +63,11 @@ wbml:Rank
     a owl:Class ;
     rdfs:label "Rank"@en ;
     rdfs:comment "The rank of a Wikibase statement (preferred, normal, or deprecated)."@en .
+
+wbml:Class
+    a owl:Class ;
+    rdfs:label "class"@en ;
+    rdfs:comment "A Wikibase class in the schema."@en .
 
 #################################################################
 # Entity declaration properties - used in schema declarations
@@ -194,13 +203,15 @@ wbml:entityType
     a owl:ObjectProperty ;
     rdfs:label "entity type"@en ;
     rdfs:comment "Specifies whether the entity map generates a Wikibase item (wbml:Item, default) or property (wbml:Property)."@en ;
-    rdfs:domain wbml:EntityMap .
+    rdfs:domain wbml:EntityMap ;
+    rdfs:range [ owl:unionOf (wbml:Item wbml:Property) ] .
 
 wbml:propertyType
     a owl:ObjectProperty ;
     rdfs:label "property type"@en ;
     rdfs:comment "Specifies the Wikibase datatype of a property."@en ;
-    rdfs:domain [ owl:unionOf (wbml:Property wbml:EntityMap) ] .
+    rdfs:domain [ owl:unionOf (wbml:Property wbml:EntityMap) ] ;
+    rdfs:range [ owl:unionOf (wbml:item wbml:string wbml:url wbml:externalId wbml:quantity wbml:time wbml:monolingualText) ] .
 
 #################################################################
 # Statement map properties
@@ -310,7 +321,8 @@ wbml:datatype
     a owl:ObjectProperty ;
     rdfs:label "datatype"@en ;
     rdfs:comment "The XSD datatype to use when constructing the typed literal for the object."@en ;
-    rdfs:domain wbml:ValueMap .
+    rdfs:domain wbml:ValueMap ;
+    rdfs:range rdfs:Datatype .
 
 wbml:parentTriplesMap
     a owl:ObjectProperty ;
@@ -365,11 +377,6 @@ wbml:referenceRecord
 #################################################################
 # Schema-level properties (used by Schema SPARQL queries)
 #################################################################
-
-wbml:Class
-    a owl:Class ;
-    rdfs:label "class"@en ;
-    rdfs:comment "A Wikibase class in the schema."@en .
 
 wbml:subclassOf
     a owl:ObjectProperty ;

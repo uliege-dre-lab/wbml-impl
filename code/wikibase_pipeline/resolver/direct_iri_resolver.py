@@ -111,7 +111,7 @@ def resolve_direct_iris(
     if format_errors:
         raise ValueError(
             "Direct IRI format validation failed — fix these "
-            "wbml:classId / wbml:predicateId values before re-running:\n"
+            "wbml:classId / wbml:propertyId values before re-running:\n"
             + "\n".join(format_errors)
         )
 
