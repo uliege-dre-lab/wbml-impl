@@ -1,0 +1,342 @@
+{
+  "items": {
+    "urn:wikibase:item:Class_Facult%C3%A9": "Q5",
+    "urn:wikibase:item:Class_Ressource": "Q4",
+    "urn:wikibase:item:Class_UR": "Q82",
+    "urn:wikibase:item:Class_Accr%C3%A9ditation": "Q8846",
+    "urn:wikibase:item:Class_Acknowledgement": "Q8847",
+    "urn:wikibase:item:Class_Article%20de%20presse": "Q8848",
+    "urn:wikibase:item:Class_Autre": "Q8849",
+    "urn:wikibase:item:Class_B%C3%A2timent": "Q8850",
+    "urn:wikibase:item:Class_B%C3%A9n%C3%A9ficiaire": "Q8851",
+    "urn:wikibase:item:Class_CARE": "Q8852",
+    "urn:wikibase:item:Class_CSRV": "Q8853",
+    "urn:wikibase:item:Class_Campus": "Q8854",
+    "urn:wikibase:item:Class_Cas%20d%27usage": "Q8855",
+    "urn:wikibase:item:Class_Certification": "Q8856",
+    "urn:wikibase:item:Class_Conditions%20d%27acc%C3%A8s": "Q8857",
+    "urn:wikibase:item:Class_Conformit%C3%A9": "Q8858",
+    "urn:wikibase:item:Class_Coordonn%C3%A9es": "Q8859",
+    "urn:wikibase:item:Class_Domaine%20scientifique": "Q8860",
+    "urn:wikibase:item:Class_Equipe": "Q8861",
+    "urn:wikibase:item:Class_Equipement": "Q8862",
+    "urn:wikibase:item:Class_Expertise": "Q8863",
+    "urn:wikibase:item:Class_Garantie%20de%20qualit%C3%A9": "Q8864",
+    "urn:wikibase:item:Class_Gouvernance": "Q8865",
+    "urn:wikibase:item:Class_Identit%C3%A9%20scientifique%20num%C3%A9rique": "Q8866",
+    "urn:wikibase:item:Class_Image": "Q8867",
+    "urn:wikibase:item:Class_Impact": "Q8868",
+    "urn:wikibase:item:Class_Implantations%20du%20CHU%20de%20Li%C3%A8ge": "Q8869",
+    "urn:wikibase:item:Class_Infrastructure": "Q8870",
+    "urn:wikibase:item:Class_Laboratoire%20de%20recherche": "Q8871",
+    "urn:wikibase:item:Class_Localisation": "Q8872",
+    "urn:wikibase:item:Class_Logiciel": "Q8873",
+    "urn:wikibase:item:Class_Logo": "Q8874",
+    "urn:wikibase:item:Class_Norme%20de%20s%C3%A9curit%C3%A9": "Q8875",
+    "urn:wikibase:item:Class_Organisation": "Q8876",
+    "urn:wikibase:item:Class_Personne": "Q8877",
+    "urn:wikibase:item:Class_Photo": "Q8878",
+    "urn:wikibase:item:Class_Plateforme%20institutionnelle": "Q8879",
+    "urn:wikibase:item:Class_Plateforme%20technologique": "Q8880",
+    "urn:wikibase:item:Class_Plateforme%20th%C3%A9matique": "Q8881",
+    "urn:wikibase:item:Class_Production%20scientifique": "Q8882",
+    "urn:wikibase:item:Class_Responsable": "Q8883",
+    "urn:wikibase:item:Class_Retour%20d%27exp%C3%A9rience": "Q8884",
+    "urn:wikibase:item:Class_Service": "Q8885",
+    "urn:wikibase:item:Class_URI": "Q8886"
+  },
+  "properties": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
+      "id": "P49",
+      "datatype": "wikibase-item"
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "id": "P50",
+      "datatype": "wikibase-item"
+    },
+    "http://www.w3.org/2002/07/owl#sameAs": {
+      "id": "P51",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:cardinality": {
+      "id": "P167",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:goodPractice": {
+      "id": "P168",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:inverse": {
+      "id": "P169",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:rangeClass": {
+      "id": "P170",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_Acronyme": {
+      "id": "P171",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Adresse": {
+      "id": "P172",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Caract%C3%A9ristique%20de%20l%27infrastructure": {
+      "id": "P173",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Cat%C3%A9gorie": {
+      "id": "P174",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Copyright": {
+      "id": "P175",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_DOI": {
+      "id": "P176",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_Date": {
+      "id": "P177",
+      "datatype": "time"
+    },
+    "urn:wikibase:property:Property_Description": {
+      "id": "P94",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Email": {
+      "id": "P178",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Etage": {
+      "id": "P179",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Facult%C3%A9%20est%20dans%20CSRV": {
+      "id": "P180",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_Facult%C3%A9%20fait%20partie%20de%20CSRV": {
+      "id": "P181",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_Fonction": {
+      "id": "P182",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Google%20Scholar": {
+      "id": "P183",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_Labo%20est%20dans%20UR": {
+      "id": "P184",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_Labo%20est%20dans%20URI": {
+      "id": "P185",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_License": {
+      "id": "P186",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Lien%20ORBI": {
+      "id": "P187",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_Lien%20de%20r%C3%A9servation": {
+      "id": "P188",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_Local": {
+      "id": "P189",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Maquette%20promotionnelle": {
+      "id": "P190",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Marque%20de%20l%27%C3%A9quipement": {
+      "id": "P191",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Mod%C3%A8le%20de%20l%27%C3%A9quipement": {
+      "id": "P192",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Nom": {
+      "id": "P193",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_ORCID": {
+      "id": "P194",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_Plateforme%20technologique%20est%20dans%20plateforme%20th%C3%A9matique": {
+      "id": "P195",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_Plateforme%20th%C3%A9matique%20est%20dans%20CARE": {
+      "id": "P196",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_Port%C3%A9e%20de%20la%20garantie%20de%20qualit%C3%A9": {
+      "id": "P197",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Pr%C3%A9nom": {
+      "id": "P198",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Profil%20ORBI": {
+      "id": "P199",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_ROR": {
+      "id": "P200",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_Site%20web": {
+      "id": "P201",
+      "datatype": "url"
+    },
+    "urn:wikibase:property:Property_Source%20du%20financement": {
+      "id": "P202",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_T%C3%A9l%C3%A9phone": {
+      "id": "P203",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_T%C3%A9moignage": {
+      "id": "P204",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_T%C3%A9moignant": {
+      "id": "P205",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Texte%20pour%20publication": {
+      "id": "P206",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Type": {
+      "id": "P207",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Type%20de%20b%C3%A9n%C3%A9ficiaire": {
+      "id": "P208",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_Type%20de%20publication": {
+      "id": "P209",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_UR%20est%20dans%20Facult%C3%A9": {
+      "id": "P210",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_URI%20est%20dans%20CSRV": {
+      "id": "P211",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_Version%20du%20logiciel": {
+      "id": "P212",
+      "datatype": "string"
+    },
+    "urn:wikibase:property:Property_a%20comme%20%C3%A9quipe": {
+      "id": "P213",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20acknowledgement": {
+      "id": "P214",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20cas%20d%27usage": {
+      "id": "P215",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20conditions%20d%27acc%C3%A8s": {
+      "id": "P216",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20coordonn%C3%A9es": {
+      "id": "P217",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20garantie%20de%20qualit%C3%A9": {
+      "id": "P218",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20identit%C3%A9%20scientifique%20num%C3%A9rique": {
+      "id": "P219",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20impact": {
+      "id": "P220",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20logo": {
+      "id": "P221",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20personne%20r%C3%A9f%C3%A9rente": {
+      "id": "P222",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20photo": {
+      "id": "P223",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20responsable%20": {
+      "id": "P224",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_a%20comme%20ressource": {
+      "id": "P225",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_couvre%20domaine": {
+      "id": "P226",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_de%20CSRV": {
+      "id": "P227",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_de%20URI": {
+      "id": "P228",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_est%20associ%C3%A9%20%C3%A0%20une%20autre%20ressource": {
+      "id": "P229",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_est%20mutualis%C3%A9%20avec": {
+      "id": "P230",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_est%20rattach%C3%A9%20%C3%A0%20": {
+      "id": "P231",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_est%20sous%20la%20gourvenance%20de": {
+      "id": "P232",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_est%20une%20plateforme%20institutionnelle": {
+      "id": "P233",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_fait%20partie%20de%20l%27%C3%A9quipe": {
+      "id": "P234",
+      "datatype": "wikibase-item"
+    },
+    "urn:wikibase:property:Property_se%20situe": {
+      "id": "P235",
+      "datatype": "wikibase-item"
+    }
+  }
+}
