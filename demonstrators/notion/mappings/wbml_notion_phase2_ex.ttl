@@ -1,0 +1,323 @@
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wbml: <https://example.org/wbml#> .
+
+<#EquipementMapping>
+  a wbml:StatementsMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        trim("Nom") AS nom,
+        "Acronyme" AS acronyme,
+        "Description" AS description,
+        "Nombre d'exemplaire" AS nombre_exemplaires,
+        "Modèle de l'équipement" AS modele,
+        "Marque de l'équipement" AS marque,
+        "Adresse" AS adresse,
+        "Bâtiment" AS batiment,
+        "Etage" AS etage,
+        "Local" AS local,
+        "Campus" AS campus
+      FROM read_csv(
+        'demonstrators/notion/input_data/equipement.csv',
+        header = true
+      )
+      WHERE "Nom" IS NOT NULL
+        AND trim("Nom") != ''
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Equipement_{nom}" ;
+    wbml:entityClass [
+      a wbml:Class ;
+      wbml:entityTemplate "Ressource"
+    ]
+  ] ;
+
+  wbml:labelMap [
+    wbml:reference "nom" ;
+    wbml:language "fr"
+  ] ;
+
+  wbml:aliasMap [
+    wbml:reference "acronyme" ;
+    wbml:language "fr"
+  ] ;
+
+  wbml:descriptionMap [
+    wbml:reference "description" ;
+    wbml:language "fr"
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Property_Acronyme" ;
+      wbml:label "Acronyme"@fr ;
+      wbml:label "Acronym"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "acronyme" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "NombreExemplaires" ;
+      wbml:label "Nombre d'exemplaires"@fr ;
+      wbml:label "Number of copies"@en ;
+      wbml:propertyType wbml:quantity
+    ] ;
+    wbml:valueMap [ wbml:reference "nombre_exemplaires" ; wbml:datatype xsd:integer ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "ModeleEquipement" ;
+      wbml:label "Modèle de l'équipement"@fr ;
+      wbml:label "Equipment model"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "modele" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "MarqueEquipement" ;
+      wbml:label "Marque de l'équipement"@fr ;
+      wbml:label "Equipment brand"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "marque" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Property_Adresse" ;
+      wbml:label "Adresse"@fr ;
+      wbml:label "Address"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "adresse" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Batiment" ;
+      wbml:label "Bâtiment"@fr ;
+      wbml:label "Building"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "batiment" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Etage" ;
+      wbml:label "Étage"@fr ;
+      wbml:label "Floor"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "etage" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Local" ;
+      wbml:label "Local"@fr ;
+      wbml:label "Room"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "local" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Campus" ;
+      wbml:label "Campus"@fr ;
+      wbml:label "Campus"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "campus" ]
+  ] .
+
+<#PlateformeMapping>
+  a wbml:StatementsMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        trim("Nom") AS nom,
+        "Acronyme" AS acronyme,
+        "Description" AS description,
+        "Site web" AS site_web,
+        "Email" AS email,
+        "Téléphone" AS telephone,
+        "Adresse" AS adresse,
+        "Bâtiment" AS batiment,
+        "Etage" AS etage,
+        "Campus" AS campus
+      FROM read_csv(
+        'demonstrators/notion/input_data/plateforme.csv',
+        header = true
+      )
+      WHERE "Nom" IS NOT NULL
+        AND trim("Nom") != ''
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Plateforme_{nom}" ;
+    wbml:entityClass [
+      a wbml:Class ;
+      wbml:entityTemplate "Plateforme%20technologique"
+    ]
+  ] ;
+
+  wbml:labelMap [
+    wbml:reference "nom" ;
+    wbml:language "fr"
+  ] ;
+
+  wbml:aliasMap [
+    wbml:reference "acronyme" ;
+    wbml:language "fr"
+  ] ;
+
+  wbml:descriptionMap [
+    wbml:reference "description" ;
+    wbml:language "fr"
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Property_Acronyme" ;
+      wbml:label "Acronyme"@fr ;
+      wbml:label "Acronym"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "acronyme" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Property_Site%20web" ;
+      wbml:label "Site web"@fr ;
+      wbml:label "Website"@en ;
+      wbml:propertyType wbml:url
+    ] ;
+    wbml:valueMap [ wbml:reference "site_web" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Email" ;
+      wbml:label "Email"@fr ;
+      wbml:label "Email"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "email" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Telephone" ;
+      wbml:label "Téléphone"@fr ;
+      wbml:label "Phone"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "telephone" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Property_Adresse" ;
+      wbml:label "Adresse"@fr ;
+      wbml:label "Address"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "adresse" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Batiment" ;
+      wbml:label "Bâtiment"@fr ;
+      wbml:label "Building"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "batiment" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Etage" ;
+      wbml:label "Étage"@fr ;
+      wbml:label "Floor"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "etage" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Campus" ;
+      wbml:label "Campus"@fr ;
+      wbml:label "Campus"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "campus" ]
+  ] .
+
+<#PlateformeEquipementMapping>
+  a wbml:StatementsMap ;
+
+  rml:logicalSource [
+    rml:query """
+      SELECT
+        trim(p."Nom") AS plateforme_nom,
+        trim(e."Nom") AS equipement_nom
+      FROM read_csv('demonstrators/notion/input_data/plateforme.csv', header=true) AS p,
+           read_csv('demonstrators/notion/input_data/equipement.csv', header=true) AS e
+      WHERE p."Nom" IS NOT NULL AND trim(p."Nom") != ''
+        AND e."Nom" IS NOT NULL AND trim(e."Nom") != ''
+    """
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Plateforme_{plateforme_nom}"
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "Property_a%20comme%20ressource" ;
+      wbml:label "a comme ressource"@fr ;
+      wbml:label "has resource"@en ;
+      wbml:propertyType wbml:item
+    ] ;
+    wbml:valueMap [
+      wbml:entityTemplate "Equipement_{equipement_nom}"
+    ]
+  ] .
