@@ -1,4 +1,4 @@
-# Wikibase RDF Pipeline
+# Wikibase Mapping Language (WBML)
 
 Declarative generation of Wikibase statements.
 
