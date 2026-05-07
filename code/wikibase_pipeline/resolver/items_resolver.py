@@ -139,13 +139,6 @@ def collect_instance_metadata(
                     f"At most one description per language is allowed in the mapping."
                 )
         else:
-            if len(eff_value) > 250:
-                warn(
-                    f"  Description @{eff_lang} on <{iri_str}> exceeds 250 chars "
-                    f"— truncating.",
-                    verbose,
-                )
-                eff_value = eff_value[:250]
             descriptions[eff_lang] = eff_value
 
     return {
