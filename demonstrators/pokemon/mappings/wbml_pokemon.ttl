@@ -167,7 +167,7 @@ ex:SpecialDefense a wbml:Property ;
 
 ex:Height a wbml:Property ;
     wbml:label "Height"@en ;
-    wbml:propertyType wbml:string 
+    wbml:propertyType wbml:string .
 
 ex:Weight a wbml:Property ;
     wbml:label "Weight"@en ;
