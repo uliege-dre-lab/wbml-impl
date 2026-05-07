@@ -50,7 +50,7 @@ Exemple : CARE, plateforme thématique, plateau technologique",,,Plateforme tech
 Bâtiment,,"Exemple : B60, B28, B4, …",Localisation,,
 Campus,,"Exemple : Campus d’Arlon, Campus de Gembloux, Campus de Liège Centre-Ville, Campus de Liège Sart Tilman",Localisation,,
 Bénéficiaire,,"Public cible d’une ressource. Indique qui peut bénéficier des ressources d’une plateforme.
-Exemple : chercheurs ULiège, Autres universités, entreprises, centres de recherche",Conditions d’accès,Type de bénéficiaire (https://www.notion.so/Type-de-b-n-ficiaire-3253fe2b3f21804d96c4cf06ebba38a9?pvs=21),
+Exemple : chercheurs XXX, Autres universités, entreprises, centres de recherche",Conditions d’accès,Type de bénéficiaire (https://www.notion.so/Type-de-b-n-ficiaire-3253fe2b3f21804d96c4cf06ebba38a9?pvs=21),
 Infrastructure,,"Installation spécialisée fournissant l’environnement physique et technique nécessaire à des activités scientifiques ou expérimentales.
 Exemples : salle blanche (clean room), laboratoire de culture cellulaire, serre expérimentale, chambre climatique, animalerie, installation de confinement biologique",Ressource,Caractéristique de l’infrastructure (https://www.notion.so/Caract-ristique-de-l-infrastructure-31a3fe2b3f2180f18f53c7fa6d52c693?pvs=21),
 Norme de sécurité,,"Ensemble de règles, standards et procédures techniques visant à garantir la protection des personnes, des équipements, de l’environnement et des données lors de l’utilisation d’une infrastructure ou de la réalisation d’activités scientifiques.
@@ -63,7 +63,7 @@ réglementation sur l’expérimentation animale
 autorisations biosécurité, réglementation sur les substances chimiques",Garantie de qualité,,
 Garantie de qualité,,"Ensemble des preuves qu’une plateforme ou une ressource répond à des standards reconnus de qualité, de sécurité et de conformité.
 Elle s’appuie notamment sur des accréditations, certifications et normes applicables.",,Portée de la garantie de qualité (https://www.notion.so/Port-e-de-la-garantie-de-qualit-31a3fe2b3f21806982f6e6bc3bc9e165?pvs=21),
-Plateforme institutionnelle,,“Plateforme” (ou groupe de plateformes/ CARE) qui a été estampillée “ULiège”. Plateforme reconnue par l’institution.,,,
+Plateforme institutionnelle,,“Plateforme” (ou groupe de plateformes/ CARE) qui a été estampillée “XXX”. Plateforme reconnue par l’institution.,,,
 Accréditation,,"Accréditation attestant la compétence technique et la capacité à réaliser des essais, analyses ou certifications. C'est une reconnaissance de la compétence.",Garantie de qualité,,
 Coordonnées,,"Informations permettant de contacter une personne, une plateforme, une organisation. Elles comprennent généralement l’adresse e-mail, le numéro de téléphone, l’adresse postale ou tout autre moyen de communication.",,,
 Photo,,"Image permettant de représenter visuellement une personne, une ressource (par exemple un équipement), un lieu ou tout autre élément pertinent.
