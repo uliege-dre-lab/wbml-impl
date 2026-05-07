@@ -23,9 +23,9 @@ WHERE {
     FILTER(CONTAINS(STR(?dynTemplate), "{"))
   }
 
-  OPTIONAL { ?propNode wbml:entityLabel       ?predicateLabel . }
-  OPTIONAL { ?propNode wbml:entityDescription ?predicateDescription . }
-  OPTIONAL { ?propNode wbml:entityAlias       ?predicateAlias . }
+  OPTIONAL { ?propNode wbml:label       ?predicateLabel . }
+  OPTIONAL { ?propNode wbml:description ?predicateDescription . }
+  OPTIONAL { ?propNode wbml:alias       ?predicateAlias . }
   OPTIONAL { ?propNode wbml:propertyType      ?predicateType . }
   OPTIONAL { ?propNode wbml:entityTemplate      ?propExplicitKey .
              FILTER(!CONTAINS(STR(?propExplicitKey), "{")) }

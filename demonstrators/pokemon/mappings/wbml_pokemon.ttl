@@ -11,170 +11,174 @@
 
 # Class definitions
 ex:AbilityClass a wbml:Class ;
-  wbml:entityLabel "Ability"@en ;
-  wbml:entityLabel "Capacité"@fr ;
-  wbml:entityDescription "A special power or skill that a Pokémon can have."@en ;
-  wbml:entityAlias "Pokemon Ability"@en .
+  wbml:label "Ability"@en ;
+  wbml:label "Capacité"@fr ;
+  wbml:description "A special power or skill that a Pokémon can have."@en ;
+  wbml:alias "Pokemon Ability"@en .
 
 ex:SpeciesClass a wbml:Class ;
-  wbml:entityLabel "Species"@en ;
-  wbml:entityLabel "Espèce"@fr ;
-  wbml:entityDescription "The species or classification of a Pokémon."@en ;
-  wbml:entityAlias "Pokemon Species"@en .
+  wbml:label "Species"@en ;
+  wbml:label "Espèce"@fr ;
+  wbml:description "The species or classification of a Pokémon."@en ;
+  wbml:alias "Pokemon Species"@en .
 
 ex:TypeClass a wbml:Class ;
-  wbml:entityLabel "Type"@en ;
-  wbml:entityLabel "Type"@fr ;
-  wbml:entityDescription "The elemental type of a Pokémon or move."@en .
+  wbml:label "Type"@en ;
+  wbml:label "Type"@fr ;
+  wbml:description "The elemental type of a Pokémon or move."@en .
 
 ex:EggGroupClass a wbml:Class ;
-  wbml:entityLabel "Egg Group"@en ;
-  wbml:entityLabel "Groupe d'œuf"@fr ;
-  wbml:entityDescription "The egg group classification for Pokémon breeding."@en .
+  wbml:label "Egg Group"@en ;
+  wbml:label "Groupe d'œuf"@fr ;
+  wbml:description "The egg group classification for Pokémon breeding."@en .
 
 ex:MoveClass a wbml:Class ;
-  wbml:entityLabel "Move"@en ;
-  wbml:entityLabel "Attaque"@fr ;
-  wbml:entityDescription "A move or ability that a Pokémon can learn."@en .
+  wbml:label "Move"@en ;
+  wbml:label "Attaque"@fr ;
+  wbml:description "A move or ability that a Pokémon can learn."@en .
 
 ex:ItemClass a wbml:Class ;
-  wbml:entityLabel "Item"@en ;
-  wbml:entityLabel "Objet"@fr ;
-  wbml:entityDescription "An item that can be used in the Pokémon games."@en .
+  wbml:label "Item"@en ;
+  wbml:label "Objet"@fr ;
+  wbml:description "An item that can be used in the Pokémon games."@en .
 
 # Predicate definitions
 ex:HasSpecies a wbml:Property ;
-    wbml:entityLabel "has species"@en ;
-    wbml:entityDescription "Indicates the species of the Pokémon."@en ;
+    wbml:label "has species"@en ;
+    wbml:description "Indicates the species of the Pokémon."@en ;
     wbml:propertyType wbml:item .
 
 ex:IsHiddenAbility a wbml:Property ;
-    wbml:entityLabel "is hidden ability"@en ;
+    wbml:label "is hidden ability"@en ;
     wbml:propertyType wbml:string ;
-    wbml:entityAlias "Is Hidden Ability"@en .
+    wbml:alias "Is Hidden Ability"@en .
 
 ex:PokedexNumber a  wbml:Property ;
-    wbml:entityLabel "Pokédex number"@en ;
+    wbml:label "Pokédex number"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:Attack a wbml:Property ;
-    wbml:entityLabel "Attack"@en ;
+    wbml:label "Attack"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:SpecialAttack a wbml:Property ;
-    wbml:entityLabel "Special Attack"@en ;
+    wbml:label "Special Attack"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:Gender a wbml:Property ;
-    wbml:entityLabel "Gender"@en ;
+    wbml:label "Gender"@en ;
     wbml:propertyType wbml:string .
 
 ex:HasAbility a wbml:Property ;
-    wbml:entityLabel "has ability"@en ;
+    wbml:label "has ability"@en ;
     wbml:propertyType wbml:item .
 
 ex:StatedIn a wbml:Property ;
-    wbml:entityLabel "stated in"@en ;
+    wbml:label "stated in"@en ;
     wbml:propertyType wbml:string .
 
 ex:StatedOn a wbml:Property ;
-    wbml:entityLabel "stated on"@en ;
+    wbml:label "stated on"@en ;
     wbml:propertyType wbml:time ;
-    wbml:entityAlias "Stated On"@en .
+    wbml:alias "Stated On"@en .
 
 ex:PokemonHasType a wbml:Property ;
-    wbml:entityLabel "Pokemon has type"@en ;
-    wbml:entityAlias "Has Type"@en ;
+    wbml:label "Pokemon has type"@en ;
+    wbml:alias "Has Type"@en ;
     wbml:propertyType wbml:item .
 
 ex:HasEggGroup a wbml:Property ;
-    wbml:entityLabel "has egg group"@en ;
+    wbml:label "has egg group"@en ;
     wbml:propertyType wbml:item .
 
 ex:EvolvesFrom a wbml:Property ;
-    wbml:entityLabel "evolves from"@en ;
+    wbml:label "evolves from"@en ;
     wbml:propertyType wbml:item .
 
 ex:EvolvesTo a wbml:Property ;
-    wbml:entityLabel "evolves to"@en ;
+    wbml:label "evolves to"@en ;
     wbml:propertyType wbml:item .
 
 ex:EvolutionCondition a wbml:Property ;
-    wbml:entityLabel "evolution condition"@en ;
+    wbml:label "evolution condition"@en ;
     wbml:propertyType wbml:string .
 
 ex:EffectiveAgainst a wbml:Property ;
-    wbml:entityLabel "effective against"@en ;
+    wbml:label "effective against"@en ;
     wbml:propertyType wbml:item .
 
 ex:IneffectiveAgainst a wbml:Property ;
-    wbml:entityLabel "ineffective against"@en ;
+    wbml:label "ineffective against"@en ;
     wbml:propertyType wbml:item .
 
 ex:NoEffectAgainst a wbml:Property ;
-    wbml:entityLabel "no effect against"@en ;
+    wbml:label "no effect against"@en ;
     wbml:propertyType wbml:item .
 
 ex:HasImage a wbml:Property ;
-    wbml:entityLabel "has image"@en ;
+    wbml:label "has image"@en ;
     wbml:propertyType wbml:url .
 
 ex:MoveHasType a wbml:Property ;
-    wbml:entityLabel "Move has type"@en ;
-    wbml:entityAlias "Has Type"@en ;
+    wbml:label "Move has type"@en ;
+    wbml:alias "Has Type"@en ;
     wbml:propertyType wbml:item .
 
 ex:Accuracy a wbml:Property ;
-    wbml:entityLabel "Accuracy"@en ;
+    wbml:label "Accuracy"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:Power a wbml:Property ;
-    wbml:entityLabel "Power"@en ;
+    wbml:label "Power"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:PP a wbml:Property ;
-    wbml:entityLabel "PP"@en ;
+    wbml:label "PP"@en ;
     wbml:propertyType wbml:quantity ;
-    wbml:entityAlias "Power Points"@en .
+    wbml:alias "Power Points"@en .
 
 ex:MoveCategory a wbml:Property ;
-    wbml:entityLabel "Move Category"@en ;
+    wbml:label "Move Category"@en ;
     wbml:propertyType wbml:string ;
-    wbml:entityAlias "Has Category"@en .
+    wbml:alias "Has Category"@en .
 
 ex:TMNumber a wbml:Property ;
-    wbml:entityLabel "TM Number"@en ;
+    wbml:label "TM Number"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:ImageType a wbml:Property ;
-    wbml:entityLabel "Image Type"@en ;
+    wbml:label "Image Type"@en ;
     wbml:propertyType wbml:string ;
-    wbml:entityAlias "Has Image Type"@en .
+    wbml:alias "Has Image Type"@en .
 
 ex:HP a wbml:Property ;
-    wbml:entityLabel "HP"@en ;
+    wbml:label "HP"@en ;
     wbml:propertyType wbml:quantity ;
-    wbml:entityAlias "Hit Points"@en .
+    wbml:alias "Hit Points"@en .
 
 ex:Defense a wbml:Property ;
-    wbml:entityLabel "Defense"@en ;
+    wbml:label "Defense"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:SpecialDefense a wbml:Property ;
-    wbml:entityLabel "Special Defense"@en ;
+    wbml:label "Special Defense"@en ;
     wbml:propertyType wbml:quantity ;
-    wbml:entityAlias "Sp. Defense"@en .
+    wbml:alias "Sp. Defense"@en .
+
+ex:Height a wbml:Property ;
+    wbml:label "Height"@en ;
+    wbml:propertyType wbml:string 
 
 ex:Weight a wbml:Property ;
-    wbml:entityLabel "Weight"@en ;
+    wbml:label "Weight"@en ;
     wbml:propertyType wbml:string .
 
 ex:ItemNumber a wbml:Property ;
-    wbml:entityLabel "Item Number"@en ;
+    wbml:label "Item Number"@en ;
     wbml:propertyType wbml:quantity .
 
 ex:HasItemCategory a wbml:Property ;
-    wbml:entityLabel "has item category"@en ;
+    wbml:label "has item category"@en ;
     wbml:propertyType wbml:item .
 
 #################################################################
@@ -192,14 +196,17 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    # wbml:classId "Q6999" #-- IGNORE (todo) -
+    # To the reader, you can reuse existing Q-IDs from Wikidata here. 
+    # E.g., using wbml:classId "Q6999" 
+    # But for the sake of this demonstration, 
+    # we define new properties in our own namespace.
     wbml:entityClass [
       a wbml:Class ;
       wbml:entityTemplate "Pokemon" ;
-      wbml:entityLabel "Pokemon"@en ;
-      wbml:entityLabel "Pokémon"@fr ;
-      wbml:entityDescription "A creature from the Pokémon universe."@en ;
-      wbml:entityAlias "Pokemon"@en
+      wbml:label "Pokemon"@en ;
+      wbml:label "Pokémon"@fr ;
+      wbml:description "A creature from the Pokémon universe."@en ;
+      wbml:alias "Pokemon"@en
     ]
   ] ;
 
@@ -255,15 +262,18 @@ ex:HasItemCategory a wbml:Property ;
     wbml:propertyMap [
       a wbml:Property ;
       wbml:entityTemplate "Speed" ;
-      wbml:entityLabel "Speed"@en ;
+      wbml:label "Speed"@en ;
       wbml:propertyType wbml:quantity ;
-      wbml:entityAlias "Base Speed"@en
+      wbml:alias "Base Speed"@en
     ] ;
     wbml:valueMap [ wbml:reference "base.Speed" ; wbml:datatype xsd:integer ]
   ] ;
 
   wbml:statementMap [
-    # wbml:propertyId "P56" ; # IGNORE (todo)
+    # To the reader, you can reuse existing P-IDs from Wikidata here. 
+    # E.g., using wbml:propertyId "P56" ; 
+    # But for the sake of this demonstration, 
+    # we define new properties in our own namespace.
     wbml:property ex:Height ;
     wbml:valueMap [ wbml:reference "profile.height" ; wbml:datatype xsd:string ]
   ] ;
@@ -347,10 +357,10 @@ ex:HasItemCategory a wbml:Property ;
     wbml:entityClass [
       a wbml:Class ;
       wbml:entityTemplate "Pokemon" ;
-      wbml:entityLabel "Pokemon"@en ;
-      wbml:entityLabel "Pokémon"@fr ;
-      wbml:entityDescription "A creature from the Pokémon universe."@en ;
-      wbml:entityAlias "Pokemon"@en
+      wbml:label "Pokemon"@en ;
+      wbml:label "Pokémon"@fr ;
+      wbml:description "A creature from the Pokémon universe."@en ;
+      wbml:alias "Pokemon"@en
     ]
   ] ;
 
@@ -773,10 +783,10 @@ ex:HasItemCategory a wbml:Property ;
     wbml:class [
       a wbml:Class ;
       wbml:entityTemplate "ItemCategory" ;
-      wbml:entityLabel "Item Category"@en ;
-      wbml:entityLabel "Catégorie d'objet"@fr ;
-      wbml:entityDescription "A category or classification for items in the Pokémon games."@en ;
-      wbml:entityAlias "Pokemon Item Category"@en
+      wbml:label "Item Category"@en ;
+      wbml:label "Catégorie d'objet"@fr ;
+      wbml:description "A category or classification for items in the Pokémon games."@en ;
+      wbml:alias "Pokemon Item Category"@en
     ]
   ] ;
 

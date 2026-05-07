@@ -27,8 +27,7 @@
 wbml:StatementsMap
     a owl:Class ;
     rdfs:label "Statements Map"@en ;
-    rdfs:comment "A WBML mapping unit that groups a logical source, an entity map, and statement/fingerprint maps. Subclass of rml:TriplesMap — the converter produces one or more rml:TriplesMaps from it."@en ;
-    rdfs:subClassOf rml:TriplesMap .
+    rdfs:comment "A WBML mapping unit that groups a logical source, an entity map, and statement/fingerprint maps."@en .
 
 wbml:EntityMap
     a owl:Class ;
@@ -79,19 +78,19 @@ wbml:Class
 # Entity declaration properties - used in schema declarations
 #################################################################
 
-wbml:entityLabel
+wbml:label
     a owl:AnnotationProperty ;
     rdfs:label "entity label"@en ;
     rdfs:comment "A human-readable label for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:label in WBML schema declarations."@en ;
     rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
 
-wbml:entityDescription
+wbml:description
     a owl:AnnotationProperty ;
     rdfs:label "entity description"@en ;
     rdfs:comment "A human-readable description for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:comment in WBML schema declarations."@en ;
     rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
 
-wbml:entityAlias
+wbml:alias
     a owl:AnnotationProperty ;
     rdfs:label "entity alias"@en ;
     rdfs:comment "An alternative label for a declared Wikibase class or property, optionally language-tagged. Replaces skos:altLabel in WBML schema declarations."@en ;
@@ -101,19 +100,19 @@ wbml:entityAlias
 # Entity declaration properties - used in schema declarations
 #################################################################
 
-wbml:entityLabel
+wbml:label
     a owl:AnnotationProperty ;
     rdfs:label "entity label"@en ;
     rdfs:comment "A human-readable label for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:label in WBML schema declarations."@en ;
     rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
 
-wbml:entityDescription
+wbml:description
     a owl:AnnotationProperty ;
     rdfs:label "entity description"@en ;
     rdfs:comment "A human-readable description for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:comment in WBML schema declarations."@en ;
     rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
 
-wbml:entityAlias
+wbml:alias
     a owl:AnnotationProperty ;
     rdfs:label "entity alias"@en ;
     rdfs:comment "An alternative label for a declared Wikibase class or property, optionally language-tagged. Replaces skos:altLabel in WBML schema declarations."@en ;

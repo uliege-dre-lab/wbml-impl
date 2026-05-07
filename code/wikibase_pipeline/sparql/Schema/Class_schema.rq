@@ -16,9 +16,9 @@ WHERE {
     { [] wbml:class ?classNode . }
   }
 
-  OPTIONAL { ?classNode wbml:entityLabel       ?classLabel . }
-  OPTIONAL { ?classNode wbml:entityDescription ?classDescription . }
-  OPTIONAL { ?classNode wbml:entityAlias       ?classAlias . }
+  OPTIONAL { ?classNode wbml:label       ?classLabel . }
+  OPTIONAL { ?classNode wbml:description ?classDescription . }
+  OPTIONAL { ?classNode wbml:alias       ?classAlias . }
   OPTIONAL { ?classNode wbml:entityTemplate      ?classExplicitKey . }
 
   BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)

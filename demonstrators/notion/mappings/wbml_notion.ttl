@@ -148,8 +148,8 @@
     wbml:propertyMap [
       a wbml:Property ;
       wbml:entityTemplate "goodPractice" ;
-      wbml:entityLabel "Good practice"@en ;
-      wbml:entityLabel "Bonnes pratiques"@fr ;
+      wbml:label "Good practice"@en ;
+      wbml:label "Bonnes pratiques"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -161,8 +161,8 @@
     wbml:propertyMap [
       a wbml:Property ;
       wbml:entityTemplate "cardinality" ;
-      wbml:entityLabel "Cardinality"@en ;
-      wbml:entityLabel "Cardinalité"@fr ;
+      wbml:label "Cardinality"@en ;
+      wbml:label "Cardinalité"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -322,8 +322,8 @@
     wbml:propertyMap [
       a wbml:Property ;
       wbml:entityTemplate "goodPractice" ;
-      wbml:entityLabel "Good practice"@en ;
-      wbml:entityLabel "Bonnes pratiques"@fr ;
+      wbml:label "Good practice"@en ;
+      wbml:label "Bonnes pratiques"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -335,8 +335,8 @@
     wbml:propertyMap [
       a wbml:Property ;
       wbml:entityTemplate "cardinality" ;
-      wbml:entityLabel "Cardinality"@en ;
-      wbml:entityLabel "Cardinalité"@fr ;
+      wbml:label "Cardinality"@en ;
+      wbml:label "Cardinalité"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -348,8 +348,8 @@
     wbml:propertyMap [
       a wbml:Property ;
       wbml:entityTemplate "inverse" ;
-      wbml:entityLabel "Inverse property"@en ;
-      wbml:entityLabel "Propriété inverse"@fr ;
+      wbml:label "Inverse property"@en ;
+      wbml:label "Propriété inverse"@fr ;
       wbml:propertyType wbml:string
     ] ;
     wbml:valueMap [
@@ -361,8 +361,8 @@
     wbml:propertyMap [
       a wbml:Property ;
       wbml:entityTemplate "rangeClass" ;
-      wbml:entityLabel "Range class"@en ;
-      wbml:entityLabel "Classe de portée"@fr ;
+      wbml:label "Range class"@en ;
+      wbml:label "Classe de portée"@fr ;
       wbml:propertyType wbml:item
     ] ;
     wbml:valueMap [
