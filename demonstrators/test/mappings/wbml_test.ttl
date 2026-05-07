@@ -1,0 +1,48 @@
+@prefix rml:  <http://w3id.org/rml/> .
+@prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
+@prefix wbml: <https://example.org/wbml#> .
+
+<#PersonMapping>
+  a wbml:StatementsMap ;
+
+  rml:logicalSource [
+    rml:source "demonstrators/test/input_data/persons.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+
+  wbml:entityMap [
+    wbml:entityTemplate "Person_{id}" ;
+    wbml:entityClass [
+      a wbml:Class ;
+      wbml:entityTemplate "Person" ;
+      wbml:label "Person"@en
+    ]
+  ] ;
+
+  wbml:labelMap [
+    wbml:reference "name" ;
+    wbml:language "en"
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "nationality" ;
+      wbml:label "nationality"@en ;
+      wbml:propertyType wbml:string
+    ] ;
+    wbml:valueMap [ wbml:reference "nationality" ]
+  ] ;
+
+  wbml:statementMap [
+    wbml:propertyMap [
+      a wbml:Property ;
+      wbml:entityTemplate "knows" ;
+      wbml:label "knows"@en ;
+      wbml:propertyType wbml:item
+    ] ;
+    wbml:valueMap [
+      wbml:entityTemplate "Person_{knows}"
+    ]
+  ] .

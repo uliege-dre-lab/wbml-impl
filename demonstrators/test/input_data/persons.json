@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Bob",  "nationality": "British",  "knows": 2 },
+  { "id": 2, "name": "Jane", "nationality": "American", "knows": 3 },
+  { "id": 3, "name": "Zach", "nationality": "Canadian" }
+]
