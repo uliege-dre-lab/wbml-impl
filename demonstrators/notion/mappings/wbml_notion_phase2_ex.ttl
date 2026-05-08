@@ -34,7 +34,7 @@
 
   wbml:entityMap [
     wbml:entityTemplate "Equipement_{nom}" ;
-    wbml:entityClass [
+    wbml:class [
       a wbml:Class ;
       wbml:entityTemplate "Ressource"
     ]
@@ -181,7 +181,7 @@
 
   wbml:entityMap [
     wbml:entityTemplate "Plateforme_{nom}" ;
-    wbml:entityClass [
+    wbml:class [
       a wbml:Class ;
       wbml:entityTemplate "Plateforme%20technologique"
     ]

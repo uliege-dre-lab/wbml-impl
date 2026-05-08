@@ -1,4 +1,4 @@
-@prefix rml:  <http://w3id.org/rml/> .
+@prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
 @prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
 @prefix wbml: <https://example.org/wbml#> .
 
@@ -13,7 +13,7 @@
 
   wbml:entityMap [
     wbml:entityTemplate "Person_{id}" ;
-    wbml:entityClass [
+    wbml:class [
       a wbml:Class ;
       wbml:entityTemplate "Person" ;
       wbml:label "Person"@en

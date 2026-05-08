@@ -200,7 +200,7 @@ ex:HasItemCategory a wbml:Property ;
     # E.g., using wbml:classId "Q6999" 
     # But for the sake of this demonstration, 
     # we define new properties in our own namespace.
-    wbml:entityClass [
+    wbml:class [
       a wbml:Class ;
       wbml:entityTemplate "Pokemon" ;
       wbml:label "Pokemon"@en ;
@@ -354,7 +354,7 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    wbml:entityClass [
+    wbml:class [
       a wbml:Class ;
       wbml:entityTemplate "Pokemon" ;
       wbml:label "Pokemon"@en ;
