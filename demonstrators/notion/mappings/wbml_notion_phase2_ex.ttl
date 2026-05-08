@@ -183,7 +183,7 @@
     wbml:entityTemplate "Plateforme_{nom}" ;
     wbml:class [
       a wbml:Class ;
-      wbml:entityTemplate "Plateforme%20technologique"
+      wbml:entityTemplate "Class_Plateforme%20technologique"
     ]
   ] ;
 
