@@ -80,7 +80,7 @@ def assign_ids(graph: Graph, verbose: int) -> None:
                 (pom, WBINT.statID, Literal(global_stat_id, datatype=XSD.integer))
             )
 
-    inform(f"Assigned wbml:statID to {global_stat_id} statementMaps", verbose)
+    inform(f"Assigned wbint:statID to {global_stat_id} statementMaps", verbose)
 
     ref_total = 0
     all_poms = [pom for poms in tm_to_poms.values() for pom in poms]
@@ -90,7 +90,7 @@ def assign_ids(graph: Graph, verbose: int) -> None:
             graph.add((rm, WBINT.refId, Literal(j, datatype=XSD.integer)))
             ref_total += 1
 
-    inform(f"Assigned wbml:refId to {ref_total} referenceMaps", verbose)
+    inform(f"Assigned wbint:refId to {ref_total} referenceMaps", verbose)
 
 
 def convert_wbml_to_rml(
