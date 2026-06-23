@@ -453,8 +453,7 @@ def resolve_property_instances(
                 raise ValueError(
                     f"Property entity <{iri_str}> found in data graph but not in "
                     f"lookup['properties']. Ensure it is declared in the schema "
-                    f"(rdf:Property + wbml:propertyType) or referenced via "
-                    f"wbml:propertyEntityMap with wbml:nodeId."
+                    f"with wbml:propertyType."
                 )
             # wbml:propertyType present → resolve/create and push metadata
             wb_datatype = wb_datatype_from_graph(data_graph, prop_iri)
