@@ -97,28 +97,6 @@ wbml:alias
     rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
 
 #################################################################
-# Entity declaration properties - used in schema declarations
-#################################################################
-
-wbml:label
-    a owl:AnnotationProperty ;
-    rdfs:label "entity label"@en ;
-    rdfs:comment "A human-readable label for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:label in WBML schema declarations."@en ;
-    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
-
-wbml:description
-    a owl:AnnotationProperty ;
-    rdfs:label "entity description"@en ;
-    rdfs:comment "A human-readable description for a declared Wikibase class or property, optionally language-tagged. Replaces rdfs:comment in WBML schema declarations."@en ;
-    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
-
-wbml:alias
-    a owl:AnnotationProperty ;
-    rdfs:label "entity alias"@en ;
-    rdfs:comment "An alternative label for a declared Wikibase class or property, optionally language-tagged. Replaces skos:altLabel in WBML schema declarations."@en ;
-    rdfs:domain [ owl:unionOf (wbml:Class wbml:Property) ] .
-
-#################################################################
 # Named individuals — ranks and special types
 #################################################################
 
