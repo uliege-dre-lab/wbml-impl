@@ -5,8 +5,8 @@ from rdflib.namespace import XSD
 
 from .utils.verbose_utils import inform, warn
 
-WBML = Namespace("https://example.org/wbml#")
-WBINT = Namespace("https://example.org/wbint#")
+WBML = Namespace("http://w3id.org/dre/wbml#")
+WBINT = Namespace("http://w3id.org/dre/wbint#")
 
 RML_QUERIES_DIR = "code/wikibase_pipeline/sparql/RML"
 SCHEMA_QUERIES_DIR = "code/wikibase_pipeline/sparql/Schema"

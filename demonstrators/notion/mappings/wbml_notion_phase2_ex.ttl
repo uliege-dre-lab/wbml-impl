@@ -4,7 +4,7 @@
 @prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
 @prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix wbml: <https://example.org/wbml#> .
+@prefix wbml: <http://w3id.org/dre/wbml#> .
 
 <#EquipementMapping>
   a wbml:StatementsMap ;

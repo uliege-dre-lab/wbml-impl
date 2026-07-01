@@ -1,6 +1,6 @@
 PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
-PREFIX wbml: <https://example.org/wbml#>
+PREFIX wbml: <http://w3id.org/dre/wbml#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 CONSTRUCT {

@@ -1,7 +1,7 @@
 PREFIX rr:   <http://www.w3.org/ns/r2rml#>
 PREFIX rml:  <http://semweb.mmlab.be/ns/rml#>
-PREFIX wbml: <https://example.org/wbml#>
-PREFIX wbint: <https://example.org/wbint#>
+PREFIX wbml: <http://w3id.org/dre/wbml#>
+PREFIX wbint: <http://w3id.org/dre/wbint#>
 
 CONSTRUCT {
   ?stmtTM a rr:TriplesMap ;

@@ -9,7 +9,7 @@ from ..utils.verbose_utils import inform, warn
 from ..wikibase_api import WikibaseAPI
 from .language_resolver import LanguageResolver
 
-WBML = Namespace("https://example.org/wbml#")
+WBML = Namespace("http://w3id.org/dre/wbml#")
 PROPERTY_PREFIX = "urn:wikibase:property:"
 PROPERTY_IRI_PREFIX = "urn:wikibase:propertyIRI:"
 

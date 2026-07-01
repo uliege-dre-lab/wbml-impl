@@ -1,6 +1,6 @@
 @prefix rml:  <http://semweb.mmlab.be/ns/rml#> .
 @prefix ql:   <http://semweb.mmlab.be/ns/ql#> .
-@prefix wbml: <https://example.org/wbml#> .
+@prefix wbml: <http://w3id.org/dre/wbml#> .
 
 <#PersonMapping>
   a wbml:StatementsMap ;

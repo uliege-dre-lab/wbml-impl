@@ -11,7 +11,7 @@ from .utils.claims_utils import find_existing_claim_guid
 from .utils.verbose_utils import inform, warn
 from .wikibase_api import WikibaseAPI
 
-WBML = Namespace("https://example.org/wbml#")
+WBML = Namespace("http://w3id.org/dre/wbml#")
 
 WBML_RANKS: dict[str, str] = {
     str(WBML.PreferredRank): "preferred",
