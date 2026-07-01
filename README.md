@@ -17,11 +17,25 @@ The objective is to simplify and automate the process of integrating external da
 
 ## Project Structure
 
-- `vocabulary/` — WBML ontology declaration (`wbml.ttl`)
+- `vocabulary/` — WBML ontology declaration (git submodule, [uliege-dre-lab/wbml](https://github.com/uliege-dre-lab/wbml))
 - `code/`       — Pipeline source code and SPARQL queries
 - `demonstrators/` — Example use cases with input data and mappings
 
 ## Prerequisites
+
+### Getting the vocabulary submodule
+
+The WBML vocabulary lives in a separate repository and is included here as a Git submodule. If you haven't cloned yet:
+
+```
+git clone --recurse-submodules <this-repo-url>
+```
+
+If you already cloned without that flag:
+
+```
+git submodule update --init --recursive
+```
 
 ### General
 
