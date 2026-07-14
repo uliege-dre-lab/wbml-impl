@@ -131,6 +131,14 @@ def load_env_config() -> dict:
     else:
         lookup_file = resolve_path(lookup_raw)
 
+    if lookup_file is not None:
+        lookup_file = ensure_suffix(
+            lookup_file,
+            ".json",
+            key="LOOKUP_FILE",
+            verbose=verbose,
+        )
+
     rml_mapping_raw = os.getenv("RML_MAPPING_PATH", "").strip()
     if not rml_mapping_raw:
         rml_mapping_raw = "data/mappings/converted_mapping.ttl"
