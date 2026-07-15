@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, develop, jupyter]
+    branches: [main]
   pull_request:
-    branches: [main, develop, jupyter]
+    branches: [main]
 
 jobs:
   test:
