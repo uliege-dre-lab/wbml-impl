@@ -196,9 +196,9 @@ ex:HasItemCategory a wbml:Property ;
 
   wbml:entityMap [
     wbml:entityTemplate "Pokemon_{id}" ;
-    # To the reader, you can reuse existing Q-IDs from Wikidata here. 
-    # E.g., using wbml:classId "Q6999" 
-    # But for the sake of this demonstration, 
+    # To the reader, you can reuse existing Q-IDs from Wikidata here.
+    # E.g., using wbml:classId "Q6999"
+    # But for the sake of this demonstration,
     # we define new properties in our own namespace.
     wbml:class [
       a wbml:Class ;
@@ -270,9 +270,9 @@ ex:HasItemCategory a wbml:Property ;
   ] ;
 
   wbml:statementMap [
-    # To the reader, you can reuse existing P-IDs from Wikidata here. 
-    # E.g., using wbml:propertyId "P56" ; 
-    # But for the sake of this demonstration, 
+    # To the reader, you can reuse existing P-IDs from Wikidata here.
+    # E.g., using wbml:propertyId "P56" ;
+    # But for the sake of this demonstration,
     # we define new properties in our own namespace.
     wbml:property ex:Height ;
     wbml:valueMap [ wbml:reference "profile.height" ; wbml:datatype xsd:string ]
