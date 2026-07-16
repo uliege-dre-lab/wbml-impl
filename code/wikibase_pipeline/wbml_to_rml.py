@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from rdflib import BNode, Graph, Literal, Namespace
-from rdflib.namespace import XSD
+from rdflib.namespace import RDF, XSD
 
 from .utils.verbose_utils import inform, warn
 
@@ -56,6 +56,9 @@ def delete_wbml_blocks(graph: Graph) -> None:
 
             if isinstance(o, BNode):
                 triples_to_remove.update(collect_subtree_triples(graph, o))
+
+        elif p == RDF.type and o in {WBML.Class, WBML.Property, WBML.StatementsMap}:
+            triples_to_remove.add((s, p, o))
 
     for triple in triples_to_remove:
         graph.remove(triple)
