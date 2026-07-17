@@ -93,3 +93,10 @@ nosetests.xml
 
 .DS_Store
 Thumbs.db
+
+# ----------------------------
+# Docker
+# ----------------------------
+
+config/*
+!config/.gitkeep
