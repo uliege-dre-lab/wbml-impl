@@ -91,7 +91,7 @@ To create your environment file from the template, run:
 cp .env.example .env
 ```
 
-Then fill in the required values. Optional variables can be left empty to use their defaults.
+Then fill in the required values (if you are using the provided Wikibase set-up, the required values are already set). Optional variables can be left empty to use their defaults.
 
 ## Usage
 If you are on Linux or macOS, first make the script executable:
@@ -111,7 +111,19 @@ For example, to run the Pokédex Demonstrator:
 ```bash
 sh code/update.sh demonstrators/pokemon/mappings/wbml_pokemon.ttl
 ```
-Then you can analyze intermediary results in `data/`, and the final results in your wikimedia instance (http://localhost:8181/wiki/Special:RecentChanges with the provided docker-compose setup).
+Then you can analyze intermediary results in `data/` (or your custom output folder, if you changed the default paths), and the final results in your Wikibase instance (http://localhost:8181/wiki/Special:RecentChanges with the provided docker-compose setup).
 
+> **Note:** For the `notion` demonstrator, you may hit a character limit error.
+> If you're using the provided docker-compose setup, you can fix this by increasing the label/description length limit:
+>
+> 1. Open `config/LocalSettings.php` (generated after your first `docker-compose up -d`)
+> 2. Add the following line at the end of the file:
+>    ```php
+>    $wgWBRepoSettings['string-limits']['multilang']['length'] = 500;
+>    ```
+> 3. Restart the Wikibase containers:
+>    ```
+>    docker-compose restart wikibase wikibase-jobrunner
+>    ```
 ## License
 MIT — see [LICENSE](LICENSE).
