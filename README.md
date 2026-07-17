@@ -59,6 +59,11 @@ A Wikibase instance should be running. The following information is required:
 - Wikibase API URL
 - Wikibase credentials: username and password with sufficient rights to create and modify entities
 
+You can start one locally with docker-compose using the provided `docker-compose.yml` file.
+```
+docker-compose up -d
+```
+
 ### Internal parameters
 
 The pipeline behaviour is controlled by the following parameters:
@@ -98,8 +103,15 @@ chmod +x code/update.sh
 Run the pipeline from the project root by passing your WBML mapping file:
 
 ```bash
-sh ./code/update.sh path/to/your/mapping.ttl
+sh code/update.sh path/to/your/mapping.ttl
 ```
+
+For example, to run the Pokédex Demonstrator:
+
+```bash
+sh code/update.sh demonstrators/pokemon/mappings/wbml_pokemon.ttl
+```
+Then you can analyze intermediary results in `data/`, and the final results in your wikimedia instance (http://localhost:8181/wiki/Special:RecentChanges with the provided docker-compose setup).
 
 ## License
 MIT — see [LICENSE](LICENSE).
