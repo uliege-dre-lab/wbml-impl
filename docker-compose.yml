@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mariadb:10.11
+    restart: unless-stopped
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: my_wiki
+      MYSQL_USER: wikibase
+      MYSQL_PASSWORD: wikibasepass
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+
+  wikibase:
+    image: wikibase/wikibase:7.0
+    restart: unless-stopped
+    ports:
+      - "8181:80"
+    volumes:
+      - ./config:/config:z
+    environment:
+      METADATA_CALLBACK: "false"
+      MW_ADMIN_NAME: admin
+      MW_ADMIN_PASS: WikibasePassword123
+      MW_ADMIN_EMAIL: admin@example.com
+      MW_WG_SERVER: http://localhost:8181
+      DB_SERVER: mysql:3306
+      DB_USER: wikibase
+      DB_PASS: wikibasepass
+      DB_NAME: my_wiki
+    depends_on:
+      - mysql
+
+  wikibase-jobrunner:
+    image: wikibase/wikibase:7.0
+    command: /jobrunner-entrypoint.sh
+    restart: unless-stopped
+    volumes:
+      - ./config:/config:z
+    environment:
+      METADATA_CALLBACK: "false"
+    depends_on:
+      - wikibase
+
+volumes:
+  mysql-data:
