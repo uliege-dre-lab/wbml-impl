@@ -1,7 +1,9 @@
+from datetime import date
+
 from rdflib import Literal, URIRef
 from rdflib.namespace import XSD
 
-from .utils.verbose_utils import warn
+from .utils.verbose_utils import inform, warn
 
 PROPERTY_VALUE_PREFIXES = ("urn:wikibase:property:", "urn:wikibase:propertyIRI:")
 ITEM_VALUE_PREFIXES = ("urn:wikibase:item:", "urn:wikibase:itemIRI:")
@@ -25,6 +27,14 @@ XSD_TO_WIKIBASE: dict[str, str] = {
 }
 
 
+def check_not_none(value: str) -> None:
+    """
+    Check if a string value is "none", "null", or "nan" and raise a ValueError if so.
+    """
+    if value.lower() in {"none", "null", "nan"}:
+        raise ValueError(f"Value is '{value}'; skipping.")
+
+
 def value_to_wikibase_datatype(value) -> str | None:
     """
     Infer the Wikibase datatype from an RDF value.
@@ -32,7 +42,7 @@ def value_to_wikibase_datatype(value) -> str | None:
       Other URIRef             -> "url"
       Language-tagged Literal  -> "monolingualtext"
       Typed Literal            -> mapped via XSD_TO_WIKIBASE (None if unsupported type)
-      Plain Literal            -> "string" (cannot be inferred)
+      Plain Literal            -> None (cannot be inferred)
     Input:
     - value: The RDFLib value to infer the Wikibase datatype from.
     Output:
@@ -52,7 +62,7 @@ def value_to_wikibase_datatype(value) -> str | None:
             return "monolingualtext"
         if value.datatype:
             return XSD_TO_WIKIBASE.get(str(value.datatype))
-        return "string"
+        return None
 
     return None
 
@@ -70,7 +80,8 @@ def _coerce_missing_value_to_property_datatype(
     Output:
     - The coerced value as an RDFLib Literal or URIRef.
     """
-    val_str = str(value)
+    val_str = str(value).strip()
+    check_not_none(val_str)
 
     if property_datatype == "string":
         return Literal(val_str, datatype=XSD.string)
@@ -88,6 +99,14 @@ def _coerce_missing_value_to_property_datatype(
         return Literal(val_str, datatype=XSD.decimal)
 
     if property_datatype == "time":
+        if val_str.lstrip("+-").isdigit():
+            return Literal(val_str, datatype=XSD.gYear)
+        try:
+            date.fromisoformat(val_str)
+        except ValueError as err:
+            raise ValueError(
+                f"Cannot coerce '{val_str}' to time: not a valid date."
+            ) from err
         return Literal(val_str, datatype=XSD.date)
 
     if property_datatype == "external-id":
@@ -175,14 +194,10 @@ def normalize_value_for_property(
             value=value,
         )
     except ValueError as exc:
-        warn(
-            f"Value {value!r} cannot be coerced to '{property_datatype}':"
-            f" {exc}; skipping.",
-            verbose,
-        )
+        warn(f"Value {value!r}: {exc}", verbose)
         return None
 
-    warn(
+    inform(
         f"Value {value!r} had no explicit datatype; coerced to '{property_datatype}'.",
         verbose,
     )
@@ -258,21 +273,24 @@ def rdf_value_to_wikibase_value(
             )
         return {"entity-type": "property", "id": prop_entry["id"]}
 
+    result = str(value).strip()
+    check_not_none(result)
+
     if property_datatype in ("string", "url", "external-id"):
-        result = str(value).strip()
-        if result.lower() in {"none", "null", "nan"}:
-            raise ValueError(f"Value is '{result}'; skipping.")
         return result
 
     if property_datatype == "monolingualtext":
         lang = getattr(value, "language", None) or default_language
-        result = str(value).strip()
-        if result.lower() in {"none", "null", "nan"}:
-            raise ValueError(f"Value is '{result}'; skipping.")
         return {"text": result, "language": lang}
 
     if property_datatype == "quantity":
-        amount = str(value)
+        amount = result
+        try:
+            float(amount)
+        except ValueError as err:
+            raise ValueError(
+                f"Cannot convert '{amount}' to quantity: not a number."
+            ) from err
         if not amount.startswith(("+", "-")):
             amount = f"+{amount}"
         return {"amount": amount, "unit": "1"}
