@@ -92,9 +92,9 @@ WHERE {
     IF(BOUND(?propertyIdStr),
       IRI(CONCAT("urn:wikibase:propertyIRI:", ?propertyIdStr)),
       IF(BOUND(?propertyBlank),
-        IRI(CONCAT("urn:wikibase:property:", STR(?propExplicitKey))),
+        IRI(CONCAT("urn:wikibase:property:", ENCODE_FOR_URI(STR(?propExplicitKey)))),
         IF(BOUND(?constPropExplicitKey),
-          IRI(CONCAT("urn:wikibase:property:", STR(?constPropExplicitKey))),
+          IRI(CONCAT("urn:wikibase:property:", ENCODE_FOR_URI(STR(?constPropExplicitKey)))),
           IF(BOUND(?constPropType),
             IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propertyConst), "#"))),
             ?propertyConst
@@ -107,7 +107,10 @@ WHERE {
   BIND(
     IF(BOUND(?subjectEntityId),
       CONCAT(?subjectNodeIRIPrefix, STR(?subjectEntityId)),
-      CONCAT(?subjectNodePrefix,    STR(?subjectEntityTemplate))
+      IF(CONTAINS(STR(?subjectEntityTemplate), "{"),
+        CONCAT(?subjectNodePrefix, STR(?subjectEntityTemplate)),
+        CONCAT(?subjectNodePrefix, ENCODE_FOR_URI(STR(?subjectEntityTemplate)))
+      )
     ) AS ?subjectTemplate
   )
 

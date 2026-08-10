@@ -73,9 +73,9 @@ WHERE {
     IF(BOUND(?refPropertyId),
       IRI(CONCAT("urn:wikibase:referenceIRI:", ?refPropertyId)),
       IF(BOUND(?refPropertyBlank),
-        IRI(CONCAT("urn:wikibase:reference:", STR(?refExplicitKey))),
+        IRI(CONCAT("urn:wikibase:reference:", ENCODE_FOR_URI(STR(?refExplicitKey)))),
         IF(BOUND(?refConstExplicitKey),
-          IRI(CONCAT("urn:wikibase:reference:", STR(?refConstExplicitKey))),
+          IRI(CONCAT("urn:wikibase:reference:", ENCODE_FOR_URI(STR(?refConstExplicitKey)))),
           IF(BOUND(?refConstType),
             IRI(CONCAT("urn:wikibase:reference:", STRAFTER(STR(?refPropertyConst), "#"))),
             ?refPropertyConst

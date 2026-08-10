@@ -93,7 +93,7 @@ WHERE {
   BIND(
     IF(BOUND(?valueEntityId),
       IRI(CONCAT("urn:wikibase:itemIRI:", STR(?valueEntityId))),
-      IRI(CONCAT("urn:wikibase:item:",    STR(?valueEntityTemplate)))
+      IRI(CONCAT("urn:wikibase:item:",    ENCODE_FOR_URI(STR(?valueEntityTemplate))))
     ) AS ?valueConstant
   )
 
@@ -101,9 +101,9 @@ WHERE {
     IF(BOUND(?qualifierPropertyId),
       IRI(CONCAT("urn:wikibase:qualifierIRI:", ?qualifierPropertyId)),
       IF(BOUND(?qualifierPropertyBlank),
-        IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualExplicitKey))),
+        IRI(CONCAT("urn:wikibase:qualifier:", ENCODE_FOR_URI(STR(?qualExplicitKey)))),
         IF(BOUND(?qualConstExplicitKey),
-          IRI(CONCAT("urn:wikibase:qualifier:", STR(?qualConstExplicitKey))),
+          IRI(CONCAT("urn:wikibase:qualifier:", ENCODE_FOR_URI(STR(?qualConstExplicitKey)))),
           IF(BOUND(?qualConstType),
             IRI(CONCAT("urn:wikibase:qualifier:", STRAFTER(STR(?qualifierPropertyConst), "#"))),
             ?qualifierPropertyConst

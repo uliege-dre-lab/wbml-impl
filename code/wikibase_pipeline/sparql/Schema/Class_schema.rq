@@ -22,12 +22,12 @@ WHERE {
   OPTIONAL { ?classNode wbml:entityTemplate      ?classExplicitKey . }
 
   BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
-  BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
+  BIND(IRI(CONCAT("urn:wikibase:item:", ENCODE_FOR_URI(STR(?classKey)))) AS ?classIRI)
 
   OPTIONAL {
     ?classNode wbml:subclassOf ?parentClassNode .
     OPTIONAL { ?parentClassNode wbml:entityTemplate ?parentExplicitKey . }
     BIND(COALESCE(?parentExplicitKey, STRAFTER(STR(?parentClassNode), "#")) AS ?parentKey)
-    BIND(IRI(CONCAT("urn:wikibase:item:", ?parentKey)) AS ?parentClassIRI)
+    BIND(IRI(CONCAT("urn:wikibase:item:", ENCODE_FOR_URI(STR(?parentKey)))) AS ?parentClassIRI)
   }
 }

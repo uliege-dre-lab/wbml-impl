@@ -29,7 +29,10 @@ WHERE {
   BIND(
     IF(BOUND(?entityId),
       CONCAT("urn:wikibase:propertyIRI:", STR(?entityId)),
-      CONCAT("urn:wikibase:property:", STR(?entityTemplate))
+      IF(CONTAINS(STR(?entityTemplate), "{"),
+        CONCAT("urn:wikibase:property:", STR(?entityTemplate)),
+        CONCAT("urn:wikibase:property:", ENCODE_FOR_URI(STR(?entityTemplate)))
+      )
     ) AS ?template
   )
 }

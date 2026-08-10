@@ -32,8 +32,8 @@ WHERE {
 
   BIND(
     COALESCE(
-      IRI(CONCAT("urn:wikibase:property:", ?propExplicitKey)),
-      IRI(CONCAT("urn:wikibase:property:", STRAFTER(STR(?propNode), "#")))
+      IRI(CONCAT("urn:wikibase:property:", ENCODE_FOR_URI(STR(?propExplicitKey)))),
+      IRI(CONCAT("urn:wikibase:property:", ENCODE_FOR_URI(STRAFTER(STR(?propNode), "#"))))
     ) AS ?propIRI
   )
 }

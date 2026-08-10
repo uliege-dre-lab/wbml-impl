@@ -23,7 +23,7 @@ WHERE {
       ?sm wbml:class ?classNode .
       OPTIONAL { ?classNode wbml:entityTemplate ?classExplicitKey . }
       BIND(COALESCE(?classExplicitKey, STRAFTER(STR(?classNode), "#")) AS ?classKey)
-      BIND(IRI(CONCAT("urn:wikibase:item:", ?classKey)) AS ?classIRI)
+      BIND(IRI(CONCAT("urn:wikibase:item:", ENCODE_FOR_URI(STR(?classKey)))) AS ?classIRI)
     }
     UNION
     {
@@ -36,7 +36,10 @@ WHERE {
   BIND(
     IF(BOUND(?entityId),
       CONCAT("urn:wikibase:itemIRI:", STR(?entityId)),
-      CONCAT("urn:wikibase:item:", STR(?entityTemplate))
+      IF(CONTAINS(STR(?entityTemplate), "{"),
+        CONCAT("urn:wikibase:item:", STR(?entityTemplate)),
+        CONCAT("urn:wikibase:item:", ENCODE_FOR_URI(STR(?entityTemplate)))
+      )
     ) AS ?template
   )
 }
