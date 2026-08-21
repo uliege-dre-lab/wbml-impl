@@ -113,6 +113,15 @@ def load_env_config() -> dict:
     else:
         tls_verify = parse_bool(tls_raw, key="TLS_VERIFY", default=True)
 
+    search_wikibase_raw = os.getenv("SEARCH_WIKIBASE", "").strip()
+    if not search_wikibase_raw:
+        search_wikibase = True
+        inform("Missing 'SEARCH_WIKIBASE'. Defaulting to True.", verbose=verbose)
+    else:
+        search_wikibase = parse_bool(
+            search_wikibase_raw, key="SEARCH_WIKIBASE", default=True
+        )
+
     store_raw = os.getenv("STORE_FILE", "").strip()
     if not store_raw:
         store_file = False
@@ -192,6 +201,7 @@ def load_env_config() -> dict:
             "api_url": api_url,
             "language": language,
             "tls_verify": tls_verify,
+            "search_wikibase": search_wikibase,
             "verbose": verbose,
         },
         "cache": {

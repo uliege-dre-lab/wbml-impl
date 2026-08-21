@@ -154,6 +154,7 @@ def resolve_one_instance(
     wikibase_api: WikibaseAPI,
     default_language: str,
     verbose: int,
+    search_wikibase: bool,
 ) -> str:
     """
     Find or create a Wikibase item for the given instance IRI.
@@ -163,17 +164,19 @@ def resolve_one_instance(
     - wikibase_api: An instance of the WikibaseAPI class.
     - default_language: The default language.
     - verbose: Verbosity level for logging.
+    - search_wikibase: Whether to search Wikibase by label before creating.
     Output:
     - The QID of the resolved or created Wikibase item.
     """
     iri_str = str(item_iri)
 
-    qid = search_item_by_labels(
-        wikibase_api, meta["labels"], default_language, verbose=verbose
-    )
-    if qid is not None:
-        inform(f"  Found {qid} for <{iri_str}> by label search", verbose)
-        return qid
+    if search_wikibase:
+        qid = search_item_by_labels(
+            wikibase_api, meta["labels"], default_language, verbose=verbose
+        )
+        if qid is not None:
+            inform(f"  Found {qid} for <{iri_str}> by label search", verbose)
+            return qid
 
     try:
         qid = wikibase_api.create_item(
@@ -189,7 +192,15 @@ def resolve_one_instance(
             match = re.search(r"\[\[Item:(Q\d+)\|", err)
             if match:
                 qid = match.group(1)
-                inform(f"  Conflict: using existing {qid} for <{iri_str}>", verbose)
+                message = f"  Conflict: using existing {qid} for <{iri_str}>"
+                if search_wikibase:
+                    inform(message, verbose)
+                else:
+                    warn(
+                        f"{message} (SEARCH_WIKIBASE is disabled, but an item "
+                        f"with the same label and description already exists)",
+                        verbose,
+                    )
                 return qid
             else:
                 raise RuntimeError(
@@ -293,6 +304,7 @@ def resolve_instances(
     wikibase_api: WikibaseAPI,
     language_resolver: LanguageResolver,
     verbose: int,
+    search_wikibase: bool,
 ) -> None:
     """
     Main entry point for instance resolution.
@@ -306,6 +318,7 @@ def resolve_instances(
     - wikibase_api: An instance of the WikibaseAPI class.
     - language_resolver: An instance of the LanguageResolver class.
     - verbose: Verbosity level for logging.
+    - search_wikibase: Whether to search Wikibase by label before creating.
     """
     lookup.setdefault("items", {})
 
@@ -323,7 +336,12 @@ def resolve_instances(
 
         if not already_resolved:
             qid = resolve_one_instance(
-                item_iri, meta, wikibase_api, language_resolver.language, verbose
+                item_iri,
+                meta,
+                wikibase_api,
+                language_resolver.language,
+                verbose,
+                search_wikibase,
             )
             lookup["items"][iri_str] = qid
 

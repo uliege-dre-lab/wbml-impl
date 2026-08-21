@@ -76,11 +76,18 @@ The pipeline behaviour is controlled by the following parameters:
 | `VERBOSE` | Verbosity level: `0` (silent), `1` (normal), `2` (detailed) | `1` |
 | `LANGUAGE` | Default language code used for labels | `en` |
 | `TLS_VERIFY` | Whether to verify TLS certificates (`yes`/`no`) | `true` |
+| `SEARCH_WIKIBASE` | Whether to search Wikibase by label before creating a new entity (`yes`/`no`) | `yes` |
 | `LOOKUP_FILE` | Path to the lookup JSON file | `data/lookup/lookup.json` |
 | `STORE_FILE` | Whether to save the lookup after the run (`yes`/`no`) | `no` |
 | `RML_MAPPING_PATH` | Output path for the converted RML mapping | `data/mappings/converted_mapping.ttl` |
 | `SCHEMA_OUTPUT_PATH` | Output path for the schema Turtle file | `data/output/schema.ttl` |
 | `RML_OUTPUT_PATH` | Output path for the generated RDF triples | `data/output/output.nt` |
+
+> **Note:** Wikibase does not allow:
+> -  two _items_ to share the same label and description in a given language,
+> - two _properties_ to share the same label (+ datatype) in a given language. 
+>
+> If this occurs, the pipeline reuses the existing entity instead of failing. This happens whether `SEARCH_WIKIBASE` is `yes` or `no`.
 
 ### Environment file
 

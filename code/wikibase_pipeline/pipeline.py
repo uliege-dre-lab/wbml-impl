@@ -36,6 +36,7 @@ def update(mapping_file_path: str | Path) -> None:
         raise FileNotFoundError(f"Mapping file not found: {mapping_file_path}")
 
     verbose = cfg["wikibase"]["verbose"]
+    search_wikibase = cfg["wikibase"]["search_wikibase"]
 
     inform("...Converting WBML to RML...", verbose)
     rml_mapping = convert_wbml_to_rml(
@@ -72,10 +73,14 @@ def update(mapping_file_path: str | Path) -> None:
     search_builtins_properties(lookup, wb_api, verbose)
 
     inform("...Resolving schema properties...", verbose)
-    resolve_schema_properties(g_schema, lookup, wb_api, language_resolver, verbose)
+    resolve_schema_properties(
+        g_schema, lookup, wb_api, language_resolver, verbose, search_wikibase
+    )
 
     inform("...Resolving schema classes...", verbose)
-    resolve_schema_classes(g_schema, lookup, wb_api, language_resolver, verbose)
+    resolve_schema_classes(
+        g_schema, lookup, wb_api, language_resolver, verbose, search_wikibase
+    )
 
     g_objects = Graph()
     g_objects.parse(output_value, format="nt")
@@ -87,8 +92,12 @@ def update(mapping_file_path: str | Path) -> None:
     resolve_direct_iris(g_objects, lookup, wb_api, verbose)
 
     inform("...Initialize instance metadata...", verbose)
-    resolve_instances(g_objects, lookup, wb_api, language_resolver, verbose)
-    resolve_property_instances(g_objects, lookup, wb_api, language_resolver, verbose)
+    resolve_instances(
+        g_objects, lookup, wb_api, language_resolver, verbose, search_wikibase
+    )
+    resolve_property_instances(
+        g_objects, lookup, wb_api, language_resolver, verbose, search_wikibase
+    )
 
     inform("...Pushing claims and statements to Wikibase...", verbose)
     populate(g_objects, lookup, wb_api, language_resolver, verbose)
