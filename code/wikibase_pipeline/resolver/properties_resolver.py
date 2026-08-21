@@ -1,3 +1,4 @@
+import re
 from collections import defaultdict
 
 from rdflib import Graph, Namespace, URIRef
@@ -197,6 +198,7 @@ def resolve_one_property(
     wikibase_api: WikibaseAPI,
     default_language: str,
     verbose: int,
+    search_wikibase: bool,
 ) -> tuple[str, str]:
     """
     Find or create a Wikibase property for the given schema property IRI.
@@ -207,38 +209,66 @@ def resolve_one_property(
     - wikibase_api: An instance of the WikibaseAPI class.
     - default_language: The default language code to prioritize in label search.
     - verbose: Verbosity level for logging.
+    - search_wikibase: Whether to search Wikibase by label before creating.
     Output:
     - A tuple of (property ID, Wikibase datatype string).
     """
     wb_datatype = wb_datatype_from_graph(schema_graph, prop_iri)
     labels = meta["labels"]
 
-    pid = search_wikibase_properties(
-        wikibase_api,
-        labels=labels,
-        default_language=default_language,
-        expected_datatype=wb_datatype,
-    )
+    if search_wikibase:
+        pid = search_wikibase_properties(
+            wikibase_api,
+            labels=labels,
+            default_language=default_language,
+            expected_datatype=wb_datatype,
+        )
 
-    if pid is not None:
+        if pid is not None:
+            inform(
+                f"Resolved property <{prop_iri}> by label search -> "
+                f"{pid} (datatype='{wb_datatype}')",
+                verbose,
+            )
+            return pid, wb_datatype
+
+    try:
+        pid = wikibase_api.create_property(
+            labels=labels,
+            datatype=wb_datatype,
+            descriptions=meta["descriptions"],
+            aliases=meta["aliases"],
+        )
         inform(
-            f"Resolved property <{prop_iri}> by label search -> "
-            f"{pid} (datatype='{wb_datatype}')",
+            f"Created new property {pid} for <{prop_iri}> (datatype='{wb_datatype}')",
             verbose,
         )
         return pid, wb_datatype
-
-    pid = wikibase_api.create_property(
-        labels=labels,
-        datatype=wb_datatype,
-        descriptions=meta["descriptions"],
-        aliases=meta["aliases"],
-    )
-    inform(
-        f"Created new property {pid} for <{prop_iri}> (datatype='{wb_datatype}')",
-        verbose,
-    )
-    return pid, wb_datatype
+    except RuntimeError as exc:
+        err = str(exc)
+        if "label-conflict" in err:
+            match = re.search(r"\[\[Property:(P\d+)\|", err)
+            if match:
+                pid = match.group(1)
+                message = (
+                    f"Conflict: using existing {pid} for <{prop_iri}> "
+                    f"(datatype='{wb_datatype}')"
+                )
+                if search_wikibase:
+                    inform(message, verbose)
+                else:
+                    warn(
+                        f"{message} (SEARCH_WIKIBASE is disabled, but a property "
+                        f"with the same label already exists.",
+                        verbose,
+                    )
+                return pid, wb_datatype
+            else:
+                raise RuntimeError(
+                    f"label-conflict for <{prop_iri}> "
+                    f"but could not parse PID from error: {err}"
+                ) from exc
+        raise
 
 
 def push_property_metadata(
@@ -335,6 +365,7 @@ def resolve_schema_properties(
     wikibase_api: WikibaseAPI,
     language_resolver: LanguageResolver,
     verbose: int,
+    search_wikibase: bool,
 ) -> None:
     """
     Main entry point for schema property resolution.
@@ -350,6 +381,7 @@ def resolve_schema_properties(
     - wikibase_api: An instance of the WikibaseAPI class.
     - language_resolver: An instance of the LanguageResolver class.
     - verbose: Verbosity level for logging.
+    - search_wikibase: Whether to search Wikibase by label before creating.
     """
     validate_schema_properties(schema_graph)
     lookup.setdefault("properties", {})
@@ -383,6 +415,7 @@ def resolve_schema_properties(
                 wikibase_api,
                 language_resolver.language,
                 verbose,
+                search_wikibase,
             )
             lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
 
@@ -423,6 +456,7 @@ def resolve_property_instances(
     wikibase_api: WikibaseAPI,
     language_resolver: LanguageResolver,
     verbose: int,
+    search_wikibase: bool,
 ) -> None:
     """
     Main entry point for property instance resolution.
@@ -439,6 +473,7 @@ def resolve_property_instances(
     - wikibase_api: An instance of the WikibaseAPI class.
     - language_resolver: An instance of the LanguageResolver class.
     - verbose: Verbosity level for logging.
+    - search_wikibase: Whether to search Wikibase by label before creating.
     """
     lookup.setdefault("properties", {})
 
@@ -470,6 +505,7 @@ def resolve_property_instances(
                 wikibase_api,
                 language_resolver.language,
                 verbose,
+                search_wikibase,
             )
             lookup["properties"][iri_str] = {"id": pid, "datatype": wb_datatype}
         else:
