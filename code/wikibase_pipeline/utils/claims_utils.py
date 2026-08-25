@@ -15,7 +15,7 @@ def values_match(
         return isinstance(existing_value, dict) and wikibase_value.get(
             "id"
         ) == existing_value.get("id")
-    if property_datatype in ("string", "url"):
+    if property_datatype in ("string", "url", "external-id"):
         return wikibase_value == existing_value
     if property_datatype == "monolingualtext":
         return (
