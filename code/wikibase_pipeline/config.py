@@ -173,6 +173,16 @@ def load_env_config() -> dict:
             verbose=verbose,
         )
 
+    na_values_raw = os.getenv("NA_VALUES", "").strip()
+    if not na_values_raw:
+        na_values = ",nan,None,none,null,NULL"
+        inform(
+            "Missing 'NA_VALUES'. Defaulting to ',nan,None,none,null,NULL'.",
+            verbose=verbose,
+        )
+    else:
+        na_values = na_values_raw
+
     rml_mapping_path = resolve_path(rml_mapping_raw)
     schema_output_path = resolve_path(schema_output_raw)
     rml_output_path = resolve_path(rml_output_raw)
@@ -212,5 +222,8 @@ def load_env_config() -> dict:
             "rml_mapping": str(rml_mapping_path),
             "schema_output": str(schema_output_path),
             "rml_output": str(rml_output_path),
+        },
+        "morphkgc": {
+            "na_values": na_values,
         },
     }

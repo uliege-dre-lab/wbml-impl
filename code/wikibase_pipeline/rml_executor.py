@@ -11,12 +11,14 @@ from .utils.verbose_utils import inform
 def _build_morph_kgc_ini(
     mapping_path: Path,
     output_path: Path,
+    na_values: str,
 ) -> str:
     """
     Generate the morph-kgc config.ini content as a string.
     Inputs:
     - mapping_path: path to the RML mapping file
     - output_path: path where the output RDF file will be written
+    - na_values: set of source values to interpret as NULL
     Output:
     - the content of the config.ini file as a string
     """
@@ -24,6 +26,7 @@ def _build_morph_kgc_ini(
     config["CONFIGURATION"] = {
         "output_file": str(output_path),
         "number_of_processes": 1,
+        "na_values": na_values,
     }
     config["DataSource1"] = {
         "mappings": str(mapping_path),
@@ -38,6 +41,7 @@ def rml_execute(
     mapping_path: Path | str,
     output_path: Path | str,
     verbose: int,
+    na_values: str = ",nan,None,none,null,NULL",
 ):
     """
     Execute the RML mapping using morph-kgc and write the output to a file.
@@ -45,6 +49,7 @@ def rml_execute(
     - mapping_path: path to the RML mapping file
     - output_path: path where the output RDF file will be written
     - verbose: verbosity level for logging
+    - na_values: set of source values to interpret as NULL
     """
 
     mapping_path = Path(mapping_path).resolve()
@@ -54,7 +59,7 @@ def rml_execute(
     if not mapping_path.is_file():
         raise FileNotFoundError(f"RML mapping file not found: {mapping_path}")
 
-    ini_content = _build_morph_kgc_ini(mapping_path, output_path)
+    ini_content = _build_morph_kgc_ini(mapping_path, output_path, na_values)
 
     with tempfile.NamedTemporaryFile(
         mode="w", suffix=".ini", delete=False, dir=project_path
