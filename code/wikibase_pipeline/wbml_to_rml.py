@@ -8,6 +8,8 @@ from .utils.verbose_utils import inform, warn
 WBML = Namespace("http://w3id.org/dre/wbml#")
 WBINT = Namespace("http://w3id.org/dre/wbint#")
 
+MAPPING_BASE_IRI = "http://w3id.org/dre/wbml/mapping#"
+
 RML_QUERIES_DIR = Path(__file__).parent / "sparql" / "RML"
 SCHEMA_QUERIES_DIR = Path(__file__).parent / "sparql" / "Schema"
 
@@ -117,7 +119,7 @@ def convert_wbml_to_rml(
     output_file_path = Path(output_file_path)
 
     source_graph = Graph()
-    source_graph.parse(mapping_file_path, format="turtle")
+    source_graph.parse(mapping_file_path, format="turtle", publicID=MAPPING_BASE_IRI)
     assign_ids(source_graph, verbose)
 
     result_graph = Graph()
@@ -175,7 +177,7 @@ def run_schema_queries(
     output_file_path = Path(output_file_path)
 
     source_graph = Graph()
-    source_graph.parse(source_file_path, format="turtle")
+    source_graph.parse(source_file_path, format="turtle", publicID=MAPPING_BASE_IRI)
     inform(f"Loaded source graph: {len(source_graph)} triples", verbose)
 
     result_graph = Graph()
