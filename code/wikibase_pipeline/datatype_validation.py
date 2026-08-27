@@ -27,14 +27,6 @@ XSD_TO_WIKIBASE: dict[str, str] = {
 }
 
 
-def check_not_none(value: str) -> None:
-    """
-    Check if a string value is "none", "null", or "nan" and raise a ValueError if so.
-    """
-    if value.lower() in {"none", "null", "nan"}:
-        raise ValueError(f"Value is '{value}'; skipping.")
-
-
 def value_to_wikibase_datatype(value) -> str | None:
     """
     Infer the Wikibase datatype from an RDF value.
@@ -81,7 +73,6 @@ def _coerce_missing_value_to_property_datatype(
     - The coerced value as an RDFLib Literal or URIRef.
     """
     val_str = str(value).strip()
-    check_not_none(val_str)
 
     if property_datatype == "string":
         return Literal(val_str, datatype=XSD.string)
@@ -274,7 +265,6 @@ def rdf_value_to_wikibase_value(
         return {"entity-type": "property", "id": prop_entry["id"]}
 
     result = str(value).strip()
-    check_not_none(result)
 
     if property_datatype in ("string", "url", "external-id"):
         return result

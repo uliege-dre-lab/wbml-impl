@@ -52,7 +52,12 @@ def update(mapping_file_path: str | Path) -> None:
 
     inform("...Executing RML mapping...", verbose)
     output_value = str(Path(cfg["paths"]["rml_output"]).resolve())
-    rml_execute(rml_mapping, output_value, verbose=verbose)
+    rml_execute(
+        rml_mapping,
+        output_value,
+        verbose=verbose,
+        na_values=cfg["morphkgc"]["na_values"],
+    )
     check_nt_line_prefixes(output_value)
 
     inform("...Loading lookup cache...", verbose)

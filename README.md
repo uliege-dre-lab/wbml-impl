@@ -82,6 +82,7 @@ The pipeline behaviour is controlled by the following parameters:
 | `RML_MAPPING_PATH` | Output path for the converted RML mapping | `data/mappings/converted_mapping.ttl` |
 | `SCHEMA_OUTPUT_PATH` | Output path for the schema Turtle file | `data/output/schema.ttl` |
 | `RML_OUTPUT_PATH` | Output path for the generated RDF triples | `data/output/output.nt` |
+| `NA_VALUES` | Comma-separated source values that Morph-KGC treats as NULL when generating RDF | `,nan,None,none,null,NULL` |
 
 > **Note:** Wikibase does not allow:
 > -  two _items_ to share the same label and description in a given language,
